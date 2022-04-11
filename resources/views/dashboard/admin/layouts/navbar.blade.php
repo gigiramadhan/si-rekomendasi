@@ -3,7 +3,7 @@
     <div class="d-flex align-items-center justify-content-between">
         <div class="logo d-flex align-items-center">
             <img src="assets/img/logo.png" alt="">
-            <span class="d-none d-lg-block">Admin</span>
+            <span class="d-none d-lg-block">Administrator</span>
         </div>
             <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
