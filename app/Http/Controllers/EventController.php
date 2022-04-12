@@ -145,13 +145,13 @@ class EventController extends Controller
     public function search(Request $request){
 
         if($request->has('search')){
-            $$event = Event::where('judul', 'LIKE', '%'.$request->search.'%')->paginate();
+            $event = Event::where('judul', 'LIKE', '%'.$request->search.'%')->paginate();
         }
         else{
-            $$event = Event::all();
+            $event = Event::all();
         }
 
-        return view('dashboard.admin.kegiatan.kegiatan', compact('kegiatan'));
+        return view('dashboard.admin.kegiatan.kegiatan', compact('event'));
     }
 
 

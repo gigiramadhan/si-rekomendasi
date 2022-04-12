@@ -124,26 +124,23 @@
     <section id="info" class="info">
 
         <div class="container" data-aos="fade-up">
-          <div class="section-title">
-            <h2>Information</h2>
-            <p>Information in our Land Group</p>
-          </div>
-        </div>
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-                <div class="row g-0">
-                    @foreach ($event as $item)
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $item->judul }}</h5>
-                        <p class="card-text" style="text-align: justify">{{ $item->deskripsi }}</p>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
+            <div class="section-title">
+                <h2>Information</h2>
+                <p>Information in our Land Group</p>
             </div>
 
+            <div class="row g-0" >
+                @foreach ($event as $item)
+                <div class="card me-4" style="width: 18rem;">
+                    <img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $item->judul }}</h5>
+                    <p class="card-text" style="text-align: justify">{{ $item->deskripsi }}</p>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
 
             {{-- <div class="owl-carousel owl-theme">
                 <div class="slide slide-1">
