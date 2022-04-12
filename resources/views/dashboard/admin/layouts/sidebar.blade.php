@@ -29,7 +29,7 @@
           <li>
 
             <a href="{{url('data_pengguna')}}">
-              <i class="bi bi-person-circle"></i><span>Data Pengguna</span>
+              <i class="bi bi-person-circle"></i><span>Data Pengunjung</span>
             </a>
           </li>
         </ul>

@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BobotController;
+use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -17,9 +19,7 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-Route::get('/', function () {
-    return view('landing.beranda');
-});
+Route::get('/', [BerandaController::class, 'index'])->name('landing.beranda');
 
 Route::get('beranda', function () {
     return view('landing.beranda');
@@ -130,3 +130,17 @@ Route::get('/tampilbobot/{id}', [BobotController::class, 'tampilbobot'])->name('
 Route::post('/updatebobot/{id}', [BobotController::class, 'updatebobot'])->name('updatebobot');
 
 Route::get('/search', [BobotController::class, 'search']);
+
+Route::resource('kegiatan', EventController::class);
+
+Route::get('kegiatan', [EventController::class, 'index'])->name('kegiatan.kegiatan');
+
+Route::post('create', [EventController::class, 'store']);
+
+Route::get('create', [EventController::class, 'create'])->name('kegiatan.create');
+
+Route::get('/tampilkegiatan/{id}', [EventController::class, 'tampilkegiatan'])->name('tampilkegiatan');
+
+Route::post('/updateevent/{id}', [EventController::class, 'updateevent'])->name('updateevent');
+
+Route::get('/search', [EventController::class, 'search']);

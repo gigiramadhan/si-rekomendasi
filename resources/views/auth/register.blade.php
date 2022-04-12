@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{ asset('adashboard') }}/assets/img/land.png" rel="icon">
-  <link href="{{ asset('adashboard') }}/assets/img/land.png" rel="apple-touch-icon">
+  <link href="{{asset('landing')}}/assets/img/landgroup.png" rel="icon">
+  <link href="{{asset('landing')}}/assets/img/landgroup.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">

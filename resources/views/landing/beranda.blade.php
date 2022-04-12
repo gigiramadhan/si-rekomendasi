@@ -122,14 +122,30 @@
 
     <!-- ======= Info Section ======= -->
     <section id="info" class="info">
-        <div class="container" data-aos="fade-up">
 
-            <div class="section-title">
-                <h2>Information</h2>
-                    <p>Information in our Land Group</p>
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2>Information</h2>
+            <p>Information in our Land Group</p>
+          </div>
+        </div>
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <div class="row g-0">
+                    @foreach ($event as $item)
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $item->judul }}</h5>
+                        <p class="card-text" style="text-align: justify">{{ $item->deskripsi }}</p>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
             </div>
 
-            <div class="owl-carousel owl-theme">
+
+            {{-- <div class="owl-carousel owl-theme">
                 <div class="slide slide-1">
                     <div class="slide-content">
                         <h1>Event</h1>
@@ -150,9 +166,9 @@
                             <p>sitikah merupakan kegiatan rutin yang dilakukan setiap satu minggu sekali</p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
-        <!-- Jquery -->
+        {{-- <!-- Jquery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <!-- Owl Carousel -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
@@ -170,8 +186,8 @@
                     autoplayHoverPause:true
 
                 });
-            });
-        </script>
+            }); --}}
+        {{-- </script> --}}
       </section>
 
     <!-- ======= Gallery Section ======= -->

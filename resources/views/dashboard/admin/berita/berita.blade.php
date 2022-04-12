@@ -101,7 +101,7 @@
                                 <td style="text-align: center">{{ $index + $berita->firstItem() }}</td>
                                 <td style="text-align: left">{{ $item->judul }}</td>
                                 <td style="text-align: left">{{ $item->deskripsi }}</td>
-                                <td><img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" width="130px"></td>
+                                <td style="text-align: center"><img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" width="130px"></td>
 
                                 <td>
                                     {{-- <a href="#" class="btn btn-danger delete mt-3" data-id="{{ $item->id }}"><i class="bi bi-trash"></i></a> --}}
@@ -109,7 +109,7 @@
                                         <a href="/tampildata/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                         @csrf
                                         @method('delete')
-                                        <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger mt-3"><i class="bi bi-trash"></i></button>
+                                        <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger mb-0"><i class="bi bi-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>

@@ -33,7 +33,15 @@
 
 </head>
 
+
+{{-- <body> --}}
 @extends('dashboard.admin.layouts.main')
+
+@if (session()->has('berhasil'))
+    <div class="alert alert-success">
+        {{ session()->get('berhasil') }}
+    </div>
+@endif
 
     @section('breadcrumb')
     <div class="pagetitle">
@@ -44,11 +52,147 @@
                     <li class="breadcrumb-item active">Kegiatan</li>
                 </ol>
             </nav>
-    </div><!-- End Page Title -->
+    </div>
+
+    <section class="section berita">
+        @yield('content')
+    </section>
+
+    <div class="row">
+        <div class="col-md-6 mt-4">
+            <h1>Data Kegiatan</h1>
+        </div>
+
+      {{-- <div class="container mt-5"> --}}
+
+            <div class="form-group d-flex justify-content-between mt-3">
+                <a href="{{ route('kegiatan.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg"></i>Tambah Data</a>
+
+                <form action="/search" method="GET">
+                    <div class="input-group">
+                        <form action="/search" class="form-inline" method="GET"></form>
+                        <input type="search" name="search" class="form-control" placeholder="search here.....">
+                        <span class="input-group-prepend">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+
+                <div class="crad-body">
+                    <table class="myTable table table-hover table-bordered border-secondary mt-3">
+                        <thead class="thead-light">
+                    {{-- <table class="table table-striped table-hover">
+                        <thead> --}}
+                            <tr>
+                                <th style="text-align: center">No</th>
+                                <th style="text-align: center">Judul</th>
+                                <th style="text-align: center">Deskripsi</th>
+                                <th style="text-align: center">Gambar</th>
+                                <th style="text-align: center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php
+                                $increment = 1;
+                            @endphp
+                            @if ($event != null)
+                                @foreach ($event as $index => $item)
+                                <tr>
+                                    <td style="text-align: center">{{ $index + $event->firstItem() }}</td>
+                                    <td style="text-align: left">{{ $item->judul }}</td>
+                                    <td style="text-align: left">{{ $item->deskripsi }}</td>
+                                    <td><img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" width="130px"></td>
+
+                                    <td>
+                                        {{-- <a href="#" class="btn btn-danger delete mt-3" data-id="{{ $item->id }}"><i class="bi bi-trash"></i></a> --}}
+                                        <form action="{{ route('kegiatan.destroy', $item->id) }}" method="post">
+                                            <a href="/tampilkegiatan/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger mt-3"><i class="bi bi-trash"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            @else
+                                ini
+                            @endif
+                        </tbody>
+                    </table>
+
+                    <div class="form-group d-flex justify-content-between mt-3">
+                        <div>
+                            Showing
+                            {{ $event->firstItem() }}
+                            to
+                            {{ $event->lastItem() }}
+                            of
+                            {{ $event->total() }}
+                            entries
+                        </div>
+
+                        <div class="pull-right">
+                            {{ $event->links() }}
+                        </div>
+                    </div>
+
+                </div>
+    </div>
     @endsection
 
-    @section('content')
 
-    @endsection
+
+    {{-- <script
+        src="https://code.jquery.com/jquery-3.6.0.slim.js"
+        integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    </body>
+    <script>
+        $('.delete').on('click','button[data-id=delete]',function(){
+				var id = $(this).data('id');
+				swal({
+					title: "Hapus Data Berita ?",
+					text: "Data akan terhapus dari database.",
+					icon: "warning",
+					buttons: true,
+					dangerMode: true,
+				})
+				.then((willDelete) => {
+            if (willDelete) {
+                window.location = "/destroy/{id}"
+                swal("Data berhasil dihapus", {
+                icon: "success",
+                });
+            } else {
+                swal("Data tidak jadi dihapus");
+            }
+		});
+	});
+        // $('.delete').click( function(){
+        //     var beritaid = $(this).attr('data-id');
+        //         swal({
+        //     title: "Yakin ?",
+        //     text: "Kamu akan menghapus data berita!",
+        //     icon: "warning",
+        //     buttons: true,
+        //     dangerMode: true,
+        //     })
+        //     .then((willDelete) => {
+        //     if (willDelete) {
+        //         window.location = "/destroy/{id}"
+        //         swal("Data berhasil dihapus", {
+        //         icon: "success",
+        //         });
+        //     } else {
+        //         swal("Data tidak jadi dihapus");
+        //     }
+        //     });
+        // });
+
+    </script>
+</html> --}}
 
 
