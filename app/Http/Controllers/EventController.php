@@ -50,7 +50,7 @@ class EventController extends Controller
 
         Event::create($data);
 
-        return redirect()->route('kegiatan.kegiatan')->with('berhasil', 'Data Berita telah berhasil ditambahkan');
+        return redirect()->route('kegiatan.kegiatan')->with('berhasil', 'Data Kegiatan telah berhasil ditambahkan');
     }
 
     /**

@@ -37,11 +37,13 @@
 {{-- <body> --}}
 @extends('dashboard.admin.layouts.main')
 
-@if (session()->has('berhasil'))
-    <div class="alert alert-success">
-        {{ session()->get('berhasil') }}
-    </div>
-@endif
+{{-- <div class="alert alert-danger">
+    <ul>
+        @foreach ($eror->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div> --}}
 
     @section('breadcrumb')
     <div class="pagetitle">
@@ -58,6 +60,12 @@
         @yield('content')
     </section>
 
+    @if (\Session::has('berhasil'))
+        <div class="alert alert-success">
+            <p>{{ \Session::get('berhasil') }}</p>
+        </div>
+    @endif
+
     <div class="row">
         <div class="col-md-6 mt-4">
             <h1>Data Berita</h1>
@@ -65,79 +73,76 @@
 
       {{-- <div class="container mt-5"> --}}
 
-            <div class="form-group d-flex justify-content-between mt-3">
-                <a href="{{ route('berita.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg"></i>Tambah Data</a>
+        <div class="form-group d-flex justify-content-between mt-3">
+            <a href="{{ route('berita.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg"></i>Tambah Data</a>
 
-                <form action="/search" method="GET">
-                    <div class="input-group">
-                        <form action="/search" class="form-inline" method="GET"></form>
-                        <input type="search" name="search" class="form-control" placeholder="search here.....">
-                        <span class="input-group-prepend">
-                            <button type="submit" class="btn btn-primary">Search</button>
-                        </span>
-                    </div>
-                </form>
-            </div>
-
-                <div class="crad-body">
-                    <table class="myTable table table-hover table-bordered border-secondary mt-3">
-                        <thead class="thead-light">
-                    {{-- <table class="table table-striped table-hover">
-                        <thead> --}}
-                            <tr>
-                                <th style="text-align: center">No</th>
-                                <th style="text-align: center">Judul</th>
-                                <th style="text-align: center">Deskripsi</th>
-                                <th style="text-align: center">Gambar</th>
-                                <th style="text-align: center">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php
-                                $increment = 1;
-                            @endphp
-                            @foreach ($berita as $index => $item)
-                            <tr>
-                                <td style="text-align: center">{{ $index + $berita->firstItem() }}</td>
-                                <td style="text-align: left">{{ $item->judul }}</td>
-                                <td style="text-align: left">{{ $item->deskripsi }}</td>
-                                <td style="text-align: center"><img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" width="130px"></td>
-
-                                <td>
-                                    {{-- <a href="#" class="btn btn-danger delete mt-3" data-id="{{ $item->id }}"><i class="bi bi-trash"></i></a> --}}
-                                    <form class="d-flex align-items-center gap-2" action="{{ route('berita.destroy', $item->id) }}" method="post">
-                                        <a href="/tampildata/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-
-                    <div class="form-group d-flex justify-content-between mt-3">
-                        <div>
-                            Showing
-                            {{ $berita->firstItem() }}
-                            to
-                            {{ $berita->lastItem() }}
-                            of
-                            {{ $berita->total() }}
-                            entries
-                        </div>
-
-                        <div class="pull-right">
-                            {{ $berita->links() }}
-                        </div>
-                    </div>
-
+            <form action="/search" method="GET">
+                <div class="input-group">
+                    <form action="/search" class="form-inline" method="GET"></form>
+                    <input type="search" name="search" class="form-control" placeholder="search here.....">
+                    <span class="input-group-prepend">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </span>
                 </div>
+            </form>
+        </div>
+
+        <div class="crad-body">
+            <table class="myTable table table-hover table-bordered border-secondary mt-3">
+                <thead class="thead-light">
+                {{-- <table class="table table-striped table-hover">
+                <thead> --}}
+                    <tr>
+                        <th style="text-align: center">No</th>
+                        <th style="text-align: center">Judul</th>
+                        <th style="text-align: center">Deskripsi</th>
+                        <th style="text-align: center">Gambar</th>
+                        <th style="text-align: center">Aksi</th>
+                        </tr>
+                </thead>
+                <tbody>
+                    @php
+                        $increment = 1;
+                    @endphp
+                    @foreach ($berita as $index => $item)
+                    <tr>
+                        <td style="text-align: center">{{ $index + $berita->firstItem() }}</td>
+                        <td style="text-align: left">{{ $item->judul }}</td>
+                        <td style="text-align: left">{{ $item->deskripsi }}</td>
+                        <td style="text-align: center"><img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" width="130px"></td>
+
+                        <td>
+                            {{-- <a href="#" class="btn btn-danger delete mt-3" data-id="{{ $item->id }}"><i class="bi bi-trash"></i></a> --}}
+                            <form class="d-flex align-items-center gap-2" action="{{ route('berita.destroy', $item->id) }}" method="post">
+                                <a href="/tampildata/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                @csrf
+                                @method('delete')
+                                <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+            <div class="form-group d-flex justify-content-between mt-3">
+                <div>
+                    Showing
+                    {{ $berita->firstItem() }}
+                    to
+                    {{ $berita->lastItem() }}
+                    of
+                    {{ $berita->total() }}
+                    entries
+                </div>
+
+                <div class="pull-right">
+                    {{ $berita->links() }}
+                </div>
+            </div>
+        </div>
     </div>
     @endsection
-
-
 
     {{-- <script
         src="https://code.jquery.com/jquery-3.6.0.slim.js"

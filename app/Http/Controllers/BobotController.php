@@ -46,7 +46,7 @@ class BobotController extends Controller
 
         Bobot::create($data);
 
-        return redirect()->route('bobot.bobot')->with('berhasil', 'Data Berita telah berhasil ditambahkan');
+        return redirect()->route('bobot.bobot')->with('berhasil', 'Data Bobot telah berhasil ditambahkan');
     }
 
     /**
