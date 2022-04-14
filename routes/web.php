@@ -21,9 +21,9 @@ use App\Http\Controllers\RegisterController;
 
 Route::get('/', [BerandaController::class, 'index'])->name('landing.beranda');
 
-Route::get('beranda', function () {
-    return view('landing.beranda');
-});
+// Route::get('beranda', function () {
+//     return view('landing.beranda');
+// });
 
 Route::get('about', function () {
     return view('home.about');

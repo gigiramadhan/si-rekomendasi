@@ -105,11 +105,11 @@
 
                                 <td>
                                     {{-- <a href="#" class="btn btn-danger delete mt-3" data-id="{{ $item->id }}"><i class="bi bi-trash"></i></a> --}}
-                                    <form action="{{ route('berita.destroy', $item->id) }}" method="post">
+                                    <form class="d-flex align-items-center gap-2" action="{{ route('berita.destroy', $item->id) }}" method="post">
                                         <a href="/tampildata/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                         @csrf
                                         @method('delete')
-                                        <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger mb-0"><i class="bi bi-trash"></i></button>
+                                        <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>
