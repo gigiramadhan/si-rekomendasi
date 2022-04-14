@@ -15,9 +15,13 @@ class BerandaController extends Controller
      */
     public function index(){
 
-        $event = Event::take(5)->get()->sortByDesc('created_at');;
+        $event = Event::take(5)->get()->sortByDesc('created_at');
+        $berita = Berita::take(5)->get()->sortByDesc('created_at');
 
-        return view('landing.beranda', ['event' => $event]);
+        return view('landing.beranda', [
+            'event' => $event,
+            'berita' => $berita,
+        ]);
     }
 
     /**

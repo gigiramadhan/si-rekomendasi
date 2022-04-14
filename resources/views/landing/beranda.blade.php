@@ -139,7 +139,30 @@
                     </div>
                 </div>
                 @endforeach
+
+                @foreach ($berita as $item)
+                <div class="card me-4" style="width: 18rem;">
+                    <img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $item->judul }}</h5>
+                    <p class="card-text" style="text-align: justify">{{ $item->deskripsi }}</p>
+                    </div>
+                </div>
+                @endforeach
             </div>
+        </div>
+
+            {{-- <div class="row g-0" >
+                @foreach ($berita as $item)
+                <div class="card me-4" style="width: 18rem;">
+                    <img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $item->judul }}</h5>
+                    <p class="card-text" style="text-align: justify">{{ $item->deskripsi }}</p>
+                    </div>
+                </div>
+                @endforeach
+            </div> --}}
         </div>
 
             {{-- <div class="owl-carousel owl-theme">

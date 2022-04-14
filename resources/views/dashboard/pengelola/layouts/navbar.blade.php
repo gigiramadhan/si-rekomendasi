@@ -81,7 +81,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{{url('beranda')}}">
+              <a class="dropdown-item d-flex align-items-center" href="{{url('/')}}">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Log Out</span>
               </a>
