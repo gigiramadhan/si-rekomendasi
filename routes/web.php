@@ -85,6 +85,7 @@ Route::get('login', function () {
     return view('auth.login');
 });
 
+// Login
 Route::get('registrasi', [LoginController::class, 'registrasi'])->name('registrasi');
 
 Route::post('simpanregistrasi', [LoginController::class, 'simpanregistrasi'])->name('simpanregistrasi');
@@ -101,6 +102,7 @@ Route::resource('berita', BeritaController::class);
 //     return view('dashboard.admin.berita.create');
 // });
 
+// Berita
 Route::get('berita', [BeritaController::class, 'index'])->name('berita.berita');
 
 Route::post('create', [BeritaController::class, 'store']);
@@ -117,6 +119,7 @@ Route::get('/search', [BeritaController::class, 'search']);
 
 // Route::get('/destroy/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
 
+// Bobot
 Route::resource('bobot', BobotController::class);
 
 Route::get('bobot', [BobotController::class, 'index'])->name('bobot.bobot');
@@ -131,6 +134,7 @@ Route::post('/updatebobot/{id}', [BobotController::class, 'updatebobot'])->name(
 
 Route::get('/search', [BobotController::class, 'search']);
 
+// Kegiatan
 Route::resource('kegiatan', EventController::class);
 
 Route::get('kegiatan', [EventController::class, 'index'])->name('kegiatan.kegiatan');

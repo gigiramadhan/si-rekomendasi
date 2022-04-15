@@ -34,7 +34,7 @@
 </head>
 
 
-{{-- <body> --}}
+<body>
 @extends('dashboard.admin.layouts.main')
 
 {{-- <div class="alert alert-danger">
@@ -60,11 +60,11 @@
         @yield('content')
     </section>
 
-    @if (\Session::has('berhasil'))
+    {{-- @if (\Session::has('berhasil'))
         <div class="alert alert-success">
             <p>{{ \Session::get('berhasil') }}</p>
         </div>
-    @endif
+    @endif --}}
 
     <div class="row">
         <div class="col-md-6 mt-4">
@@ -142,6 +142,21 @@
             </div>
         </div>
     </div>
+    @include('sweetalert::alert')
+    </body>
+
+    {{-- <script src="sweetalert2.all.min.js"></script>
+    <script>
+        Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    </script> --}}
+
+    </html>
     @endsection
 
     {{-- <script

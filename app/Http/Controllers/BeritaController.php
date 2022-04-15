@@ -91,7 +91,7 @@ class BeritaController extends Controller
 
         Berita::create($data);
 
-        return redirect()->route('berita.berita')->with('berhasil', 'Data Berita telah berhasil ditambahkan');
+        return redirect()->route('berita.berita')->with('toast_success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -187,7 +187,7 @@ class BeritaController extends Controller
             'gambar' => $gambar
         ));
 
-        return redirect()->route('berita.berita')->with('berhasil', 'Data berhasil diupdate');
+        return redirect()->route('berita.berita')->with('toast_success', 'Data berhasil diupdate');
     }
 
     /**
@@ -202,7 +202,7 @@ class BeritaController extends Controller
 
         $berita->delete();
 
-        return redirect()->route('berita.berita')->with('berhasil', 'Data berhasil dihapus');
+        return redirect()->route('berita.berita')->with('toast_success', 'Data berhasil dihapus');
     }
 
     public function search(Request $request){

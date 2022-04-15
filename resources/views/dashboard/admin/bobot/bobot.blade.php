@@ -52,11 +52,11 @@
         @yield('content')
     </section>
 
-    @if (\Session::has('berhasil'))
+    {{-- @if (\Session::has('berhasil'))
         <div class="alert alert-success">
             <p>{{ \Session::get('berhasil') }}</p>
         </div>
-    @endif
+    @endif --}}
 
     <div class="row">
         <div class="col-md-6 mt-4">
@@ -107,7 +107,7 @@
 
                             <td>
                                 {{-- <a href="#" class="btn btn-danger delete mt-3" data-id="{{ $item->id }}"><i class="bi bi-trash"></i></a> --}}
-                                <form class="d-flex align-items-center gap-2" action="{{ route('bobot.destroy', $item->id) }}" method="post">
+                                <form action="{{ route('bobot.destroy', $item->id) }}" method="post">
                                     <a href="/tampilbobot/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                     @csrf
                                     @method('delete')
@@ -136,6 +136,9 @@
                 </div>
             </div>
         </div>
+        @include('sweetalert::alert')
+        </body>
+        </html>
         @endsection
 
     {{-- <script

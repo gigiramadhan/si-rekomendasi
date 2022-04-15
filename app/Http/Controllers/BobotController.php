@@ -46,7 +46,7 @@ class BobotController extends Controller
 
         Bobot::create($data);
 
-        return redirect()->route('bobot.bobot')->with('berhasil', 'Data Bobot telah berhasil ditambahkan');
+        return redirect()->route('bobot.bobot')->with('toast_success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -86,7 +86,7 @@ class BobotController extends Controller
         $data = Bobot::find($id);
         $data->update($request->all());
 
-        return redirect()->route('bobot.bobot')->with('berhasil', 'Data berhasil diupdate');
+        return redirect()->route('bobot.bobot')->with('toast_success', 'Data berhasil diupdate');
     }
 
     /**
@@ -101,7 +101,7 @@ class BobotController extends Controller
 
         $bobot->delete();
 
-        return redirect()->route('bobot.bobot')->with('berhasil', 'Data berhasil dihapus');
+        return redirect()->route('bobot.bobot')->with('toast_success', 'Data berhasil dihapus');
     }
 
     public function search(Request $request){

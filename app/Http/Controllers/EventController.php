@@ -50,7 +50,7 @@ class EventController extends Controller
 
         Event::create($data);
 
-        return redirect()->route('kegiatan.kegiatan')->with('berhasil', 'Data Kegiatan telah berhasil ditambahkan');
+        return redirect()->route('kegiatan.kegiatan')->with('toast_success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -124,7 +124,7 @@ class EventController extends Controller
             'gambar' => $gambar
         ));
 
-        return redirect()->route('kegiatan.kegiatan')->with('berhasil', 'Data berhasil diupdate');
+        return redirect()->route('kegiatan.kegiatan')->with('toast_success', 'Data berhasil diupdate');
     }
 
     /**
@@ -139,7 +139,7 @@ class EventController extends Controller
 
         $event->delete();
 
-        return redirect()->route('kegiatan.kegiatan')->with('berhasil', 'Data berhasil dihapus');
+        return redirect()->route('kegiatan.kegiatan')->with('toast_success', 'Data berhasil dihapus');
     }
 
     public function search(Request $request){

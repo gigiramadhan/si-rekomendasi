@@ -135,7 +135,7 @@
                     <img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->judul }}</h5>
-                    <p class="card-text" style="text-align: justify">{{ $item->deskripsi }}</p>
+                        <p class="card-text" style="text-align: justify">{{ $item->deskripsi }}</p>
                     </div>
                 </div>
                 @endforeach
@@ -145,7 +145,7 @@
                     <img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->judul }}</h5>
-                    <p class="card-text" style="text-align: justify">{{ $item->deskripsi }}</p>
+                        <p class="card-text" style="text-align: justify">{{ $item->deskripsi }}</p>
                     </div>
                 </div>
                 @endforeach

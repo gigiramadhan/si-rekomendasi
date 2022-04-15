@@ -34,7 +34,7 @@
 </head>
 
 
-{{-- <body> --}}
+<body>
 @extends('dashboard.admin.layouts.main')
 
     @section('breadcrumb')
@@ -52,11 +52,11 @@
         @yield('content')
     </section>
 
-    @if (\Session::has('berhasil'))
+    {{-- @if (\Session::has('berhasil'))
         <div class="alert alert-success">
             <p>{{ \Session::get('berhasil') }}</p>
         </div>
-    @endif
+    @endif --}}
 
     <div class="row">
         <div class="col-md-6 mt-4">
@@ -138,8 +138,10 @@
                     </div>
             </div>
     </div>
+    @include('sweetalert::alert')
+    </body>
+    </html>
     @endsection
-
 
 
     {{-- <script
