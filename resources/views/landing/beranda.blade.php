@@ -136,6 +136,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->judul }}</h5>
                         <p class="card-text" style="text-align: justify">{{ $item->deskripsi }}</p>
+                        {{-- <a href="{{ url('berita/'.$item->id) }}" class="btn btn-primary scrollto">Read More</a> --}}
                     </div>
                 </div>
                 @endforeach
@@ -146,6 +147,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->judul }}</h5>
                         <p class="card-text" style="text-align: justify">{{ $item->deskripsi }}</p>
+                        {{-- <a href="{{ url('berita/'.$item->id) }}" class="btn btn-primary">Read More</a> --}}
                     </div>
                 </div>
                 @endforeach

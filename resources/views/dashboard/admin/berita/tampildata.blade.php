@@ -48,17 +48,17 @@
                 @csrf
                     <input type="hidden" name="old_image" value="{{ $data->gambar}}">
 
-                <div class="form-group mb-3 mt-3">
+                <div class="form-group mb-3 mt-3 fw-bold">
                     <label for="judul">Judul</label>
                     <input type="text" name="judul" class="form-control mt-3" value="{{ $data->judul }}">
                 </div>
 
-                <div class="form-group mb-3 mt-3">
+                <div class="form-group mb-3 mt-3 fw-bold">
                     <label for="deskripsi">Deskripsi</label>
                     <textarea name="deskripsi" class="form-control mt-3">{{ $data->deskripsi }}</textarea>
                 </div>
 
-                <div class="form-group mb-3 mt-4">
+                <div class="form-group mb-3 mt-4 fw-bold">
                     <label for="gambar">Gambar</label><br>
                     <input type="file" class="form-control-file mt-3" name="gambar"><br>
                     <img src="{{ URL::to('/') }}/gambar/{{ $data->gambar }}" class="img-thumbnail" width="200px"/>

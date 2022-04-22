@@ -51,6 +51,7 @@
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{url('dashboard')}}"><i class="bi bi-house-door"></i></a></li>
+                    <li class="breadcrumb-item">Pages</li>
                     <li class="breadcrumb-item active">Berita</li>
                 </ol>
             </nav>

@@ -47,22 +47,22 @@
                 <form action="/updatebobot/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
-                    <div class="form-group mb-3 mt-3">
+                    <div class="form-group mb-3 mt-3 fw-bold">
                         <label for="judul">Fasilitas</label>
                         <input type="number" min="0" name="fasilitas" class="form-control mt-3" value="{{ $data->fasilitas }}">
                     </div>
 
-                    <div class="form-group mb-3 mt-3">
+                    <div class="form-group mb-3 mt-3 fw-bold">
                         <label for="judul">Luas Tanah</label>
                         <input type="number" min="0" name="luas_tanah" class="form-control mt-3" value="{{ $data->luas_tanah }}">
                     </div>
 
-                    <div class="form-group mb-3 mt-3">
+                    <div class="form-group mb-3 mt-3 fw-bold">
                         <label for="judul">Luas Bangunan</label>
                         <input type="number" min="0" name="luas_bangunan" class="form-control mt-3" value="{{ $data->luas_bangunan }}">
                     </div>
 
-                    <div class="form-group mb-3 mt-3">
+                    <div class="form-group mb-3 mt-3 fw-bold">
                         <label for="judul">Harga</label>
                         <input type="number" min="0" name="harga" class="form-control mt-3" value="{{ $data->harga }}">
                     </div>

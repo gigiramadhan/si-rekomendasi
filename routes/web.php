@@ -7,6 +7,8 @@ use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\RumahController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -117,6 +119,8 @@ Route::post('/updatedata/{id}', [BeritaController::class, 'updatedata'])->name('
 
 Route::get('/search', [BeritaController::class, 'search']);
 
+// Route::get('/berita/{id}', [BeritaController::class, 'readmore']);
+
 // Route::get('/destroy/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
 
 // Bobot
@@ -148,3 +152,25 @@ Route::get('/tampilkegiatan/{id}', [EventController::class, 'tampilkegiatan'])->
 Route::post('/updateevent/{id}', [EventController::class, 'updateevent'])->name('updateevent');
 
 Route::get('/search', [EventController::class, 'search']);
+
+// Data Rumah
+Route::resource('data_rumah', RumahController::class);
+
+Route::get('data_rumah', [RumahController::class, 'index'])->name('data_rumah.data_rumah');
+
+Route::post('create', [RumahController::class, 'store']);
+
+Route::get('create', [RumahController::class, 'create'])->name('data_rumah.create');
+
+Route::get('/tampilrumah/{id}', [RumahController::class, 'tampilrumah'])->name('tampilrumah');
+
+Route::post('/updaterumah/{id}', [RumahController::class, 'updaterumah'])->name('updaterumah');
+
+Route::get('/search', [RumahController::class, 'search']);
+
+// Transaksi
+Route::resource('data_transaksi', TransactionController::class);
+
+Route::get('data_transaksi', [TransactionController::class, 'index'])->name('data_transaksi.data_transaksi');
+
+Route::get('/search', [TransactionController::class, 'search']);

@@ -90,17 +90,17 @@
                 <form action="{{ route('berita.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
-                    <div class="form-group mb-3 mt-3">
+                    <div class="form-group mb-3 mt-3 fw-bold">
                         <label for="judul">Judul</label>
                         <input type="text" name="judul" class="form-control mt-3" value="{{ old('judul') }}" required>
                     </div>
 
-                    <div class="form-group mb-3 mt-3">
+                    <div class="form-group mb-3 mt-3 fw-bold">
                         <label for="deskripsi">Deskripsi</label>
                         <textarea name="deskripsi" class="form-control mt-3" value="{{ old('deskripsi') }}"></textarea>
                     </div>
 
-                    <div class="form-group mb-3 mt-4">
+                    <div class="form-group mb-3 mt-4 fw-bold">
                         <label for="gambar">Gambar</label><br>
                         {{-- <img class="rounded img-fluid" src="{{ Storage::url($item->gambar) }}" alt="gambar" id="preview"> --}}
                         <input type="file" class="form-control-file mt-3" name="gambar" value="{{ old('gambar') }}" required>

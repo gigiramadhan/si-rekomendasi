@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Berita;
 use Illuminate\Support\Facades\Storage;
-// use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\File;
 
 class BeritaController extends Controller
 {
@@ -20,6 +20,11 @@ class BeritaController extends Controller
 
         return view('dashboard.admin.berita.berita', $data);
     }
+
+    // public function readmore(Request $request){
+
+    //     return view('readmore', compact('berita'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -199,6 +204,8 @@ class BeritaController extends Controller
     public function destroy($id)
     {
         $berita = Berita::find($id);
+        $image_path = public_path("gambar/{$berita->gambar}");
+        File::delete($image_path);
 
         $berita->delete();
 
