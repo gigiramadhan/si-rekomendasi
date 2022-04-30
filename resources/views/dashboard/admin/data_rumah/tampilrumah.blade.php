@@ -31,6 +31,16 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('adashboard') }}/assets/css/style.css" rel="stylesheet">
 
+    {{-- Trix Editor --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('adashboard') }}/assets/css/trix.css">
+    <script type="text/javascript" src="{{ asset('adashboard') }}/assets/js/trix.js"></script>
+
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+        }
+    </style>
+
 </head>
 
 @extends('dashboard.admin.layouts.main')
@@ -54,8 +64,13 @@
                 </div>
 
                 <div class="form-group mb-3 mt-3 fw-bold">
-                    <label for="nama_perumahan">Nama Perumahan</label>
-                    <input type="text" name="nama_perumahan" class="form-control mt-3" value="{{ $data->nama_perumahan }}">
+                    <label class="form-label mb-3">Nama Perumahan</label>
+                    <select name="nama_perumahan" class="form-select" aria-label="Default select example">
+                        <option selected>{{ $data->nama_perumahan }}</option><br>
+                        <option value="Cluster Sultan Regency">Cluster Sultan Regency</option>
+                        <option value="Sultan Estate">Sultan Estate</option>
+                        <option value="Pesona Citra Residence">Pesona Citra Residence</option>
+                    </select>
                 </div>
 
                 <div class="form-group mb-3 mt-3 fw-bold">
@@ -64,7 +79,7 @@
                 </div>
 
                 <div class="form-group mb-3 mt-3 fw-bold">
-                    <label for="harga">Alamat</label>
+                    <label for="harga">Harga</label>
                     <input type="number" name="harga" class="form-control mt-3" value="{{ $data->harga }}">
                 </div>
 
@@ -83,7 +98,7 @@
 
                 <div class="form-group d-flex justify-content-between">
                     <button type="submit" class="btn btn-success mt-5">Update</button>
-                    <a href="/kegiatan" class="btn btn-secondary mt-5">Close</a>
+                    <a href="/data_rumah" class="btn btn-secondary mt-5">Close</a>
                 </form>
             </div>
         </div>

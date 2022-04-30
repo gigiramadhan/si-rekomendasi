@@ -31,6 +31,16 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('adashboard') }}/assets/css/style.css" rel="stylesheet">
 
+    {{-- Trix Editor --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('adashboard') }}/assets/css/trix.css">
+    <script type="text/javascript" src="{{ asset('adashboard') }}/assets/js/trix.js"></script>
+
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+        }
+    </style>
+
 </head>
 
 @extends('dashboard.admin.layouts.main')
@@ -48,28 +58,28 @@
                 @csrf
 
                     <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="judul">Fasilitas</label>
+                        <label for="fasilitas">Fasilitas</label>
                         <input type="number" min="0" name="fasilitas" class="form-control mt-3" value="{{ old('fasilitas') }}" required>
                     </div>
 
                     <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="judul">Luas Tanah</label>
+                        <label for="luas_tanah">Luas Tanah</label>
                         <input type="number" min="0" name="luas_tanah" class="form-control mt-3" value="{{ old('luas_tanah') }}" required>
                     </div>
 
                     <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="judul">Luas Bangunan</label>
+                        <label for="luas_bangunan">Luas Bangunan</label>
                         <input type="number" min="0" name="luas_bangunan" class="form-control mt-3" value="{{ old('luas_bangunan') }}" required>
                     </div>
 
                     <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="judul">Harga</label>
+                        <label for="harga">Harga</label>
                         <input type="number" min="0" name="harga" class="form-control mt-3" value="{{ old('harga') }}" required>
                     </div>
 
                     <div class="form-group d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary mt-5">Submit</button>
-                        <a href="/bobot" class="btn btn-secondary mt-5">Kembali</a>
+                        <a href="/bobot" class="btn btn-secondary mt-5">Close</a>
                 </form>
             </div>
         </div>

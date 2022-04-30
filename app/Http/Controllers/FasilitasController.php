@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transaction;
+use App\Models\Fasilitas;
 use Illuminate\Http\Request;
 
-class TransactionController extends Controller
+class FasilitasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class TransactionController extends Controller
      */
     public function index(){
 
-        $tb_transaction = Transaction::latest()->paginate(3);
+        $fasilitas = Fasilitas::latest()->paginate(3);
 
-        return view('dashboard.pengelola.data_transaksi.data_transaksi', compact('tb_transaction'));
+        return view('dashboard.pengelola.fasilitas.fasilitas', compact('fasilitas'));
     }
 
     /**
@@ -26,7 +26,7 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.pengelola.fasilitas.create');
     }
 
     /**
@@ -37,7 +37,14 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'name_fasility' => $request->name_fasility,
+            'keterangan' => $request->keterangan,
+        ];
+
+        Fasilitas::create($data);
+
+        return redirect('fasilitas')->with('toast_success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -48,7 +55,9 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Fasilitas::find($id);
+
+        return view('dashboard.pengelola.fasilitas.showfasilitas', compact('data'));
     }
 
     /**
@@ -82,18 +91,10 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        $fasilitas = Fasilitas::find($id);
 
-    public function search(Request $request){
+        $fasilitas->delete();
 
-        if($request->has('search')){
-            $tb_transaction = Transaction::where('nama', 'LIKE', '%'.$request->search.'%')->paginate();
-        }
-        else{
-            $tb_transaction = Transaction::all();
-        }
-
-        return view('dashboard.pengelola.data_transaksi.data_transaksi', compact('tb_transaction'));
+        return redirect('fasilitas')->with('toast_success', 'Data berhasil dihapus');
     }
 }

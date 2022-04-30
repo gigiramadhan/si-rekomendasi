@@ -51,7 +51,7 @@
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{url('dashboard_pengelola')}}"><i class="bi bi-house-door"></i></a></li>
-                    <li class="breadcrumb-item active">Data Transaksi</li>
+                    <li class="breadcrumb-item active">Transaksi</li>
                 </ol>
             </nav>
     </div>

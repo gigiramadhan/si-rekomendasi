@@ -31,6 +31,10 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('adashboard') }}/assets/css/style.css" rel="stylesheet">
 
+    {{-- Trix Editor --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('adashboard') }}/assets/css/trix.css">
+    <script type="text/javascript" src="{{ asset('adashboard') }}/assets/js/trix.js"></script>
+
 </head>
 
 
@@ -69,9 +73,9 @@
         <div class="form-group d-flex justify-content-between mt-3">
             <a href="{{ route('kegiatan.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg"></i>Tambah Data</a>
 
-            <form action="/search" method="GET">
+            <form action="/kegiatan/search" class="form-inline" method="GET">
                 <div class="input-group">
-                    <form action="/search" class="form-inline" method="GET"></form>
+                    {{-- <form action="/search" class="form-inline" method="GET"></form> --}}
                     <input type="search" name="search" class="form-control" placeholder="search here.....">
                     <span class="input-group-prepend">
                         <button type="submit" class="btn btn-primary">Search</button>
@@ -102,12 +106,12 @@
                             <tr>
                                 <td style="text-align: center">{{ $index + $event->firstItem() }}</td>
                                 <td style="text-align: left">{{ $item->judul }}</td>
-                                <td style="text-align: left">{{ $item->deskripsi }}</td>
+                                <td style="text-align: left">{!! $item->deskripsi !!}</td>
                                 <td><img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" width="130px"></td>
 
                                 <td>
                                     {{-- <a href="#" class="btn btn-danger delete mt-3" data-id="{{ $item->id }}"><i class="bi bi-trash"></i></a> --}}
-                                    <form class="d-flex align-items-center gap-2" action="{{ route('kegiatan.destroy', $item->id) }}" method="post">
+                                    <form class="d-flex justify-content-center gap-2" action="{{ route('kegiatan.destroy', $item->id) }}" method="post">
                                         <a href="/tampilkegiatan/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                         @csrf
                                         @method('delete')

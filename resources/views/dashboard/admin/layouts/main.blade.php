@@ -31,6 +31,16 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('adashboard') }}/assets/css/style.css" rel="stylesheet">
 
+    {{-- Trix Editor --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('adashboard') }}/assets/css/trix.css">
+    <script type="text/javascript" src="{{ asset('adashboard') }}/assets/js/trix.js"></script>
+
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -52,7 +62,7 @@
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
             </nav> --}}
-        </div><!-- End Page Title -->
+        </div>
 
         <section class="section dashboard">
             @yield('content')
@@ -60,14 +70,14 @@
 
     </main>
 
-    <!-- ======= Footer ======= -->
+    {{-- <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
             &copy; Copyright <strong><span>Land Group</span></strong>
         </div>
     </footer><!-- End Footer -->
 
-    <a href="" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <a href="" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> --}}
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('adashboard') }}/assets/vendor/apexcharts/apexcharts.min.js"></script>
@@ -83,5 +93,11 @@
     <script src="{{ asset('adashboard') }}/assets/js/main.js"></script>
 
 </body>
+
+    <footer id="footer" class="footer">
+        <div class="copyright">
+            &copy; Copyright <strong><span class="text-secondary">Land Group Indramayu</span></strong>
+        </div>
+    </footer>
 
 </html>

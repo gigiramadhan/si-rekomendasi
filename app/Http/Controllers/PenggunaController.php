@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bobot;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class BobotController extends Controller
+
+class PenggunaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +15,11 @@ class BobotController extends Controller
      */
     public function index(){
 
-        $bobot = Bobot::latest()->paginate(2);
+        $pengguna = User::latest()->paginate(2);
 
-        return view('dashboard.admin.bobot.bobot', compact('bobot'));
+        return view('dashboard.admin.data_pengguna.data_pengguna', compact('pengguna'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -26,8 +28,9 @@ class BobotController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.bobot.create');
+        return view('dashboard.admin.data_pengguna.create');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -37,17 +40,17 @@ class BobotController extends Controller
      */
     public function store(Request $request)
     {
-        $data = [
-            'fasilitas' => $request->fasilitas,
-            'luas_tanah' => $request->luas_tanah,
-            'luas_bangunan' => $request->luas_bangunan,
-            'harga' => $request->harga,
+        $data = array(
+            'name' => $request->name,
+            'username' => $request->username,
+            'level' => $request->level,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        );
 
-        ];
+        User::create($data);
 
-        Bobot::create($data);
-
-        return redirect('bobot')->with('toast_success', 'Data berhasil ditambahkan');
+        return redirect('data_pengguna')->with('toast_success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -58,7 +61,9 @@ class BobotController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = User::find($id);
+
+        return view('dashboard.admin.data_pengguna.show', compact('data'));
     }
 
     /**
@@ -67,12 +72,12 @@ class BobotController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function tampilbobot($id)
+    public function tampiluser($id)
     {
-        $data = Bobot::find($id);
+        $data = User::find($id);
         // dd($data);
 
-        return view('dashboard.admin.bobot.tampilbobot', compact('data'));
+        return view('dashboard.admin.data_pengguna.tampilpengguna', compact('data'));
     }
 
     /**
@@ -82,12 +87,12 @@ class BobotController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updatebobot(Request $request, $id)
+    public function updateuser(Request $request, $id)
     {
-        $data = Bobot::find($id);
+        $data = User::find($id);
         $data->update($request->all());
 
-        return redirect('bobot')->with('toast_success', 'Data berhasil diupdate');
+        return redirect('data_pengguna')->with('toast_success', 'Data berhasil diupdate');
     }
 
     /**
@@ -98,22 +103,22 @@ class BobotController extends Controller
      */
     public function destroy($id)
     {
-        $bobot = Bobot::find($id);
+        $pengguna = User::find($id);
 
-        $bobot->delete();
+        $pengguna->delete();
 
-        return redirect('bobot')->with('toast_success', 'Data berhasil dihapus');
+        return redirect('data_pengguna')->with('toast_success', 'Data berhasil dihapus');
     }
 
     public function search(Request $request){
 
         if($request->has('search')){
-            $bobot = Bobot::where('fasilitas', 'LIKE', '%'.$request->search.'%')->paginate();
+            $pengguna = User::where('level', 'LIKE', '%'.$request->search.'%')->paginate();
         }
         else{
-            $bobot = Bobot::all();
+            $pengguna = User::all();
         }
 
-        return view('dashboard.admin.bobot.bobot', compact('bobot'));
+        return view('dashboard.admin.data_pengguna.data_pengguna', compact('pengguna'));
     }
 }

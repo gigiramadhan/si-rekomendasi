@@ -31,6 +31,10 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('adashboard') }}/assets/css/style.css" rel="stylesheet">
 
+    {{-- Trix Editor --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('adashboard') }}/assets/css/trix.css">
+    <script type="text/javascript" src="{{ asset('adashboard') }}/assets/js/trix.js"></script>
+
 </head>
 
 @extends('dashboard.admin.layouts.main')
@@ -48,14 +52,15 @@
                 @csrf
                     <input type="hidden" name="old_image" value="{{ $data->gambar}}">
 
-                <div class="form-group mb-3 mt-3 fw-bold">
+                <div class="form-group mb-3 mt-4 fw-bold">
                     <label for="judul">Judul</label>
                     <input type="text" name="judul" class="form-control mt-3" value="{{ $data->judul }}">
                 </div>
 
-                <div class="form-group mb-3 mt-3 fw-bold">
-                    <label for="deskripsi">Deskripsi</label>
-                    <textarea name="deskripsi" class="form-control mt-3">{{ $data->deskripsi }}</textarea>
+                <div class="form-group mb-3 mt-4">
+                    <label for="deskripsi" class="fw-bold">Deskripsi</label>
+                    <input id="deskripsi" type="hidden" name="deskripsi">
+                    <trix-editor input="deskripsi" class="form-control">{!! $data->deskripsi !!}</trix-editor>
                 </div>
 
                 <div class="form-group mb-3 mt-4 fw-bold">
@@ -63,7 +68,6 @@
                     <input type="file" class="form-control-file mt-3" name="gambar"><br>
                     <img src="{{ URL::to('/') }}/gambar/{{ $data->gambar }}" class="img-thumbnail" width="200px"/>
                     <input type="hidden" class="form-control-file mt-3" name="old_image" value="{{ $data->gambar }}">
-                    {{-- <label class="custom-file-label" for="gambar"></label> --}}
                 </div>
 
                 <div class="form-group d-flex justify-content-between">
@@ -74,4 +78,10 @@
         </div>
     </div>
 </div>
+<style>
+    document.addEventListener('trix-file-accept', function(e) {
+        e.prevenDefault();
+    })
+</style>
+</html>
 @endsection

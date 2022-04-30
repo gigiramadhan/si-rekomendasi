@@ -10,28 +10,10 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="">
-              <i class="bi bi-people-fill"></i><span>Data Pengguna</span><i class="bi bi-chevron-down ms-auto"></i>
+            <a class="nav-link collapsed {{ Request::is('data_pengguna') ? 'active' : '' }}" href="{{url('data_pengguna')}}">
+                <i class="bi bi-people-fill"></i>
+                <span>Data Pengguna</span>
             </a>
-            <ul id="icons-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="{{url('data_admin')}}">
-                        <i class="bi bi-person-circle"></i><span>Data Admin</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{url('data_pengelola')}}">
-                        <i class="bi bi-person-circle"></i><span>Data Pengelola Rumah</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{url('data_pengguna')}}">
-                        <i class="bi bi-person-circle"></i><span>Data Pengunjung</span>
-                    </a>
-                </li>
-            </ul>
         </li>
 
         <li class="nav-item">

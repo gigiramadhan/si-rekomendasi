@@ -31,19 +31,21 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('adashboard') }}/assets/css/style.css" rel="stylesheet">
 
+    {{-- Trix Editor --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('adashboard') }}/assets/css/trix.css">
+    <script type="text/javascript" src="{{ asset('adashboard') }}/assets/js/trix.js"></script>
+
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+        }
+    </style>
+
 </head>
 
 
 <body>
 @extends('dashboard.admin.layouts.main')
-
-{{-- <div class="alert alert-danger">
-    <ul>
-        @foreach ($eror->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div> --}}
 
     @section('breadcrumb')
     <div class="pagetitle">
@@ -77,9 +79,9 @@
         <div class="form-group d-flex justify-content-between mt-3">
             <a href="{{ route('data_rumah.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg"></i>Tambah Data</a>
 
-            <form action="/search" method="GET">
+            <form action="/rumah/search" class="form-inline" method="GET">
                 <div class="input-group">
-                    <form action="/search" class="form-inline" method="GET"></form>
+                    {{-- <form action="/search" class="form-inline" method="GET"></form> --}}
                     <input type="search" name="search" class="form-control" placeholder="search here.....">
                     <span class="input-group-prepend">
                         <button type="submit" class="btn btn-primary">Search</button>
@@ -91,8 +93,6 @@
         <div class="crad-body">
             <table class="myTable table table-hover table-bordered border-secondary mt-3">
                 <thead class="thead-light">
-                {{-- <table class="table table-striped table-hover">
-                <thead> --}}
                     <tr>
                         <th style="text-align: center">No</th>
                         <th style="text-align: center">Type</th>
@@ -105,20 +105,17 @@
                     @php
                         $increment = 1;
                     @endphp
-                    @if ($tb_rumah != null)
-                        @foreach ($tb_rumah  as $index => $item)
+                    @if ($rumah != null)
+                        @foreach ($rumah  as $index => $item)
                             <tr>
-                                <td style="text-align: center">{{ $index + $tb_rumah ->firstItem() }}</td>
-                                <td style="text-align: left">{{ $item->type }}</td>
-                                <td style="text-align: left">{{ $item->nama_perumahan }}</td>
-                                <td style="text-align: left">{{ $item->alamat }}</td>
-                                <td style="text-align: left">{{ $item->harga }}</td>
-                                <td style="text-align: left">{{ $item->fasilitas }}</td>
-                                <td><img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" width="130px"></td>
+                                <td style="text-align: center">{{ $index + $rumah ->firstItem() }}</td>
+                                <td>{{ $item->type }}</td>
+                                <td>{{ $item->nama_perumahan }}</td>
+                                <td>{{ $item->alamat }}</td>
 
                                 <td>
-                                    {{-- <a href="#" class="btn btn-danger delete mt-3" data-id="{{ $item->id }}"><i class="bi bi-trash"></i></a> --}}
-                                    <form class="d-flex align-items-center gap-2" action="{{ route('kegiatan.destroy', $item->id) }}" method="post">
+                                    <form class="d-flex justify-content-center gap-2" action="{{ route('data_rumah.destroy', $item->id) }}" method="post">
+                                        <a href="/showrumah/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
                                         <a href="/tampilrumah/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                         @csrf
                                         @method('delete')
@@ -128,24 +125,23 @@
                             </tr>
                             @endforeach
                         @else
-
-                        @endif
-                    </tbody>
-                </table>
+                    @endif
+                </tbody>
+            </table>
 
             <div class="form-group d-flex justify-content-between mt-3">
                 <div>
                     Showing
-                    {{ $tb_rumah ->firstItem() }}
+                    {{ $rumah ->firstItem() }}
                     to
-                    {{ $tb_rumah ->lastItem() }}
+                    {{ $rumah ->lastItem() }}
                     of
-                    {{ $tb_rumah ->total() }}
+                    {{ $rumah ->total() }}
                     entries
                 </div>
 
                 <div class="pull-right">
-                    {{ $tb_rumah ->links() }}
+                    {{ $rumah ->links() }}
                 </div>
             </div>
         </div>

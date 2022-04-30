@@ -31,19 +31,15 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('adashboard') }}/assets/css/style.css" rel="stylesheet">
 
+    {{-- Trix Editor --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('adashboard') }}/assets/css/trix.css">
+    <script type="text/javascript" src="{{ asset('adashboard') }}/assets/js/trix.js"></script>
+
 </head>
 
 
 <body>
 @extends('dashboard.admin.layouts.main')
-
-{{-- <div class="alert alert-danger">
-    <ul>
-        @foreach ($eror->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div> --}}
 
     @section('breadcrumb')
     <div class="pagetitle">
@@ -61,12 +57,6 @@
         @yield('content')
     </section>
 
-    {{-- @if (\Session::has('berhasil'))
-        <div class="alert alert-success">
-            <p>{{ \Session::get('berhasil') }}</p>
-        </div>
-    @endif --}}
-
     <div class="row">
         <div class="col-md-6 mt-4">
             <h1>Data Berita</h1>
@@ -77,9 +67,9 @@
         <div class="form-group d-flex justify-content-between mt-3">
             <a href="{{ route('berita.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg"></i>Tambah Data</a>
 
-            <form action="/search" method="GET">
+            <form action="/berita/search" method="GET">
                 <div class="input-group">
-                    <form action="/search" class="form-inline" method="GET"></form>
+                    {{-- <form action="/search" class="form-inline" method="GET"></form> --}}
                     <input type="search" name="search" class="form-control" placeholder="search here.....">
                     <span class="input-group-prepend">
                         <button type="submit" class="btn btn-primary">Search</button>
@@ -109,12 +99,11 @@
                     <tr>
                         <td style="text-align: center">{{ $index + $berita->firstItem() }}</td>
                         <td style="text-align: left">{{ $item->judul }}</td>
-                        <td style="text-align: left">{{ $item->deskripsi }}</td>
+                        <td style="text-align: left">{!! $item->deskripsi !!}</td>
                         <td style="text-align: center"><img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" width="130px"></td>
 
                         <td>
-                            {{-- <a href="#" class="btn btn-danger delete mt-3" data-id="{{ $item->id }}"><i class="bi bi-trash"></i></a> --}}
-                            <form class="d-flex align-items-center gap-2" action="{{ route('berita.destroy', $item->id) }}" method="post">
+                            <form class="d-flex justify-content-center gap-2" action="{{ route('berita.destroy', $item->id) }}" method="post">
                                 <a href="/tampildata/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                 @csrf
                                 @method('delete')
@@ -145,71 +134,7 @@
     </div>
     @include('sweetalert::alert')
     </body>
-
-    {{-- <script src="sweetalert2.all.min.js"></script>
-    <script>
-        Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Your work has been saved',
-        showConfirmButton: false,
-        timer: 1500
-      })
-    </script> --}}
-
-    </html>
-    @endsection
-
-    {{-- <script
-        src="https://code.jquery.com/jquery-3.6.0.slim.js"
-        integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
-        crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-    </body>
-    <script>
-        $('.delete').on('click','button[data-id=delete]',function(){
-				var id = $(this).data('id');
-				swal({
-					title: "Hapus Data Berita ?",
-					text: "Data akan terhapus dari database.",
-					icon: "warning",
-					buttons: true,
-					dangerMode: true,
-				})
-				.then((willDelete) => {
-            if (willDelete) {
-                window.location = "/destroy/{id}"
-                swal("Data berhasil dihapus", {
-                icon: "success",
-                });
-            } else {
-                swal("Data tidak jadi dihapus");
-            }
-		});
-	});
-        // $('.delete').click( function(){
-        //     var beritaid = $(this).attr('data-id');
-        //         swal({
-        //     title: "Yakin ?",
-        //     text: "Kamu akan menghapus data berita!",
-        //     icon: "warning",
-        //     buttons: true,
-        //     dangerMode: true,
-        //     })
-        //     .then((willDelete) => {
-        //     if (willDelete) {
-        //         window.location = "/destroy/{id}"
-        //         swal("Data berhasil dihapus", {
-        //         icon: "success",
-        //         });
-        //     } else {
-        //         swal("Data tidak jadi dihapus");
-        //     }
-        //     });
-        // });
-
-    </script>
-</html> --}}
+</html>
+@endsection
 
 

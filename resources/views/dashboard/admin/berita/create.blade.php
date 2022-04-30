@@ -31,6 +31,10 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('adashboard') }}/assets/css/style.css" rel="stylesheet">
 
+    {{-- Trix Editor --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('adashboard') }}/assets/css/trix.css">
+    <script type="text/javascript" src="{{ asset('adashboard') }}/assets/js/trix.js"></script>
+
 </head>
 
 @extends('dashboard.admin.layouts.main')
@@ -43,49 +47,6 @@
                 <h4 class="page-title">Tambah Data Berita</h4>
             </div>
 
-            {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                        <div class="modal-body">
-                            <form action="{{ route('berita.store') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-
-                                <div class="mb-3">
-                                    <label for="judul">Judul</label>
-                                    <input type="text" name="judul" class="form-control mt-3" value="{{ old('judul') }}" required>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="deskripsi">Deskripsi</label>
-                                    <textarea name="deskripsi" class="form-control mt-3" value="{{ old('deskripsi') }}"></textarea>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="gambar">Gambar</label><br>
-                                    {{-- <img class="rounded img-fluid" src="{{ Storage::url($item->gambar) }}" alt="gambar" id="preview"> --}}
-                                    {{-- <input type="file" class="form-control-file mt-3" name="gambar" value="{{ old('gambar') }}" required>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div> --}}
-            {{-- </div>
-        </div>
-    </div>
-</div> --}}
-
             <div class="card-body">
                 <form action="{{ route('berita.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -95,14 +56,14 @@
                         <input type="text" name="judul" class="form-control mt-3" value="{{ old('judul') }}" required>
                     </div>
 
-                    <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="deskripsi">Deskripsi</label>
-                        <textarea name="deskripsi" class="form-control mt-3" value="{{ old('deskripsi') }}"></textarea>
+                    <div class="form-group mb-3 mt-3">
+                        <label for="deskripsi" class="fw-bold">Deskripsi</label>
+                        <input id="deskripsi" type="hidden" name="deskripsi">
+                        <trix-editor input="deskripsi" value="{{ old('deskripsi') }}"></trix-editor>
                     </div>
 
                     <div class="form-group mb-3 mt-4 fw-bold">
                         <label for="gambar">Gambar</label><br>
-                        {{-- <img class="rounded img-fluid" src="{{ Storage::url($item->gambar) }}" alt="gambar" id="preview"> --}}
                         <input type="file" class="form-control-file mt-3" name="gambar" value="{{ old('gambar') }}" required>
                     </div>
 
@@ -114,4 +75,10 @@
         </div>
     </div>
 </div>
+<style>
+    document.addEventListener('trix-file-accept', function(e) {
+        e.prevenDefault();
+    })
+</style>
+</html>
 @endsection

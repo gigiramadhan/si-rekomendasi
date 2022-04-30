@@ -9,7 +9,7 @@
             <li class="breadcrumb-item active">Dashboard</li>
           </ol>
         </nav>
-      </div><!-- End Page Title -->
+      </div>
     @endsection
 
     @section('content')

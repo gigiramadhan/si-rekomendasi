@@ -33,22 +33,43 @@
 
 </head>
 
-@extends('dashboard.pengelola.layouts.main')
+<body>
+    @extends('dashboard.pengelola.layouts.main')
 
-    @section('breadcrumb')
+    {{-- <div class="alert alert-danger">
+        <ul>
+            @foreach ($eror->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div> --}}
+
+        @section('breadcrumb')
         <div class="pagetitle">
-        <h1>Data Rumah</h1>
-        <nav>
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{url('dashboard_pengelola')}}"><i class="bi bi-house-door"></i></a></li>
-            <li class="breadcrumb-item active">Data Rumah</li>
-          </ol>
-        </nav>
-      </div><!-- End Page Title -->
-    @endsection
+            <h1>Data Rumah</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{url('dashboard_pengelola')}}"><i class="bi bi-house-door"></i></a></li>
+                        <li class="breadcrumb-item active">Data Rumah</li>
+                    </ol>
+                </nav>
+        </div>
 
-    @section('content')
+        <section class="section data_rumah">
+            @yield('content')
+        </section>
 
-    @endsection
+        {{-- @if (\Session::has('berhasil'))
+            <div class="alert alert-success">
+                <p>{{ \Session::get('berhasil') }}</p>
+            </div>
+        @endif --}}
 
-
+        <div class="row">
+            <div class="col-md-6 mt-4">
+                <h1>Data Rumah</h1>
+            </div>
+        </div>
+</body>
+</html>
+@endsection

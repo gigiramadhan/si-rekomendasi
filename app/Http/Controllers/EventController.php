@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Event;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class EventController extends Controller
 {
@@ -14,9 +15,9 @@ class EventController extends Controller
      */
     public function index(){
 
-        $event = Event::paginate(3);
+        $event = Event::latest()->paginate(3);
 
-        return view('dashboard.admin.kegiatan.kegiatan', ['event' => $event]);
+        return view('dashboard.admin.kegiatan.kegiatan', compact('event'));
     }
 
     /**
@@ -50,7 +51,7 @@ class EventController extends Controller
 
         Event::create($data);
 
-        return redirect()->route('kegiatan.kegiatan')->with('toast_success', 'Data berhasil ditambahkan');
+        return redirect('kegiatan')->with('toast_success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -87,19 +88,6 @@ class EventController extends Controller
      */
     public function updateevent(Request $request, $id){
 
-        // $image_name = $request->old_image;
-        // $image = $request->file("\gambar");
-
-        // if($image != ''){
-
-        //     $image_name = rand() .'.'. $image->getClientOriginalExtension();
-        //     $image->move(public_path("\gambar"), $image_name);
-        // }
-
-        // $data = Berita::find($id);
-
-        // $data->update($request->all());
-
         $image_lama = $request->old_image;
         $image_baru = $request->file('gambar');
 
@@ -115,7 +103,6 @@ class EventController extends Controller
         }
 
         $data = Event::find($id);
-
         // $data->update($request->all());
 
         $data->update(array(
@@ -124,7 +111,7 @@ class EventController extends Controller
             'gambar' => $gambar
         ));
 
-        return redirect()->route('kegiatan.kegiatan')->with('toast_success', 'Data berhasil diupdate');
+        return redirect('kegiatan')->with('toast_success', 'Data berhasil diupdate');
     }
 
     /**
@@ -136,10 +123,12 @@ class EventController extends Controller
     public function destroy($id)
     {
         $event = Event::find($id);
+        $image_path = public_path("gambar/{$event->gambar}");
+        File::delete($image_path);
 
         $event->delete();
 
-        return redirect()->route('kegiatan.kegiatan')->with('toast_success', 'Data berhasil dihapus');
+        return redirect('kegiatan')->with('toast_success', 'Data berhasil dihapus');
     }
 
     public function search(Request $request){

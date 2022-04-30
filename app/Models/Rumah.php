@@ -18,4 +18,10 @@ class Rumah extends Model
         'fasilitas',
         'gambar',
     ];
+
+    // public function detailData($id){
+
+    //     return :table('tb_rumah')->where('id', $id)->first();
+
+    // }
 }

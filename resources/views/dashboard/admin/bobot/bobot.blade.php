@@ -31,6 +31,16 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('adashboard') }}/assets/css/style.css" rel="stylesheet">
 
+    {{-- Trix Editor --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('adashboard') }}/assets/css/trix.css">
+    <script type="text/javascript" src="{{ asset('adashboard') }}/assets/js/trix.js"></script>
+
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+        }
+    </style>
+
 </head>
 
 
@@ -69,9 +79,9 @@
         <div class="form-group d-flex justify-content-between mt-3">
             <a href="{{ route('bobot.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg"></i>Tambah Bobot</a>
 
-            <form action="/search" method="GET">
+            <form action="/bobot/search" class="form-inline" method="GET">
                 <div class="input-group">
-                    <form action="/search" class="form-inline" method="GET"></form>
+                    {{-- <form action="/search" class="form-inline" method="GET"></form> --}}
                     <input type="search" name="search" class="form-control" placeholder="search here.....">
                     <span class="input-group-prepend">
                         <button type="submit" class="btn btn-primary">Search</button>
@@ -108,7 +118,7 @@
 
                             <td>
                                 {{-- <a href="#" class="btn btn-danger delete mt-3" data-id="{{ $item->id }}"><i class="bi bi-trash"></i></a> --}}
-                                <form action="{{ route('bobot.destroy', $item->id) }}" method="post">
+                                <form class="d-flex justify-content-center gap-2" action="{{ route('bobot.destroy', $item->id) }}" method="post">
                                     <a href="/tampilbobot/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                     @csrf
                                     @method('delete')

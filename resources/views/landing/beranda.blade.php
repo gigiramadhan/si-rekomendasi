@@ -32,29 +32,21 @@
   <!-- Template Main CSS File -->
   <link href="{{asset('landing')}}/assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Bootslander - v4.7.1
-  * Template URL: https://bootstrapmade.com/bootslander-free-bootstrap-landing-page-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center header-transparent">
-    <div class="container d-flex align-items-center justify-content-between">
+    <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+        <div class="container d-flex align-items-center justify-content-between">
 
-      <div class="logo">
-        <h1><a><span>SIREKPERUM</span></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-      </div>
+            <div class="logo">
+                <h1><a><span>SIREKPERUM</span></a></h1>
+            </div>
 
-      @include('home.layouts.navbar')
-    </div>
-  </header><!-- End Header -->
+            @include('home.layouts.navbar')
+        </div>
+    </header>
 
   <!-- ======= Hero Section ======= -->
   <section id="hero">
@@ -66,7 +58,7 @@
                     <h1>Welcome to Sistem Rekomendasi Pemilihan Perumahan</h1>
                     <h2>Visionary Masterpieces Patriot Sayma Land (Cluster Sultan Regency, Sultan Estate, and Pesona Citra Residence).</h2>
                     <div class="text-center text-lg-start">
-                        <a href="{{url('login')}}" class="btn-get-started scrollto">Get Started</a>
+                        <a href="{{ route('login') }}" class="btn-get-started scrollto">Get Started</a>
                     </div>
                 </div>
             </div>
@@ -75,7 +67,7 @@
             </div>
         </div>
     </div>
-  </section><!-- End Hero -->
+  </section>
 
   <main id="main">
 
@@ -118,7 +110,7 @@
                 </div>
             </div>
         </div>
-    </section><!-- End About Section -->
+    </section>
 
     <!-- ======= Info Section ======= -->
     <section id="info" class="info">
@@ -129,14 +121,13 @@
                 <p>Information in our Land Group</p>
             </div>
 
-            <div class="row g-0" >
+            <div class="row g-0">
                 @foreach ($event as $item)
                 <div class="card me-4" style="width: 18rem;">
                     <img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->judul }}</h5>
-                        <p class="card-text" style="text-align: justify">{{ $item->deskripsi }}</p>
-                        {{-- <a href="{{ url('berita/'.$item->id) }}" class="btn btn-primary scrollto">Read More</a> --}}
+                        <p class="card-text" style="text-align: justify">{!! $item->deskripsi !!}</p>
                     </div>
                 </div>
                 @endforeach
@@ -146,176 +137,118 @@
                     <img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->judul }}</h5>
-                        <p class="card-text" style="text-align: justify">{{ $item->deskripsi }}</p>
-                        {{-- <a href="{{ url('berita/'.$item->id) }}" class="btn btn-primary">Read More</a> --}}
+                        <p class="card-text" style="text-align: justify">{!! $item->deskripsi !!}</p>
                     </div>
                 </div>
                 @endforeach
             </div>
         </div>
-
-            {{-- <div class="row g-0" >
-                @foreach ($berita as $item)
-                <div class="card me-4" style="width: 18rem;">
-                    <img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $item->judul }}</h5>
-                    <p class="card-text" style="text-align: justify">{{ $item->deskripsi }}</p>
-                    </div>
-                </div>
-                @endforeach
-            </div> --}}
-        </div>
-
-            {{-- <div class="owl-carousel owl-theme">
-                <div class="slide slide-1">
-                    <div class="slide-content">
-                        <h1>Event</h1>
-                            <p>sitikah merupakan kegiatan rutin yang dilakukan setiap satu minggu sekali</p>
-                    </div>
-                </div>
-
-                <div class="slide slide-2">
-                    <div class="slide-content">
-                        <h1>Event</h1>
-                            <p>sitikah merupakan kegiatan rutin yang dilakukan setiap satu minggu sekali</p>
-                    </div>
-                </div>
-
-                <div class="slide slide-3">
-                    <div class="slide-content">
-                        <h1>Event</h1>
-                            <p>sitikah merupakan kegiatan rutin yang dilakukan setiap satu minggu sekali</p>
-                    </div>
-                </div>
-            </div> --}}
-
-        {{-- <!-- Jquery -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <!-- Owl Carousel -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-        <!-- Custom Javascript -->
-        <script>
-            $(document).ready(function () {
-                $(".owl-carousel").owlCaraousl({
-                    items:1,
-                    loop:true,
-                    nav:true,
-                    dots:true,
-                    autoplay:true
-                    autoplaySpeed:1000,
-                    smartSpeed:1500,
-                    autoplayHoverPause:true
-
-                });
-            }); --}}
-        {{-- </script> --}}
-      </section>
+    </section>
 
     <!-- ======= Gallery Section ======= -->
     <section id="gallery" class="gallery">
 
-      <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2>Gallery</h2>
-          <p>Some photos from Our Land Group</p>
+        <div class="container" data-aos="fade-up">
+            <div class="section-title">
+            <h2>Gallery</h2>
+            <p>Some photos from Our Land Group</p>
+            </div>
         </div>
-      </div>
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row g-0">
+            <div class="row g-0">
 
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{{asset('landing')}}/assets/img/home1.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="{{asset('landing')}}/assets/img/home1.jpg" alt="" class="img-fluid">
-              </a>
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{{asset('landing')}}/assets/img/home1.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                            <img src="{{asset('landing')}}/assets/img/home1.jpg" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{{asset('landing')}}/assets/img/home2.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                            <img src="{{asset('landing')}}/assets/img/home2.jpg" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{{asset('landing')}}/assets/img/home3.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                            <img src="{{asset('landing')}}/assets/img/home3.jpg" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{{asset('landing')}}/assets/img/home4.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                            <img src="{{asset('landing')}}/assets/img/home4.jpg" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{{asset('landing')}}/assets/img/estate3.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                            <img src="{{asset('landing')}}/assets/img/estate3.jpg" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{{asset('landing')}}/assets/img/estate4.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                            <img src="{{asset('landing')}}/assets/img/estate4.jpg" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{{asset('landing')}}/assets/img/essence1.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                            <img src="{{asset('landing')}}/assets/img/essence1.jpg" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{{asset('landing')}}/assets/img/sultan2.jpeg" class="gallery-lightbox" data-gall="gallery-item">
+                            <img src="{{asset('landing')}}/assets/img/sultan2.jpeg" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{{asset('landing')}}/assets/img/estate1.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                            <img src="{{asset('landing')}}/assets/img/estate1.jpg" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{{asset('landing')}}/assets/img/estate2.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                            <img src="{{asset('landing')}}/assets/img/estate2.jpg" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{{asset('landing')}}/assets/img/sultan1.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                            <img src="{{asset('landing')}}/assets/img/sultan1.jpg" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
             </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{{asset('landing')}}/assets/img/home2.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="{{asset('landing')}}/assets/img/home2.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{{asset('landing')}}/assets/img/home3.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="{{asset('landing')}}/assets/img/home3.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{{asset('landing')}}/assets/img/home4.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="{{asset('landing')}}/assets/img/home4.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{{asset('landing')}}/assets/img/estate3.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                  <img src="{{asset('landing')}}/assets/img/estate3.jpg" alt="" class="img-fluid">
-                </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{{asset('landing')}}/assets/img/estate4.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="{{asset('landing')}}/assets/img/estate4.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{{asset('landing')}}/assets/img/essence1.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="{{asset('landing')}}/assets/img/essence1.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{{asset('landing')}}/assets/img/sultan2.jpeg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="{{asset('landing')}}/assets/img/sultan2.jpeg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{{asset('landing')}}/assets/img/estate1.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="{{asset('landing')}}/assets/img/estate1.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{{asset('landing')}}/assets/img/estate2.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="{{asset('landing')}}/assets/img/estate2.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="{{asset('landing')}}/assets/img/sultan1.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="{{asset('landing')}}/assets/img/sultan1.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
         </div>
-      </div>
-      </section><!-- End Gallery Section -->
+    </section>
 
 
     <!-- ======= Contact Section ======= -->
@@ -324,7 +257,7 @@
 
         <div class="section-title" data-aos="fade-up">
             <h2>Contact</h2>
-                <p>Contact Us</p>
+            <p>Contact Us</p>
         </div>
 
         <div class="col-xl-12 col-lg-4 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-10 px-lg-5" data-aos="fade-left">
@@ -388,10 +321,9 @@
                     </div>
                 </div>
             </div>
-    </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End main -->
+        </div>
+    </section>
+  </main>
 
     <!-- ======= Footer ======= -->
     <footer id="footer">
@@ -416,15 +348,7 @@
                 &copy; Copyright <strong><span>Land Group</span></strong>
             </div>
         </div>
-    </footer><!-- End Footer -->
-  {{-- <footer class="sticky-footer bg-white">
-    <div class="container my-auto">
-      <div class="copyright text-center my-auto">
-        Copyright &copy; <strong><span>Gilang Ramadahan</span></strong>
-      </div>
-    </div>
-  </footer>
-  <!-- End of Footer --> --}}
+    </footer>
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <div id="preloader"></div>

@@ -39,75 +39,70 @@
 
 <body>
 
-  <main>
-    <div class="container">
-
-      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+    <main>
         <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
-              <div class="d-flex justify-content-center py-4">
-                <a href="index.html" class="logo d-flex align-items-center w-auto">
-                  <img src="assets/img/logo.png" alt="">
-                  <span class="d-none d-lg-block">SiRekPerum</span>
-                </a>
-              </div><!-- End Logo -->
+            <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
-              <div class="card mb-3">
+                            <div class="d-flex justify-content-center py-4">
+                                <a href="index.html" class="logo d-flex align-items-center w-auto">
+                                    <img src="assets/img/logo.png" alt="">
+                                    <span class="d-none d-lg-block">SiRekPerum</span>
+                                </a>
+                            </div><!-- End Logo -->
 
-                <div class="card-body">
+                            <div class="card mb-3">
+                                <div class="card-body">
 
-                    @if (session()->has('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                      </div>
-                    @endif
+                                    @if (session()->has('success'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{ session('success') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                    @endif
 
-                  <div class="pt-4 pb-4">
-                    <h5 class="card-title text-center pb-0 fs-4">Login</h5>
-                  </div>
+                                    <div class="pt-4 pb-4">
+                                        <h5 class="card-title text-center pb-0 fs-4">Login</h5>
+                                    </div>
 
-                  <form class="row g-2 needs-validation"  action="{{url('login')}}" method="post" novalidate>
+                                    <form class="row g-2 needs-validation" action="{{url('login')}}" method="post" novalidate>
 
-                    {{-- <form action="{{url('login')}}" method="post"> --}}
-                        @method('POST')
-                        @csrf
+                                        {{-- <form action="{{url('login')}}" method="post"> --}}
+                                        @method('POST')
+                                        @csrf
 
-                    <div class="col-12">
-                        <div class="form-floating">
-                          <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                          <label for="floatingInput">Email address</label>
+                                        <div class="col-12">
+                                            <div class="form-floating">
+                                                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                                                <label for="floatingInput">Email address</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="form-floating">
+                                                <input type="password" name="password" class="form-control" id="floatingInput" placeholder="Password" required>
+                                                <label for="floatingInput">Password</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 mt-4">
+                                            <button class="btn btn-primary w-100" type="submit">Login</button>
+                                        </div>
+                                        <div class="col-12">
+                                            <p class="small mb-0 d-block text-center">Don't have account? <a href="{{url('register')}}">Register Now!</a></p>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="col-12">
-                        <div class="form-floating">
-                          <input type="password" name="password" class="form-control" id="floatingInput" placeholder="Password" required>
-                          <label for="floatingInput">Password</label>
-                        </div>
-                    </div>
-
-                    <div class="col-12 mt-4">
-                      <button class="btn btn-primary w-100" type="submit">Login</button>
-                    </div>
-                    <div class="col-12">
-                      <p class="small mb-0 d-block text-center">Don't have account? <a href="{{url('register')}}">Register Now!</a></p>
-                    </div>
-                  </form>
-
                 </div>
-              </div>
-
-            </div>
-          </div>
+            </section>
         </div>
-
-      </section>
-
-    </div>
-  </main><!-- End #main -->
+    </main><!-- End #main -->
 
   <!-- Vendor JS Files -->
   <script src="{{ asset('adashboard') }}/assets/vendor/apexcharts/apexcharts.min.js"></script>

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Tambah Data Rumah | SIREKPERUM</title>
+    <title>Edit Pengguna | SIREKPERUM</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -50,51 +50,46 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h4 class="page-title">Tambah Data Rumah</h4>
+                <h4 class="page-title">Edit Pengguna</h4>
             </div>
 
             <div class="card-body">
-                <form action="{{ route('data_rumah.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+                <form action="/updateuser/{{ $data->id }}" method="POST" enctype="multipart/form-data">
+                @csrf
 
                     <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="type">Type</label>
-                        <input type="text" name="type" class="form-control mt-3" value="{{ old('type') }}" required>
+                        <label for="name">Nama</label>
+                        <input type="text" name="name" class="form-control mt-3" value="{{ $data->name }}">
                     </div>
 
                     <div class="form-group mb-3 mt-3 fw-bold">
-                        <label class="form-label mb-3">Nama Perumahan</label>
-                        <select name="nama_perumahan" class="form-select" aria-label="Default select example">
-                            <option selected>--- pilih jenis perumahan ---</option><br>
-                            <option value="Cluster Sultan Regency">Cluster Sultan Regency</option>
-                            <option value="Sultan Estate">Sultan Estate</option>
-                            <option value="Pesona Citra Residence">Pesona Citra Residence</option>
+                        <label for="username">Username</label>
+                        <input type="text" name="username" class="form-control mt-3" value="{{ $data->username }}">
+                    </div>
+
+                    <div class="form-group mb-3 mt-3 fw-bold">
+                        <label class="form-label mb-3">Level</label>
+                        <select name="level" class="form-select" aria-label="Default select example">
+                            <option selected>{{ $data->level }}</option><br>
+                            <option value="admin">Admin</option>
+                            <option value="pengelola">Pengelola</option>
+                            <option value="user">User</option>
                           </select>
                     </div>
 
                     <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="alamat">Alamat</label>
-                        <textarea name="alamat" class="form-control mt-3" value="{{ old('alamat') }}"></textarea>
+                        <label for="email">Email</label>
+                        <input type="text" name="email" class="form-control mt-3" value="{{ $data->email }}">
                     </div>
 
                     <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="harga">Harga</label>
-                        <input type="number" name="harga" class="form-control mt-3" placeholder="RP. xxx" value="{{ old('harga') }}" required>
-                    </div>
-
-                    <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="fasilitas">Fasilitas</label>
-                        <input type="text" name="fasilitas" class="form-control mt-3" value="{{ old('fasilitas') }}"></textarea>
-                    </div>
-
-                    <div class="form-group mb-3 mt-4 fw-bold">
-                        <label for="gambar">Gambar</label><br>
-                        <input type="file" class="form-control-file mt-3" name="gambar" value="{{ old('gambar') }}" required>
+                        <label for="password">Password</label>
+                        <input type="text" name="password" class="form-control mt-3" value="{{ $data->password }}">
                     </div>
 
                     <div class="form-group d-flex justify-content-between">
-                        <button type="submit" class="btn btn-primary mt-5">Submit</button>
-                        <a href="/data_rumah" class="btn btn-secondary mt-5">Close</a>
+                        <button type="submit" class="btn btn-success mt-5">Update</button>
+                        <a href="/data_pengguna" class="btn btn-secondary mt-5">Close</a>
                 </form>
             </div>
         </div>

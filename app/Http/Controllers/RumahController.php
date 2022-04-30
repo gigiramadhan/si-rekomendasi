@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Rumah;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class RumahController extends Controller
 {
@@ -14,9 +15,9 @@ class RumahController extends Controller
      */
     public function index(){
 
-        $tb_rumah = Rumah::paginate(3);
+        $rumah = Rumah::latest()->paginate(3);
 
-        return view('dashboard.admin.data_rumah.data_rumah', ['tb_rumah' => $tb_rumah]);
+        return view('dashboard.admin.data_rumah.data_rumah', compact('rumah'));
     }
 
 
@@ -54,7 +55,7 @@ class RumahController extends Controller
 
         Rumah::create($data);
 
-        return redirect()->route('data_rumah.data_rumah')->with('toast_success', 'Data berhasil ditambahkan');
+        return redirect('data_rumah')->with('toast_success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -65,7 +66,9 @@ class RumahController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Rumah::find($id);
+
+        return view('dashboard.admin.data_rumah.showrumah', compact('data'));
     }
 
     /**
@@ -76,7 +79,7 @@ class RumahController extends Controller
      */
     public function tampilrumah($id){
 
-        $tb_rumah = Rumah::find($id);
+        $data = Rumah::find($id);
         // dd($data);
 
         return view('dashboard.admin.data_rumah.tampilrumah', compact('data'));
@@ -92,23 +95,8 @@ class RumahController extends Controller
      */
     public function updaterumah(Request $request, $id){
 
-        // $image_name = $request->old_image;
-        // $image = $request->file("\gambar");
-
-        // if($image != ''){
-
-        //     $image_name = rand() .'.'. $image->getClientOriginalExtension();
-        //     $image->move(public_path("\gambar"), $image_name);
-        // }
-
-        // $data = Berita::find($id);
-
-        // $data->update($request->all());
-
         $image_lama = $request->old_image;
         $image_baru = $request->file('gambar');
-
-        // return $image_baru;
 
         if($image_baru == ''){
             $gambar = $image_lama;
@@ -120,7 +108,6 @@ class RumahController extends Controller
         }
 
         $data = Rumah::find($id);
-
         // $data->update($request->all());
 
         $data->update(array(
@@ -132,7 +119,7 @@ class RumahController extends Controller
             'gambar' => $gambar
         ));
 
-        return redirect()->route('data_rumah.data_rumah')->with('toast_success', 'Data berhasil diupdate');
+        return redirect('data_rumah')->with('toast_success', 'Data berhasil diupdate');
     }
 
     /**
@@ -143,22 +130,24 @@ class RumahController extends Controller
      */
     public function destroy($id)
     {
-        $tb_rumah = Rumah::find($id);
+        $rumah = Rumah::find($id);
+        $image_path = public_path("gambar/{$rumah->gambar}");
+        File::delete($image_path);
 
-        $tb_rumah->delete();
+        $rumah->delete();
 
-        return redirect()->route('data_rumah.data_rumah')->with('toast_success', 'Data berhasil dihapus');
+        return redirect('data_rumah')->with('toast_success', 'Data berhasil dihapus');
     }
 
     public function search(Request $request){
 
         if($request->has('search')){
-            $tb_rumah = Rumah::where('nama_perumahan', 'LIKE', '%'.$request->search.'%')->paginate();
+            $rumah = Rumah::where('nama_perumahan', 'LIKE', '%'.$request->search.'%')->paginate();
         }
         else{
-            $tb_rumah = Rumah::all();
+            $rumah = Rumah::all();
         }
 
-        return view('dashboard.admin.kegiatan.kegiatan', compact('event'));
+        return view('dashboard.admin.data_rumah.data_rumah', compact('rumah'));
     }
 }

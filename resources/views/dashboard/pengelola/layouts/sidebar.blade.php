@@ -37,5 +37,4 @@
             </a>
         </li>
     </ul>
-
-  </aside><!-- End Sidebar-->
+  </aside>

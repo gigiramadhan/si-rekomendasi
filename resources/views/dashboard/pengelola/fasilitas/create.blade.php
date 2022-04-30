@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Tambah Kegiatan | SIREKPERUM</title>
+    <title>Tambah Data Fasilitas | SIREKPERUM</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -31,60 +31,51 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('adashboard') }}/assets/css/style.css" rel="stylesheet">
 
-    {{-- Trix Editor --}}
-    <link rel="stylesheet" type="text/css" href="{{ asset('adashboard') }}/assets/css/trix.css">
-    <script type="text/javascript" src="{{ asset('adashboard') }}/assets/js/trix.js"></script>
-
-    <style>
-        trix-toolbar [data-trix-button-group="file-tools"] {
-            display: none;
-        }
-    </style>
-
 </head>
 
-@extends('dashboard.admin.layouts.main')
+@extends('dashboard.pengelola.layouts.main')
 
 @section('content')
 <div class="page-header">
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h4 class="page-title">Tambah Data Kegiatan</h4>
+                <h4 class="page-title">Tambah Data Fasilitas</h4>
             </div>
 
             <div class="card-body">
-                <form action="{{ route('kegiatan.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('fasilitas.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="judul">Judul</label>
-                        <input type="text" name="judul" class="form-control mt-3" value="{{ old('judul') }}" required>
+                        <label class="form-label mb-3">Nama Fasilitas</label>
+                        <select name="name_fasility" class="form-select" aria-label="Default select example">
+                            <option selected>--- pilih jenis fasilitas ---</option><br>
+                            <option value="1 Gate System">1 Gate System</option>
+                            <option value="CCTV">CCTV</option>
+                            <option value="Satpam">Satpam</option>
+                            <option value="Musholla">Musholla</option>
+                            <option value="Kolam Renang">Kolam Renang</option>
+                            <option value="Taman">Taman</option>
+                            <option value="RTH">RTH</option>
+                          </select>
                     </div>
 
-                    <div class="form-group mb-3 mt-3">
-                        <label for="deskripsi" class="fw-bold">Deskripsi</label>
-                        <input id="deskripsi" type="hidden" name="deskripsi">
-                        <trix-editor input="deskripsi" value="{{ old('deskripsi') }}"></trix-editor>
-                    </div>
-
-                    <div class="form-group mb-3 mt-4 fw-bold">
-                        <label for="gambar">Gambar</label><br>
-                        <input type="file" class="form-control-file mt-3" name="gambar" value="{{ old('gambar') }}" required>
+                    <div class="form-group mb-3 mt-3 fw-bold">
+                        <label class="form-label mb-3">Nama Fasilitas</label>
+                        <select name="keterangan" class="form-select" aria-label="Default select example">
+                            <option selected>--- pilih jenis keterangan ---</option><br>
+                            <option value="Umum">Umum</option>
+                            <option value="Khusus">Khusus</option>
+                          </select>
                     </div>
 
                     <div class="form-group d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary mt-5">Submit</button>
-                        <a href="/kegiatan" class="btn btn-secondary mt-5">Close</a>
+                        <a href="/fasilitas" class="btn btn-secondary mt-5">Close</a>
                 </form>
             </div>
         </div>
     </div>
 </div>
-<style>
-    document.addEventListener('trix-file-accept', function(e) {
-        e.prevenDefault();
-    })
-</style>
-</html>
 @endsection
