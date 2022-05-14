@@ -43,7 +43,7 @@
         </div>
 
         <div class="crad-body">
-            <table class="myTable table table-hover table-bordered border-secondary mt-3">
+            <table class="table table-hover table-bordered border-secondary mt-3">
                 <thead class="thead-light">
                     <tr>
                         <th style="text-align: center">No</th>
@@ -68,11 +68,11 @@
                                 <td>{{ $item->updated_at }}</td>
 
                                 <td>
-                                    <form class="d-flex justify-content-center gap-2" action="{{ route('data_rumah.destroy', $item->id) }}" method="post">
+                                    <form class="d-flex justify-content-center gap-2" action="{{ route('data_rumah.destroy', $item->id) }}" method="get">
                                         <a href="/showrumah/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
                                         <a href="/tampilrumah/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                         @csrf
-                                        @method('delete')
+                                        @method('get')
                                         <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                     </form>
                                 </td>

@@ -127,6 +127,8 @@ class PenggunaController extends Controller
             $pengguna = User::all();
         }
 
-        return view('dashboard.admin.data_pengguna.data_pengguna', compact('pengguna'));
+        return view('dashboard.admin.data_pengguna.data_pengguna', compact('pengguna'), [
+            "title" => "Data Pengguna"
+        ]);
     }
 }

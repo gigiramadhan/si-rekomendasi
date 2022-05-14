@@ -38,7 +38,7 @@
         </div>
 
         <div class="crad-body">
-            <table class="myTable table table-hover table-bordered border-secondary mt-3">
+            <table class="table table-hover table-bordered border-secondary mt-3">
                 <thead class="thead-light">
                 {{-- <table class="table table-striped table-hover">
                 <thead> --}}
@@ -66,7 +66,7 @@
                         <td style="text-align: left">{{ $item->updated_at }}</td>
 
                         <td>
-                            <form class="d-flex justify-content-center gap-2" action="{{ route('berita.destroy', $item->id) }}" method="post">
+                            <form class="d-flex justify-content-center gap-2" action="{{ route('berita.destroy', $item->id) }}" method="get">
                                 <a href="/tampildata/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                 @csrf
                                 @method('get')

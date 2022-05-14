@@ -16,7 +16,9 @@ class FasilitasController extends Controller
 
         $fasilitas = Fasilitas::latest()->paginate(3);
 
-        return view('dashboard.pengelola.fasilitas.fasilitas', compact('fasilitas'));
+        return view('dashboard.pengelola.fasilitas.fasilitas', compact('fasilitas'), [
+            "title" => "Fasilitas"
+        ]);
     }
 
     /**
@@ -26,7 +28,9 @@ class FasilitasController extends Controller
      */
     public function create()
     {
-        return view('dashboard.pengelola.fasilitas.create');
+        return view('dashboard.pengelola.fasilitas.create', [
+            "title" => "Tambah Data"
+        ]);
     }
 
     /**
@@ -57,7 +61,9 @@ class FasilitasController extends Controller
     {
         $data = Fasilitas::find($id);
 
-        return view('dashboard.pengelola.fasilitas.showfasilitas', compact('data'));
+        return view('dashboard.pengelola.fasilitas.showfasilitas', compact('data'), [
+            "title" => "Detail Fasilitas"
+        ]);
     }
 
     /**
@@ -71,7 +77,9 @@ class FasilitasController extends Controller
         $data = Fasilitas::find($id);
         // dd($data);
 
-        return view('dashboard.pengelola.fasilitas.tampilfasilitas', compact('data'));
+        return view('dashboard.pengelola.fasilitas.tampilfasilitas', compact('data'), [
+            "title" => "Edit Data"
+        ]);
     }
 
     /**
@@ -107,5 +115,19 @@ class FasilitasController extends Controller
         $fasilitas->delete();
 
         return redirect('fasilitas')->with('toast_success', 'Data berhasil dihapus');
+    }
+
+    public function search(Request $request)
+    {
+        if($request->has('search')){
+            $fasilitas = Fasilitas::where('name_fasility', 'LIKE', '%'.$request->search.'%')->paginate();
+        }
+        else{
+            $fasilitas = Fasilitas::all();
+        }
+
+        return view('dashboard.pengelola.fasilitas.fasilitas', compact('fasilitas'), [
+            "title" => "Fasilitas"
+        ]);
     }
 }

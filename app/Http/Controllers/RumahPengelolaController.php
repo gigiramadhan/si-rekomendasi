@@ -17,7 +17,9 @@ class RumahPengelolaController extends Controller
 
         $rumah = RumahPengelola::latest()->paginate(3);
 
-        return view('dashboard.pengelola.data_rumah.data_rumah_pengelola', compact('rumah'));
+        return view('dashboard.pengelola.data_rumah.data_rumah_pengelola', compact('rumah'), [
+            "title" => "Data Rumah"
+        ]);
     }
 
     /**
@@ -27,7 +29,9 @@ class RumahPengelolaController extends Controller
      */
     public function create()
     {
-        return view('dashboard.pengelola.data_rumah.create');
+        return view('dashboard.pengelola.data_rumah.create', [
+            "title" => "Tambah Data"
+        ]);
     }
 
     /**
@@ -68,7 +72,9 @@ class RumahPengelolaController extends Controller
     {
         $data = RumahPengelola::find($id);
 
-        return view('dashboard.pengelola.data_rumah.showrumahpengelola', compact('data'));
+        return view('dashboard.pengelola.data_rumah.showrumahpengelola', compact('data'), [
+            "title" => "Detail Rumah"
+        ]);
     }
 
     /**
@@ -82,7 +88,9 @@ class RumahPengelolaController extends Controller
         $data = RumahPengelola::find($id);
         // dd($data);
 
-        return view('dashboard.pengelola.data_rumah.tampilrumahpengelola', compact('data'));
+        return view('dashboard.pengelola.data_rumah.tampilrumahpengelola', compact('data'), [
+            "title" => "Edit Data Rumah"
+        ]);
     }
 
 
@@ -148,6 +156,8 @@ class RumahPengelolaController extends Controller
             $rumah = RumahPengelola::all();
         }
 
-        return view('dashboard.pengelola.data_rumah.data_rumah_pengelola', compact('rumah'));
+        return view('dashboard.pengelola.data_rumah.data_rumah_pengelola', compact('rumah'), [
+            "title" => "Data Rumah"
+        ]);
     }
 }

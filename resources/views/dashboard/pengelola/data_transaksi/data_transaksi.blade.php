@@ -1,39 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Transaksi | SIREKPERUM</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-
-    <!-- Favicons -->
-    <link href="{{ asset('adashboard') }}/assets/img/landgroup.png" rel="icon">
-    <link href="{{ asset('adashboard') }}/assets/img/landgroup.png" rel="apple-touch-icon">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
-
-    <!-- Vendor CSS Files -->
-    <link href="{{ asset('adashboard') }}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('adashboard') }}/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="{{ asset('adashboard') }}/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="{{ asset('adashboard') }}/assets/vendor/quill/quill.snow.css" rel="stylesheet">
-    <link href="{{ asset('adashboard') }}/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-    <link href="{{ asset('adashboard') }}/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="{{ asset('adashboard') }}/assets/vendor/simple-datatables/style.css" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link href="{{ asset('adashboard') }}/assets/css/style.css" rel="stylesheet">
-
-</head>
-
-<body>
 @extends('dashboard.pengelola.layouts.main')
 
     @section('breadcrumb')
@@ -63,9 +27,9 @@
         </div>
 
         <div class="d-md-flex justify-content-md-end mt-3">
-            <form action="/search" method="GET">
+            <form action="/transaksi/search" method="GET">
                 <div class="input-group">
-                    <form action="/search" class="form-inline" method="GET"></form>
+                    {{-- <form action="/search" class="form-inline" method="GET"></form> --}}
                     <input type="search" name="search" class="form-control" placeholder="search here.....">
                     <span class="input-group-prepend">
                         <button type="submit" class="btn btn-primary">Search</button>
@@ -75,7 +39,7 @@
         </div>
 
         <div class="crad-body">
-            <table class="myTable table table-hover table-bordered border-secondary mt-4">
+            <table class="table table-hover table-bordered border-secondary mt-4">
                 <thead class="thead-light">
                     <tr>
                         <th style="text-align: center">No</th>
@@ -102,10 +66,10 @@
                                 <td style="text-align: left">{{ $item->status_transaksi }}</td>
 
                                 <td>
-                                    <form class="d-flex align-items-center gap-2" action="{{ route('data_transaksi.destroy', $item->id) }}" method="post">
+                                    <form class="d-flex align-items-center gap-2" action="{{ route('data_transaksi.destroy', $item->id) }}" method="get">
                                         <a href="/tampiltransaksi/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                         @csrf
-                                        @method('delete')
+                                        @method('get')
                                         <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                     </form>
                                 </td>
@@ -134,8 +98,7 @@
         </div>
     </div>
     @include('sweetalert::alert')
-    </body>
-
+@endsection
     {{-- <script src="sweetalert2.all.min.js"></script>
     <script>
         Swal.fire({
@@ -147,8 +110,7 @@
       })
     </script> --}}
 
-    </html>
-    @endsection
+
 
     {{-- <script
         src="https://code.jquery.com/jquery-3.6.0.slim.js"

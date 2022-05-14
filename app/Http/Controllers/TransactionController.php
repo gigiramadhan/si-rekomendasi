@@ -17,7 +17,9 @@ class TransactionController extends Controller
 
         $transaction = Transaction::latest()->paginate(3);
 
-        return view('dashboard.pengelola.data_transaksi.data_transaksi', compact('transaction'));
+        return view('dashboard.pengelola.data_transaksi.data_transaksi', compact('transaction'), [
+            "title" => "Transaksi"
+        ]);
     }
 
     /**
@@ -92,15 +94,17 @@ class TransactionController extends Controller
         return redirect('data_transaksi')->with('toast_success', 'Data berhasil dihapus');
     }
 
-    public function search(Request $request){
-
+    public function search(Request $request)
+    {
         if($request->has('search')){
-            $tb_transaction = Transaction::where('nama', 'LIKE', '%'.$request->search.'%')->paginate();
+            $transaction = Transaction::where('nama', 'LIKE', '%'.$request->search.'%')->paginate();
         }
         else{
-            $tb_transaction = Transaction::all();
+            $transaction = Transaction::all();
         }
 
-        return view('dashboard.pengelola.data_transaksi.data_transaksi', compact('tb_transaction'));
+        return view('dashboard.pengelola.data_transaksi.data_transaksi', compact('transaction'), [
+            "title" => "Transaksi"
+        ]);
     }
 }

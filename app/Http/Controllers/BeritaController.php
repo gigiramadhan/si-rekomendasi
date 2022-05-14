@@ -135,7 +135,8 @@ class BeritaController extends Controller
         return redirect('berita')->with('toast_success', 'Data berhasil dihapus');
     }
 
-    public function search(Request $request){
+    public function search(Request $request)
+    {
         if($request->has('search')){
             $berita = Berita::where('judul', 'LIKE', '%'.$request->search.'%')->paginate();
         }

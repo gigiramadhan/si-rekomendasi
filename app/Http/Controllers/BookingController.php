@@ -17,7 +17,9 @@ class BookingController extends Controller
 
         $booking = Booking::latest()->paginate(3);
 
-        return view('dashboard.pengelola.data_booking.data_booking', compact('booking'));
+        return view('dashboard.pengelola.data_booking.data_booking', compact('booking'), [
+            "title" => "Data Booking"
+        ]);
     }
 
     /**
@@ -90,5 +92,19 @@ class BookingController extends Controller
         $booking->delete();
 
         return redirect('data_rumah_pengelola')->with('toast_success', 'Data berhasil dihapus');
+    }
+
+    public function search(Request $request)
+    {
+        if($request->has('search')){
+            $booking = Booking::where('name_booking', 'LIKE', '%'.$request->search.'%')->paginate();
+        }
+        else{
+            $booking = Booking::all();
+        }
+
+        return view('dashboard.pengelola.data_booking.data_booking', compact('booking'), [
+            "title" => "Data Booking"
+        ]);
     }
 }

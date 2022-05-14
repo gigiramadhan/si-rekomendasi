@@ -120,6 +120,8 @@ class BobotController extends Controller
             $bobot = Bobot::all();
         }
 
-        return view('dashboard.admin.bobot.bobot', compact('bobot'));
+        return view('dashboard.admin.bobot.bobot', compact('bobot'), [
+            "title" => "Bobot"
+        ]);
     }
 }

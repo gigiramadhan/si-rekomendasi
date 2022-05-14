@@ -44,7 +44,7 @@
         </div>
 
             <div class="crad-body">
-                <table class="myTable table table-hover table-bordered border-secondary mt-3">
+                <table class="table table-hover table-bordered border-secondary mt-3">
                     <thead class="thead-light">
                     {{-- <table class="table table-striped table-hover">
                     <thead> --}}
@@ -71,10 +71,10 @@
 
                             <td>
                                 {{-- <a href="#" class="btn btn-danger delete mt-3" data-id="{{ $item->id }}"><i class="bi bi-trash"></i></a> --}}
-                                <form class="d-flex justify-content-center gap-2" action="{{ route('bobot.destroy', $item->id) }}" method="post">
+                                <form class="d-flex justify-content-center gap-2" action="{{ route('bobot.destroy', $item->id) }}" method="get">
                                     <a href="/tampilbobot/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                     @csrf
-                                    @method('delete')
+                                    @method('get')
                                     <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                 </form>
                             </td>
