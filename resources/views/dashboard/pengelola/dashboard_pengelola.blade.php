@@ -12,10 +12,10 @@
         </div>
 
         <div class="row">
-            <div class="container">
+            <div class="container mt-4">
                 <div class="card">
                     <div class="bg-white p-3 text-secondary bg-opacity-25">
-                        <h5>Selamat Datang di Sistem Rekomendasi Pemilihan Perumahan</h5>
+                        <h5 class="fw-bold">Selamat Datang di Sistem Rekomendasi Pemilihan Perumahan</h5>
                     </div>
                 </div>
             </div>

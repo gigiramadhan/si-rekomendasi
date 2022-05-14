@@ -10,7 +10,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="{{url('data_rumahpeng')}}">
+            <a class="nav-link collapsed" href="{{url('data_rumah_pengelola')}}">
                 <i class="bi bi-house-fill"></i>
                 <span>Data Rumah</span>
             </a>

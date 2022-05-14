@@ -66,9 +66,12 @@ class FasilitasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function tampilfasilitas($id){
+
+        $data = Fasilitas::find($id);
+        // dd($data);
+
+        return view('dashboard.pengelola.fasilitas.tampilfasilitas', compact('data'));
     }
 
     /**
@@ -78,9 +81,17 @@ class FasilitasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function updatefasilitas(Request $request, $id){
+
+        $data = Fasilitas::find($id);
+        // $data->update($request->all());
+
+        $data->update(array(
+            'name_fasility' => $request->name_fasility,
+            'keterangan' => $request->keterangan,
+        ));
+
+        return redirect('fasilitas')->with('toast_success', 'Data berhasil diupdate');
     }
 
     /**

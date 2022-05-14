@@ -48,7 +48,7 @@
     </div>
 
     <div class="row">
-        <div class="container">
+        <div class="container mt-2">
             <div class="card">
                 <div class="card-header mb-4">
                     <h4 class="page-title text-secondary">Fasilitas</h4>
@@ -75,6 +75,10 @@
                                         <tr>
                                             <th>Tanggal Pembuatan</th>
                                             <td>{{ $data->created_at }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tanggal Perubahan</th>
+                                            <td>{{ $data->updated_at }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

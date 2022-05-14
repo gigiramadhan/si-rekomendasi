@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
 use Illuminate\Http\Request;
+use App\Models\RumahPengelola;
 use Illuminate\Support\Facades\File;
 
-class EventController extends Controller
+class RumahPengelolaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,9 @@ class EventController extends Controller
      */
     public function index(){
 
-        $event = Event::latest()->paginate(3);
+        $rumah = RumahPengelola::latest()->paginate(3);
 
-        return view('dashboard.admin.kegiatan.kegiatan', compact('event'), [
-            "title" => "Kegiatan"
-        ]);
+        return view('dashboard.pengelola.data_rumah.data_rumah_pengelola', compact('rumah'));
     }
 
     /**
@@ -29,9 +27,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.kegiatan.create', [
-            "title" => "Tambah Kegiatan"
-        ]);
+        return view('dashboard.pengelola.data_rumah.create');
     }
 
     /**
@@ -46,17 +42,21 @@ class EventController extends Controller
         $new_image = rand().'.'.$image->getClientOriginalExtension();
 
         $data = array(
-            'judul' => $request->judul,
-            'deskripsi' => $request->deskripsi,
+            'type' => $request->type,
+            'nama_perumahan' => $request->nama_perumahan,
+            'alamat' => $request->alamat,
+            'harga' => $request->harga,
+            'fasilitas' => $request->fasilitas,
             'gambar' => $new_image,
         );
 
         $image->move(public_path('gambar'), $new_image);
 
-        Event::create($data);
+        RumahPengelola::create($data);
 
-        return redirect('kegiatan')->with('toast_success', 'Data berhasil ditambahkan');
+        return redirect('data_rumah_pengelola')->with('toast_success', 'Data berhasil ditambahkan');
     }
+
 
     /**
      * Display the specified resource.
@@ -66,7 +66,9 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = RumahPengelola::find($id);
+
+        return view('dashboard.pengelola.data_rumah.showrumahpengelola', compact('data'));
     }
 
     /**
@@ -75,15 +77,14 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function tampilkegiatan($id){
+    public function tampilrumahpengelola($id){
 
-        $data = Event::find($id);
+        $data = RumahPengelola::find($id);
         // dd($data);
 
-        return view('dashboard.admin.kegiatan.tampilkegiatan', compact('data'), [
-            "title" => "Edit Kegiatan"
-        ]);
+        return view('dashboard.pengelola.data_rumah.tampilrumahpengelola', compact('data'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -92,12 +93,10 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateevent(Request $request, $id){
+    public function updaterumahpengelola(Request $request, $id){
 
         $image_lama = $request->old_image;
         $image_baru = $request->file('gambar');
-
-        // return $image_baru;
 
         if($image_baru == ''){
             $gambar = $image_lama;
@@ -108,16 +107,19 @@ class EventController extends Controller
             $image_baru->move(public_path('gambar'), $new_image);;
         }
 
-        $data = Event::find($id);
+        $data = RumahPengelola::find($id);
         // $data->update($request->all());
 
         $data->update(array(
-            'judul' => $request->judul,
-            'deskripsi' => $request->deskripsi,
+            'type' => $request->type,
+            'nama_perumahan' => $request->nama_perumahan,
+            'alamat' => $request->alamat,
+            'harga' => $request->harga,
+            'fasilitas' => $request->fasilitas,
             'gambar' => $gambar
         ));
 
-        return redirect('kegiatan')->with('toast_success', 'Data berhasil diupdate');
+        return redirect('data_rumah_pengelola')->with('toast_success', 'Data berhasil diupdate');
     }
 
     /**
@@ -128,26 +130,24 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        $event = Event::find($id);
-        $image_path = public_path("gambar/{$event->gambar}");
+        $rumah = RumahPengelola::find($id);
+        $image_path = public_path("gambar/{$rumah->gambar}");
         File::delete($image_path);
 
-        $event->delete();
+        $rumah->delete();
 
-        return redirect('kegiatan')->with('toast_success', 'Data berhasil dihapus');
+        return redirect('data_rumah_pengelola')->with('toast_success', 'Data berhasil dihapus');
     }
 
     public function search(Request $request){
 
         if($request->has('search')){
-            $event = Event::where('judul', 'LIKE', '%'.$request->search.'%')->paginate();
+            $rumah = RumahPengelola::where('nama_perumahan', 'LIKE', '%'.$request->search.'%')->paginate();
         }
         else{
-            $event = Event::all();
+            $rumah = RumahPengelola::all();
         }
 
-        return view('dashboard.admin.kegiatan.kegiatan', compact('event'));
+        return view('dashboard.pengelola.data_rumah.data_rumah_pengelola', compact('rumah'));
     }
-
-
 }

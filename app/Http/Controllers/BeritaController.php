@@ -18,7 +18,9 @@ class BeritaController extends Controller
 
         $berita = Berita::latest()->paginate(2);
 
-        return view('dashboard.admin.berita.berita', compact('berita'));
+        return view('dashboard.admin.berita.berita', compact('berita'), [
+            "title" => "Berita"
+        ]);
     }
 
     /**
@@ -28,8 +30,9 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.berita.create');
-
+        return view('dashboard.admin.berita.create', [
+            "title" => "Tambah Berita"
+        ]);
     }
 
     /**
@@ -78,7 +81,9 @@ class BeritaController extends Controller
         $data = Berita::find($id);
         // dd($data);
 
-        return view('dashboard.admin.berita.tampildata', compact('data'));
+        return view('dashboard.admin.berita.tampildata', compact('data'), [
+            "title" => "Edit Berita"
+        ]);
     }
 
     /**
@@ -99,7 +104,7 @@ class BeritaController extends Controller
         }else{
             $new_image = rand() .'.'. $image_baru->getClientOriginalExtension();
             $gambar = $new_image;
-            $image_baru->move(public_path('gambar'), $new_image);;
+            $image_baru->move(public_path('gambar'), $new_image);
         }
 
         $data = Berita::find($id);
@@ -131,7 +136,6 @@ class BeritaController extends Controller
     }
 
     public function search(Request $request){
-
         if($request->has('search')){
             $berita = Berita::where('judul', 'LIKE', '%'.$request->search.'%')->paginate();
         }
@@ -139,6 +143,8 @@ class BeritaController extends Controller
             $berita = Berita::all();
         }
 
-        return view('dashboard.admin.berita.berita', compact('berita'));
+        return view('dashboard.admin.berita.berita', compact('berita'), [
+            "title" => "Berita"
+        ]);
     }
 }

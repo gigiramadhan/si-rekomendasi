@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Fasilitas | SIREKPERUM</title>
+    <title>Data Rumah | SIREKPERUM</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -39,16 +39,16 @@
 
     @section('breadcrumb')
     <div class="pagetitle">
-        <h1>Fasilitas</h1>
+        <h1>Data Rumah</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{url('dashboard_pengelola')}}"><i class="bi bi-house-door"></i></a></li>
-                    <li class="breadcrumb-item active">Fasilitas</li>
+                    <li class="breadcrumb-item active">Data Rumah</li>
                 </ol>
             </nav>
     </div>
 
-    <section class="section fasilitas">
+    <section class="section datarumah_pengelola">
         @yield('content')
     </section>
 
@@ -60,15 +60,15 @@
 
     <div class="row">
         <div class="col-md-6 mt-4">
-            <h1>Fasilitas</h1>
+            <h1>Data Rumah</h1>
         </div>
 
       {{-- <div class="container mt-5"> --}}
 
         <div class="form-group d-flex justify-content-between mt-3">
-            <a href="{{ route('fasilitas.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg"></i>Tambah Data</a>
+            <a href="{{ route('data_rumah_pengelola.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg"></i>Tambah Data</a>
 
-            <form action="/rumah/search" class="form-inline" method="GET">
+            <form action="/rumah_pengelola/search" class="form-inline" method="GET">
                 <div class="input-group">
                     {{-- <form action="/search" class="form-inline" method="GET"></form> --}}
                     <input type="search" name="search" class="form-control" placeholder="search here.....">
@@ -84,8 +84,9 @@
                 <thead class="thead-light">
                     <tr>
                         <th style="text-align: center">No</th>
-                        <th style="text-align: center">Nama Fasilitas</th>
-                        <th style="text-align: center">Keterangan</th>
+                        <th style="text-align: center">Type</th>
+                        <th style="text-align: center">Harga</th>
+                        <th style="text-align: center">Gambar</th>
                         <th style="text-align: center">Tanggal Pembuatan</th>
                         <th style="text-align: center">Tanggal Perubahan</th>
                         <th style="text-align: center">Aksi</th>
@@ -95,19 +96,20 @@
                     @php
                         $increment = 1;
                     @endphp
-                    @if ($fasilitas != null)
-                        @foreach ($fasilitas  as $index => $item)
+                    @if ($rumah != null)
+                        @foreach ($rumah  as $index => $item)
                             <tr>
-                                <td style="text-align: center">{{ $index + $fasilitas ->firstItem() }}</td>
-                                <td>{{ $item->name_fasility }}</td>
-                                <td>{{ $item->keterangan }}</td>
+                                <td style="text-align: center">{{ $index + $rumah ->firstItem() }}</td>
+                                <td>{{ $item->type }}</td>
+                                <td>{{ $item->harga }}</td>
+                                <td style="text-align: center"><img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" width="130px"></td>
                                 <td>{{ $item->created_at }}</td>
                                 <td>{{ $item->updated_at }}</td>
 
                                 <td>
-                                    <form class="d-flex justify-content-center gap-2" action="{{ route('fasilitas.destroy', $item->id) }}" method="post">
-                                        <a href="/showfasilitas/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
-                                        <a href="/tampilfasilitas/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                    <form class="d-flex justify-content-center gap-2" action="{{ route('data_rumah_pengelola.destroy', $item->id) }}" method="post">
+                                        <a href="/showrumahpengelola/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
+                                        <a href="/tampilrumahpengelola/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                         @csrf
                                         @method('delete')
                                         <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
@@ -123,16 +125,16 @@
             <div class="form-group d-flex justify-content-between mt-3">
                 <div>
                     Showing
-                    {{ $fasilitas ->firstItem() }}
+                    {{ $rumah ->firstItem() }}
                     to
-                    {{ $fasilitas ->lastItem() }}
+                    {{ $rumah ->lastItem() }}
                     of
-                    {{ $fasilitas ->total() }}
+                    {{ $rumah ->total() }}
                     entries
                 </div>
 
                 <div class="pull-right">
-                    {{ $fasilitas ->links() }}
+                    {{ $rumah ->links() }}
                 </div>
             </div>
         </div>

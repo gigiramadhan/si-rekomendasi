@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Edit Berita | SIREKPERUM</title>
+    <title>Edit Data Rumah | SIREKPERUM</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -35,32 +35,57 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('adashboard') }}/assets/css/trix.css">
     <script type="text/javascript" src="{{ asset('adashboard') }}/assets/js/trix.js"></script>
 
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+        }
+    </style>
+
 </head>
 
-@extends('dashboard.admin.layouts.main')
+@extends('dashboard.pengelola.layouts.main')
 
 @section('content')
 <div class="page-header">
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h4 class="page-title">Edit Data Berita</h4>
+                <h4 class="page-title">Edit Data Rumah</h4>
             </div>
 
             <div class="card-body">
-                <form action="/updatedata/{{ $data->id }}" method="POST" enctype="multipart/form-data">
+                <form action="/updaterumahpengelola/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                     <input type="hidden" name="old_image" value="{{ $data->gambar}}">
 
-                <div class="form-group mb-3 mt-4 fw-bold">
-                    <label for="judul">Judul</label>
-                    <input type="text" name="judul" class="form-control mt-3" value="{{ $data->judul }}">
+                <div class="form-group mb-3 mt-3 fw-bold">
+                    <label for="type">Type</label>
+                    <input type="text" name="type" class="form-control mt-3" value="{{ $data->type }}">
                 </div>
 
-                <div class="form-group mb-3 mt-4">
-                    <label for="deskripsi" class="fw-bold">Deskripsi</label>
-                    <input id="deskripsi" type="hidden" name="deskripsi">
-                    <trix-editor input="deskripsi" class="form-control">{!! $data->deskripsi !!}</trix-editor>
+                <div class="form-group mb-3 mt-3 fw-bold">
+                    <label class="form-label mb-3">Nama Perumahan</label>
+                    <select name="nama_perumahan" class="form-select" aria-label="Default select example">
+                        <option selected>{{ $data->nama_perumahan }}</option><br>
+                        <option value="Cluster Sultan Regency">Cluster Sultan Regency</option>
+                        <option value="Sultan Estate">Sultan Estate</option>
+                        <option value="Pesona Citra Residence">Pesona Citra Residence</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-3 mt-3 fw-bold">
+                    <label for="alamat">Alamat</label>
+                    <input type="text" name="alamat" class="form-control mt-3" value="{{ $data->alamat }}">
+                </div>
+
+                <div class="form-group mb-3 mt-3 fw-bold">
+                    <label for="harga">Harga</label>
+                    <input type="number" name="harga" class="form-control mt-3" value="{{ $data->harga }}">
+                </div>
+
+                <div class="form-group mb-3 mt-3 fw-bold">
+                    <label for="fasilitas">Fasilitas</label>
+                    <input type="text" name="fasilitas" class="form-control mt-3" value="{{ $data->fasilitas }}">
                 </div>
 
                 <div class="form-group mb-3 mt-4 fw-bold">
@@ -68,21 +93,15 @@
                     <input type="file" class="form-control-file mt-3" name="gambar"><br>
                     <img src="{{ URL::to('/') }}/gambar/{{ $data->gambar }}" class="img-thumbnail" width="200px"/>
                     <input type="hidden" class="form-control-file mt-3" name="old_image" value="{{ $data->gambar }}">
+                    {{-- <label class="custom-file-label" for="gambar"></label> --}}
                 </div>
 
                 <div class="form-group d-flex justify-content-between">
                     <button type="submit" class="btn btn-success mt-5">Update</button>
-                    <a href="/berita" class="btn btn-secondary mt-5">Close</a>
+                    <a href="/data_rumah_pengelola" class="btn btn-secondary mt-5">Close</a>
                 </form>
             </div>
         </div>
     </div>
 </div>
-<script>
-    <style>
-        document.addEventListener('trix-file-accept', function(e) {
-            e.prevenDefault();
-        })
-    </style>
-</script>
 @endsection

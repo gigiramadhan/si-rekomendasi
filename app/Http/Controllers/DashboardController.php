@@ -2,22 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transaction;
+use App\Models\Rumah;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
 
-class TransactionController extends Controller
+
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
+    public $rumah;
+    public $pengguna;
+    public $pengelola;
+    public $pengunjung;
 
-        $transaction = Transaction::latest()->paginate(3);
 
-        return view('dashboard.pengelola.data_transaksi.data_transaksi', compact('transaction'));
+    public function index()
+    {
+        // $pengguna = User::count();
+        // $rumah = Rumah::count();
+
+        $rumah = DB::table('tb_rumah')->count();
+        // $pengguna = DB::table('users')->count();
+        $admin = DB::table('users')->where('level', '=', 'admin')->count();
+        $pengelola = DB::table('users')->where('level', '=', 'pengelola')->count();
+        $pengunjung = DB::table('users')->where('level', '=', 'user')->count();
+
+        // return view('dashboard', compact('pengguna','rumah'));
+        return view('dashboard.admin.dashboard', ['rumah'=>$rumah, 'admin'=>$admin, 'pengelola'=>$pengelola, 'pengunjung'=>$pengunjung, "title" => "Dashboard"]);
+
     }
 
     /**
@@ -83,24 +100,6 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        $transaction = Transaction::find($id);
-        $image_path = public_path("gambar/{$transaction->gambar}");
-        File::delete($image_path);
-
-        $transaction->delete();
-
-        return redirect('data_transaksi')->with('toast_success', 'Data berhasil dihapus');
-    }
-
-    public function search(Request $request){
-
-        if($request->has('search')){
-            $tb_transaction = Transaction::where('nama', 'LIKE', '%'.$request->search.'%')->paginate();
-        }
-        else{
-            $tb_transaction = Transaction::all();
-        }
-
-        return view('dashboard.pengelola.data_transaksi.data_transaksi', compact('tb_transaction'));
+        //
     }
 }

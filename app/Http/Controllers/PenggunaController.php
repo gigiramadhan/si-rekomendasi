@@ -17,7 +17,9 @@ class PenggunaController extends Controller
 
         $pengguna = User::latest()->paginate(2);
 
-        return view('dashboard.admin.data_pengguna.data_pengguna', compact('pengguna'));
+        return view('dashboard.admin.data_pengguna.data_pengguna', compact('pengguna'), [
+            "title" => "Data Pengguna"
+        ]);
     }
 
 
@@ -28,7 +30,9 @@ class PenggunaController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.data_pengguna.create');
+        return view('dashboard.admin.data_pengguna.create', [
+            "title" => "Tambah Pengguna"
+        ]);
     }
 
 
@@ -63,7 +67,9 @@ class PenggunaController extends Controller
     {
         $data = User::find($id);
 
-        return view('dashboard.admin.data_pengguna.show', compact('data'));
+        return view('dashboard.admin.data_pengguna.show', compact('data'), [
+            "title" => "Detail Pengguna"
+        ]);
     }
 
     /**
@@ -77,7 +83,9 @@ class PenggunaController extends Controller
         $data = User::find($id);
         // dd($data);
 
-        return view('dashboard.admin.data_pengguna.tampilpengguna', compact('data'));
+        return view('dashboard.admin.data_pengguna.tampilpengguna', compact('data'), [
+            "title" => "Edit Pengguna"
+        ]);
     }
 
     /**

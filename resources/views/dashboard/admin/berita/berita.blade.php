@@ -1,44 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Berita | SIREKPERUM</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-
-    <!-- Favicons -->
-    <link href="{{ asset('adashboard') }}/assets/img/landgroup.png" rel="icon">
-    <link href="{{ asset('adashboard') }}/assets/img/landgroup.png" rel="apple-touch-icon">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
-
-    <!-- Vendor CSS Files -->
-    <link href="{{ asset('adashboard') }}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('adashboard') }}/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="{{ asset('adashboard') }}/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="{{ asset('adashboard') }}/assets/vendor/quill/quill.snow.css" rel="stylesheet">
-    <link href="{{ asset('adashboard') }}/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-    <link href="{{ asset('adashboard') }}/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="{{ asset('adashboard') }}/assets/vendor/simple-datatables/style.css" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link href="{{ asset('adashboard') }}/assets/css/style.css" rel="stylesheet">
-
-    {{-- Trix Editor --}}
-    <link rel="stylesheet" type="text/css" href="{{ asset('adashboard') }}/assets/css/trix.css">
-    <script type="text/javascript" src="{{ asset('adashboard') }}/assets/js/trix.js"></script>
-
-</head>
-
-
-<body>
 @extends('dashboard.admin.layouts.main')
 
     @section('breadcrumb')
@@ -88,6 +47,8 @@
                         <th style="text-align: center">Judul</th>
                         <th style="text-align: center">Deskripsi</th>
                         <th style="text-align: center">Gambar</th>
+                        <th style="text-align: center">Tanggal Pembuatan</th>
+                        <th style="text-align: center">Tanggal Perubahan</th>
                         <th style="text-align: center">Aksi</th>
                         </tr>
                 </thead>
@@ -101,12 +62,14 @@
                         <td style="text-align: left">{{ $item->judul }}</td>
                         <td style="text-align: left">{!! $item->deskripsi !!}</td>
                         <td style="text-align: center"><img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" width="130px"></td>
+                        <td style="text-align: left">{{ $item->created_at }}</td>
+                        <td style="text-align: left">{{ $item->updated_at }}</td>
 
                         <td>
                             <form class="d-flex justify-content-center gap-2" action="{{ route('berita.destroy', $item->id) }}" method="post">
                                 <a href="/tampildata/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                 @csrf
-                                @method('delete')
+                                @method('get')
                                 <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                             </form>
                         </td>
@@ -133,8 +96,6 @@
         </div>
     </div>
     @include('sweetalert::alert')
-    </body>
-</html>
 @endsection
 
 

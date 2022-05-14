@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transaction;
+use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class TransactionController extends Controller
+class BookingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class TransactionController extends Controller
      */
     public function index(){
 
-        $transaction = Transaction::latest()->paginate(3);
+        $booking = Booking::latest()->paginate(3);
 
-        return view('dashboard.pengelola.data_transaksi.data_transaksi', compact('transaction'));
+        return view('dashboard.pengelola.data_booking.data_booking', compact('booking'));
     }
 
     /**
@@ -83,24 +83,12 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        $transaction = Transaction::find($id);
-        $image_path = public_path("gambar/{$transaction->gambar}");
+        $booking = Booking::find($id);
+        $image_path = public_path("gambar/{$booking->gambar}");
         File::delete($image_path);
 
-        $transaction->delete();
+        $booking->delete();
 
-        return redirect('data_transaksi')->with('toast_success', 'Data berhasil dihapus');
-    }
-
-    public function search(Request $request){
-
-        if($request->has('search')){
-            $tb_transaction = Transaction::where('nama', 'LIKE', '%'.$request->search.'%')->paginate();
-        }
-        else{
-            $tb_transaction = Transaction::all();
-        }
-
-        return view('dashboard.pengelola.data_transaksi.data_transaksi', compact('tb_transaction'));
+        return redirect('data_rumah_pengelola')->with('toast_success', 'Data berhasil dihapus');
     }
 }

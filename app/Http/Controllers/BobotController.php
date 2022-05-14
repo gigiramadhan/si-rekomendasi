@@ -16,7 +16,9 @@ class BobotController extends Controller
 
         $bobot = Bobot::latest()->paginate(2);
 
-        return view('dashboard.admin.bobot.bobot', compact('bobot'));
+        return view('dashboard.admin.bobot.bobot', compact('bobot'), [
+            "title" => "Bobot"
+        ]);
     }
 
     /**
@@ -26,7 +28,9 @@ class BobotController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.bobot.create');
+        return view('dashboard.admin.bobot.create', [
+            "title" => "Tambah Bobot"
+        ]);
     }
 
     /**
@@ -72,7 +76,9 @@ class BobotController extends Controller
         $data = Bobot::find($id);
         // dd($data);
 
-        return view('dashboard.admin.bobot.tampilbobot', compact('data'));
+        return view('dashboard.admin.bobot.tampilbobot', compact('data'), [
+            "title" => "Edit Bobot"
+        ]);
     }
 
     /**

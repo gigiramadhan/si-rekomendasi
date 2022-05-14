@@ -33,17 +33,8 @@
 
 </head>
 
-
 <body>
 @extends('dashboard.pengelola.layouts.main')
-
-{{-- <div class="alert alert-danger">
-    <ul>
-        @foreach ($eror->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div> --}}
 
     @section('breadcrumb')
     <div class="pagetitle">
@@ -68,14 +59,10 @@
 
     <div class="row">
         <div class="col-md-6 mt-4">
-            <h1>Data Transaksi</h1>
+            <h1>Data Booking Rumah</h1>
         </div>
 
-      {{-- <div class="container mt-5"> --}}
-
-        <div class="form-group float-right mt-3">
-            {{-- <a href="{{ route('berita.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg"></i>Tambah Data</a> --}}
-
+        <div class="d-md-flex justify-content-md-end mt-3">
             <form action="/search" method="GET">
                 <div class="input-group">
                     <form action="/search" class="form-inline" method="GET"></form>
@@ -88,17 +75,15 @@
         </div>
 
         <div class="crad-body">
-            <table class="myTable table table-hover table-bordered border-secondary mt-3">
+            <table class="myTable table table-hover table-bordered border-secondary mt-4">
                 <thead class="thead-light">
-                {{-- <table class="table table-striped table-hover">
-                <thead> --}}
                     <tr>
                         <th style="text-align: center">No</th>
                         <th style="text-align: center">Nama</th>
                         <th style="text-align: center">No Handphone</th>
                         <th style="text-align: center">Tanggal Pembayaran</th>
                         <th style="text-align: center">Bukti Pembayaran</th>
-                        <th style="text-align: center">Status</th>
+                        <th style="text-align: center">Status Transaksi</th>
                         <th style="text-align: center">Aksi</th>
                         </tr>
                 </thead>
@@ -106,10 +91,10 @@
                     @php
                         $increment = 1;
                     @endphp
-                    @if ($tb_transaction != null)
-                        @foreach ($tb_transaction as $index => $item)
+                    @if ($transaction != null)
+                        @foreach ($transaction as $index => $item)
                             <tr>
-                                <td style="text-align: center">{{ $index + $tb_transaction->firstItem() }}</td>
+                                <td style="text-align: center">{{ $index + $transaction->firstItem() }}</td>
                                 <td style="text-align: left">{{ $item->nama }}</td>
                                 <td style="text-align: left">{{ $item->no_telp }}</td>
                                 <td style="text-align: left">{{ $item->tgl_bayar }}</td>
@@ -117,9 +102,8 @@
                                 <td style="text-align: left">{{ $item->status_transaksi }}</td>
 
                                 <td>
-                                    {{-- <a href="#" class="btn btn-danger delete mt-3" data-id="{{ $item->id }}"><i class="bi bi-trash"></i></a> --}}
-                                    <form class="d-flex align-items-center gap-2" action="{{ route('kegiatan.destroy', $item->id) }}" method="post">
-                                        <a href="/tampilkegiatan/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                    <form class="d-flex align-items-center gap-2" action="{{ route('data_transaksi.destroy', $item->id) }}" method="post">
+                                        <a href="/tampiltransaksi/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                         @csrf
                                         @method('delete')
                                         <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
@@ -128,24 +112,23 @@
                             </tr>
                             @endforeach
                         @else
-
-                        @endif
-                    </tbody>
-                </table>
+                    @endif
+                </tbody>
+            </table>
 
             <div class="form-group d-flex justify-content-between mt-3">
                 <div>
                     Showing
-                    {{ $tb_transaction->firstItem() }}
+                    {{ $transaction->firstItem() }}
                     to
-                    {{ $tb_transaction->lastItem() }}
+                    {{ $transaction->lastItem() }}
                     of
-                    {{ $tb_transaction->total() }}
+                    {{ $transaction->total() }}
                     entries
                 </div>
 
                 <div class="pull-right">
-                    {{ $tb_transaction->links() }}
+                    {{ $transaction->links() }}
                 </div>
             </div>
         </div>
