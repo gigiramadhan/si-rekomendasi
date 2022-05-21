@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transaction;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class TransactionController extends Controller
+class TransaksiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class TransactionController extends Controller
      */
     public function index(){
 
-        $transaction = Transaction::latest()->paginate(3);
+        $transaction = Transaksi::latest()->paginate(3);
 
         return view('dashboard.pengelola.data_transaksi.data_transaksi', compact('transaction'), [
             "title" => "Transaksi"
@@ -85,7 +85,7 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        $transaction = Transaction::find($id);
+        $transaction = Transaksi::find($id);
         $image_path = public_path("gambar/{$transaction->gambar}");
         File::delete($image_path);
 
@@ -97,10 +97,10 @@ class TransactionController extends Controller
     public function search(Request $request)
     {
         if($request->has('search')){
-            $transaction = Transaction::where('nama', 'LIKE', '%'.$request->search.'%')->paginate();
+            $transaction = Transaksi::where('nama', 'LIKE', '%'.$request->search.'%')->paginate();
         }
         else{
-            $transaction = Transaction::all();
+            $transaction = Transaksi::all();
         }
 
         return view('dashboard.pengelola.data_transaksi.data_transaksi', compact('transaction'), [

@@ -35,7 +35,7 @@
                         </div>
                         <div class="ps-2">
                             <h6>{{ $rumah }}</h6>
-                            <span class="text-success small pt-1"><a href="{{url('data_rumah')}}"><u>View Details</u><i class="bi bi-chevron-right ps-1"></i></span></a>
+                            <span class="text-success small pt-1"><a href="{{url('data_rumah')}}"><u>View Details</u><i class="bi bi-chevron-right"></i></span></a>
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                         </div>
                         <div class="ps-2">
                             <h6>{{ $admin }}</h6>
-                            <span class="text-success small pt-1"><a href="{{url('data_pengguna')}}"><u>View Details</u><i class="bi bi-chevron-right ps-1"></i></span></a>
+                            <span class="text-success small pt-1"><a href="{{url('data_pengguna')}}"><u>View Details</u><i class="bi bi-chevron-right"></i></span></a>
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                         </div>
                         <div class="ps-2">
                             <h6>{{ $pengelola }}</h6>
-                            <span class="text-success small pt-1"><a href="{{url('data_pengguna')}}"><u>View Details</u><i class="bi bi-chevron-right ps-1"></i></span></a>
+                            <span class="text-success small pt-1"><a href="{{url('data_pengguna')}}"><u>View Details</u><i class="bi bi-chevron-right"></i></span></a>
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                         </div>
                         <div class="ps-2">
                             <h6>{{ $pengunjung }}</h6>
-                            <span class="text-success small pt-1"><a href="{{url('data_pengguna')}}"><u>View Details</u><i class="bi bi-chevron-right ps-1"></i></span></a>
+                            <span class="text-success small pt-1"><a href="{{url('data_pengguna')}}"><u>View Details</u><i class="bi bi-chevron-right"></i></span></a>
                         </div>
                     </div>
                 </div>

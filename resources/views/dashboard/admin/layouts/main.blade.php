@@ -52,7 +52,6 @@
     @include('dashboard.admin.layouts.sidebar')
 
     <main id="main" class="main">
-
         <div class="pagetitle">
             @yield('breadcrumb')
             {{-- <h1>Dashboard</h1>
@@ -67,7 +66,6 @@
         <section class="section dashboard">
             @yield('content')
         </section>
-
     </main>
 
     {{-- <!-- ======= Footer ======= -->

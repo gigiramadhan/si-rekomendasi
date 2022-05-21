@@ -1,6 +1,7 @@
 @extends('dashboard.admin.layouts.main')
 
 @section('content')
+
 <div class="page-header">
     <div class="container">
         <div class="card">
@@ -38,13 +39,89 @@
                     <input type="number" name="harga" class="form-control mt-3" value="{{ $data->harga }}">
                 </div>
 
-                <div class="form-group mb-3 mt-3 fw-bold">
+                {{-- <div class="form-group mb-3 mt-3 fw-bold">
                     <label class="form-label mb-3">Fasilitas</label>
                     <select name="fasilitas" class="form-select" aria-label="Default select example">
                         <option selected>{{ $data->fasilitas }}</option><br>
                         <option value="Paket 1">Paket 1</option>
                         <option value="Paket 2">Paket 2</option>
                     </select>
+                </div> --}}
+
+                <div class="row mb-3 mt-3">
+                    <label class="form-label mb-3 fw-bold" for="fasilitas">Fasilitas</label>
+                    <div class="ms-4">
+                        <div class="form-check">
+                            <input name="fasilitas[]" class="form-check-input" type="checkbox" value="1 Gate System"
+                                @foreach ($fasilitas as $value)
+                                    @if ($value == '1 Gate System')
+                                        checked
+                                    @endif
+                                @endforeach
+                            >
+                            <label class="form-check-label" for="fasilitas">1 Gate System</label>
+                        </div>
+                        <div class="form-check">
+                            <input name="fasilitas[]" class="form-check-input" type="checkbox" value="Satpam"
+                                @foreach ($fasilitas as $value)
+                                    @if ($value == 'Satpam')
+                                        checked
+                                    @endif
+                                @endforeach
+                            >
+                            <label class="form-check-label" for="fasilitas">Satpam</label>
+                        </div>
+                        <div class="form-check">
+                            <input name="fasilitas[]" class="form-check-input" type="checkbox" value="CCTV"
+                                @foreach ($fasilitas as $value)
+                                    @if ($value == 'CCTV')
+                                        checked
+                                    @endif
+                                @endforeach
+                            >
+                            <label class="form-check-label" for="fasilitas">CCTV</label>
+                        </div>
+                        <div class="form-check">
+                            <input name="fasilitas[]" class="form-check-input" type="checkbox" value="Musholla"
+                                @foreach ($fasilitas as $value)
+                                    @if ($value == 'Musholla')
+                                        checked
+                                    @endif
+                                @endforeach
+                            >
+                            <label class="form-check-label" for="fasilitas">Musholla</label>
+                        </div>
+                        <div class="form-check">
+                            <input name="fasilitas[]" class="form-check-input" type="checkbox" value="Kolam Renang"
+                                @foreach ($fasilitas as $value)
+                                    @if ($value == 'Kolam Renang')
+                                        checked
+                                    @endif
+                                @endforeach
+                            >
+                            <label class="form-check-label" for="fasilitas">Kolam Renang</label>
+                        </div>
+                        <div class="form-check">
+                            <input name="fasilitas[]" class="form-check-input" type="checkbox" value="Taman"
+                                @foreach ($fasilitas as $value)
+                                    @if ($value == 'Taman')
+                                        checked
+                                    @endif
+                                @endforeach
+                            >
+                            <label class="form-check-label" for="fasilitas">Taman</label>
+                        </div>
+                        <div class="form-check">
+                            <input name="fasilitas[]" class="form-check-input" type="checkbox" value="RTH"
+                                @foreach ($fasilitas as $value)
+                                    @if ($value == 'RTH')
+                                        checked
+                                    @endif
+                                @endforeach
+                            >
+                            <label class="form-check-label" for="fasilitas">RTH</label>
+                        </div>
+                    </div>
                 </div>
 
                 {{-- <div class="form-group mb-3 mt-3 fw-bold">
@@ -68,4 +145,10 @@
         </div>
     </div>
 </div>
+{{-- <script>
+    function check(){
+        document.getElementById("")
+    }
+</script> --}}
 @endsection
+

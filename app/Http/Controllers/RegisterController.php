@@ -13,9 +13,10 @@ class RegisterController extends Controller
     {
         return view('auth.register');
     }
+
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'username' => 'required|min:3|max:255|unique:users',

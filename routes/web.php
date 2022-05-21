@@ -5,15 +5,16 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\BobotController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\EventController;
+use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\FasilitasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RumahController;
 use App\Http\Controllers\RumahPengelolaController;
-use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\TransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,27 +31,37 @@ use App\Http\Controllers\TransactionController;
     Route::get('/', [BerandaController::class, 'index'])->name('landing.beranda');
 
     Route::get('about', function () {
-        return view('home.about');
+        return view('home.about', [
+            "title" => "About"
+        ]);
     });
 
     Route::get('gallery', function () {
-        return view('home.gallery');
+        return view('home.gallery', [
+            "title" => "Gallery"
+        ]);
     });
 
     Route::get('contact', function () {
-        return view('home.contact');
+        return view('home.contact', [
+            "title" => "Contact"
+        ]);
     });
 
-    Route::get('profile', function () {
-        return view('dashboard.admin.profile.profile');
-    });
+    // Route::get('profile', function () {
+    //     return view('dashboard.admin.profile.profile', [
+    //         "title" => "Profile"
+    //     ]);
+    // });
 
+    Route::get('profile', [ProfileController::class, 'index'])->name('profile');
+    Route::post('/updateprofile/{id}', [ProfileController::class, 'updateprofile'])->name('updateprofile');
 
 // Login
     Route::get('registrasi', [LoginController::class, 'registrasi'])->name('registrasi');
     Route::post('simpanregistrasi', [LoginController::class, 'simpanregistrasi'])->name('simpanregistrasi');
-    Route::post('login', [LoginController::class, 'login']);
-    Route::get('login', [LoginController::class, 'index'])->name('login');
+    Route::post('login', [LoginController::class, 'login'])->name('login.login');
+    Route::get('login', [LoginController::class, 'index'])->name('login.index');
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('register', [RegisterController::class, 'register']);
     Route::post('register', [RegisterController::class, 'store']);
@@ -93,14 +104,14 @@ Route::group(['middleware' => ['auth','ceklevel:admin']], function () {
     Route::post('/updatedata/{id}', [BeritaController::class, 'updatedata'])->name('updatedata');
     Route::get('/berita/destroy/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
     Route::get('/berita/search', [BeritaController::class, 'search']);
-    // Route::resource('kegiatan', EventController::class);
-    Route::get('kegiatan', [EventController::class, 'index'])->name('kegiatan');
-    Route::post('kegiatan/store', [EventController::class, 'store'])->name('kegiatan.store');
-    Route::get('kegiatan/create', [EventController::class, 'create'])->name('kegiatan.create');
-    Route::get('/tampilkegiatan/{id}', [EventController::class, 'tampilkegiatan'])->name('tampilkegiatan');
-    Route::post('/updateevent/{id}', [EventController::class, 'updateevent'])->name('updateevent');
-    Route::get('/kegiatan/destroy/{id}', [EventController::class, 'destroy'])->name('kegiatan.destroy');
-    Route::get('/kegiatan/search', [EventController::class, 'search']);
+    // Route::resource('kegiatan', KegiatanController::class);
+    Route::get('kegiatan', [KegiatanController::class, 'index'])->name('kegiatan');
+    Route::post('kegiatan/store', [KegiatanController::class, 'store'])->name('kegiatan.store');
+    Route::get('kegiatan/create', [KegiatanController::class, 'create'])->name('kegiatan.create');
+    Route::get('/tampilkegiatan/{id}', [KegiatanController::class, 'tampilkegiatan'])->name('tampilkegiatan');
+    Route::post('/updatekegiatan/{id}', [KegiatanController::class, 'updatekegiatan'])->name('updatekegiatan');
+    Route::get('/kegiatan/destroy/{id}', [KegiatanController::class, 'destroy'])->name('kegiatan.destroy');
+    Route::get('/kegiatan/search', [KegiatanController::class, 'search']);
 });
 
 
@@ -123,9 +134,9 @@ Route::group(['middleware' => ['auth','ceklevel:pengelola']], function () {
     // Route::resource('data_booking', BookingController::class);
     Route::get('data_booking', [BookingController::class, 'index'])->name('data_booking');
     Route::get('/booking/search', [BookingController::class, 'search']);
-    // Route::resource('data_transaksi', TransactionController::class);
-    Route::get('data_transaksi', [TransactionController::class, 'index'])->name('data_transaksi');
-    Route::get('/transaksi/search', [TransactionController::class, 'search']);
+    // Route::resource('data_transaksi', TransaksiController::class);
+    Route::get('data_transaksi', [TransaksiController::class, 'index'])->name('data_transaksi');
+    Route::get('/transaksi/search', [TransaksiController::class, 'search']);
     // Route::resource('fasilitas', FasilitasController::class);
     Route::get('fasilitas', [FasilitasController::class, 'index'])->name('fasilitas');
     Route::post('fasilitas/store', [FasilitasController::class, 'store'])->name('fasilitas.store');
@@ -140,7 +151,9 @@ Route::group(['middleware' => ['auth','ceklevel:pengelola']], function () {
 
 // Rekomendasi
     Route::get('rekomendasi', function () {
-        return view('home.rekomendasi');
+        return view('rekomendasi.rekomendasi', [
+            "title" => "Rekomendasi"
+        ]);
     });
 
 

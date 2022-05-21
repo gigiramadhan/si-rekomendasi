@@ -15,10 +15,9 @@ class CreateBobotTable extends Migration
     {
         Schema::create('bobot', function (Blueprint $table) {
             $table->id();
-            $table->string('fasilitas');
-            $table->string('luas_tanah');
-            $table->string('luas_bangunan');
-            $table->string('harga');
+            $table->string('name_kriteria');
+            $table->string('attribut');
+            $table->string('bobot');
             $table->timestamps();
         });
     }

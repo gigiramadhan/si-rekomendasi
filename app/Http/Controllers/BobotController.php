@@ -14,10 +14,10 @@ class BobotController extends Controller
      */
     public function index(){
 
-        $bobot = Bobot::latest()->paginate(2);
+        $bobot = Bobot::latest()->paginate(5);
 
         return view('dashboard.admin.bobot.bobot', compact('bobot'), [
-            "title" => "Bobot"
+            "title" => "Kriteria"
         ]);
     }
 
@@ -29,7 +29,7 @@ class BobotController extends Controller
     public function create()
     {
         return view('dashboard.admin.bobot.create', [
-            "title" => "Tambah Bobot"
+            "title" => "Tambah Kriteria"
         ]);
     }
 
@@ -42,11 +42,9 @@ class BobotController extends Controller
     public function store(Request $request)
     {
         $data = [
-            'fasilitas' => $request->fasilitas,
-            'luas_tanah' => $request->luas_tanah,
-            'luas_bangunan' => $request->luas_bangunan,
-            'harga' => $request->harga,
-
+            'name_kriteria' => $request->name_kriteria,
+            'attribut' => $request->attribut,
+            'bobot' => $request->bobot,
         ];
 
         Bobot::create($data);
@@ -77,7 +75,7 @@ class BobotController extends Controller
         // dd($data);
 
         return view('dashboard.admin.bobot.tampilbobot', compact('data'), [
-            "title" => "Edit Bobot"
+            "title" => "Edit Kriteria"
         ]);
     }
 
@@ -114,14 +112,14 @@ class BobotController extends Controller
     public function search(Request $request){
 
         if($request->has('search')){
-            $bobot = Bobot::where('fasilitas', 'LIKE', '%'.$request->search.'%')->paginate();
+            $bobot = Bobot::where('name_kriteria', 'LIKE', '%'.$request->search.'%')->paginate();
         }
         else{
             $bobot = Bobot::all();
         }
 
         return view('dashboard.admin.bobot.bobot', compact('bobot'), [
-            "title" => "Bobot"
+            "title" => "Kriteria"
         ]);
     }
 }

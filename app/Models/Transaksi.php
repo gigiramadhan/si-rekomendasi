@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Transaction extends Model
+class Transaksi extends Model
 {
     use HasFactory;
 
-    protected $table = "tb_transaction";
+    protected $table = "tb_transaksi";
     protected $fillable = [
         'nama',
         'no_telp',

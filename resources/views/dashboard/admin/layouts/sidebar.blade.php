@@ -28,7 +28,7 @@
         <li class="nav-item">
             <a class="nav-link {{ Request::is('bobot*') ? 'active' : 'collapsed' }}" href="{{url('bobot')}}">
                 <i class="bi bi-circle"></i>
-                <span>Bobot</span>
+                <span>Kriteria</span>
             </a>
         </li>
 
@@ -43,6 +43,13 @@
             <a class="nav-link {{ Request::is('kegiatan*') ? 'active' : 'collapsed' }}" href="{{url('kegiatan')}}">
                 <i class="bi bi-file-post"></i>
                 <span>Kegiatan</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link {{ Request::is('profile*') ? 'active' : 'collapsed' }}" href="{{url('profile')}}">
+                <i class="bi bi-person"></i>
+                <span>Profile</span>
             </a>
         </li>
     </ul>

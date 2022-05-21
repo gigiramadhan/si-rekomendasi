@@ -9,7 +9,7 @@
             </div>
 
             <div class="card-body">
-                <form action="/updateevent/{{ $data->id }}" method="POST" enctype="multipart/form-data">
+                <form action="/updatekegiatan/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                     <input type="hidden" name="old_image" value="{{ $data->gambar}}">
 

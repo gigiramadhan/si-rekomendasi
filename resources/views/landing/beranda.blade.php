@@ -34,9 +34,9 @@
 
 </head>
 
-<body>
+    <body>
 
-  <!-- ======= Header ======= -->
+    {{-- Header --}}
     <header id="header" class="fixed-top d-flex align-items-center header-transparent">
         <div class="container d-flex align-items-center justify-content-between">
 
@@ -48,9 +48,8 @@
         </div>
     </header>
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero">
-
+    {{-- Home --}}
+    <section id="hero">
     <div class="container">
         <div class="row justify-content-between">
             <div class="col-lg-7 pt-5 pt-lg-5 order-2 order-lg-2 d-flex align-items-center">
@@ -58,7 +57,7 @@
                     <h1>Welcome to Sistem Rekomendasi Pemilihan Perumahan</h1>
                     <h2>Visionary Masterpieces Patriot Sayma Land (Cluster Sultan Regency, Sultan Estate, and Pesona Citra Residence).</h2>
                     <div class="text-center text-lg-start">
-                        <a href="{{ route('login') }}" class="btn-get-started scrollto">Get Started</a>
+                        <a href="{{ route('login.index') }}" class="btn-get-started scrollto">Get Started</a>
                     </div>
                 </div>
             </div>
@@ -67,13 +66,11 @@
             </div>
         </div>
     </div>
-  </section>
+    </section>
 
-  <main id="main">
-
-    <!-- ======= About Section ======= -->
+    {{-- About --}}
+    <main id="main">
     <section id="about" class="about">
-
         <div class="container" data-aos="fade-up">
             <div class="section-title">
                 <h2>Sirekperum</h2>
@@ -112,7 +109,7 @@
         </div>
     </section>
 
-    <!-- ======= Info Section ======= -->
+    {{-- Informasi --}}
     <section id="info" class="info">
 
         <div class="container" data-aos="fade-up">
@@ -127,7 +124,8 @@
                     <img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->judul }}</h5>
-                        <p class="card-text" style="text-align: justify">{!! $item->deskripsi !!}</p>
+                        <p class="card-text" style="text-align: justify">{!! $item->deskripsi !!}</p><br>
+                        <div class="text-primary">{{ $item->created_at }}</div>
                     </div>
                 </div>
                 @endforeach
@@ -137,7 +135,8 @@
                     <img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->judul }}</h5>
-                        <p class="card-text" style="text-align: justify">{!! $item->deskripsi !!}</p>
+                        <p class="card-text" style="text-align: justify">{!! $item->deskripsi !!}</p><br>
+                        <div class="text-primary">{{ $item->created_at }}</div>
                     </div>
                 </div>
                 @endforeach
@@ -145,7 +144,7 @@
         </div>
     </section>
 
-    <!-- ======= Gallery Section ======= -->
+    {{-- Gallery --}}
     <section id="gallery" class="gallery">
 
         <div class="container" data-aos="fade-up">
@@ -250,8 +249,7 @@
         </div>
     </section>
 
-
-    <!-- ======= Contact Section ======= -->
+    {{-- Contact --}}
     <section id="contact" class="contact">
     <div class="container">
 
@@ -323,9 +321,9 @@
             </div>
         </div>
     </section>
-  </main>
+    </main>
 
-    <!-- ======= Footer ======= -->
+    {{-- Footer --}}
     <footer id="footer">
     <div class="container">
 
@@ -336,34 +334,33 @@
             </div>
         </div>
 
-            <div class="social-links text-center weidth=90 ">
-                <a href="https://www.youtube.com/c/LandGroup/featured" class="youtube"><i class="bi bi-youtube"></i></a>
-                <a href="https://www.facebook.com/pg/landgroup.indramayu/posts/" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="https://www.instagram.com/landgroup.indramayu/" class="instagram"><i class="bi bi-instagram"></i></a>
-            </div>
+        <div class="social-links text-center weidth=90 ">
+            <a href="https://www.youtube.com/c/LandGroup/featured" class="youtube"><i class="bi bi-youtube"></i></a>
+            <a href="https://www.facebook.com/pg/landgroup.indramayu/posts/" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/landgroup.indramayu/" class="instagram"><i class="bi bi-instagram"></i></a>
+        </div>
     </div>
 
-        <div class="container footer-bottom clearfix">
-            <div class="copyright">
-                &copy; Copyright <strong><span>Land Group</span></strong>
-            </div>
+    <div class="container footer-bottom clearfix">
+        <div class="copyright">
+            &copy; Copyright 2021-2022 <strong><span>Land Group Indramayu.</span></strong>
         </div>
+    </div>
     </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-  <div id="preloader"></div>
+    {{-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <div id="preloader"></div> --}}
 
-  <!-- Vendor JS Files -->
-  <script src="{{asset('landing')}}/assets/vendor/purecounter/purecounter.js"></script>
-  <script src="{{asset('landing')}}/assets/vendor/aos/aos.js"></script>
-  <script src="{{asset('landing')}}/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="{{asset('landing')}}/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="{{asset('landing')}}/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="{{asset('landing')}}/assets/vendor/php-email-form/validate.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="{{asset('landing')}}/assets/vendor/purecounter/purecounter.js"></script>
+    <script src="{{asset('landing')}}/assets/vendor/aos/aos.js"></script>
+    <script src="{{asset('landing')}}/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('landing')}}/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="{{asset('landing')}}/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="{{asset('landing')}}/assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="{{asset('landing')}}/assets/js/main.js"></script>
+    <!-- Template Main JS File -->
+    <script src="{{asset('landing')}}/assets/js/main.js"></script>
 
-</body>
-
+    </body>
 </html>

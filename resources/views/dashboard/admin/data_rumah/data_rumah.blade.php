@@ -22,11 +22,7 @@
     @endif --}}
 
     <div class="row">
-        <div class="col-md-6 mt-4">
-            <h1>Data Rumah</h1>
-        </div>
-
-      {{-- <div class="container mt-5"> --}}
+        <div class="col-md-6 mt-4"></div>
 
         <div class="form-group d-flex justify-content-between mt-3">
             <a href="{{ route('data_rumah.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg"></i>Tambah Data</a>

@@ -9,11 +9,10 @@ class Bobot extends Model
 {
     use HasFactory;
 
-    protected $table = "bobot";
+    protected $table = "tb_bobot";
     protected $fillable = [
-        'fasilitas',
-        'luas_tanah',
-        'luas_bangunan',
-        'harga',
+        'name_kriteria',
+        'attribut',
+        'bobot',
     ];
 }

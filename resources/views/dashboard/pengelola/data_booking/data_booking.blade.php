@@ -22,9 +22,7 @@
     @endif --}}
 
     <div class="row">
-        <div class="col-md-6 mt-4">
-            <h1>Data Booking Rumah</h1>
-        </div>
+        <div class="col-md-6 mt-4"></div>
 
         <div class="d-md-flex justify-content-md-end mt-3">
             <form action="/booking/search" method="GET">

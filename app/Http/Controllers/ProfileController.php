@@ -2,41 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Rumah;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-
-class DashboardController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public $rumah;
-    public $admin;
-    public $pengelola;
-    public $pengunjung;
-
-
     public function index()
     {
-        // $pengguna = User::count();
-        // $rumah = Rumah::count();
+        $user = User::where('id', Auth::user()->id)->first();
 
-        $rumah = DB::table('tb_rumah')->count();
-        // $pengguna = DB::table('users')->count();
-        $admin = DB::table('users')->where('level', '=', 'admin')->count();
-        $pengelola = DB::table('users')->where('level', '=', 'pengelola')->count();
-        $pengunjung = DB::table('users')->where('level', '=', 'user')->count();
-
-        // return view('dashboard', compact('pengguna','rumah'));
-        return view('dashboard.admin.dashboard', ['rumah'=>$rumah, 'admin'=>$admin, 'pengelola'=>$pengelola, 'pengunjung'=>$pengunjung, "title" => "Dashboard"]);
-
+        return view('dashboard.admin.profile.profile', compact('user'), [
+            "title" => "Profile"
+        ]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -87,9 +71,19 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateprofile(Request $request, $id)
     {
-        //
+        $user = $request->all();
+
+        $name = $request->input('name');
+        $username = $request->input('username');
+        // $user['password'] = bcrypt($request->password);
+        $ubah_profil = User::findOrFail($id);
+        $ubah_profil->name = $name;
+        $ubah_profil->username = $username;
+        $ubah_profil->save();
+
+        return redirect('profile')->with('toast_success', 'Data berhasil diubah');
     }
 
     /**

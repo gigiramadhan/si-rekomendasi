@@ -68,7 +68,7 @@
                                         <h5 class="card-title text-center pb-0 fs-4">Login</h5>
                                     </div>
 
-                                    <form class="row g-2 needs-validation" action="{{url('login')}}" method="post" novalidate>
+                                    <form class="row g-2 needs-validation" action="{{route('login.login')}}" method="post" novalidate>
 
                                         {{-- <form action="{{url('login')}}" method="post"> --}}
                                         @method('POST')

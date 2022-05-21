@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
+use App\Models\Kegiatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class EventController extends Controller
+class KegiatanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class EventController extends Controller
      */
     public function index(){
 
-        $event = Event::latest()->paginate(3);
+        $kegiatan = Kegiatan::latest()->paginate(3);
 
-        return view('dashboard.admin.kegiatan.kegiatan', compact('event'), [
+        return view('dashboard.admin.kegiatan.kegiatan', compact('kegiatan'), [
             "title" => "Kegiatan"
         ]);
     }
@@ -53,7 +53,7 @@ class EventController extends Controller
 
         $image->move(public_path('gambar'), $new_image);
 
-        Event::create($data);
+        Kegiatan::create($data);
 
         return redirect('kegiatan')->with('toast_success', 'Data berhasil ditambahkan');
     }
@@ -77,7 +77,7 @@ class EventController extends Controller
      */
     public function tampilkegiatan($id){
 
-        $data = Event::find($id);
+        $data = Kegiatan::find($id);
         // dd($data);
 
         return view('dashboard.admin.kegiatan.tampilkegiatan', compact('data'), [
@@ -92,7 +92,7 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateevent(Request $request, $id){
+    public function updatekegiatan(Request $request, $id){
 
         $image_lama = $request->old_image;
         $image_baru = $request->file('gambar');
@@ -108,7 +108,7 @@ class EventController extends Controller
             $image_baru->move(public_path('gambar'), $new_image);;
         }
 
-        $data = Event::find($id);
+        $data = Kegiatan::find($id);
         // $data->update($request->all());
 
         $data->update(array(
@@ -128,11 +128,11 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        $event = Event::find($id);
-        $image_path = public_path("gambar/{$event->gambar}");
+        $kegiatan = Kegiatan::find($id);
+        $image_path = public_path("gambar/{$kegiatan->gambar}");
         File::delete($image_path);
 
-        $event->delete();
+        $kegiatan->delete();
 
         return redirect('kegiatan')->with('toast_success', 'Data berhasil dihapus');
     }
@@ -140,13 +140,13 @@ class EventController extends Controller
     public function search(Request $request){
 
         if($request->has('search')){
-            $event = Event::where('judul', 'LIKE', '%'.$request->search.'%')->paginate();
+            $kegiatan = Kegiatan::where('judul', 'LIKE', '%'.$request->search.'%')->paginate();
         }
         else{
-            $event = Event::all();
+            $kegiatan = Kegiatan::all();
         }
 
-        return view('dashboard.admin.kegiatan.kegiatan', compact('event'));
+        return view('dashboard.admin.kegiatan.kegiatan', compact('kegiatan'));
     }
 
 

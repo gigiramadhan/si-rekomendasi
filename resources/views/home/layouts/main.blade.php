@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>SIREKPERUM | LAND GROUP</title>
+  <title>{{ $title }} | SIREKPERUM</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -30,47 +30,41 @@
 
 </head>
 
-<body>
-
-    <!-- ======= Header ======= -->
+    <body>
+    {{-- Header --}}
     <header id="header" class="fixed-top d-flex align-items-center">
         <div class="container d-flex align-items-center justify-content-between">
 
             <div class="logo">
                 <h1><a href="{{url('beranda')}}"><span>SIREKPERUM</span></a></h1>
-                <!-- Uncomment below if you prefer to use an image logo -->
-                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
 
     @include('home.layouts.navbar')
 
         </div>
-    </header><!-- End Header -->
+    </header>
     @yield('content')
 
+    <!-- Vendor JS Files -->
+    <script src="{{asset('landing')}}/assets/vendor/purecounter/purecounter.js"></script>
+    <script src="{{asset('landing')}}/assets/vendor/aos/aos.js"></script>
+    <script src="{{asset('landing')}}/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('landing')}}/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="{{asset('landing')}}/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="{{asset('landing')}}/assets/vendor/php-email-form/validate.js"></script>
 
+    <!-- Template Main JS File -->
+    <script src="{{asset('landing')}}/assets/js/main.js"></script>
 
-
-  <!-- Vendor JS Files -->
-  <script src="{{asset('landing')}}/assets/vendor/purecounter/purecounter.js"></script>
-  <script src="{{asset('landing')}}/assets/vendor/aos/aos.js"></script>
-  <script src="{{asset('landing')}}/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="{{asset('landing')}}/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="{{asset('landing')}}/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="{{asset('landing')}}/assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="{{asset('landing')}}/assets/js/main.js"></script>
-
-  <script>
-      let nav = document.getElementById('header')
-      window.addEventListener('scroll', function(){
-        if(document.documentElement.scrollTop === 0){
-            nav.classList.add('header-scrolled')
-        }
-      })
-  </script>
-
-</body>
-
+    </body>
 </html>
+
+    {{-- <script>
+        let nav = document.getElementById('header')
+        window.addEventListener('scroll', function(){
+            if(document.documentElement.scrollTop === 0){
+                nav.classList.add('header-scrolled')
+            }
+        })
+    </script> --}}
+

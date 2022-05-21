@@ -2,12 +2,12 @@
 
     @section('breadcrumb')
     <div class="pagetitle">
-        <h1>Bobot</h1>
+        <h1>Kriteria</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{url('dashboard')}}"><i class="bi bi-house-door"></i></a></li>
                     <li class="breadcrumb-item">Pages</li>
-                    <li class="breadcrumb-item active">Bobot</li>
+                    <li class="breadcrumb-item active">Kriteria</li>
                 </ol>
             </nav>
     </div>
@@ -23,14 +23,10 @@
     @endif --}}
 
     <div class="row">
-        <div class="col-md-6 mt-4">
-            <h1>Data Bobot</h1>
-        </div>
-
-      {{-- <div class="container mt-5"> --}}
+        <div class="col-md-6 mt-4"></div>
 
         <div class="form-group d-flex justify-content-between mt-3">
-            <a href="{{ route('bobot.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg"></i>Tambah Bobot</a>
+            <a href="{{ route('bobot.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg"></i>Tambah Kriteria</a>
 
             <form action="/bobot/search" class="form-inline" method="GET">
                 <div class="input-group">
@@ -50,10 +46,9 @@
                     <thead> --}}
                         <tr>
                             <th style="text-align: center">No</th>
-                            <th style="text-align: center">Fasilitas</th>
-                            <th style="text-align: center">Luas Tanah</th>
-                            <th style="text-align: center">Luas Bangunan</th>
-                            <th style="text-align: center">Harga</th>
+                            <th style="text-align: center">Nama Kriteria</th>
+                            <th style="text-align: center">Attribut</th>
+                            <th style="text-align: center">Bobot</th>
                             <th style="text-align: center">Aksi</th>
                         </tr>
                     </thead>
@@ -64,10 +59,9 @@
                         @foreach ($bobot as $index => $item)
                         <tr>
                             <td>{{ $index + $bobot->firstItem() }}</td>
-                            <td>{{ $item->fasilitas }}</td>
-                            <td>{{ $item->luas_tanah }}</td>
-                            <td>{{ $item->luas_bangunan }}</td>
-                            <td>{{ $item->harga }}</td>
+                            <td>{{ $item->name_kriteria }}</td>
+                            <td>{{ $item->attribut }}</td>
+                            <td>{{ $item->bobot }}</td>
 
                             <td>
                                 {{-- <a href="#" class="btn btn-danger delete mt-3" data-id="{{ $item->id }}"><i class="bi bi-trash"></i></a> --}}

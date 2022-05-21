@@ -20,7 +20,7 @@ class CreateTbRumahPengelolaTable extends Migration
             $table->string('alamat');
             $table->string('harga');
             $table->string('fasilitas');
-            $table->binary('gambar');
+            $table->string('gambar');
             $table->timestamps();
         });
     }

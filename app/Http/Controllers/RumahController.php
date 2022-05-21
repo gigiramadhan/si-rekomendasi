@@ -43,6 +43,9 @@ class RumahController extends Controller
      */
     public function store(Request $request)
     {
+        $fasilitasinput = $request->input('fasilitas');
+        $fasilitas = implode(', ', $fasilitasinput);
+
         $image = $request->file('gambar');
         $new_image = rand().'.'.$image->getClientOriginalExtension();
 
@@ -51,7 +54,7 @@ class RumahController extends Controller
             'nama_perumahan' => $request->nama_perumahan,
             'alamat' => $request->alamat,
             'harga' => $request->harga,
-            'fasilitas' => $request->fasilitas,
+            'fasilitas' => $fasilitas,
             'gambar' => $new_image,
         );
 
@@ -71,7 +74,7 @@ class RumahController extends Controller
     public function show($id)
     {
         $data = Rumah::find($id);
-
+        // dd($data);
         return view('dashboard.admin.data_rumah.showrumah', compact('data'), [
             "title" => "Detail Rumah"
         ]);
@@ -87,9 +90,12 @@ class RumahController extends Controller
 
         $data = Rumah::find($id);
         // dd($data);
-
+        // dd($data->fasilitas);
+        $fasilitas = explode(', ', $data->fasilitas);
+        // dd($fasilitas);
         return view('dashboard.admin.data_rumah.tampilrumah', compact('data'), [
-            "title" => "Edit Data Rumah"
+            "title" => "Edit Data Rumah",
+            'fasilitas' => $fasilitas
         ]);
     }
 
@@ -115,6 +121,12 @@ class RumahController extends Controller
             $image_baru->move(public_path('gambar'), $new_image);;
         }
 
+        $facility = $request->input('fasilitas');
+        $hasil = implode(', ', $facility);
+        // dd($request->input('fasilitas'));
+        // dd($data);
+        // dd($facility);
+
         $data = Rumah::find($id);
         // $data->update($request->all());
 
@@ -123,7 +135,7 @@ class RumahController extends Controller
             'nama_perumahan' => $request->nama_perumahan,
             'alamat' => $request->alamat,
             'harga' => $request->harga,
-            'fasilitas' => $request->fasilitas,
+            'fasilitas' => $hasil,
             'gambar' => $gambar
         ));
 

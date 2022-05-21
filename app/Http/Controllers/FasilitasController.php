@@ -14,7 +14,7 @@ class FasilitasController extends Controller
      */
     public function index(){
 
-        $fasilitas = Fasilitas::latest()->paginate(3);
+        $fasilitas = Fasilitas::latest()->paginate(7);
 
         return view('dashboard.pengelola.fasilitas.fasilitas', compact('fasilitas'), [
             "title" => "Fasilitas"

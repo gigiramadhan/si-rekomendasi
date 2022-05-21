@@ -12,7 +12,7 @@
             </nav>
     </div>
 
-    <section class="section berita">
+    <section class="section kegiatan">
         @yield('content')
     </section>
 
@@ -23,13 +23,9 @@
     @endif --}}
 
     <div class="row">
-        <div class="col-md-6 mt-4">
-            <h1>Data Kegiatan</h1>
-        </div>
+        <div class="col-md-6 mt-4"></div>
 
-      {{-- <div class="container mt-5"> --}}
-
-        <div class="form-group d-flex justify-content-between mt-3">
+        <div class="form-group d-flex justify-content-between mt-4">
             <a href="{{ route('kegiatan.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg"></i>Tambah Data</a>
 
             <form action="/kegiatan/search" class="form-inline" method="GET">
@@ -62,29 +58,28 @@
                         @php
                             $increment = 1;
                         @endphp
-                        @if ($event != null)
-                            @foreach ($event as $index => $item)
-                            <tr>
-                                <td style="text-align: center">{{ $index + $event->firstItem() }}</td>
-                                <td style="text-align: left">{{ $item->judul }}</td>
-                                <td style="text-align: left">{!! $item->deskripsi !!}</td>
-                                <td><img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" width="130px"></td>
-                                <td style="text-align: left">{{ $item->created_at }}</td>
-                                <td style="text-align: left">{{ $item->updated_at }}</td>
+                            @if ($kegiatan != null)
+                                @foreach ($kegiatan as $index => $item)
+                                <tr>
+                                    <td style="text-align: center">{{ $index + $kegiatan->firstItem() }}</td>
+                                    <td style="text-align: left">{{ $item->judul }}</td>
+                                    <td style="text-align: left">{!! $item->deskripsi !!}</td>
+                                    <td><img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" width="130px"></td>
+                                    <td style="text-align: left">{{ $item->created_at }}</td>
+                                    <td style="text-align: left">{{ $item->updated_at }}</td>
 
-                                <td>
-                                    {{-- <a href="#" class="btn btn-danger delete mt-3" data-id="{{ $item->id }}"><i class="bi bi-trash"></i></a> --}}
-                                    <form class="d-flex justify-content-center gap-2" action="{{ route('kegiatan.destroy', $item->id) }}" method="get">
-                                        <a href="/tampilkegiatan/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
-                                        @csrf
-                                        @method('get')
-                                        <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        @else
-                            ini
+                                    <td>
+                                        {{-- <a href="#" class="btn btn-danger delete mt-3" data-id="{{ $item->id }}"><i class="bi bi-trash"></i></a> --}}
+                                        <form class="d-flex justify-content-center gap-2" action="{{ route('kegiatan.destroy', $item->id) }}" method="get">
+                                            <a href="/tampilkegiatan/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                            @csrf
+                                            @method('get')
+                                            <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            @else
                         @endif
                     </tbody>
                 </table>
@@ -92,16 +87,16 @@
                     <div class="form-group d-flex justify-content-between mt-3">
                         <div>
                             Showing
-                            {{ $event->firstItem() }}
+                            {{ $kegiatan->firstItem() }}
                             to
-                            {{ $event->lastItem() }}
+                            {{ $kegiatan->lastItem() }}
                             of
-                            {{ $event->total() }}
+                            {{ $kegiatan->total() }}
                             entries
                         </div>
 
                         <div class="pull-right">
-                            {{ $event->links() }}
+                            {{ $kegiatan->links() }}
                         </div>
                     </div>
             </div>

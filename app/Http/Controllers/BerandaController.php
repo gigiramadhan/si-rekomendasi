@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Berita;
-use App\Models\Event;
+use App\Models\Kegiatan;
 use Illuminate\Http\Request;
 
 class BerandaController extends Controller
@@ -15,8 +15,8 @@ class BerandaController extends Controller
      */
     public function index(){
 
-        $event = Event::take(5)->get()->sortByDesc('created_at');
-        $berita = Berita::take(5)->get()->sortByDesc('created_at');
+        $event = Kegiatan::take(3)->get()->sortByDesc('created_at');
+        $berita = Berita::take(3)->get()->sortByDesc('created_at');
 
         return view('landing.beranda', [
             'event' => $event,

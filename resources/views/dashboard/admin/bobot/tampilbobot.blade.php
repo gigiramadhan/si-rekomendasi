@@ -13,23 +13,22 @@
                 @csrf
 
                     <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="fasilitas">Fasilitas</label>
-                        <input type="number" min="0" name="fasilitas" class="form-control mt-3" value="{{ $data->fasilitas }}">
+                        <label for="name_kriteria">Nama Kriteria</label>
+                        <input type="text" name="name_kriteria" class="form-control mt-3" value="{{ $data->name_kriteria }}">
                     </div>
 
                     <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="luas_tanah">Luas Tanah</label>
-                        <input type="number" min="0" name="luas_tanah" class="form-control mt-3" value="{{ $data->luas_tanah }}">
+                        <label class="form-label mb-3">Attribut</label>
+                        <select name="attribut" class="form-select" aria-label="Default select example">
+                            <option selected>{{ $data->attribut }}</option><br>
+                            <option value="Benefit">Benefit</option>
+                            <option value="Cost">Cost</option>
+                        </select>
                     </div>
 
                     <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="luas_bangunan">Luas Bangunan</label>
-                        <input type="number" min="0" name="luas_bangunan" class="form-control mt-3" value="{{ $data->luas_bangunan }}">
-                    </div>
-
-                    <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="harga">Harga</label>
-                        <input type="number" min="0" name="harga" class="form-control mt-3" value="{{ $data->harga }}">
+                        <label for="bobot">Bobot</label>
+                        <input type="number" min="0" name="bobot" class="form-control mt-3" value="{{ $data->bobot }}">
                     </div>
 
                     <div class="form-group d-flex justify-content-between">
