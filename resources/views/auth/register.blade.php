@@ -33,105 +33,105 @@
 
 <body>
 
-<main>
-<div class="container">
-
-    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+    <main>
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
-                    <div class="d-flex justify-content-center py-4">
-                        <a href="index.html" class="logo d-flex align-items-center w-auto">
-                        <img src="assets/img/logo.png" alt="">
-                        <span class="d-none d-lg-block">SiRekPerum</span>
-                        </a>
-                    </div><!-- End Logo -->
+            <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
-                    <div class="card mb-3">
-
-                        <div class="card-body">
-
-                            <div class="pt-4 pb-4">
-                                <h5 class="card-title text-center pb-0 fs-4">Form Registration</h5>
+                            <div class="d-flex justify-content-center py-4">
+                                <a href="index.html" class="logo d-flex align-items-center w-auto">
+                                <img src="assets/img/logo.png" alt="">
+                                <span class="d-none d-lg-block">SiRekPerum</span>
+                                </a>
                             </div>
 
-                            <form class="row g-2 needs-validation" action="{{ route('simpanregistrasi') }}" method="post">
+                            <div class="card mb-3">
 
-                            {{-- <form action="{{url('register')}}" method="post"> --}}
-                            @method('POST')
-                            @csrf
+                                <div class="card-body">
 
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" name="name" class="form-control @error('name') @enderror" id="name" placeholder="Name" required value="{{ old('name') }}">
-                                        <label for="name">Name</label>
-                                        @error('name')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
+                                    <div class="pt-4 pb-4">
+                                        <h5 class="card-title text-center pb-0 fs-4">Form Registration</h5>
+                                    </div>
+
+                                    <form class="row g-2 needs-validation" action="{{ route('simpanregistrasi') }}" method="post">
+
+                                    {{-- <form action="{{url('register')}}" method="post"> --}}
+                                    @method('POST')
+                                    @csrf
+
+                                        <div class="col-12">
+                                            <div class="form-floating">
+                                                <input type="text" name="name" class="form-control @error('name') @enderror" id="name" placeholder="Name" required value="{{ old('name') }}">
+                                                <label for="name">Name</label>
+                                                @error('name')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
-                                        @enderror
-                                    </div>
-                                </div>
+                                        </div>
 
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" name="username" class="form-control @error('username') @enderror" id="username" placeholder="Username" required value="{{ old('username') }}">
-                                        <label for="username">Username</label>
-                                        @error('username')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
+                                        <div class="col-12">
+                                            <div class="form-floating">
+                                                <input type="text" name="username" class="form-control @error('username') @enderror" id="username" placeholder="Username" required value="{{ old('username') }}">
+                                                <label for="username">Username</label>
+                                                @error('username')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
-                                        @enderror
-                                    </div>
-                                </div>
+                                        </div>
 
-                                {{-- <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" name="level" class="form-control" id="level" value="Pengguna" class="form-control"readonly>
-                                        <label for="level">Level</label>
-                                    </div>
-                                </div> --}}
-
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="email" name="email" class="form-control @error('email') @enderror" id="email" placeholder="name@example.com" required value="{{ old('email') }}">
-                                        <label for="email">Email address</label>
-                                        @error('email')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
+                                        {{-- <div class="col-12">
+                                            <div class="form-floating">
+                                                <input type="text" name="level" class="form-control" id="level" value="Pengguna" class="form-control"readonly>
+                                                <label for="level">Level</label>
                                             </div>
-                                        @enderror
-                                    </div>
-                                </div>
+                                        </div> --}}
 
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="password" name="password" class="form-control @error('password') @enderror" id="password" placeholder="Password" required value="{{ old('password') }}">
-                                        <label for="password">Password</label>
-                                        @error('password')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
+                                        <div class="col-12">
+                                            <div class="form-floating">
+                                                <input type="email" name="email" class="form-control @error('email') @enderror" id="email" placeholder="name@example.com" required value="{{ old('email') }}">
+                                                <label for="email">Email address</label>
+                                                @error('email')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
-                                        @enderror
-                                    </div>
-                                </div>
+                                        </div>
 
-                                <div class="col-12 mt-4">
-                                    <button class="btn btn-primary w-100" type="submit">Register</button>
+                                        <div class="col-12">
+                                            <div class="form-floating">
+                                                <input type="password" name="password" class="form-control @error('password') @enderror" id="password" placeholder="Password" required value="{{ old('password') }}">
+                                                <label for="password">Password</label>
+                                                @error('password')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 mt-4">
+                                            <button class="btn btn-primary w-100" type="submit">Register</button>
+                                        </div>
+                                        <div class="col-12">
+                                            <p class="small mb-0 d-block text-center">All ready registred <a href="{{url('login')}}">Login</a></p>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="col-12">
-                                    <p class="small mb-0 d-block text-center">All ready registred <a href="{{url('login')}}">Login</a></p>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
-    </section>
-</div>
-</main><!-- End #main -->
+    </main>
 
   <!-- Vendor JS Files -->
   <script src="{{ asset('adashboard') }}/assets/vendor/apexcharts/apexcharts.min.js"></script>

@@ -93,6 +93,7 @@
                     <div class="form-group d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary mt-5">Submit</button>
                         <a href="/data_rumah" class="btn btn-secondary mt-5">Close</a>
+                    </div>
                 </form>
             </div>
         </div>

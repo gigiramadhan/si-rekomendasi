@@ -11,9 +11,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfilePengelolaController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RumahController;
 use App\Http\Controllers\RumahPengelolaController;
+use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TransaksiController;
 
 /*
@@ -54,8 +56,13 @@ use App\Http\Controllers\TransaksiController;
     //     ]);
     // });
 
+// Profile
     Route::get('profile', [ProfileController::class, 'index'])->name('profile');
     Route::post('/updateprofile/{id}', [ProfileController::class, 'updateprofile'])->name('updateprofile');
+
+    Route::get('profile_pengelola', [ProfilePengelolaController::class, 'index'])->name('profile_pengelola');
+    Route::post('/updateprofilepengelola/{id}', [ProfilePengelolaController::class, 'updateprofilepengelola'])->name('updateprofilepengelola');
+
 
 // Login
     Route::get('registrasi', [LoginController::class, 'registrasi'])->name('registrasi');
@@ -134,6 +141,7 @@ Route::group(['middleware' => ['auth','ceklevel:pengelola']], function () {
     // Route::resource('data_booking', BookingController::class);
     Route::get('data_booking', [BookingController::class, 'index'])->name('data_booking');
     Route::get('/booking/search', [BookingController::class, 'search']);
+    Route::get('/data_booking/destroy/{id}', [BookingController::class, 'destroy'])->name('data_booking.destroy');
     // Route::resource('data_transaksi', TransaksiController::class);
     Route::get('data_transaksi', [TransaksiController::class, 'index'])->name('data_transaksi');
     Route::get('/transaksi/search', [TransaksiController::class, 'search']);
@@ -151,9 +159,33 @@ Route::group(['middleware' => ['auth','ceklevel:pengelola']], function () {
 
 // Rekomendasi
     Route::get('rekomendasi', function () {
-        return view('rekomendasi.rekomendasi', [
+        return view('sirekomendasi.rekomendasi.rekomendasi', [
             "title" => "Rekomendasi"
         ]);
     });
+
+
+// Booking
+    Route::post('booking/store', [BookingController::class, 'store'])->name('booking.store');
+    Route::get('booking/create', [BookingController::class, 'create'])->name('booking.create');
+    Route::post('/updatebooking/{id}', [BookingController::class, 'updatebooking'])->name('updatebooking');
+
+    // Route::get('booking', function () {
+    //     return view('sirekomendasi.booking.create', [
+    //         "title" => "Booking"
+    //     ]);
+    // });
+
+    Route::get('hasil', function () {
+        return view('sirekomendasi.rekomendasi.hasil', [
+            "title" => "Rekomendasi"
+        ]);
+    });
+
+
+// Status Booking
+    Route::get('status', [StatusController::class, 'index'])->name('status');
+
+
 
 

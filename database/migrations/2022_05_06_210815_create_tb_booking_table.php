@@ -17,9 +17,9 @@ class CreateTbBookingTable extends Migration
             $table->id();
             $table->string('name_booking');
             $table->string('no_telp');
-            $table->dateTime('date_booking');
-            $table->binary('upload_booking');
-            $table->string('status_booking');
+            $table->string('date_booking');
+            $table->string('upload_booking');
+            $table->string('status_booking')->default('0');
             $table->timestamps();
         });
     }

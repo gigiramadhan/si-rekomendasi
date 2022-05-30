@@ -29,12 +29,6 @@
   <!-- Template Main CSS File -->
   <link href="{{ asset('adashboard') }}/assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: NiceAdmin - v2.2.2
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -52,7 +46,7 @@
                                     <img src="assets/img/logo.png" alt="">
                                     <span class="d-none d-lg-block">SiRekPerum</span>
                                 </a>
-                            </div><!-- End Logo -->
+                            </div>
 
                             <div class="card mb-3">
                                 <div class="card-body">
@@ -102,7 +96,7 @@
                 </div>
             </section>
         </div>
-    </main><!-- End #main -->
+    </main>
 
   <!-- Vendor JS Files -->
   <script src="{{ asset('adashboard') }}/assets/vendor/apexcharts/apexcharts.min.js"></script>

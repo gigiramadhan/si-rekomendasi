@@ -87,7 +87,7 @@
 
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span class="text-secondary">Land Group Indramayu</span></strong>
+            &copy; Copyright 2021-2022 | <strong><span class="text-secondary">Land Group Indramayu</span></strong>
         </div>
     </footer>
 

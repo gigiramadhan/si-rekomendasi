@@ -57,26 +57,44 @@
                         @foreach ($booking as $index => $item)
                             <tr>
                                 <td style="text-align: center">{{ $index + $booking->firstItem() }}</td>
-                                <td style="text-align: left">{{ $item->name_booking }}</td>
-                                <td style="text-align: left">{{ $item->no_telp }}</td>
-                                <td style="text-align: left">{{ $item->date_booking }}</td>
-                                <td style="text-align: left">{{ $item->upload_booking }}</td>
-                                <td style="text-align: left">{{ $item->status_booking }}</td>
+                                <td style="text-align: center">{{ $item->name_booking }}</td>
+                                <td style="text-align: center">{{ $item->no_telp }}</td>
+                                <td style="text-align: center">{{ $item->date_booking }}</td>
+                                <td style="text-align: center"><img src="{{ URL::to('/') }}/gambar/{{ $item->upload_booking }}" width="130px"></td>
+                                {{-- <td style="text-align: center">{{ $item->status_booking }}</td> --}}
+                                <td style="text-align: center">
+                                    @if ($item->status_booking != '0')
+                                        <button disabled = "disabled" class="btn btn-primary"><i class="bi bi-check-square"></i></button>
+                                        <button disabled = "disabled" class="btn btn-danger"><i class="bi bi-x-square"></i></button>
+                                    @else
+                                        <form style="margin-bottom: 20px" action="/updatebooking/{{ $item->id }}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('post')
+                                            <input type="hidden" value="1" name="status_booking">
+                                            <button type="submit" class="btn btn-primary"><i class="bi bi-check-square"></i></button>
+                                        </form>
+                                        <form style="margin-bottom: 20px" action="/updatebooking/{{ $item->id }}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('post')
+                                            <input type="hidden" value="2" name="status_booking">
+                                            <button type="submit" class="btn btn-danger"><i class="bi bi-x-square"></i></button>
+                                        </form>
+                                    @endif
+                                </td>
 
-                                <td>
-                                    <form class="d-flex align-items-center gap-2" action="{{ route('data_booking.destroy', $item->id) }}" method="get">
+                                <td style="text-align: center">
+                                    <form action="{{ route('data_booking.destroy', $item->id) }}" method="get">
                                         @csrf
                                         @method('get')
                                         <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>
-                            @endforeach
-                        @else
-
-                        @endif
-                    </tbody>
-                </table>
+                        @endforeach
+                    @else
+                    @endif
+                </tbody>
+            </table>
 
             <div class="form-group d-flex justify-content-between mt-3">
                 <div>
@@ -95,7 +113,7 @@
             </div>
         </div>
     </div>
-    @include('sweetalert::alert')
+    {{-- @include('sweetalert::alert') --}}
 @endsection
 
     {{-- <script src="sweetalert2.all.min.js"></script>

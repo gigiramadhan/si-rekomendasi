@@ -55,7 +55,7 @@
             <div class="col-lg-7 pt-5 pt-lg-5 order-2 order-lg-2 d-flex align-items-center">
                 <div data-aos="zoom-out">
                     <h1>Welcome to Sistem Rekomendasi Pemilihan Perumahan</h1>
-                    <h2>Visionary Masterpieces Patriot Sayma Land (Cluster Sultan Regency, Sultan Estate, and Pesona Citra Residence).</h2>
+                    <h2 class="fs-6">Visionary Masterpieces Patriot Sayma Land Group (Cluster Sultan Regency, Sultan Estate, and Pesona Citra Residence).</h2>
                     <div class="text-center text-lg-start">
                         <a href="{{ route('login.index') }}" class="btn-get-started scrollto">Get Started</a>
                     </div>
@@ -343,7 +343,7 @@
 
     <div class="container footer-bottom clearfix">
         <div class="copyright">
-            &copy; Copyright 2021-2022 <strong><span>Land Group Indramayu.</span></strong>
+            &copy; Copyright 2021-2022 | <strong><span>Land Group Indramayu.</span></strong>
         </div>
     </div>
     </footer>

@@ -36,5 +36,12 @@
                 <span>Fasilitas</span>
             </a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link {{ Request::is('profile_pengelola*') ? 'active' : 'collapsed' }}" href="{{url('profile_pengelola')}}">
+                <i class="bi bi-person"></i>
+                <span>Profile</span>
+            </a>
+        </li>
     </ul>
   </aside>
