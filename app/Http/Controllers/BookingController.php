@@ -68,7 +68,11 @@ class BookingController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Booking::find($id);
+        // dd($data);
+        return view('dashboard.pengelola.data_booking.showbooking', compact('data'), [
+            "title" => "Detail Booking"
+        ]);
     }
 
     /**

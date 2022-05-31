@@ -13,7 +13,7 @@ class CreateBobotTable extends Migration
      */
     public function up()
     {
-        Schema::create('bobot', function (Blueprint $table) {
+        Schema::create('tb_bobot', function (Blueprint $table) {
             $table->id();
             $table->string('name_kriteria');
             $table->string('attribut');
@@ -29,6 +29,6 @@ class CreateBobotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bobot');
+        Schema::dropIfExists('tb_bobot');
     }
 }

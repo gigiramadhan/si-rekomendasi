@@ -1,6 +1,6 @@
 @extends('sirekomendasi.layouts.main')
 
-<section id="status" class="status">
+<section class="section">
     <div class="container">
         <div class="row mt-4">
             <div class="card mb-4 mt-4">

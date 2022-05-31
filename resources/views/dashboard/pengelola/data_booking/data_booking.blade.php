@@ -83,7 +83,8 @@
                                 </td>
 
                                 <td style="text-align: center">
-                                    <form action="{{ route('data_booking.destroy', $item->id) }}" method="get">
+                                    <form class="gap-2" action="{{ route('data_booking.destroy', $item->id) }}" method="get">
+                                        <a href="/showbooking/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
                                         @csrf
                                         @method('get')
                                         <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>

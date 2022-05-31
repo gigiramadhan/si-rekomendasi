@@ -16,7 +16,6 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RumahController;
 use App\Http\Controllers\RumahPengelolaController;
 use App\Http\Controllers\StatusController;
-use App\Http\Controllers\TransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -143,8 +142,8 @@ Route::group(['middleware' => ['auth','ceklevel:pengelola']], function () {
     Route::get('/booking/search', [BookingController::class, 'search']);
     Route::get('/data_booking/destroy/{id}', [BookingController::class, 'destroy'])->name('data_booking.destroy');
     // Route::resource('data_transaksi', TransaksiController::class);
-    Route::get('data_transaksi', [TransaksiController::class, 'index'])->name('data_transaksi');
-    Route::get('/transaksi/search', [TransaksiController::class, 'search']);
+    // Route::get('data_transaksi', [TransaksiController::class, 'index'])->name('data_transaksi');
+    // Route::get('/transaksi/search', [TransaksiController::class, 'search']);
     // Route::resource('fasilitas', FasilitasController::class);
     Route::get('fasilitas', [FasilitasController::class, 'index'])->name('fasilitas');
     Route::post('fasilitas/store', [FasilitasController::class, 'store'])->name('fasilitas.store');
@@ -169,6 +168,7 @@ Route::group(['middleware' => ['auth','ceklevel:pengelola']], function () {
     Route::post('booking/store', [BookingController::class, 'store'])->name('booking.store');
     Route::get('booking/create', [BookingController::class, 'create'])->name('booking.create');
     Route::post('/updatebooking/{id}', [BookingController::class, 'updatebooking'])->name('updatebooking');
+    Route::get('/showbooking/{id}', [BookingController::class, 'show'])->name('data_booking.showbooking');
 
     // Route::get('booking', function () {
     //     return view('sirekomendasi.booking.create', [

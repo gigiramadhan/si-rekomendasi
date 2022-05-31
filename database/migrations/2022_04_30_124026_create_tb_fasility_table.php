@@ -13,7 +13,7 @@ class CreateTbFasilityTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_fasility', function (Blueprint $table) {
+        Schema::create('tb_fasilitas', function (Blueprint $table) {
             $table->id();
             $table->string('name_fasility');
             $table->string('keterangan');
@@ -28,6 +28,6 @@ class CreateTbFasilityTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_fasility');
+        Schema::dropIfExists('tb_fasilitas');
     }
 }
