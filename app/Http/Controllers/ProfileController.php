@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -95,5 +96,25 @@ class ProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function ubah_password(Request $request, $id)
+    {
+        $request->validate([
+            'password_lama' => 'required|min:8',
+            'password_baru' => 'required|min:8|confirmed',
+            'password_baru_confirmation' => 'required|min:8'
+        ]);
+
+        $user = User::select('id','password')->whereId($id)->firstOrFail();
+        if (Hash::check($request->password_lama, $user->password)) {
+            $user->update(['password' => Hash::make($request->password_baru)]);
+
+            return redirect('profile')->with('toast_success', 'Password berhasil diubah');
+
+        } else {
+            return redirect()->back()->with('gagal', '<small class="text-danger">Password lama anda salah</small>');
+        }
+
     }
 }

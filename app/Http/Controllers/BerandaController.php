@@ -21,6 +21,7 @@ class BerandaController extends Controller
         return view('landing.beranda', [
             'event' => $event,
             'berita' => $berita,
+            "title" => "SIREKPERUM"
         ]);
     }
 

@@ -58,9 +58,11 @@ use App\Http\Controllers\StatusController;
 // Profile
     Route::get('profile', [ProfileController::class, 'index'])->name('profile');
     Route::post('/updateprofile/{id}', [ProfileController::class, 'updateprofile'])->name('updateprofile');
+    Route::post('/ubah_password/{id}', [ProfileController::class, 'ubah_password'])->name('ubah_password');
 
     Route::get('profile_pengelola', [ProfilePengelolaController::class, 'index'])->name('profile_pengelola');
     Route::post('/updateprofilepengelola/{id}', [ProfilePengelolaController::class, 'updateprofilepengelola'])->name('updateprofilepengelola');
+    Route::post('/ubah_password/{id}', [ProfilePengelolaController::class, 'ubah_password'])->name('ubah_password');
 
 
 // Login

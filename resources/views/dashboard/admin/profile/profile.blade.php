@@ -19,7 +19,7 @@
         <div class="card mt-4">
             <div class="card-body">
                 <h5 class="card-title">Profile Details</h5>
-                <form action="{{ route('updateprofile', $user->id) }}" method="POST">
+                <form action="{{ route('updateprofile', $user->id) }}" method="POST" enctype="multipart/form-data">
                     @method('POST')
                     @csrf
 
@@ -73,35 +73,45 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Change Password</h5>
+                    <form action="{{ route('ubah_password', $user->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('POST')
                         <div class="row mt-2 mb-3">
-                            <label for="password" class="col-md-4 col-lg-3 col-form-label text-primary">Password Lama</label>
+                            <label for="password_lama" class="col-md-4 col-lg-3 col-form-label text-primary">Password Lama</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="password" type="password" class="form-control" id="password">
+                                <input name="password_lama" type="password" class="form-control" id="password_lama">
+                            @error('password_lama')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                            {!! session('gagal') !!}
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-lg-3 col-form-label text-primary">Password Baru</label>
+                            <label for="password_baru" class="col-md-4 col-lg-3 col-form-label text-primary">Password Baru</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="password" type="password" class="form-control" id="password">
+                                <input name="password_baru" type="password" class="form-control" id="password_baru">
+                            @error('password_baru')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-lg-3 col-form-label text-primary">Konfirmasi Password</label>
+                            <label for="password_baru_confirmation" class="col-md-4 col-lg-3 col-form-label text-primary">Konfirmasi Password</label>
                             <div class="col-md-8 col-lg-9">
-                                <input name="password" type="password" class="form-control" id="password">
+                                <input name="password_baru_confirmation" type="password" class="form-control" id="password_baru_confirmation">
+                            @error('password_baru_confirmation')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                             </div>
                         </div>
 
                         <div class="d-md-flex justify-content-md-end mt-4">
                             <button type="submit" class="btn btn-outline-primary">Save Change</button>
                         </div>
-                </form>
+                    </form>
             </div>
         </div>
         @include('sweetalert::alert')
     @endsection
-
-
-
