@@ -71,8 +71,8 @@
                 </div>
 
                 <div class="form-group d-flex justify-content-between">
-                    <button type="submit" class="btn btn-success mt-5">Update</button>
-                    <a href="/berita" class="btn btn-secondary mt-5">Close</a>
+                    <button type="submit" class="btn btn-success mt-5">Update<i class="bi bi-arrow-repeat ms-2"></i></button>
+                    <a href="/berita" class="btn btn-secondary mt-5">Close<i class="bi bi-x-lg ms-2"></i></a>
                 </form>
             </div>
         </div>

@@ -13,7 +13,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th style="text-align: center">No</th>
-                                <th style="text-align: center">Nama</th>
+                                <th style="text-align: center">Nama Lengkap</th>
                                 <th style="text-align: center">No Handphone</th>
                                 <th style="text-align: center">Tanggal Booking</th>
                                 <th style="text-align: center">Bukti Booking</th>

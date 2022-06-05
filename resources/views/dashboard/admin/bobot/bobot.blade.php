@@ -26,7 +26,7 @@
         <div class="col-md-6 mt-4"></div>
 
         <div class="form-group d-flex justify-content-between mt-3">
-            <a href="{{ route('bobot.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg"></i>Tambah Kriteria</a>
+            <a href="{{ route('bobot.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg me-2"></i>Tambah Kriteria</a>
 
             <form action="/bobot/search" class="form-inline" method="GET">
                 <div class="input-group">

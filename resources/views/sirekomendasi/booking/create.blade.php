@@ -43,7 +43,7 @@
                             </div>
 
                             <div class="form-group d-flex justify-content-md-end mt-4">
-                                <a href="/hasil" class="btn btn-outline-secondary rounded-pill fw-bold mt-2"><i class="bi bi-arrow-left me-2"></i>Close</a>
+                                <a href="/hasil" class="btn btn-outline-secondary rounded-pill fw-bold mt-2">Close<i class="bi bi-x-lg ms-2"></i></a>
                                 <button  type="submit" class="btn btn-outline-primary rounded-pill fw-bold mt-2 ms-4">Submit<i class="bi bi-check2-square ms-2"></i></button>
                             </div>
                         </form>

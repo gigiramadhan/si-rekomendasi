@@ -52,7 +52,7 @@
                 </div>
 
                 <div class="form-group">
-                    <a href="/data_booking" class="btn btn-secondary mt-5 mb-4 ms-4"><i class="bi bi-arrow-left"></i>Kembali</a>
+                    <a href="/data_booking" class="btn btn-secondary mt-5 mb-4 ms-4"><i class="bi bi-arrow-left me-2"></i>Kembali</a>
                 </div>
             </div>
         </div>

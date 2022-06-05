@@ -40,8 +40,13 @@
                 <h1><a><span>SIREKPERUM</span></a></h1>
             </div>
 
+            @if (Request::is('rekomendasi', 'profile_user') ? 'active' : '')
+                @include('sirekomendasi.layouts.navbar')
+            @endif
+
         </div>
     </header>
+
 
     <!-- Vendor JS Files -->
     <script src="{{asset('landing')}}/assets/vendor/purecounter/purecounter.js"></script>

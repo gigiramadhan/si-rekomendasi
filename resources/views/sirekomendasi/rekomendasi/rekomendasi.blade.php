@@ -10,8 +10,8 @@
                         <h2 class="fs-6">Visionary Masterpieces Patriot Sayma Land Group (Cluster Sultan Regency, Sultan Estate, and Pesona Citra Residence).</h2>
                     </div>
                     <div class="text-center text-lg-start">
-                        <a href="{{ url('/') }}" class="btn-get-started scrollto"><i class="bi bi-arrow-left me-2"></i>Kembali</a>
-                        <a href="{{ route('status') }}" class="btn-get-started scrollto ms-4">Cek Status Booking</a>
+                        {{-- <a href="{{ url('/') }}" class="btn-get-started scrollto"><i class="bi bi-arrow-left me-2"></i>Kembali</a> --}}
+                        <a href="{{ route('status') }}" class="btn-get-started scrollto">Cek Status Booking</a>
                     </div>
                 </div>
             </div>

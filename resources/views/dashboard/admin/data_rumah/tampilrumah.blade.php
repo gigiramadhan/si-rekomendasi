@@ -39,15 +39,6 @@
                     <input type="number" name="harga" class="form-control mt-3" value="{{ $data->harga }}">
                 </div>
 
-                {{-- <div class="form-group mb-3 mt-3 fw-bold">
-                    <label class="form-label mb-3">Fasilitas</label>
-                    <select name="fasilitas" class="form-select" aria-label="Default select example">
-                        <option selected>{{ $data->fasilitas }}</option><br>
-                        <option value="Paket 1">Paket 1</option>
-                        <option value="Paket 2">Paket 2</option>
-                    </select>
-                </div> --}}
-
                 <div class="row mb-3 mt-3">
                     <label class="form-label mb-3 fw-bold" for="fasilitas">Fasilitas</label>
                     <div class="ms-4">
@@ -57,8 +48,7 @@
                                     @if ($value == '1 Gate System')
                                         checked
                                     @endif
-                                @endforeach
-                            >
+                                @endforeach>
                             <label class="form-check-label" for="fasilitas">1 Gate System</label>
                         </div>
                         <div class="form-check">
@@ -67,8 +57,7 @@
                                     @if ($value == 'Satpam')
                                         checked
                                     @endif
-                                @endforeach
-                            >
+                                @endforeach>
                             <label class="form-check-label" for="fasilitas">Satpam</label>
                         </div>
                         <div class="form-check">
@@ -77,8 +66,7 @@
                                     @if ($value == 'CCTV')
                                         checked
                                     @endif
-                                @endforeach
-                            >
+                                @endforeach>
                             <label class="form-check-label" for="fasilitas">CCTV</label>
                         </div>
                         <div class="form-check">
@@ -87,8 +75,7 @@
                                     @if ($value == 'Musholla')
                                         checked
                                     @endif
-                                @endforeach
-                            >
+                                @endforeach>
                             <label class="form-check-label" for="fasilitas">Musholla</label>
                         </div>
                         <div class="form-check">
@@ -97,8 +84,7 @@
                                     @if ($value == 'Kolam Renang')
                                         checked
                                     @endif
-                                @endforeach
-                            >
+                                @endforeach>
                             <label class="form-check-label" for="fasilitas">Kolam Renang</label>
                         </div>
                         <div class="form-check">
@@ -107,8 +93,7 @@
                                     @if ($value == 'Taman')
                                         checked
                                     @endif
-                                @endforeach
-                            >
+                                @endforeach>
                             <label class="form-check-label" for="fasilitas">Taman</label>
                         </div>
                         <div class="form-check">
@@ -117,8 +102,7 @@
                                     @if ($value == 'RTH')
                                         checked
                                     @endif
-                                @endforeach
-                            >
+                                @endforeach>
                             <label class="form-check-label" for="fasilitas">RTH</label>
                         </div>
                     </div>
@@ -138,8 +122,8 @@
                 </div>
 
                 <div class="form-group d-flex justify-content-between">
-                    <button type="submit" class="btn btn-success mt-5">Update</button>
-                    <a href="/data_rumah" class="btn btn-secondary mt-5">Close</a>
+                    <button type="submit" class="btn btn-success mt-5">Update<i class="bi bi-arrow-repeat ms-2"></i></button>
+                    <a href="/data_rumah" class="btn btn-secondary mt-5">Close<i class="bi bi-x-lg ms-2"></i></a>
                 </form>
             </div>
         </div>

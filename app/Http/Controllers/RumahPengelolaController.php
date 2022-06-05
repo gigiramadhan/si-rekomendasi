@@ -42,6 +42,9 @@ class RumahPengelolaController extends Controller
      */
     public function store(Request $request)
     {
+        $fasilitasinput = $request->input('fasilitas');
+        $fasilitas = implode(', ', $fasilitasinput);
+
         $image = $request->file('gambar');
         $new_image = rand().'.'.$image->getClientOriginalExtension();
 
@@ -50,7 +53,7 @@ class RumahPengelolaController extends Controller
             'nama_perumahan' => $request->nama_perumahan,
             'alamat' => $request->alamat,
             'harga' => $request->harga,
-            'fasilitas' => $request->fasilitas,
+            'fasilitas' => $fasilitas,
             'gambar' => $new_image,
         );
 
@@ -87,9 +90,11 @@ class RumahPengelolaController extends Controller
 
         $data = RumahPengelola::find($id);
         // dd($data);
+        $fasilitas = explode(', ', $data->fasilitas);
 
         return view('dashboard.pengelola.data_rumah.tampilrumahpengelola', compact('data'), [
-            "title" => "Edit Data Rumah"
+            "title" => "Edit Data Rumah",
+            'fasilitas' => $fasilitas
         ]);
     }
 
@@ -115,6 +120,9 @@ class RumahPengelolaController extends Controller
             $image_baru->move(public_path('gambar'), $new_image);;
         }
 
+        $facility = $request->input('fasilitas');
+        $hasil = implode(', ', $facility);
+
         $data = RumahPengelola::find($id);
         // $data->update($request->all());
 
@@ -123,7 +131,7 @@ class RumahPengelolaController extends Controller
             'nama_perumahan' => $request->nama_perumahan,
             'alamat' => $request->alamat,
             'harga' => $request->harga,
-            'fasilitas' => $request->fasilitas,
+            'fasilitas' => $hasil,
             'gambar' => $gambar
         ));
 

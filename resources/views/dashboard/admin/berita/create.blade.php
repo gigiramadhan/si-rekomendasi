@@ -29,8 +29,8 @@
                     </div>
 
                     <div class="form-group d-flex justify-content-between">
-                        <button type="submit" class="btn btn-primary mt-5">Submit</button>
-                        <a href="/berita" class="btn btn-secondary mt-5">Close</a>
+                        <button type="submit" class="btn btn-primary mt-5">Submit<i class="bi bi-check2-square ms-2"></i></button>
+                        <a href="/berita" class="btn btn-secondary mt-5">Close<i class="bi bi-x-lg ms-2"></i></a>
                 </form>
             </div>
         </div>

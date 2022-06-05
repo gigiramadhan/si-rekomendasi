@@ -63,8 +63,8 @@
                         </div>
 
                         <div class="d-md-flex justify-content-md-end mt-4">
-                            <button type="submit" class="btn btn-outline-primary">Update</button>
-                            <a href="/dashboard_pengelola" class="btn btn-outline-secondary ms-4">Close</a>
+                            <button type="submit" class="btn btn-outline-primary">Update<i class="bi bi-arrow-repeat ms-2"></i></button>
+                            <a href="/dashboard_pengelola" class="btn btn-outline-secondary ms-4">Close<i class="bi bi-x-lg ms-2"></i></a>
                         </div>
                 </form>
             </div>

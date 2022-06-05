@@ -89,10 +89,9 @@ class RumahController extends Controller
     public function tampilrumah($id){
 
         $data = Rumah::find($id);
-        // dd($data);
-        // dd($data->fasilitas);
+
         $fasilitas = explode(', ', $data->fasilitas);
-        // dd($fasilitas);
+
         return view('dashboard.admin.data_rumah.tampilrumah', compact('data'), [
             "title" => "Edit Data Rumah",
             'fasilitas' => $fasilitas
@@ -123,9 +122,6 @@ class RumahController extends Controller
 
         $facility = $request->input('fasilitas');
         $hasil = implode(', ', $facility);
-        // dd($request->input('fasilitas'));
-        // dd($data);
-        // dd($facility);
 
         $data = Rumah::find($id);
         // $data->update($request->all());

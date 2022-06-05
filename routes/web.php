@@ -12,6 +12,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfilePengelolaController;
+use App\Http\Controllers\ProfileUserController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RumahController;
 use App\Http\Controllers\RumahPengelolaController;
@@ -30,6 +31,10 @@ use App\Http\Controllers\StatusController;
 
 // Beranda
     Route::get('/', [BerandaController::class, 'index'])->name('landing.beranda');
+
+    // Route::get('welcome', function () {
+    //     return view('welcome');
+    // });
 
     Route::get('about', function () {
         return view('home.about', [
@@ -85,7 +90,7 @@ Route::group(['middleware' => ['auth','ceklevel:admin']], function () {
     Route::get('/tampiluser/{id}', [PenggunaController::class, 'tampiluser'])->name('tampiluser');
     Route::post('/updateuser/{id}', [PenggunaController::class, 'updateuser'])->name('updateuser');
     Route::get('/data_pengguna/destroy/{id}', [PenggunaController::class, 'destroy'])->name('data_pengguna.destroy');
-    Route::get('/show/{id}', [PenggunaController::class, 'show'])->name('data_pengguna.show');
+    Route::get('/show/{id}', [PenggunaController::class, 'show'])->name('show');
     Route::get('/pengguna/search', [PenggunaController::class, 'search']);
     // Route::resource('data_rumah', RumahController::class);
     Route::get('data_rumah', [RumahController::class, 'index'])->name('data_rumah');
@@ -94,7 +99,7 @@ Route::group(['middleware' => ['auth','ceklevel:admin']], function () {
     Route::get('/tampilrumah/{id}', [RumahController::class, 'tampilrumah'])->name('tampilrumah');
     Route::post('/updaterumah/{id}', [RumahController::class, 'updaterumah'])->name('updaterumah');
     Route::get('/data_rumah/destroy/{id}', [RumahController::class, 'destroy'])->name('data_rumah.destroy');
-    Route::get('/showrumah/{id}', [RumahController::class, 'show'])->name('data_rumah.show');
+    Route::get('/showrumah/{id}', [RumahController::class, 'show'])->name('showrumah');
     Route::get('/rumah/search', [RumahController::class, 'search']);
     // Route::resource('bobot', BobotController::class);
     Route::get('bobot', [BobotController::class, 'index'])->name('bobot');
@@ -137,12 +142,14 @@ Route::group(['middleware' => ['auth','ceklevel:pengelola']], function () {
     Route::get('/tampilrumahpengelola/{id}', [RumahPengelolaController::class, 'tampilrumahpengelola'])->name('tampilrumahpengelola');
     Route::post('/updaterumahpengelola/{id}', [RumahPengelolaController::class, 'updaterumahpengelola'])->name('updaterumahpengelola');
     Route::get('/data_rumah_pengelola/destroy/{id}', [RumahPengelolaController::class, 'destroy'])->name('data_rumah_pengelola.destroy');
-    Route::get('/showrumahpengelola/{id}', [RumahPengelolaController::class, 'show'])->name('data_rumah_pengelola.showrumahpengelola');
+    Route::get('/showrumahpengelola/{id}', [RumahPengelolaController::class, 'show'])->name('showrumahpengelola');
     Route::get('/rumahpengelola/search', [RumahPengelolaController::class, 'search']);
     // Route::resource('data_booking', BookingController::class);
     Route::get('data_booking', [BookingController::class, 'index'])->name('data_booking');
-    Route::get('/booking/search', [BookingController::class, 'search']);
+    Route::post('/updatebooking/{id}', [BookingController::class, 'updatebooking'])->name('updatebooking');
+    Route::get('/showbooking/{id}', [BookingController::class, 'show'])->name('showbooking');
     Route::get('/data_booking/destroy/{id}', [BookingController::class, 'destroy'])->name('data_booking.destroy');
+    Route::get('/booking/search', [BookingController::class, 'search']);
     // Route::resource('data_transaksi', TransaksiController::class);
     // Route::get('data_transaksi', [TransaksiController::class, 'index'])->name('data_transaksi');
     // Route::get('/transaksi/search', [TransaksiController::class, 'search']);
@@ -153,7 +160,7 @@ Route::group(['middleware' => ['auth','ceklevel:pengelola']], function () {
     Route::get('/tampilfasilitas/{id}', [FasilitasController::class, 'tampilfasilitas'])->name('tampilfasilitas');
     Route::post('/updatefasilitas/{id}', [FasilitasController::class, 'updatefasilitas'])->name('updatefasilitas');
     Route::get('/fasilitas/destroy/{id}', [FasilitasController::class, 'destroy'])->name('fasilitas.destroy');
-    Route::get('/showfasilitas/{id}', [FasilitasController::class, 'show'])->name('fasilitas.showfasilitas');
+    Route::get('/showfasilitas/{id}', [FasilitasController::class, 'show'])->name('showfasilitas');
     Route::get('/fasilitas/search', [FasilitasController::class, 'search']);
 });
 
@@ -169,15 +176,9 @@ Route::group(['middleware' => ['auth','ceklevel:pengelola']], function () {
 // Booking
     Route::post('booking/store', [BookingController::class, 'store'])->name('booking.store');
     Route::get('booking/create', [BookingController::class, 'create'])->name('booking.create');
-    Route::post('/updatebooking/{id}', [BookingController::class, 'updatebooking'])->name('updatebooking');
-    Route::get('/showbooking/{id}', [BookingController::class, 'show'])->name('data_booking.showbooking');
 
-    // Route::get('booking', function () {
-    //     return view('sirekomendasi.booking.create', [
-    //         "title" => "Booking"
-    //     ]);
-    // });
 
+// Hasil Rekomendasi
     Route::get('hasil', function () {
         return view('sirekomendasi.rekomendasi.hasil', [
             "title" => "Rekomendasi"
@@ -189,5 +190,7 @@ Route::group(['middleware' => ['auth','ceklevel:pengelola']], function () {
     Route::get('status', [StatusController::class, 'index'])->name('status');
 
 
-
+    Route::get('profile_user', [ProfileUserController::class, 'index'])->name('profile_user');
+    Route::post('/updateprofileuser/{id}', [ProfileUserController::class, 'updateprofileuser'])->name('updateprofileuser');
+    Route::post('/ubah_password/{id}', [ProfileUserController::class, 'ubah_password'])->name('ubah_password');
 

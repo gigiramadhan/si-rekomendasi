@@ -37,10 +37,44 @@
                         <input type="number" name="harga" class="form-control mt-3" placeholder="RP. xxx" value="{{ old('harga') }}" required>
                     </div>
 
-                    <div class="form-group mb-3 mt-3 fw-bold">
+                    <div class="row mb-3 mt-3">
+                        <label class="form-label mb-3 fw-bold" for="fasilitas">Fasilitas</label>
+                        <div class="ms-4">
+                            <div class="form-check">
+                                <input name="fasilitas[]" class="form-check-input" type="checkbox" value="1 Gate System">
+                                <label class="form-check-label" for="fasilitas">1 Gate System</label>
+                            </div>
+                            <div class="form-check">
+                                <input name="fasilitas[]" class="form-check-input" type="checkbox" value="Satpam">
+                                <label class="form-check-label" for="fasilitas">Satpam</label>
+                            </div>
+                            <div class="form-check">
+                                <input name="fasilitas[]" class="form-check-input" type="checkbox" value="CCTV">
+                                <label class="form-check-label" for="fasilitas">CCTV</label>
+                            </div>
+                            <div class="form-check">
+                                <input name="fasilitas[]" class="form-check-input" type="checkbox" value="Musholla">
+                                <label class="form-check-label" for="fasilitas">Musholla</label>
+                            </div>
+                            <div class="form-check">
+                                <input name="fasilitas[]" class="form-check-input" type="checkbox" value="Kolam Renang">
+                                <label class="form-check-label" for="fasilitas">Kolam Renang</label>
+                            </div>
+                            <div class="form-check">
+                                <input name="fasilitas[]" class="form-check-input" type="checkbox" value="Taman">
+                                <label class="form-check-label" for="fasilitas">Taman</label>
+                            </div>
+                            <div class="form-check">
+                                <input name="fasilitas[]" class="form-check-input" type="checkbox" value="RTH">
+                                <label class="form-check-label" for="fasilitas">RTH</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- <div class="form-group mb-3 mt-3 fw-bold">
                         <label for="fasilitas">Fasilitas</label>
                         <input type="text" name="fasilitas" class="form-control mt-3" value="{{ old('fasilitas') }}"></textarea>
-                    </div>
+                    </div> --}}
 
                     <div class="form-group mb-3 mt-4 fw-bold">
                         <label for="gambar">Gambar</label><br>
@@ -49,7 +83,7 @@
 
                     <div class="form-group d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary mt-5">Submit<i class="bi bi-check2-square ms-2"></i></button>
-                        <a href="/data_rumah_pengelola" class="btn btn-secondary mt-5">Close<i class="bi bi-x-square ms-2"></i></a>
+                        <a href="/data_rumah_pengelola" class="btn btn-secondary mt-5">Close<i class="bi bi-x-lg ms-2"></i></a>
                 </form>
             </div>
         </div>

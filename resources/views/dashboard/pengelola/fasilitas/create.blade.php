@@ -11,6 +11,7 @@
             <div class="card-body">
                 <form action="{{ route('fasilitas.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('POST')
 
                     <div class="form-group mb-3 mt-3 fw-bold">
                         <label class="form-label mb-3">Nama Fasilitas</label>
@@ -37,7 +38,7 @@
 
                     <div class="form-group d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary mt-5">Submit<i class="bi bi-check2-square ms-2"></i></button>
-                        <a href="/fasilitas" class="btn btn-secondary mt-5">Close<i class="bi bi-x-square ms-2"></i></a>
+                        <a href="/fasilitas" class="btn btn-secondary mt-5">Close<i class="bi bi-x-lg ms-2"></i></a>
                 </form>
             </div>
         </div>

@@ -37,15 +37,6 @@
                         <input type="number" name="harga" class="form-control mt-3" placeholder="RP. xxx" value="{{ old('harga') }}" required>
                     </div>
 
-                    {{-- <div class="form-group mb-3 mt-3 fw-bold">
-                        <label class="form-label mb-3">Fasilitas</label>
-                        <select name="fasilitas" class="form-select" aria-label="Default select example">
-                            <option selected>--- pilih jenis fasilitas ---</option><br>
-                            <option value="Paket 1">Paket 1</option>
-                            <option value="Paket 2">Paket 2</option>
-                          </select>
-                    </div> --}}
-
                     <div class="row mb-3 mt-3">
                         <label class="form-label mb-3 fw-bold" for="fasilitas">Fasilitas</label>
                         <div class="ms-4">
@@ -91,8 +82,8 @@
                     </div>
 
                     <div class="form-group d-flex justify-content-between">
-                        <button type="submit" class="btn btn-primary mt-5">Submit</button>
-                        <a href="/data_rumah" class="btn btn-secondary mt-5">Close</a>
+                        <button type="submit" class="btn btn-primary mt-5">Submit<i class="bi bi-check2-square ms-2"></i></button>
+                        <a href="/data_rumah" class="btn btn-secondary mt-5">Close<i class="bi bi-x-lg ms-2"></i></a>
                     </div>
                 </form>
             </div>

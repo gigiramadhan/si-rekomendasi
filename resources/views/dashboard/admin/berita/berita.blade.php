@@ -20,7 +20,7 @@
         <div class="col-md-6 mt-4"></div>
 
         <div class="form-group d-flex justify-content-between mt-3">
-            <a href="{{ route('berita.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg"></i>Tambah Data</a>
+            <a href="{{ route('berita.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg me-2"></i>Tambah Data</a>
 
             <form action="/berita/search" method="GET">
                 <div class="input-group">
