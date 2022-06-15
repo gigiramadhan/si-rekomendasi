@@ -15,14 +15,19 @@ class BerandaController extends Controller
      */
     public function index(){
 
-        $kegiatan = Kegiatan::take(3)->get()->sortByDesc('created_at');
-        $berita = Berita::take(3)->get()->sortByDesc('created_at');
+        $kegiatan = Kegiatan::take(3)->orderBy('id', 'DESC');
+        $berita = Berita::take(3)->orderBy('id', 'DESC');
 
         return view('landing.beranda', [
             'kegiatan' => $kegiatan,
             'berita' => $berita,
             "title" => "SIREKPERUM"
         ]);
+        // return view('landing.beranda', [
+        //     'kegiatan' => '',
+        //     'berita' => '',
+        //     "title" => "SIREKPERUM"
+        // ]);
     }
 
     /**

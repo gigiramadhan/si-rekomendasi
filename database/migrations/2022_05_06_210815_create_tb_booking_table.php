@@ -17,8 +17,9 @@ class CreateTbBookingTable extends Migration
             $table->id();
             $table->string('name_booking');
             $table->string('no_telp');
+            $table->string('type_rumah');
             $table->string('date_booking');
-            $table->string('upload_booking');
+            // $table->string('upload_booking');
             $table->string('status_booking')->default('0');
             $table->timestamps();
         });

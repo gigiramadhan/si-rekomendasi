@@ -28,7 +28,7 @@
 
                     <div class="form-group mb-3 mt-3 fw-bold">
                         <label for="bobot">Bobot</label>
-                        <input type="number" min="0" name="bobot" class="form-control mt-3" value="{{ old('bobot') }}" required>
+                        <input type="text" name="bobot" class="form-control mt-3" value="{{ old('bobot') }}" required>
                     </div>
 
                     <div class="form-group d-flex justify-content-between">

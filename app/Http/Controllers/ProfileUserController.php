@@ -40,7 +40,20 @@ class ProfileUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $image = $request->file('photo');
+        $new_image = rand().'.'.$image->getClientOriginalExtension();
+
+        $user = array(
+            'name' => $request->name,
+            'username' => $request->username,
+            'photo' => $new_image,
+        );
+
+        $image->move(public_path('gambar'), $new_image);
+
+        User::create($user);
+
+        return redirect('profile_user')->with('toast_success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -72,17 +85,39 @@ class ProfileUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateprofile(Request $request, $id)
+    public function update_profile_user(Request $request, $id)
     {
-        $user = $request->all();
+        $image_lama = $request->old_image;
+        $image_baru = $request->file('photo');
 
-        $name = $request->input('name');
-        $username = $request->input('username');
-        // $user['password'] = bcrypt($request->password);
-        $ubah_profil = User::findOrFail($id);
-        $ubah_profil->name = $name;
-        $ubah_profil->username = $username;
-        $ubah_profil->save();
+        if($image_baru == ''){
+            $photo = $image_lama;
+
+        }else{
+            $new_image = rand() .'.'. $image_baru->getClientOriginalExtension();
+            $photo = $new_image;
+            $image_baru->move(public_path('gambar'), $new_image);
+        }
+
+        // $user = $request->all();
+
+        // $name = $request->input('name');
+        // $username = $request->input('username');
+        // $photo = $request->input('photo');
+        // // $user['password'] = bcrypt($request->password);
+        // $ubah_profil = User::findOrFail($id);
+        // $ubah_profil->name = $name;
+        // $ubah_profil->username = $username;
+        // $ubah_profil->photo = $photo;
+        // $ubah_profil->save();
+
+        $user = User::find($id);
+
+        $user->update(array(
+            'name' => $request->name,
+            'username' => $request->username,
+            'photo' => $photo
+        ));
 
         return redirect('profile_user')->with('toast_success', 'Data berhasil diubah');
     }
@@ -98,7 +133,7 @@ class ProfileUserController extends Controller
         //
     }
 
-    public function ubah_password(Request $request, $id)
+    public function ubah_password_user(Request $request, $id)
     {
         $request->validate([
             'password_lama' => 'required|min:8',

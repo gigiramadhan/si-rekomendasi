@@ -42,18 +42,19 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        $image = $request->file('upload_booking');
-        $new_image = rand().'.'.$image->getClientOriginalExtension();
+        // $image = $request->file('upload_booking');
+        // $new_image = rand().'.'.$image->getClientOriginalExtension();
 
         $data = array(
             'name_booking' => $request->name_booking,
             'no_telp' => $request->no_telp,
+            'type_rumah' => $request->type_rumah,
             'date_booking' => $request->date_booking,
-            'upload_booking' => $new_image,
+            // 'upload_booking' => $new_image,
             // 'status_booking' => $request->status_booking
         );
 
-        $image->move(public_path('gambar'), $new_image);
+        // $image->move(public_path('gambar'), $new_image);
 
         Booking::create($data);
 
@@ -112,10 +113,10 @@ class BookingController extends Controller
     public function destroy($id)
     {
         $booking = Booking::find($id);
-        $image_path = public_path("gambar/{$booking->gambar}");
-        File::delete($image_path);
+        // $image_path = public_path("gambar/{$booking->gambar}");
+        // File::delete($image_path);
 
-        $booking->delete();
+        // $booking->delete();
 
         return redirect('data_booking')->with('toast_success', 'Data berhasil dihapus');
     }

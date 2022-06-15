@@ -3,25 +3,25 @@
 <section class="section">
     <div class="container">
         <div class="col-lg-8 col-md-6">
-            <div class="row mt-4">
+            <div class="row g-0 mt-4">
                 <div class="card mt-4">
                     <div class="card-body">
                         <h5 class="text-secondary fw-bold">Profile Details</h5>
                         {{-- <h5 class="card-title mt-2">Profile Details</h5> --}}
-                        <form action="{{ route('updateprofileuser', $user->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('update_profile_user', $user->id) }}" method="POST" enctype="multipart/form-data">
                             @method('POST')
                             @csrf
 
-                            {{-- <div class="row mb-3">
-                                <label for="profileImage" class="col-md-4 col-lg-3 col-form-label text-primary">Profile Image</label>
+                            <div class="row mb-3">
+                                <label for="photo" class="col-md-4 col-lg-3 col-form-label text-primary">Profile Image</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <img src="{{asset('adashboard')}}/assets/img/profile.png" class="img-thumbnail" width="130px" alt="Profile">
+                                    <img src="{{ URL::to('/') }}/gambar/{{ $user->photo }}" class="rounded-circle" width="180px" height="180px">
+                                    <input type="hidden" class="form-control-file mt-3" name="old_image" value="{{ $user->photo }}">
                                     <div class="pt-2">
-                                        <input class="btn btn-outline-primary btn-sm" type="file">
-                                        <button type="submit" class="btn btn-outline-primary">Reset</button>
+                                        <input type="file" name="photo" class="btn btn-outline-primary btn-sm">
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
 
                                 <div class="row mt-4 mb-3">
                                     <label for="name" class="col-md-4 col-lg-3 col-form-label text-primary">Nama</label>
@@ -62,7 +62,7 @@
                 <div class="card mt-4">
                     <div class="card-body">
                         <h5 class="text-secondary fw-bold">Change Password</h5>
-                            <form action="{{ route('ubah_password', $user->id) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('ubah_password_user', $user->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('POST')
                                 <div class="row mt-4 mb-3">

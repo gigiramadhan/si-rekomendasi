@@ -41,10 +41,10 @@ class FasilitasController extends Controller
      */
     public function store(Request $request)
     {
-        $data = [
+        $data = array(
             'name_fasility' => $request->name_fasility,
             'keterangan' => $request->keterangan,
-        ];
+        );
 
         Fasilitas::create($data);
 

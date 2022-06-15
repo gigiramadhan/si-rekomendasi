@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bobot;
+use App\Models\Crips;
 use Illuminate\Http\Request;
 
 class BobotController extends Controller
@@ -60,7 +61,14 @@ class BobotController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Bobot::find($id);
+        // dd($data);
+        $crips = Crips::latest()->paginate(5);
+        // $crips = Crips::latest()->get();
+        // dd($crips);
+        return view('dashboard.admin.crips.crips', compact('data', 'crips'), [
+            "title" => "Detail Crips"
+        ]);
     }
 
     /**

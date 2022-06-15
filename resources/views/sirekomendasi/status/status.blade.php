@@ -2,7 +2,7 @@
 
 <section class="section">
     <div class="container">
-        <div class="row mt-4">
+        <div class="row g-0 mt-4">
             <div class="card mb-4 mt-4">
                 <div class="card-body">
                     <div class="section-title text-center">
@@ -15,8 +15,9 @@
                                 <th style="text-align: center">No</th>
                                 <th style="text-align: center">Nama Lengkap</th>
                                 <th style="text-align: center">No Handphone</th>
+                                <th style="text-align: center">Type Rumah</th>
                                 <th style="text-align: center">Tanggal Booking</th>
-                                <th style="text-align: center">Bukti Booking</th>
+                                {{-- <th style="text-align: center">Bukti Booking</th> --}}
                                 <th style="text-align: center">Status</th>
                                 </tr>
                         </thead>
@@ -30,8 +31,9 @@
                                         <td style="text-align: center">{{ $index + $status->firstItem() }}</td>
                                         <td style="text-align: center">{{ $item->name_booking }}</td>
                                         <td style="text-align: center">{{ $item->no_telp }}</td>
+                                        <td style="text-align: center">{{ $item->type_rumah }}</td>
                                         <td style="text-align: center">{{ $item->date_booking }}</td>
-                                        <td style="text-align: center"><img src="{{ URL::to('/') }}/gambar/{{ $item->upload_booking }}" width="130px"></td>
+                                        {{-- <td style="text-align: center"><img src="{{ URL::to('/') }}/gambar/{{ $item->upload_booking }}" width="130px"></td> --}}
                                         <td style="text-align: center">
                                             @if ($item->status_booking == '0')
                                                 <button class="btn btn-secondary rounded-pill btn-sm" value="0" name="status_booking">Menunggu</button>

@@ -1,7 +1,7 @@
 @extends('dashboard.pengelola.layouts.main')
 
     @section('breadcrumb')
-    <div class="pagetitle">
+    <div class="pagetitle ms-2">
         <h1>Data Booking</h1>
             <nav>
                 <ol class="breadcrumb">
@@ -24,19 +24,19 @@
     <div class="row">
         <div class="col-md-6 mt-4"></div>
 
-        <div class="d-md-flex justify-content-md-end mt-3">
+        <div class="d-md-flex justify-content-md-end mb-2 mt-4">
             <form action="/booking/search" method="GET">
                 <div class="input-group">
                     {{-- <form action="/search" class="form-inline" method="GET"></form> --}}
                     <input type="search" name="search" class="form-control" placeholder="search here.....">
-                    <span class="input-group-prepend">
+                    <span class="input-group-prepend me-2">
                         <button type="submit" class="btn btn-primary">Search</button>
                     </span>
                 </div>
             </form>
         </div>
 
-        <div class="crad-body">
+        <div class="card-body">
             <table class="table table-hover table-bordered border-secondary mt-4">
                 <thead class="thead-light">
                     <tr>
@@ -44,7 +44,7 @@
                         <th style="text-align: center">Nama</th>
                         <th style="text-align: center">No Handphone</th>
                         <th style="text-align: center">Tanggal Booking</th>
-                        <th style="text-align: center">Bukti Booking</th>
+                        {{-- <th style="text-align: center">Bukti Booking</th> --}}
                         <th style="text-align: center">Status</th>
                         <th style="text-align: center">Aksi</th>
                         </tr>
@@ -59,8 +59,9 @@
                                 <td style="text-align: center">{{ $index + $booking->firstItem() }}</td>
                                 <td style="text-align: center">{{ $item->name_booking }}</td>
                                 <td style="text-align: center">{{ $item->no_telp }}</td>
+                                <td style="text-align: center">{{ $item->type_rumah }}</td>
                                 <td style="text-align: center">{{ $item->date_booking }}</td>
-                                <td style="text-align: center"><img src="{{ URL::to('/') }}/gambar/{{ $item->upload_booking }}" width="130px"></td>
+                                {{-- <td style="text-align: center"><img src="{{ URL::to('/') }}/gambar/{{ $item->upload_booking }}" width="130px"></td> --}}
                                 {{-- <td style="text-align: center">{{ $item->status_booking }}</td> --}}
                                 <td style="text-align: center">
                                     @if ($item->status_booking != '0')

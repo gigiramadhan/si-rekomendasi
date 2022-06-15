@@ -15,8 +15,8 @@
 
                     <div class="form-group mb-3 mt-3 fw-bold">
                         <label class="form-label mb-3">Nama Fasilitas</label>
-                        <select name="name_fasility" class="form-select" aria-label="Default select example">
-                            <option selected>--- pilih jenis fasilitas ---</option><br>
+                        <select name="name_fasility" class="form-select" aria-label="Default select example" required>
+                            <option value="">--- pilih jenis fasilitas ---</option><br>
                             <option value="1 Gate System">1 Gate System</option>
                             <option value="CCTV">CCTV</option>
                             <option value="Satpam">Satpam</option>
@@ -29,8 +29,8 @@
 
                     <div class="form-group mb-3 mt-3 fw-bold">
                         <label class="form-label mb-3">Nama Fasilitas</label>
-                        <select name="keterangan" class="form-select" aria-label="Default select example">
-                            <option selected>--- pilih jenis keterangan ---</option><br>
+                        <select name="keterangan" class="form-select" aria-label="Default select example" required>
+                            <option value="">--- pilih jenis keterangan ---</option><br>
                             <option value="Umum">Umum</option>
                             <option value="Khusus">Khusus</option>
                           </select>

@@ -1,0 +1,50 @@
+@extends('dashboard.admin.layouts.main')
+
+    @section('content')
+    <div class="page-header">
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="page-title">Tambah Data Crips</h4>
+                </div>
+
+                <div class="card-body">
+                    <form action="{{ route('crips.store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+
+                        <div class="form-group mb-3 mt-3 fw-bold">
+                            <label class="form-label mb-3">Kriteria</label>
+                            <select name="id_kriteria" class="form-select" aria-label="Default select example" value="{{ $id }}" hidden></select>
+                            <select name="nama_crips" class="form-select" aria-label="Default select example" required>
+                                <option value="">--- pilih kriteria ---</option><br>
+                                <option value="<=200000000"><=200000000</option>
+                                <option value=">200000000 <=300000000">>200000000 <=300000000</option>
+                                <option value=">300000000 <=400000000">>300000000 <=400000000</option>
+                                <option value=">400000000 <=500000000">>400000000 <=500000000</option>
+                                <option value=">500000000 <=600000000">>500000000 <=600000000</option>
+                                <option value=">600000000">>600000000</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group mb-3 mt-3 fw-bold">
+                            <label class="form-label mb-3">Bobot</label>
+                            <select name="bobot" class="form-select" aria-label="Default select example" required>
+                                <option value="">--- pilih bobot ---</option><br>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                              </select>
+                        </div>
+
+                        <div class="form-group d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary mt-5">Submit<i class="bi bi-check2-square ms-2"></i></button>
+                            <a href="/bobot" class="btn btn-secondary mt-5">Close<i class="bi bi-x-lg ms-2"></i></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endsection

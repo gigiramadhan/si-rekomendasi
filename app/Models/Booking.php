@@ -14,7 +14,7 @@ class Booking extends Model
         'name_booking',
         'no_telp',
         'date_booking',
-        'upload_booking',
+        'type_rumah',
         'status_booking',
     ];
 }

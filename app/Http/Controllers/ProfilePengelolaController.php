@@ -73,7 +73,7 @@ class ProfilePengelolaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateprofile(Request $request, $id)
+    public function update_profile_pengelola(Request $request, $id)
     {
         $user = $request->all();
 
@@ -99,7 +99,7 @@ class ProfilePengelolaController extends Controller
         //
     }
 
-    public function ubah_password(Request $request, $id)
+    public function ubah_password_pengelola(Request $request, $id)
     {
         $request->validate([
             'password_lama' => 'required|min:8',

@@ -2,7 +2,7 @@
 
 <section id="hasil" class="hasil">
     <div class="container">
-        <div class="row mt-4">
+        <div class="row g-0 mt-4">
             <div class="card mb-4 mt-4">
                 <div class="card-body">
                     <div class="section-title text-center">

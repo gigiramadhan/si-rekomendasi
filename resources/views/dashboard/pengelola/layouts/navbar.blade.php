@@ -14,7 +14,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="" data-bs-toggle="dropdown">
-            <img src="{{asset('adashboard')}}/assets/img/profile.png" alt="Profile" class="rounded-circle">
+            <img src="{{ URL::to('/') }}/gambar/{{ Auth::user()->photo }}" alt="Profile" class="rounded-circle" width="30px" height="30px">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->name }}</span>
           </a>
 

@@ -15,9 +15,29 @@ class KegiatanController extends Controller
      */
     public function index(){
 
-        $kegiatan = Kegiatan::latest()->paginate(3);
+        $kegiatan = Kegiatan::latest()->paginate(2);
 
         return view('dashboard.admin.kegiatan.kegiatan', compact('kegiatan'), [
+            "title" => "Kegiatan"
+        ]);
+    }
+
+    public function kegiatan(){
+
+        $kegiatan = Kegiatan::take(3)->get()->sortByDesc('created_at');
+
+        return view('sirekomendasi.home.kegiatan_user', [
+            'kegiatan' => $kegiatan,
+            "title" => "Kegiatan"
+        ]);
+    }
+
+    public function home_kegiatan(){
+
+        $kegiatan = Kegiatan::take(3)->get()->sortByDesc('created_at');
+
+        return view('home.home_kegiatan', [
+            'kegiatan' => $kegiatan,
             "title" => "Kegiatan"
         ]);
     }
@@ -146,7 +166,9 @@ class KegiatanController extends Controller
             $kegiatan = Kegiatan::all();
         }
 
-        return view('dashboard.admin.kegiatan.kegiatan', compact('kegiatan'));
+        return view('dashboard.admin.kegiatan.kegiatan', compact('kegiatan'), [
+            "title" => "Kegiatan"
+        ]);
     }
 
 

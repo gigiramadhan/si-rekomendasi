@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StatusController extends Controller
 {
@@ -14,7 +15,9 @@ class StatusController extends Controller
      */
     public function index(){
 
-        $status = Booking::latest()->paginate(2);
+        $name = Auth::user()->name;
+
+        $status = Booking::latest()->where('name_booking', $name)->paginate(2);
 
         return view('sirekomendasi.status.status', compact('status'), [
             "title" => "Status Booking"

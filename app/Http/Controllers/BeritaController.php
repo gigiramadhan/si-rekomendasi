@@ -23,6 +23,26 @@ class BeritaController extends Controller
         ]);
     }
 
+    public function berita(){
+
+        $berita = Berita::take(3)->get()->sortByDesc('created_at');
+
+        return view('sirekomendasi.home.berita_user', [
+            'berita' => $berita,
+            "title" => "Berita"
+        ]);
+    }
+
+    public function home_berita(){
+
+        $berita = Berita::take(3)->get()->sortByDesc('created_at');
+
+        return view('home.home_berita', [
+            'berita' => $berita,
+            "title" => "Berita"
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

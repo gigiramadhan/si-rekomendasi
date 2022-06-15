@@ -57,7 +57,7 @@
                     <h1>Welcome to Sistem Rekomendasi Pemilihan Perumahan</h1>
                     <h2 class="fs-6">Visionary Masterpieces Patriot Sayma Land Group (Cluster Sultan Regency, Sultan Estate, and Pesona Citra Residence).</h2>
                     <div class="text-center text-lg-start">
-                        <a href="{{ route('login.index') }}" class="btn-get-started scrollto">Get Started</a>
+                        <a href="{{ route('login.index') }}" class="btn-get-started scrollto">Get Started<i class="bi bi-box-arrow-in-right ms-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -119,7 +119,7 @@
             </div>
 
             <div class="row g-0">
-                @foreach ($kegiatan as $item)
+                @foreach ($berita as $item)
                 <div class="card me-4" style="width: 18rem;">
                     <img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -133,8 +133,8 @@
                 </div>
                 @endforeach
 
-                @foreach ($berita as $item)
-                <div class="card me-4" style="width: 18rem;">
+                @foreach ($kegiatan as $item)
+                <div class="card me-4 mt-4" style="width: 18rem;">
                     <img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <div class="text-end">{{ $item->created_at }}</div><br>
@@ -256,27 +256,27 @@
 
     {{-- Contact --}}
     <section id="contact" class="contact">
-    <div class="container">
+        <div class="container">
 
-        <div class="section-title" data-aos="fade-up">
-            <h2>Contact</h2>
-            <p>Contact Us</p>
-        </div>
-
-        <div class="col-xl-12 col-lg-4 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-10 px-lg-5" data-aos="fade-left">
-            <div>
-                <p class="text-center">Graha Land Group merupakan sebuah kompleks komersial dan hunian terpadu, yang menghadirkan berbagai sarana dan prasarana untuk menjawab kebutuhan masyarakat di Kabupaten Indramayu.
-                 “Graha Land Group bukan sekadar hunian semata. Didalamnya <br> telah disediakan sejumlah fasilitas, yang tentunya akan dibutuhkan masyarakat".</p>
+            <div class="section-title" data-aos="fade-up">
+                <h2>Contact</h2>
+                <p>Contact Us</p>
             </div>
-        </div>
 
-        <div data-aos="fade-up">
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.5187305544027!2d108.3444366137863!3d-6.32675776366585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6ebde22bebcd3b%3A0x715793ff54ccabf!2sCluster%20Sultan%20Regency%20Indramayu!5e0!3m2!1sid!2sid!4v1647328945521!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <div class="col-xl-12 col-lg-4 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-10 px-lg-5" data-aos="fade-left">
+                <div>
+                    <p class="text-center">Graha Land Group merupakan sebuah kompleks komersial dan hunian terpadu, yang menghadirkan berbagai sarana dan prasarana untuk menjawab kebutuhan masyarakat di Kabupaten Indramayu.
+                    “Graha Land Group bukan sekadar hunian semata. Didalamnya <br> telah disediakan sejumlah fasilitas, yang tentunya akan dibutuhkan masyarakat".</p>
+                </div>
             </div>
-        </div>
 
-            <div class="container">
+            <div data-aos="fade-up">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.5187305544027!2d108.3444366137863!3d-6.32675776366585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6ebde22bebcd3b%3A0x715793ff54ccabf!2sCluster%20Sultan%20Regency%20Indramayu!5e0!3m2!1sid!2sid!4v1647328945521!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            {{-- <div class="container">
                 <div class="row mt-5">
                     <div class="col-lg-6">
                         <div class="info-box mb-4 section-bg">
@@ -323,7 +323,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
     </main>

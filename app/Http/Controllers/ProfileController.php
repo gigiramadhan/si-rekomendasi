@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
@@ -40,7 +40,20 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $image = $request->file('photo');
+        $new_image = rand().'.'.$image->getClientOriginalExtension();
+
+        $user = array(
+            'name' => $request->name,
+            'username' => $request->username,
+            'photo' => $new_image
+        );
+
+        $image->move(public_path('gambar'), $new_image);
+
+        User::create($user);
+
+        return redirect('profile')->with('toast_success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -72,17 +85,39 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateprofile(Request $request, $id)
+    public function update_profile(Request $request, $id)
     {
-        $user = $request->all();
+        $image_lama = $request->old_image;
+        $image_baru = $request->file('photo');
 
-        $name = $request->input('name');
-        $username = $request->input('username');
-        // $user['password'] = bcrypt($request->password);
-        $ubah_profil = User::findOrFail($id);
-        $ubah_profil->name = $name;
-        $ubah_profil->username = $username;
-        $ubah_profil->save();
+        if($image_baru == ''){
+            $photo = $image_lama;
+
+        }else{
+            $new_image = rand() .'.'. $image_baru->getClientOriginalExtension();
+            $photo = $new_image;
+            $image_baru->move(public_path('gambar'), $new_image);
+        }
+
+        // $user = $request->all();
+
+        // $name = $request->input('name');
+        // $username = $request->input('username');
+        // $photo = $request->input('photo');
+        // // $user['password'] = bcrypt($request->password);
+        // $ubah_profil = User::findOrFail($id);
+        // $ubah_profil->name = $name;
+        // $ubah_profil->username = $username;
+        // $ubah_profil->photo = $photo;
+        // $ubah_profil->save();
+
+        $user = User::find($id);
+
+        $user->update(array(
+            'name' => $request->name,
+            'username' => $request->username,
+            'photo' => $photo
+        ));
 
         return redirect('profile')->with('toast_success', 'Data berhasil diubah');
     }

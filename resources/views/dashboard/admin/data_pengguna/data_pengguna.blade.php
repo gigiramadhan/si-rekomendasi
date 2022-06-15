@@ -9,7 +9,7 @@
     </div> --}}
 
 @section('breadcrumb')
-<div class="pagetitle">
+<div class="pagetitle ms-2">
     <h1>Data Pengguna</h1>
         <nav>
             <ol class="breadcrumb">
@@ -32,21 +32,21 @@
     <div class="row">
         <div class="col-md-6 mt-4"></div>
 
-        <div class="form-group d-flex justify-content-between mt-3">
+        <div class="form-group d-flex justify-content-between mt-4 ms-2">
             <a href="{{ route('data_pengguna.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg me-2"></i>Tambah Data</a>
 
             <form action="/pengguna/search" class="form-inline" method="GET">
                 <div class="input-group">
                     {{-- <form action="/search" class="form-inline" method="GET"></form> --}}
                     <input type="search" name="search" class="form-control" placeholder="search here.....">
-                    <span class="input-group-prepend">
+                    <span class="input-group-prepend me-3">
                         <button type="submit" class="btn btn-primary">Search</button>
                     </span>
                 </div>
             </form>
         </div>
 
-        <div class="crad-body">
+        <div class="card-body">
             <table class="table table-hover table-bordered border-secondary mt-3">
                 <thead class="thead-light">
                 {{-- <table class="table table-striped table-hover">

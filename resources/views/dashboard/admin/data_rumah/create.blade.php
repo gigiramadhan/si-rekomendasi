@@ -20,7 +20,7 @@
                     <div class="form-group mb-3 mt-3 fw-bold">
                         <label class="form-label mb-3">Nama Perumahan</label>
                         <select name="nama_perumahan" class="form-select" aria-label="Default select example">
-                            <option selected>--- pilih jenis perumahan ---</option><br>
+                            <option value="">--- pilih jenis perumahan ---</option><br>
                             <option value="Cluster Sultan Regency">Cluster Sultan Regency</option>
                             <option value="Sultan Estate">Sultan Estate</option>
                             <option value="Pesona Citra Residence">Pesona Citra Residence</option>
@@ -29,7 +29,7 @@
 
                     <div class="form-group mb-3 mt-3 fw-bold">
                         <label for="alamat">Alamat</label>
-                        <textarea name="alamat" class="form-control mt-3" value="{{ old('alamat') }}"></textarea>
+                        <textarea name="alamat" class="form-control mt-3" value="{{ old('alamat') }}" required></textarea>
                     </div>
 
                     <div class="form-group mb-3 mt-3 fw-bold">

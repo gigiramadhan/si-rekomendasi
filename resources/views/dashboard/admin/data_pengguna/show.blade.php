@@ -12,10 +12,10 @@
 </div>
 
     <div class="row">
-        <div class="container mt-2">
+        <div class="container mt-4">
             <div class="card">
-                <div class="card-header mb-4">
-                    <h4 class="page-title text-secondary">Data Pengguna</h4>
+                <div class="card-header mb-4 ms-2">
+                    <h1 class="page-title text-secondary">Data Pengguna</h1>
                 </div>
 
                 <div class="container">
