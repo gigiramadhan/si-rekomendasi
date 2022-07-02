@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 
 class PenggunaController extends Controller
@@ -98,7 +99,14 @@ class PenggunaController extends Controller
     public function updateuser(Request $request, $id)
     {
         $data = User::find($id);
-        $data->update($request->all());
+        // $data->update($request->all());
+        $data->update(array(
+            'name' => $request->name,
+            'username' => $request->username,
+            'level' => $request->level,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ));
 
         return redirect('data_pengguna')->with('toast_success', 'Data berhasil diupdate');
     }

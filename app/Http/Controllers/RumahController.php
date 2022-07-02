@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Crips;
 use App\Models\Rumah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -15,13 +16,19 @@ class RumahController extends Controller
      */
     public function index(){
 
-        $rumah = Rumah::latest()->paginate(3);
-
+        $rumah = Rumah::latest()->paginate(4);
         return view('dashboard.admin.data_rumah.data_rumah', compact('rumah'), [
             "title" => "Data Rumah"
         ]);
     }
 
+    public function data_rumah(){
+
+        $rumah = Rumah::all();
+        return view('sirekomendasi.data_rumah.data_rumah_user', compact('rumah'), [
+            "title" => "Data Rumah"
+        ]);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -44,10 +51,58 @@ class RumahController extends Controller
     public function store(Request $request)
     {
         $fasilitasinput = $request->input('fasilitas');
-        $fasilitas = implode(', ', $fasilitasinput);
+        $request_harga = $request->harga;
+        $request_luas_bangunan = $request->luas_bangunan;
+        $request_luas_tanah = $request->luas_tanah;
 
+        $arr = array();
+        for ($i=0; $i < count($fasilitasinput) ; $i++) {
+            $cari_bobot = Crips::where("nama_crips", $fasilitasinput[$i])->pluck('bobot');
+            array_push($arr,$cari_bobot[0] );
+        }
+
+        $fasilitas = implode(',', $fasilitasinput);
+        $arr_fas = implode(',', $arr);
         $image = $request->file('gambar');
         $new_image = rand().'.'.$image->getClientOriginalExtension();
+
+        if ($request_harga <= 200000000) {
+            $rentang_harga = "<= 200000000";
+        }elseif($request_harga > 200000000 && $request_harga <= 300000000){
+            $rentang_harga = "> 200000000 <= 300000000";
+        }elseif($request_harga > 300000000 && $request_harga <= 400000000){
+            $rentang_harga = "> 300000000 <= 400000000";
+        }elseif($request_harga > 400000000 && $request_harga <= 500000000){
+            $rentang_harga = "> 400000000 <= 500000000";
+        }elseif($request_harga > 500000000 && $request_harga <= 600000000){
+            $rentang_harga = "> 500000000 <= 600000000";
+        }else if($request_harga > 600000000){
+            $rentang_harga = "> 600000000";
+        }
+
+        if ($request_luas_bangunan <= 30) {
+            $rentang_luasbangunan = "<= 30";
+        }else if($request_luas_bangunan > 30 && $request_luas_bangunan <= 40){
+            $rentang_luasbangunan = "> 30 <= 40";
+        }else if($request_luas_bangunan > 40 && $request_luas_bangunan <= 50){
+            $rentang_luasbangunan = "> 40 <= 50";
+        }else if($request_luas_bangunan > 50){
+            $rentang_luasbangunan = "> 50";
+        }
+
+        if ($request_luas_tanah <= 80) {
+            $rentang_luas_tanah = "<= 80";
+        }elseif($request_luas_tanah > 80 && $request_luas_tanah <= 100){
+            $rentang_luas_tanah = "> 80 <= 100";
+        }elseif($request_luas_tanah > 100 && $request_luas_tanah <= 120){
+            $rentang_luas_tanah = "> 100 <= 120";
+        }elseif($request_luas_tanah > 120 && $request_luas_tanah <= 140){
+            $rentang_luas_tanah = "> 120 <= 140";
+        }else if($request_luas_tanah > 140){
+            $rentang_luas_tanah = "> 140";
+        }
+
+        // return $rentang_luas_tanah;
 
         $data = array(
             'type' => $request->type,
@@ -56,11 +111,50 @@ class RumahController extends Controller
             'harga' => $request->harga,
             'fasilitas' => $fasilitas,
             'gambar' => $new_image,
+            'rentang_harga' => $rentang_harga,
+            'rentang_luas_bangunan' => $rentang_luasbangunan,
+            'rentang_luas_tanah' => $rentang_luas_tanah,
+            'bobot_fasilitas' => array_sum($arr),
         );
 
         $image->move(public_path('gambar'), $new_image);
 
         Rumah::create($data);
+
+
+        // $ex = explode(",", $fasilitasinput);
+
+        // if ($fasilitasinput == "") {
+        //     $image = $request->file('gambar');
+        //     $new_image = rand().'.'.$image->getClientOriginalExtension();
+        //     $data = array(
+        //         'type' => $request->type,
+        //         'nama_perumahan' => $request->nama_perumahan,
+        //         'alamat' => $request->alamat,
+        //         'harga' => $request->harga,
+        //         'fasilitas' => $fasilitasinput,
+        //         'gambar' => $new_image,
+        //     );
+        // }else {
+        //     $fasilitas = implode(',', $fasilitasinput);
+
+        //     $image = $request->file('gambar');
+        //     $new_image = rand().'.'.$image->getClientOriginalExtension();
+
+        //     $data = array(
+        //         'type' => $request->type,
+        //         'nama_perumahan' => $request->nama_perumahan,
+        //         'alamat' => $request->alamat,
+        //         'harga' => $request->harga,
+        //         'fasilitas' => $fasilitas,
+        //         'gambar' => $new_image,
+        //     );
+        // }
+
+
+        // $image->move(public_path('gambar'), $new_image);
+
+        // Rumah::create($data);
 
         return redirect('data_rumah')->with('toast_success', 'Data berhasil ditambahkan');
     }

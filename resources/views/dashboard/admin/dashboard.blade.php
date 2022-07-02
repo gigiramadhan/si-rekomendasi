@@ -34,7 +34,7 @@
                             <i class="bi bi-house-fill"></i>
                         </div>
                         <div class="ps-1">
-                            <h6>{{ $rumah }}</h6>
+                            <h6 class="ms-4">{{ $rumah }}</h6>
                             <span class="text-success small pt-1"><a href="{{url('data_rumah')}}"><u>View Details</u><i class="bi bi-chevron-right"></i></span></a>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                             <i class="bi bi-person-plus-fill"></i>
                         </div>
                         <div class="ps-1">
-                            <h6>{{ $admin }}</h6>
+                            <h6 class="ms-4">{{ $admin }}</h6>
                             <span class="text-success small pt-1"><a href="{{url('data_pengguna')}}"><u>View Details</u><i class="bi bi-chevron-right"></i></span></a>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                             <i class="bi bi-person-plus-fill"></i>
                         </div>
                         <div class="ps-1">
-                            <h6>{{ $pengelola }}</h6>
+                            <h6 class="ms-4">{{ $pengelola }}</h6>
                             <span class="text-success small pt-1"><a href="{{url('data_pengguna')}}"><u>View Details</u><i class="bi bi-chevron-right"></i></span></a>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                             <i class="bi bi-person-plus-fill"></i>
                         </div>
                         <div class="ps-1">
-                            <h6>{{ $pengunjung }}</h6>
+                            <h6 class="ms-4">{{ $pengunjung }}</h6>
                             <span class="text-success small pt-1"><a href="{{url('data_pengguna')}}"><u>View Details</u><i class="bi bi-chevron-right"></i></span></a>
                         </div>
                     </div>

@@ -12,18 +12,12 @@
                     <form action="/updatecrips/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
-                        <div class="form-group mb-3 mt-3 fw-bold">
-                            <label class="form-label mb-3">Kriteria</label>
-                            <select name="nama_crips" class="form-select" aria-label="Default select example">
-                                <option selected>{{ $data->nama_crips }}</option><br>
-                                <option value="<=200000000"><=200000000</option>
-                                <option value=">200000000 <=300000000">>200000000 <=300000000</option>
-                                <option value=">300000000 <=400000000">>300000000 <=400000000</option>
-                                <option value=">400000000 <=500000000">>400000000 <=500000000</option>
-                                <option value=">500000000 <=600000000">>500000000 <=600000000</option>
-                                <option value=">600000000">>600000000</option>
-                            </select>
-                        </div>
+                    <div class="form-group mb-3 mt-3 fw-bold">
+                        <label class="form-label mb-3">Nama Crips</label>
+                        <input type="text" value="{{ $data->id_kriteria }}" name="id_kriteria" hidden>
+                        {{-- <select name="id_kriteria" class="form-select" aria-label="Default select example" value="{{ $id }}" hidden></select> --}}
+                        <input type="text" name="nama_crips" class="form-control" value="{{ $data->nama_crips }}">
+                    </div>
 
                         <div class="form-group mb-3 mt-3 fw-bold">
                             <label class="form-label mb-3">Bobot</label>
@@ -35,12 +29,13 @@
                                 <option value="4">4</option>
                                 <option value="5">5</option>
                                 <option value="6">6</option>
+                                <option value="7">7</option>
                             </select>
                         </div>
 
                         <div class="form-group d-flex justify-content-between">
                             <button type="submit" class="btn btn-success mt-5">Update<i class="bi bi-arrow-repeat ms-2"></i></button>
-                            <a href="/bobot" class="btn btn-secondary mt-5">Close<i class="bi bi-x-lg ms-2"></i></a>
+                            <a href="/showbobot/{{ $data->id_kriteria }}" class="btn btn-secondary mt-5">Close<i class="bi bi-x-lg ms-2"></i></a>
                     </form>
                 </div>
             </div>

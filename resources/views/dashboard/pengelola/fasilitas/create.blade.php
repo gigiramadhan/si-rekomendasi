@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="form-group mb-3 mt-3 fw-bold">
-                        <label class="form-label mb-3">Nama Fasilitas</label>
+                        <label class="form-label mb-3">Keterangan</label>
                         <select name="keterangan" class="form-select" aria-label="Default select example" required>
                             <option value="">--- pilih jenis keterangan ---</option><br>
                             <option value="Umum">Umum</option>

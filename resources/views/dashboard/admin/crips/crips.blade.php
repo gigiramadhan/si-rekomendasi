@@ -33,7 +33,7 @@
         </div>
 
             <div class="card-body">
-                <table class="table table-hover table-bordered border-secondary mt-3">
+                <table class="table table-striped mt-3">
                     <thead class="thead-light">
                         <tr>
                             <th style="text-align: center">No</th>

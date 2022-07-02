@@ -18,9 +18,13 @@ class CreateTbRumahTable extends Migration
             $table->string('type');
             $table->string('nama_perumahan');
             $table->string('alamat');
-            $table->string('harga');
+            $table->integer('harga');
             $table->string('fasilitas');
             $table->string('gambar');
+            $table->string('rentang_harga');
+            $table->string('rentang_luas_bangunan');
+            $table->string('rentang_luas_tanah');
+            $table->string('bobot_fasilitas');
             $table->timestamps();
         });
     }

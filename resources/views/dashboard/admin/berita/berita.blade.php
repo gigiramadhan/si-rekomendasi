@@ -1,5 +1,4 @@
 @extends('dashboard.admin.layouts.main')
-
     @section('breadcrumb')
     <div class="pagetitle ms-2">
         <h1>Berita</h1>
@@ -24,7 +23,7 @@
 
             <form action="/berita/search" method="GET">
                 <div class="input-group">
-                    {{-- <form action="/search" class="form-inline" method="GET"></form> --}}
+                    <form action="/search" class="form-inline" method="GET"></form>
                     <input type="search" name="search" class="form-control" placeholder="search here.....">
                     <span class="input-group-prepend me-3">
                         <button type="submit" class="btn btn-primary">Search</button>
@@ -34,8 +33,8 @@
         </div>
 
         <div class="card-body">
-            <table class="table table-hover table-bordered border-secondary mt-3">
-                <thead class="thead-light">
+            <table class="table table-striped mt-4">
+                <thead class="thead-light" style="">
                 {{-- <table class="table table-striped table-hover">
                 <thead> --}}
                     <tr>
@@ -63,7 +62,7 @@
 
                         <td>
                             <form class="d-flex justify-content-center gap-2" action="{{ route('berita.destroy', $item->id) }}" method="get">
-                                <a href="/tampildata/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                <a href="/berita/tampildata/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                 @csrf
                                 @method('get')
                                 <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
@@ -92,6 +91,29 @@
         </div>
     </div>
     @include('sweetalert::alert')
+    {{-- <script type="text/javascript">
+        $(function () {
+
+          var table = $('.data-table').DataTable({
+              processing: true,
+              serverSide: true,
+              ajax: "{{ route('berita.fetch') }}",
+              columns: [
+                {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                  {data: 'judul', name: 'judul'},
+                  {data: 'deskripsi', name: 'deskripsi'},
+                  {data: 'gambar', name: 'gambar'},
+                  {data: 'created_at', name: 'created_at'},
+                  {data: 'updated_at', name: 'updated_at'},
+                  {data: 'action', name: 'action', orderable: false, searchable: false},
+              ]
+          });
+
+          $(document).on('click','.deleteIcon',function(){
+            alert('apakah yakin dihapus');
+          })
+        });
+      </script> --}}
 @endsection
 
 

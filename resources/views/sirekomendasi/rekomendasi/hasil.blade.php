@@ -15,37 +15,27 @@
                                 <th style="text-align: center">No</th>
                                 <th style="text-align: center">Type Rumah</th>
                                 <th style="text-align: center">Gambar</th>
-                                <th style="text-align: center">Detail Fasilitas</th>
-                                <th style="text-align: center">Nilai Rangking</th>
+                                {{-- <th style="text-align: center">Detail Fasilitas</th> --}}
                                 <th style="text-align: center">Nilai Normalisasi Harga</th>
                                 <th style="text-align: center">Nilai Normalisasi LB</th>
                                 <th style="text-align: center">Nilai Normalisasi LT</th>
                                 <th style="text-align: center">Nilai Normalisasi Fasilitas</th>
+                                <th style="text-align: center">Nilai Rangking</th>
                                 <th style="text-align: center">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @php
-                                $increment = 1;
-                            @endphp
                             @if ($hasil != null)
-                                @foreach ($hasil  as $index => $item) --}}
+                                @foreach ($hasil  as $index => $item)
                                     <tr>
-                                        {{-- <td style="text-align: center">{{ $index + $hasil ->firstItem() }}</td>
-                                        <td>{{ $item->nama_perumahan }}</td>
-                                        <td>{{ $item->alamat }}</td>
-                                        <td>{{ $item->created_at }}</td>
-                                        <td>{{ $item->updated_at }}</td> --}}
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-
+                                        <td style="text-align: center">{{ $loop->iteration}}</td>
+                                        <td>{{ $item->type }}</td>
+                                        <td><img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" width="130px"></td>
+                                        <td style="text-align: center">{{ $item->normalisasi_harga }}</td>
+                                        <td style="text-align: center">{{ $item->normalisasi_luasbangunan }}</td>
+                                        <td style="text-align: center">{{ $item->normalisasi_luastanah }}</td>
+                                        <td style="text-align: center">{{ $item->normalisasi_fasilitas }}</td>
+                                        <td style="text-align: center">{{ $item->total_bobot }}</td>
                                         <td>
                                             <form class="d-flex justify-content-center gap-2 mt-2">
                                                 <a href="{{ route('booking.create') }}" class="btn btn-primary rounded-pill fw-bold" style="margin-bottom: 20px"><u>Booking</u></a>
@@ -53,9 +43,9 @@
                                             </form>
                                         </td>
                                     </tr>
-                                    {{-- @endforeach
+                                    @endforeach
                                 @else
-                            @endif --}}
+                            @endif
                         </tbody>
                     </table>
                     <div class="form-group d-flex justify-content-md-start mt-4">

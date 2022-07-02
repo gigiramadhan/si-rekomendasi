@@ -40,7 +40,7 @@
         </div>
 
             <div class="card-body">
-                <table class="table table-hover table-bordered border-secondary mt-3">
+                <table class="table table-striped mt-3">
                     <thead class="thead-light">
                     {{-- <table class="table table-striped table-hover">
                     <thead> --}}
@@ -71,7 +71,7 @@
                                     <td>
                                         {{-- <a href="#" class="btn btn-danger delete mt-3" data-id="{{ $item->id }}"><i class="bi bi-trash"></i></a> --}}
                                         <form class="d-flex justify-content-center gap-2" action="{{ route('kegiatan.destroy', $item->id) }}" method="get">
-                                            <a href="/tampilkegiatan/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                            <a href="/kegiatan/tampilkegiatan/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                             @csrf
                                             @method('get')
                                             <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>

@@ -40,7 +40,7 @@
                 <h1><a><span>SIREKPERUM</span></a></h1>
             </div>
 
-            @if (Request::is('rekomendasi', 'data_rumahuser', 'berita_user', 'kegiatan_user', 'profile_user') ? 'active' : '')
+            @if (Request::is('rekomendasi', 'data_rumah_user', 'berita_user', 'kegiatan_user', 'profile_user') ? 'active' : '')
                 @include('sirekomendasi.layouts.navbar')
             @endif
 

@@ -28,28 +28,29 @@
                             </div>
 
                             <div class="row mb-4 mt-4">
-                                <label for="type_rumah" class="col-sm-2 col-form-label">Pilih Type</label>
+                                <label for="type" class="col-sm-2 col-form-label">Type Rumah</label>
                                 <div class="col-sm-10">
-                                    <select name="type_rumah" class="form-select" aria-label="Default select example" required>
-                                        <option value="">--- pilih jenis type ---</option><br>
-                                        <option value="48/98">48/98</option>
-                                        <option value="48/126">48/126</option>
-                                        <option value="36/88">36/88</option>
-                                        <option value="48/98">48/98</option>
-                                        <option value="40/72">40/72</option>
-                                        <option value="48/87,5">48/87,5</option>
-                                        <option value="48/98">48/98</option>
+                                    <select name="type_rumah" class="form-select" aria-label="Default select example">
+                                        <option value="">--- pilih type rumah ---</option><br>
+                                        <option value="Type Aster (40/72)">Type Aster (40/72)</option>
+                                        <option value="Type Alamanda (48/88)">Type Alamanda (48/88)</option>
+                                        <option value="Type Azalela (48/98)">Type Azalela (48/98)</option>
+                                        <option value="Type Estate(48/98)">Type (48/98)</option>
+                                        <option value="Type Hook (48/126)">Type Hook (48/126)</option>
+                                        <option value="Type Sultan Essence (48/98)">Type Sultan Essence (48/98)</option>
+                                        <option value="Type Sultan Essence Hook (48/140)">Type Sultan Essence Hook (48/140)</option>
+                                        {{-- <option value="Type Hook (36/88)">Type Hook (36/88)</option> --}}
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="row mb-4 mt-4">
+                            {{-- <div class="row mb-4 mt-4">
                                 <label for="date_booking" class="col-sm-2 col-form-label">Type Rumah</label>
-                                <div class="col-sm-10">
+                                <div class="col-sm-10"> --}}
                                     {{-- <input type="datetime-local" name="date_booking" class="form-control" value="{{ old('date_booking') }}" required> --}}
-                                    <input type="date" name="date_booking" class="form-control" value="{{ old('date_booking') }}" required>
+                                    {{-- <input type="date" name="date_booking" class="form-control" value="{{ old('date_booking') }}" required>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             {{-- <div class="row mb-4 mt-4">
                                 <label for="upload_booking" class="col-sm-2 col-form-label">Upload Bukti</label>
@@ -59,7 +60,7 @@
                             </div> --}}
 
                             <div class="form-group d-flex justify-content-md-end mt-4">
-                                <a href="/hasil" class="btn btn-outline-secondary rounded-pill fw-bold mt-2">Close<i class="bi bi-x-lg ms-2"></i></a>
+                                <a href="{{ url('hasil') }}" class="btn btn-outline-secondary rounded-pill fw-bold mt-2">Close<i class="bi bi-x-lg ms-2"></i></a>
                                 <button  type="submit" class="btn btn-outline-primary rounded-pill fw-bold mt-2 ms-4">Submit<i class="bi bi-check2-square ms-2"></i></button>
                             </div>
                         </form>

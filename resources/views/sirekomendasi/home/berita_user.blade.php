@@ -17,12 +17,12 @@
                             <div class="card me-4" style="width: 18rem;">
                                 <img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <div class="text-end">{{ $item->created_at }}</div><br>
-                                    <h5 class="card-title">{{ $item->judul }}</h5>
-                                    <p class="card-text" style="text-align: justify">{!! $item->deskripsi !!}</p>
+                                    <h5 class="card-title fw-bold">{{ $item->judul }}</h5>
+                                    <p class="card-text" style="text-align: justify">{!! $item->kutipan !!}</p>
                                 </div>
+                                <p class="card-text ms-3"><small class="text-muted">{{ $item->created_at }}</small></p>
                                 <div class="text-start ms-3">
-                                    <a href="" class="btn btn-primary rounded-pill mt-2 mb-2">Read More<i class="bi bi-arrow-right-circle ms-2"></i></a>
+                                    <a href="{{ url('detail_berita', $item->id) }}" class="btn btn-primary rounded-pill mt-2 mb-2">Read More<i class="bi bi-arrow-right-circle ms-2"></i></a>
                                 </div>
                             </div>
                             @endforeach

@@ -6,6 +6,8 @@ use App\Models\Berita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+// use DataTables;
 
 class BeritaController extends Controller
 {
@@ -23,6 +25,34 @@ class BeritaController extends Controller
         ]);
     }
 
+    // public function fetchAll(Request $request)
+    // {
+    //     if ($request->ajax()) {
+    //         $data = Berita::latest()->get();
+    //         return Datatables::of($data)
+    //                 ->addIndexColumn()
+    //                 ->addColumn('deskripsi', function($row){
+    //                     $deskripsi = '{!! $row->deskripsi !!}';
+    //                     return $deskripsi;
+    //                 })
+    //                 ->addColumn('gambar', function($row){
+    //                     return '<img src="gambar/'.$row->gambar.' " width="130px">';
+    //                 })
+    //                 ->addColumn('action', function($row){
+    //                     // dd($row->id);
+    //                        $btn = '<td>
+    //                        <form class="d-flex justify-content-center gap-2" action="berita/destroy/'.$row->id.'" method="get">';
+    //                            $btn .= '<a href="/berita/tampildata/'.$row->id.'" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>';
+    //                         //    $btn .='{!! @csrf !!}';
+    //                            $btn .= '<button type="submit" onclick="" class="btn deleteIcon btn-danger"><i class="bi bi-trash"></i></button>
+    //                        </form></td>';
+
+    //                         return $btn;
+    //                 })
+    //                 ->rawColumns(['deskripsi','gambar','action'])
+    //                 ->make(true);
+    //     }
+    // }
     public function berita(){
 
         $berita = Berita::take(3)->get()->sortByDesc('created_at');
@@ -73,6 +103,8 @@ class BeritaController extends Controller
         );
 
         $image->move(public_path('gambar'), $new_image);
+
+        $data['kutipan'] = Str::limit(strip_tags($request->deskripsi), 50);
 
         Berita::create($data);
 
@@ -166,6 +198,18 @@ class BeritaController extends Controller
 
         return view('dashboard.admin.berita.berita', compact('berita'), [
             "title" => "Berita"
+        ]);
+    }
+
+    public function detail($id){
+
+        $data = Berita::findOrFail($id);
+        // dd($data);
+
+        return view('landing.detail_berita', compact('data'), [
+            "title" => "Detail Berita"
+        ])->with([
+            'data' => $data
         ]);
     }
 }

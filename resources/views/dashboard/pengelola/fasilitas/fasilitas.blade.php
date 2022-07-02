@@ -39,7 +39,7 @@
         </div>
 
         <div class="card-body">
-            <table class="table table-hover table-bordered border-secondary mt-3">
+            <table class="table table-striped mt-3">
                 <thead class="thead-light">
                     <tr>
                         <th style="text-align: center">No</th>
@@ -51,13 +51,13 @@
                         </tr>
                 </thead>
                 <tbody>
-                    @php
+                    {{-- @php
                         $increment = 1;
-                    @endphp
+                    @endphp --}}
                     @if ($fasilitas != null)
                         @foreach ($fasilitas  as $index => $item)
                             <tr>
-                                <td style="text-align: center">{{ $index + $fasilitas ->firstItem() }}</td>
+                                <td style="text-align: center">{{ $loop->iteration }}</td>
                                 <td>{{ $item->name_fasility }}</td>
                                 <td>{{ $item->keterangan }}</td>
                                 <td>{{ $item->created_at }}</td>
@@ -65,8 +65,8 @@
 
                                 <td>
                                     <form class="d-flex justify-content-center gap-2" action="{{ route('fasilitas.destroy', $item->id) }}" method="get">
-                                        <a href="/showfasilitas/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
-                                        <a href="/tampilfasilitas/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                        <a href="/fasilitas/showfasilitas/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
+                                        <a href="/fasilitas/tampilfasilitas/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                         @csrf
                                         @method('get')
                                         <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>

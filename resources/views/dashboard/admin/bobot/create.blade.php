@@ -13,8 +13,14 @@
                 @csrf
 
                     <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="name_kriteria">Nama Kriteria</label>
-                        <input type="text" name="name_kriteria" class="form-control mt-3" value="{{ old('name_kriteria') }}" required>
+                        <label class="form-label mb-3">Kriteria</label>
+                        <select name="name_kriteria" class="form-select" aria-label="Default select example">
+                            <option selected>--- pilih jenis attribut ---</option><br>
+                            <option value="Harga">Harga</option>
+                            <option value="Luas Tanah">Luas Tanah</option>
+                            <option value="Luas Bangunan">Luas Bangunan</option>
+                            <option value="Fasilitas">Fasilitas</option>
+                        </select>
                     </div>
 
                     <div class="form-group mb-3 mt-3 fw-bold">

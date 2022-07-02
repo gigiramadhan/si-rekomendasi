@@ -42,7 +42,7 @@
                                         </tr>
                                         <tr>
                                             <th>Harga</th>
-                                            <td>{{ $data->harga }}</td>
+                                            <td>Rp. {{ number_format($data->harga) }}</td>
                                         </tr>
                                         <tr>
                                             <th>Fasilitas</th>

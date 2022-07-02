@@ -42,15 +42,16 @@ class CripsController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request->all();
         $data = [
-            // 'id_kriteria' => 'required',
+            'id_kriteria' => $request->id_kriteria,
             'nama_crips' => $request->nama_crips,
             'bobot' => $request->bobot,
         ];
 
         Crips::create($data);
 
-        return redirect('showbobot')->with('toast_success', 'Data berhasil ditambahkan');
+        return redirect()->route('showbobot', $request->id_kriteria )->with('toast_success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -92,7 +93,7 @@ class CripsController extends Controller
         $data = Crips::find($id);
         $data->update($request->all());
 
-        return redirect('crips')->with('toast_success', 'Data berhasil diupdate');
+        return redirect()->route('showbobot',  $data->id_kriteria )->with('toast_success', 'Data berhasil diupdate');
     }
 
     /**
@@ -104,9 +105,9 @@ class CripsController extends Controller
     public function destroy($id)
     {
         $crips = Crips::find($id);
-
+        // return $crips->id_kriteria;
         $crips->delete();
 
-        return redirect('crips')->with('toast_success', 'Data berhasil dihapus');
+        return redirect()->route('showbobot',  $crips->id_kriteria )->with('toast_success', 'Data berhasil dihapus');
     }
 }

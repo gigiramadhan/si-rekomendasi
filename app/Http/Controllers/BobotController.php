@@ -63,7 +63,7 @@ class BobotController extends Controller
     {
         $data = Bobot::find($id);
         // dd($data);
-        $crips = Crips::latest()->paginate(5);
+        $crips = Crips::where('id_kriteria', $id)->latest()->paginate(7);
         // $crips = Crips::latest()->get();
         // dd($crips);
         return view('dashboard.admin.crips.crips', compact('data', 'crips'), [
@@ -97,6 +97,7 @@ class BobotController extends Controller
     public function updatebobot(Request $request, $id)
     {
         $data = Bobot::find($id);
+
         $data->update($request->all());
 
         return redirect('bobot')->with('toast_success', 'Data berhasil diupdate');

@@ -37,30 +37,31 @@
         </div>
 
         <div class="card-body">
-            <table class="table table-hover table-bordered border-secondary mt-4">
+            <table class="table table-striped mt-3">
                 <thead class="thead-light">
                     <tr>
                         <th style="text-align: center">No</th>
                         <th style="text-align: center">Nama</th>
                         <th style="text-align: center">No Handphone</th>
-                        <th style="text-align: center">Tanggal Booking</th>
+                        <th style="text-align: center">Type Rumah</th>
+                        {{-- <th style="text-align: center">Tanggal Booking</th> --}}
                         {{-- <th style="text-align: center">Bukti Booking</th> --}}
                         <th style="text-align: center">Status</th>
                         <th style="text-align: center">Aksi</th>
                         </tr>
                 </thead>
                 <tbody>
-                    @php
+                    {{-- @php
                         $increment = 1;
-                    @endphp
+                    @endphp --}}
                     @if ($booking != null)
                         @foreach ($booking as $index => $item)
                             <tr>
-                                <td style="text-align: center">{{ $index + $booking->firstItem() }}</td>
+                                <td style="text-align: center">{{ $loop->iteration }}</td>
                                 <td style="text-align: center">{{ $item->name_booking }}</td>
                                 <td style="text-align: center">{{ $item->no_telp }}</td>
                                 <td style="text-align: center">{{ $item->type_rumah }}</td>
-                                <td style="text-align: center">{{ $item->date_booking }}</td>
+                                {{-- <td style="text-align: center">{{ $item->date_booking }}</td> --}}
                                 {{-- <td style="text-align: center"><img src="{{ URL::to('/') }}/gambar/{{ $item->upload_booking }}" width="130px"></td> --}}
                                 {{-- <td style="text-align: center">{{ $item->status_booking }}</td> --}}
                                 <td style="text-align: center">
@@ -85,7 +86,7 @@
 
                                 <td style="text-align: center">
                                     <form class="gap-2" action="{{ route('data_booking.destroy', $item->id) }}" method="get">
-                                        <a href="/showbooking/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
+                                        <a href="/data_booking/showbooking/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
                                         @csrf
                                         @method('get')
                                         <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>

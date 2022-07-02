@@ -47,7 +47,7 @@
         </div>
 
         <div class="card-body">
-            <table class="table table-hover table-bordered border-secondary mt-3">
+            <table class="table table-striped mt-3">
                 <thead class="thead-light">
                 {{-- <table class="table table-striped table-hover">
                 <thead> --}}
@@ -77,8 +77,8 @@
 
                             <td>
                                 <form class="d-flex justify-content-center gap-2" action="{{ route('data_pengguna.destroy', $item->id) }}" method="get">
-                                    <a href="/show/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
-                                    <a href="/tampiluser/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="/data_pengguna/show/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
+                                    <a href="/data_pengguna/tampiluser/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                     @csrf
                                     @method('get')
                                     <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>

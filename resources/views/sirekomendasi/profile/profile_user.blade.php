@@ -2,7 +2,7 @@
 
 <section class="section">
     <div class="container">
-        <div class="col-lg-8 col-md-6">
+        {{-- <div class="col-lg-8 col-md-6"> --}}
             <div class="row g-0 mt-4">
                 <div class="card mt-4">
                     <div class="card-body">
@@ -15,7 +15,7 @@
                             <div class="row mb-3">
                                 <label for="photo" class="col-md-4 col-lg-3 col-form-label text-primary">Profile Image</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <img src="{{ URL::to('/') }}/gambar/{{ $user->photo }}" class="rounded-circle" width="180px" height="180px">
+                                    <img src="{{ URL::to('/') }}/gambar/{{ $user->photo }}" class="img-thumbnail" alt="..." width="180px">
                                     <input type="hidden" class="form-control-file mt-3" name="old_image" value="{{ $user->photo }}">
                                     <div class="pt-2">
                                         <input type="file" name="photo" class="btn btn-outline-primary btn-sm">
@@ -103,7 +103,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        {{-- </div> --}}
     </div>
 </section>
 @include('sweetalert::alert')

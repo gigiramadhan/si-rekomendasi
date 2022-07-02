@@ -15,9 +15,9 @@ class StatusController extends Controller
      */
     public function index(){
 
-        $name = Auth::user()->name;
+        // $name = Auth::user()->name;
 
-        $status = Booking::latest()->where('name_booking', $name)->paginate(2);
+        $status = Booking::where('user_id', '=', Auth::user()->id)->get();
 
         return view('sirekomendasi.status.status', compact('status'), [
             "title" => "Status Booking"

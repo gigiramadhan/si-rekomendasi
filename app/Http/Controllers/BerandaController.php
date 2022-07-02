@@ -15,14 +15,15 @@ class BerandaController extends Controller
      */
     public function index(){
 
-        $kegiatan = Kegiatan::take(3)->orderBy('id', 'DESC');
-        $berita = Berita::take(3)->orderBy('id', 'DESC');
+        // $kegiatan = Kegiatan::take(3)->orderBy('id', 'DESC');
+        // $berita = Berita::orderBy('id', 'DESC')->take(3)->get();
+        // $kegiatan = Kegiatan::orderBy('id', 'DESC')->take(3)->get();
 
-        return view('landing.beranda', [
-            'kegiatan' => $kegiatan,
-            'berita' => $berita,
-            "title" => "SIREKPERUM"
-        ]);
+        // return view('landing.beranda', [
+        //     'kegiatan' => $kegiatan,
+        //     'berita' => $berita,
+        //     "title" => "SIREKPERUM"
+        // ]);
         // return view('landing.beranda', [
         //     'kegiatan' => '',
         //     'berita' => '',

@@ -17,6 +17,10 @@ class Rumah extends Model
         'harga',
         'fasilitas',
         'gambar',
+        'rentang_harga',
+        'rentang_luas_bangunan',
+        'rentang_luas_tanah',
+        'bobot_fasilitas',
     ];
 
     // public function detailData($id){

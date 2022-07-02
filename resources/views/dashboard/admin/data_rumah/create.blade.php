@@ -13,8 +13,18 @@
                     @csrf
 
                     <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="type">Type</label>
-                        <input type="text" name="type" class="form-control mt-3" value="{{ old('type') }}" required>
+                        <label class="form-label mb-3">Type Rumah</label>
+                        <select name="type" class="form-select" aria-label="Default select example">
+                            <option value="">--- pilih type rumah ---</option><br>
+                            <option value="Type Aster (40/72)">Type Aster (40/72)</option>
+                            <option value="Type Alamanda (48/88)">Type Alamanda (48/88)</option>
+                            <option value="Type Azalela (48/98)">Type Azalela (48/98)</option>
+                            <option value="Type Estate(48/98)">Type (48/98)</option>
+                            <option value="Type Hook (48/126)">Type Hook (48/126)</option>
+                            <option value="Type Sultan Essence (48/98)">Type Sultan Essence (48/98)</option>
+                            <option value="Type Sultan Essence Hook (48/140)">Type Sultan Essence Hook (48/140)</option>
+                            {{-- <option value="Type Hook (36/88)">Type Hook (36/88)</option> --}}
+                          </select>
                     </div>
 
                     <div class="form-group mb-3 mt-3 fw-bold">
@@ -28,13 +38,23 @@
                     </div>
 
                     <div class="form-group mb-3 mt-3 fw-bold">
+                        <label for="luas_bangunan">Luas Bangunan</label>
+                        <input type="text" name="luas_bangunan" class="form-control mt-3" placeholder="Masukkan Luas Bangunan" value="{{ old('luas_bangunan') }}" required>
+                    </div>
+
+                    <div class="form-group mb-3 mt-3 fw-bold">
+                        <label for="luas_tanah">Luas Tanah</label>
+                        <input type="text" name="luas_tanah" class="form-control mt-3" placeholder="Masukkan Luas Tanah" value="{{ old('luas_tanah') }}" required>
+                    </div>
+
+                    <div class="form-group mb-3 mt-3 fw-bold">
                         <label for="alamat">Alamat</label>
                         <textarea name="alamat" class="form-control mt-3" value="{{ old('alamat') }}" required></textarea>
                     </div>
 
                     <div class="form-group mb-3 mt-3 fw-bold">
                         <label for="harga">Harga</label>
-                        <input type="number" name="harga" class="form-control mt-3" placeholder="RP. xxx" value="{{ old('harga') }}" required>
+                        <input type="text" name="harga" class="form-control mt-3" placeholder="RP. xxx" value="{{ old('harga') }}" required>
                     </div>
 
                     <div class="row mb-3 mt-3">

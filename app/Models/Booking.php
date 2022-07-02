@@ -11,9 +11,10 @@ class Booking extends Model
 
     protected $table = "tb_booking";
     protected $fillable = [
+        'user_id',
         'name_booking',
         'no_telp',
-        'date_booking',
+        // 'date_booking',
         'type_rumah',
         'status_booking',
     ];

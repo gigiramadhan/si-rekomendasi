@@ -19,10 +19,10 @@
                                 <div class="card-body">
                                     <div class="text-end">{{ $item->created_at }}</div><br>
                                     <h5 class="card-title">{{ $item->judul }}</h5>
-                                    <p class="card-text" style="text-align: justify">{!! $item->deskripsi !!}</p>
+                                    <p class="card-text" style="text-align: justify">{!! $item->kutipan !!}</p>
                                 </div>
                                 <div class="text-start ms-3">
-                                    <a href="" class="btn btn-primary rounded-pill mt-2 mb-2">Read More<i class="bi bi-arrow-right-circle ms-2"></i></a>
+                                    <a href="{{ url('detail_berita', $item->id) }}" class="btn btn-primary rounded-pill mt-2 mb-2">Read More<i class="bi bi-arrow-right-circle ms-2"></i></a>
                                 </div>
                             </div>
                             @endforeach

@@ -1,7 +1,7 @@
 <nav id="navbar" class="navbar">
     <ul>
         <li><a class="nav-link scrollto {{ Request::is('rekomendasi') ? 'active' : '' }}" a href="{{url('rekomendasi')}}">Rekomendasi</a></li>
-        <li><a class="nav-link scrollto {{ Request::is('data_rumahuser') ? 'active' : '' }}" a href="{{url('data_rumahuser')}}">Data Rumah</a></li>
+        <li><a class="nav-link scrollto {{ Request::is('data_rumah_user') ? 'active' : '' }}" a href="{{url('data_rumah_user')}}">Data Rumah</a></li>
         <li><a class="nav-link scrollto {{ Request::is('berita_user') ? 'active' : '' }}" a href="{{url('berita_user')}}">Berita</a></li>
         <li><a class="nav-link scrollto {{ Request::is('kegiatan_user') ? 'active' : '' }}" href="{{url('kegiatan_user')}}">Kegiatan</a></li>
         {{-- <li class="dropdown"><a href="{{url('profile_user')}}"><span>Profile User</span> <i class="bi bi-chevron-down"></i></a>

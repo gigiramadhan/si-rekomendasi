@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 class BookingController extends Controller
@@ -15,7 +16,7 @@ class BookingController extends Controller
      */
     public function index(){
 
-        $booking = Booking::latest()->paginate(2);
+        $booking = Booking::latest()->paginate(3);
 
         return view('dashboard.pengelola.data_booking.data_booking', compact('booking'), [
             "title" => "Data Booking"
@@ -45,18 +46,25 @@ class BookingController extends Controller
         // $image = $request->file('upload_booking');
         // $new_image = rand().'.'.$image->getClientOriginalExtension();
 
-        $data = array(
-            'name_booking' => $request->name_booking,
-            'no_telp' => $request->no_telp,
-            'type_rumah' => $request->type_rumah,
-            'date_booking' => $request->date_booking,
-            // 'upload_booking' => $new_image,
-            // 'status_booking' => $request->status_booking
-        );
+        // $data = array(
+        //     'user_id' => $request->Auth::user()->id,
+        //     'name_booking' => $request->name_booking,
+        //     'no_telp' => $request->no_telp,
+        //     'type_rumah' => $request->type_rumah,
+        //     // 'date_booking' => $request->date_booking,
+        //     // 'upload_booking' => $new_image,
+        //     // 'status_booking' => $request->status_booking
+        // );
 
         // $image->move(public_path('gambar'), $new_image);
 
-        Booking::create($data);
+        $data = new Booking;
+        $data->user_id = Auth::user()->id;
+        $data->name_booking = $request->name_booking;
+        $data->no_telp = $request->no_telp;
+        $data->type_rumah = $request->type_rumah;
+
+        $data->save();
 
         return redirect('rekomendasi')->with('toast_success', 'Data berhasil disimpan');
     }
