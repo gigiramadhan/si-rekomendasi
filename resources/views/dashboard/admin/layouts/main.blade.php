@@ -26,7 +26,7 @@
     <link href="{{ asset('adashboard') }}/assets/vendor/quill/quill.snow.css" rel="stylesheet">
     <link href="{{ asset('adashboard') }}/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
     <link href="{{ asset('adashboard') }}/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    {{-- <link href="{{ asset('adashboard') }}/assets/vendor/simple-datatables/style.css" rel="stylesheet"> --}}
+    <link href="{{ asset('adashboard') }}/assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('adashboard') }}/assets/css/style.css" rel="stylesheet">
@@ -83,7 +83,7 @@
     <script src="{{ asset('adashboard') }}/assets/vendor/chart.js/chart.min.js"></script>
     <script src="{{ asset('adashboard') }}/assets/vendor/echarts/echarts.min.js"></script>
     <script src="{{ asset('adashboard') }}/assets/vendor/quill/quill.min.js"></script>
-    {{-- <script src="{{ asset('adashboard') }}/assets/vendor/simple-datatables/simple-datatables.js"></script> --}}
+    <script src="{{ asset('adashboard') }}/assets/vendor/simple-datatables/simple-datatables.js"></script>
     <script src="{{ asset('adashboard') }}/assets/vendor/tinymce/tinymce.min.js"></script>
     <script src="{{ asset('adashboard') }}/assets/vendor/php-email-form/validate.js"></script>
 

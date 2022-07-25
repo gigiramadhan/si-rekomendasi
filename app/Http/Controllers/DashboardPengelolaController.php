@@ -2,23 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Rekomendasi;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class HasilController extends Controller
+class DashboardPengelolaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public $rumah;
+    public $booking;
+
     public function index()
     {
-        // $hasil = Rekomendasi::latest()->paginate(2);
+        // $pengguna = User::count();
+        // $rumah = Rumah::count();
 
-        // return view('sirekomendasi.rekomendasi.hasil', compact('hasil'), [
-        //     "title" => "Hasil Rekomendasi"
-        // ]);
+        $rumah = DB::table('tb_rumah_pengelola')->count();
+        $booking = DB::table('tb_booking')->count();
+
+        // return view('dashboard', compact('pengguna','rumah'));
+        return view('dashboard.pengelola.dashboard_pengelola', ['rumah'=>$rumah, 'booking'=>$booking, "title" => "Dashboard"]);
     }
 
     /**
@@ -29,7 +35,6 @@ class HasilController extends Controller
     public function create()
     {
         //
-
     }
 
     /**
@@ -41,8 +46,6 @@ class HasilController extends Controller
     public function store(Request $request)
     {
         //
-
-        dd($request->all());
     }
 
     /**

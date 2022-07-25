@@ -16,6 +16,7 @@ class Rumah extends Model
         'alamat',
         'harga',
         'fasilitas',
+        'stok',
         'gambar',
         'rentang_harga',
         'rentang_luas_bangunan',

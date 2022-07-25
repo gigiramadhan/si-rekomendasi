@@ -15,7 +15,7 @@ class CripsController extends Controller
      */
     public function index()
     {
-        $crips = Crips::latest()->paginate(3);
+        $crips = Crips::latest()->get();
 
         return view('dashboard.admin.crips.crips', compact('crips'), [
             "title" => "Kriteria"

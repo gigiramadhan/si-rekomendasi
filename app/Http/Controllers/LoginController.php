@@ -17,17 +17,19 @@ class LoginController extends Controller
         if(Auth::attempt($request->only('email', 'password'))){
 
             if(Auth::user()->level == 'admin'){
-                return redirect('/dashboard');
+                return redirect('/dashboard')->withSuccess('Hai Admin, Selamat Datang di Sistem Rekomendasi Pemilihan Perumahan!');
             } else if(Auth::user()->level == 'pengelola'){
-                return redirect('/dashboard_pengelola');
+                return redirect('/dashboard_pengelola')->withSuccess('Hai Pengelola, Selamat Datang di Sistem Rekomendasi Pemilihan Perumahan!');
             } else if(Auth::user()->level == 'user'){
-                return redirect('/rekomendasi');
+                return redirect('/rekomendasi')->withSuccess('Hai User, Selamat Datang di Sistem Rekomendasi Pemilihan Perumahan!');
             } else {
                 return redirect('/');
             }
         }
 
-        return redirect('/login');
+        // session()->setFlashdata('message', 'Hai Admin, Selamat Datang di Sistem Rekomendasi Pemilihan Perumahan!!!');
+
+        return redirect('/login')->withSuccess('Email atau Password yang anda masukkan salah!');
     }
 
     public function registrasi(){

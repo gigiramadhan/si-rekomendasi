@@ -2,6 +2,12 @@
 
 <section id="hero">
     <div class="container">
+        @if(Session::has('success'))
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                {{Session::get('success')}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <div class="row justify-content-between">
             <div class="col-lg-7 pt-5 pt-lg-2 d-flex justify-content-between mt-4">
                 <div data-aos="zoom-out">
@@ -23,21 +29,34 @@
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group mb-3 mt-3 fw-bold">
+                                        <label for="nama_perumahan" class="form-label mb-3">Perumahan</label>
+                                        <select name="nama_perumahan" class="form-select" aria-label="Default select example">
+                                            <option value="">--- pilih jenis perumahan ---</option>
+                                            <option value="Cluster Sultan Regency">
+                                                Cluster Sultan Regency</option>
+                                            <option value="Sultan Estate">
+                                                Sultan Estate</option>
+                                            <option value="Pesona Citra Residence">
+                                                Pesona Citra Residence</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group mb-3 mt-3 fw-bold">
                                         <label for="harga" class="form-label mb-3">Harga</label>
                                         <select name="harga" class="form-select" aria-label="Default select example">
                                             <option value="">--- pilih harga ---</option>
                                             <option value="1">
-                                               Rp. 1.000.000.000 sampai Rp.2.000.000.000</option>
+                                               Rp. 100.000.000 sampai Rp. 200.000.000</option>
                                             <option value="2">
-                                                Rp. 2.000.000.000 sampai Rp.3.000.000.000</option>
+                                                Rp. 200.000.000 sampai Rp. 300.000.000</option>
                                             <option value="3">
-                                                Rp. 3.000.000.000 sampai Rp.4.000.000.000</option>
+                                                Rp. 300.000.000 sampai Rp. 400 000.000</option>
                                             <option value="4">
-                                                Rp. 4.000.000.000 sampai Rp.5.000.000.000</option>
+                                                Rp. 400.000.000 sampai Rp. 500.000.000</option>
                                             <option value="5">
-                                                Rp. 5.000.000.000 sampai Rp.6.000.000.000</option>
+                                                Rp. 500.000.000 sampai Rp. 600.000.000</option>
                                             <option value="6">
-                                                Rp. 6.000.000.000 ke atas</option>
+                                                Rp. 600.000.000 ke atas</option>
                                         </select>
                                     </div>
 

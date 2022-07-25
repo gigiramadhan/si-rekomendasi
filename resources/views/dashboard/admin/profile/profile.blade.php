@@ -27,7 +27,7 @@
                             <div class="row mb-3">
                                 <label for="photo" class="col-md-4 col-lg-3 col-form-label text-primary">Profile Image</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <img src="{{ URL::to('/') }}/gambar/{{ $user->photo }}" class="rounded-circle" width="180px" height="180px">
+                                    <img src="{{ URL::to('/') }}/gambar/{{ $user->photo }}" class="rounded-circle" style="width: 150px;" alt="Avatar">
                                     <input type="hidden" class="form-control-file mt-3" name="old_image" value="{{ $user->photo }}">
                                     <div class="pt-2">
                                         <input type="file" name="photo" class="btn btn-outline-primary btn-sm">
@@ -52,7 +52,7 @@
                             <div class="row mb-3">
                                 <label for="level" class="col-md-4 col-lg-3 col-form-label text-primary">Level</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="level" type="level" class="form-control" id="level" value="{{ auth()->user()->level }}">
+                                    <input name="level" type="level" class="form-control" id="level" value="{{ auth()->user()->level }}" readonly>
                                 </div>
                             </div>
 

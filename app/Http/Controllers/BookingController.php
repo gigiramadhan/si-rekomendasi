@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Rumah;
+use App\Models\RumahPengelola;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -28,10 +30,15 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($rumah_id)
     {
+        $rumah = Rumah::findOrFail($rumah_id);
+        $booking = Booking::get();
+
         return view('sirekomendasi.booking.create', [
-            "title" => "Booking"
+            "title" => "Booking",
+            "booking" => $booking,
+            "rumah" => $rumah,
         ]);
     }
 
@@ -57,12 +64,17 @@ class BookingController extends Controller
         // );
 
         // $image->move(public_path('gambar'), $new_image);
-
+// dd($request->all());
         $data = new Booking;
         $data->user_id = Auth::user()->id;
         $data->name_booking = $request->name_booking;
         $data->no_telp = $request->no_telp;
         $data->type_rumah = $request->type_rumah;
+
+        $rumah = Rumah::where('id',$request->rumah_id)->first();
+
+        $rumah->stok = $request->stok_lama - 1;
+        $rumah->save();
 
         $data->save();
 
@@ -124,7 +136,7 @@ class BookingController extends Controller
         // $image_path = public_path("gambar/{$booking->gambar}");
         // File::delete($image_path);
 
-        // $booking->delete();
+        $booking->delete();
 
         return redirect('data_booking')->with('toast_success', 'Data berhasil dihapus');
     }

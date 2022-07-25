@@ -52,7 +52,7 @@
     <section id="hero">
     <div class="container">
         <div class="row justify-content-between">
-            <div class="col-lg-7 pt-5 pt-lg-5 order-2 order-lg-2 d-flex align-items-center">
+            <div class="col-lg-7 pt-5 pt-lg-5 order-2 order-lg-2 d-flex">
                 <div data-aos="zoom-out">
                     <h1>Welcome to Sistem Rekomendasi Pemilihan Perumahan</h1>
                     <h2 class="fs-6">Visionary Masterpieces Patriot Sayma Land Group (Cluster Sultan Regency, Sultan Estate, and Pesona Citra Residence).</h2>
@@ -61,8 +61,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 order-1 order-lg-2 hero-img aos-init aos-animate" data-aos="zoom-out" data-aos-delay="300">
-                <img src="{{asset('landing')}}/assets/img/hero-img.png" class="img-fluid animated" alt="">
+            <div class="col-lg-5 order-1 order-lg-2" data-aos="zoom-out" data-aos-delay="300">
+                <img src="{{asset('landing')}}/assets/img/house.png" height="500px" alt="">
             </div>
         </div>
     </div>

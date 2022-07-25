@@ -1,7 +1,7 @@
 @extends('dashboard.admin.layouts.main')
 
     @section('breadcrumb')
-    <div class="pagetitle ms-2">
+    <div class="pagetitle ms-3">
         <h1>Kriteria</h1>
             <nav>
                 <ol class="breadcrumb">
@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-md-6 mt-4"></div>
 
-        <div class="form-group d-flex mt-4 ms-2">
+        <div class="form-group d-flex mt-3 ms-3">
             <a href="{{ route('crips.create', $data->id) }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg me-2"></i>Tambah Data</a>
             <div class="d-flex ms-2">
                 <a href="/bobot" class="btn btn-secondary" style="margin-bottom: 20px"><i class="bi bi-arrow-left me-2"></i>Kembali</a>
@@ -33,7 +33,7 @@
         </div>
 
             <div class="card-body">
-                <table class="table table-striped mt-3">
+                <table class="table datatable table-striped mt-2 ms-2">
                     <thead class="thead-light">
                         <tr>
                             <th style="text-align: center">No</th>
@@ -43,12 +43,12 @@
                         </tr>
                     </thead>
                     <tbody style="text-align: center">
-                        @php
+                        {{-- @php
                             $increment = 1;
-                        @endphp
+                        @endphp --}}
                         @foreach ($crips as $index => $item)
                         <tr>
-                            <td>{{ $index + $crips->firstItem() }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->nama_crips }}</td>
                             <td>{{ $item->bobot }}</td>
 
@@ -66,7 +66,7 @@
                     </tbody>
                 </table>
 
-                <div class="form-group d-flex justify-content-between mt-3">
+                {{-- <div class="form-group d-flex justify-content-between mt-3">
                     <div>
                         Showing
                         {{ $crips->firstItem() }}
@@ -80,7 +80,7 @@
                     <div class="pull-right">
                         {{ $crips->links() }}
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     @include('sweetalert::alert')

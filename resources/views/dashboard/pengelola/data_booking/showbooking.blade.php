@@ -41,10 +41,6 @@
                                             <td>{{ $data->type_rumah }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Tanggal Booking</th>
-                                            <td>{{ $data->date_booking }}</td>
-                                        </tr>
-                                        <tr>
                                             <th>Status Booking</th>
                                             <td><button disabled = "disabled" class="btn btn-secondary">Selesai</button></td>
                                         </tr>

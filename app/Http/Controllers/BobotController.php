@@ -15,7 +15,7 @@ class BobotController extends Controller
      */
     public function index(){
 
-        $bobot = Bobot::latest()->paginate(5);
+        $bobot = Bobot::latest()->get();
 
         return view('dashboard.admin.bobot.bobot', compact('bobot'), [
             "title" => "Kriteria"

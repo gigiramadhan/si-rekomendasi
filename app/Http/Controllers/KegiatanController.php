@@ -15,7 +15,7 @@ class KegiatanController extends Controller
      */
     public function index(){
 
-        $kegiatan = Kegiatan::latest()->paginate(2);
+        $kegiatan = Kegiatan::latest()->get();
 
         return view('dashboard.admin.kegiatan.kegiatan', compact('kegiatan'), [
             "title" => "Kegiatan"

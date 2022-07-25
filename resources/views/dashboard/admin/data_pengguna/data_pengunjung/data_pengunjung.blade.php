@@ -9,7 +9,7 @@
     </div> --}}
 
 @section('breadcrumb')
-<div class="pagetitle ms-2">
+<div class="pagetitle ms-3">
     <h1>Data Pengguna</h1>
         <nav>
             <ol class="breadcrumb">
@@ -32,43 +32,40 @@
     <div class="row">
         <div class="col-md-6 mt-4"></div>
 
-        <div class="form-group d-flex justify-content-between mt-4 ms-2">
-            <a href="{{ route('data_pengguna.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg me-2"></i>Tambah Data</a>
+        {{-- <div class="form-group d-flex justify-content-between mt-4 ms-2">
+            <a href="{{ route('data_pengunjung.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg me-2"></i>Tambah Data</a>
 
             <form action="/pengguna/search" class="form-inline" method="GET">
                 <div class="input-group">
-                    {{-- <form action="/search" class="form-inline" method="GET"></form> --}}
+                    <form action="/search" class="form-inline" method="GET"></form>
                     <input type="search" name="search" class="form-control" placeholder="search here.....">
                     <span class="input-group-prepend me-3">
                         <button type="submit" class="btn btn-primary">Search</button>
                     </span>
                 </div>
             </form>
-        </div>
+        </div> --}}
 
         <div class="card-body">
-            <table class="table table-striped mt-3">
+            <table class="table datatable table-striped mt-2 ms-2">
                 <thead class="thead-light">
                 {{-- <table class="table table-striped table-hover">
                 <thead> --}}
                     <tr>
-                        <th style="text-align: center">No</th>
+                        <th style="text-align: center" width='10%'>No</th>
                         <th style="text-align: center">Nama</th>
                         <th style="text-align: center">Username</th>
-                        <th style="text-align: center">Level</th>
+                        <th style="text-align: center" width='15%'>Level</th>
                         <th style="text-align: center">Email</th>
                         {{-- <th>Password</th> --}}
                         <th style="text-align: center">Aksi</th>
                         </tr>
                 </thead>
                 <tbody>
-                    @php
-                    $increment = 1;
-                    @endphp
-                    @if ($pengguna != null)
-                        @foreach ($pengguna as $index => $item)
+                    @if ($pengunjung != null)
+                        @foreach ($pengunjung as $index => $item)
                         <tr>
-                            <td style="text-align: center">{{ $index + $pengguna->firstItem() }}</td>
+                            <td style="text-align: center">{{ $loop->iteration }}</td>
                             <td style="text-align: left">{{ $item->name }}</td>
                             <td style="text-align: left">{{ $item->username }}</td>
                             <td style="text-align: left">{{ $item->level }}</td>
@@ -76,9 +73,11 @@
                             {{-- <td style="text-align: left">{{ $item->password }}</td> --}}
 
                             <td>
-                                <form class="d-flex justify-content-center gap-2" action="{{ route('data_pengguna.destroy', $item->id) }}" method="get">
-                                    <a href="/data_pengguna/show/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
-                                    <a href="/data_pengguna/tampiluser/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                <form class="d-flex justify-content-center gap-2" action="{{ route('data_pengunjung.destroy', $item->id) }}" method="get">
+                                    {{-- @if($item->level == 'admin'|| $item->level == 'pengelola') --}}
+                                        <a href="/data_pengunjung/show_pengunjung/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
+                                        {{-- <a href="/data_pengunjung/tampil_pengunjung/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a> --}}
+                                    {{-- @endif --}}
                                     @csrf
                                     @method('get')
                                     <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
@@ -91,21 +90,21 @@
                 </tbody>
             </table>
 
-            <div class="form-group d-flex justify-content-between mt-3">
+            {{-- <div class="form-group d-flex justify-content-between mt-3">
                 <div>
                     Showing
-                    {{ $pengguna->firstItem() }}
+                    {{ $pengunjung->firstItem() }}
                     to
-                    {{ $pengguna->lastItem() }}
+                    {{ $pengunjung->lastItem() }}
                     of
-                    {{ $pengguna->total() }}
+                    {{ $pengunjung->total() }}
                     entries
                 </div>
 
                 <div class="pull-right">
-                    {{ $pengguna->links() }}
+                    {{ $pengunjung->links() }}
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     @include('sweetalert::alert')

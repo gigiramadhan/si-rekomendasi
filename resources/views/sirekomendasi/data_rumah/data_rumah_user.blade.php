@@ -25,6 +25,8 @@
                                         <i class="bi bi-check-circle me-2"></i>{{ $item->fasilitas }}
                                     <p>
                                     <p class="card-text">Rp. {{ number_format($item->harga) }}</p>
+                                    {{-- <p class="card-text"></p> --}}
+                                    <span class="badge bg-secondary"><i class="bi bi-folder me-1"></i>Stok : {{ ($item->stok) }}</span>
                                 </div>
                                 {{-- <p class="card-text ms-3"><small class="text-muted">{{ $item->created_at }}</small></p> --}}
                                 {{-- <div class="text-start ms-3">

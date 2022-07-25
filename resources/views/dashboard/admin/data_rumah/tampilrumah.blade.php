@@ -49,6 +49,11 @@
                     <input type="number" name="harga" class="form-control mt-3" value="{{ $data->harga }}">
                 </div>
 
+                <div class="form-group mb-3 mt-3 fw-bold">
+                    <label for="stok">Stok</label>
+                    <input type="number" name="stok" class="form-control mt-3" value="{{ $data->stok }}">
+                </div>
+
                 <div class="row mb-3 mt-3">
                     <label class="form-label mb-3 fw-bold" for="fasilitas">Fasilitas</label>
                     <div class="ms-4">

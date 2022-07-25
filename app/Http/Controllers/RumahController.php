@@ -16,7 +16,8 @@ class RumahController extends Controller
      */
     public function index(){
 
-        $rumah = Rumah::latest()->paginate(4);
+        // $rumah = Rumah::latest()->paginate(4);
+        $rumah = Rumah::latest()->get();
         return view('dashboard.admin.data_rumah.data_rumah', compact('rumah'), [
             "title" => "Data Rumah"
         ]);
@@ -110,6 +111,7 @@ class RumahController extends Controller
             'alamat' => $request->alamat,
             'harga' => $request->harga,
             'fasilitas' => $fasilitas,
+            'stok' => $request->stok,
             'gambar' => $new_image,
             'rentang_harga' => $rentang_harga,
             'rentang_luas_bangunan' => $rentang_luasbangunan,
@@ -226,6 +228,7 @@ class RumahController extends Controller
             'alamat' => $request->alamat,
             'harga' => $request->harga,
             'fasilitas' => $hasil,
+            'stok' => $request->stok,
             'gambar' => $gambar
         ));
 

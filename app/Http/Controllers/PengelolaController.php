@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
-
-class PenggunaController extends Controller
+class PengelolaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,10 @@ class PenggunaController extends Controller
      */
     public function index(){
 
-        $pengguna = User::latest()->paginate(2);
+        // $pengelola = User::latest()->paginate(2);
+        $pengelola = DB::table('users')->where('level', 'pengelola')->get();
 
-        return view('dashboard.admin.data_pengguna.data_pengguna', compact('pengguna'), [
+        return view('dashboard.admin.data_pengguna.data_pengelola.data_pengelola', compact('pengelola'), [
             "title" => "Data Pengguna"
         ]);
     }
@@ -31,7 +32,7 @@ class PenggunaController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.data_pengguna.create', [
+        return view('dashboard.admin.data_pengguna.data_pengelola.create', [
             "title" => "Tambah Pengguna"
         ]);
     }
@@ -55,7 +56,7 @@ class PenggunaController extends Controller
 
         User::create($data);
 
-        return redirect('data_pengguna')->with('toast_success', 'Data berhasil ditambahkan');
+        return redirect('data_pengelola')->with('toast_success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -68,7 +69,7 @@ class PenggunaController extends Controller
     {
         $data = User::find($id);
 
-        return view('dashboard.admin.data_pengguna.show', compact('data'), [
+        return view('dashboard.admin.data_pengguna.data_pengelola.show_pengelola', compact('data'), [
             "title" => "Detail Pengguna"
         ]);
     }
@@ -79,12 +80,12 @@ class PenggunaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function tampiluser($id)
+    public function tampilpengelola($id)
     {
         $data = User::find($id);
         // dd($data);
 
-        return view('dashboard.admin.data_pengguna.tampilpengguna', compact('data'), [
+        return view('dashboard.admin.data_pengguna.data_pengelola.tampil_pengelola', compact('data'), [
             "title" => "Edit Pengguna"
         ]);
     }
@@ -96,7 +97,7 @@ class PenggunaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateuser(Request $request, $id)
+    public function updatepengelola(Request $request, $id)
     {
         $data = User::find($id);
         // $data->update($request->all());
@@ -108,7 +109,7 @@ class PenggunaController extends Controller
             'password' => Hash::make($request->password)
         ));
 
-        return redirect('data_pengguna')->with('toast_success', 'Data berhasil diupdate');
+        return redirect('data_pengelola')->with('toast_success', 'Data berhasil diupdate');
     }
 
     /**
@@ -123,7 +124,7 @@ class PenggunaController extends Controller
 
         $pengguna->delete();
 
-        return redirect('data_pengguna')->with('toast_success', 'Data berhasil dihapus');
+        return redirect('data_pengelola')->with('toast_success', 'Data berhasil dihapus');
     }
 
     public function search(Request $request){
@@ -135,7 +136,7 @@ class PenggunaController extends Controller
             $pengguna = User::all();
         }
 
-        return view('dashboard.admin.data_pengguna.data_pengguna', compact('pengguna'), [
+        return view('dashboard.admin.data_pengguna.data_pengelola.data_pengelola', compact('pengguna'), [
             "title" => "Data Pengguna"
         ]);
     }

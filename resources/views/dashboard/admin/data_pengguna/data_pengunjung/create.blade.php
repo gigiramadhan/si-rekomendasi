@@ -9,7 +9,7 @@
             </div>
 
             <div class="card-body">
-                <form action="{{ route('data_pengguna.store') }}" method="post">
+                <form action="{{ route('data_pengunjung.store') }}" method="post">
                 @csrf
 
                     <div class="form-group mb-3 mt-3 fw-bold">
@@ -44,7 +44,7 @@
 
                     <div class="form-group d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary mt-5">Submit<i class="bi bi-check2-square ms-2"></i></button>
-                        <a href="/data_pengguna" class="btn btn-secondary mt-5">Close<i class="bi bi-x-lg ms-2"></i></a>
+                        <a href="/data_pengunjung" class="btn btn-secondary mt-5">Close<i class="bi bi-x-lg ms-2"></i></a>
                 </form>
             </div>
         </div>

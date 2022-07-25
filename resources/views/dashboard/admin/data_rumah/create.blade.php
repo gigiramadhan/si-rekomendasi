@@ -57,6 +57,11 @@
                         <input type="text" name="harga" class="form-control mt-3" placeholder="RP. xxx" value="{{ old('harga') }}" required>
                     </div>
 
+                    <div class="form-group mb-3 mt-3 fw-bold">
+                        <label for="stok">Stok</label>
+                        <input type="text" name="stok" class="form-control mt-3" value="{{ old('stok') }}" required>
+                    </div>
+
                     <div class="row mb-3 mt-3">
                         <label class="form-label mb-3 fw-bold" for="fasilitas">Fasilitas</label>
                         <div class="ms-4">

@@ -11,7 +11,10 @@ use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\HasilController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DashboardPengelolaController;
+use App\Http\Controllers\PengelolaController;
+use App\Http\Controllers\PengunjungController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfilePengelolaController;
 use App\Http\Controllers\ProfileUserController;
@@ -87,15 +90,31 @@ use App\Http\Controllers\StatusController;
     Route::group(['middleware' => ['auth','ceklevel:admin']], function () {
     // Dashboard Admin
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    // Data Pengguna
-    Route::get('data_pengguna', [PenggunaController::class, 'index'])->name('data_pengguna');
-    Route::get('data_pengguna/create', [PenggunaController::class, 'create'])->name('data_pengguna.create');
-    Route::post('data_pengguna/store', [PenggunaController::class, 'store'])->name('data_pengguna.store');
-    Route::get('data_pengguna/tampiluser/{id}', [PenggunaController::class, 'tampiluser'])->name('data_pengguna.tampiluser');
-    Route::post('/updateuser/{id}', [PenggunaController::class, 'updateuser'])->name('updateuser');
-    Route::get('data_pengguna/destroy/{id}', [PenggunaController::class, 'destroy'])->name('data_pengguna.destroy');
-    Route::get('data_pengguna/show/{id}', [PenggunaController::class, 'show'])->name('data_pengguna.show.');
-    Route::get('/pengguna/search', [PenggunaController::class, 'search']);
+    // Data Admin
+    Route::get('data_admin', [AdminController::class, 'index'])->name('data_admin');
+    Route::get('data_admin/create', [AdminController::class, 'create'])->name('data_admin.create');
+    Route::post('data_admin/store', [AdminController::class, 'store'])->name('data_admin.store');
+    Route::get('data_admin/tampiladmin/{id}', [AdminController::class, 'tampiladmin'])->name('data_admin.tampiladmin');
+    Route::post('updateadmin/{id}', [AdminController::class, 'updateadmin'])->name('updateadmin');
+    Route::get('data_admin/destroy/{id}', [AdminController::class, 'destroy'])->name('data_admin.destroy');
+    Route::get('data_admin/show/{id}', [AdminController::class, 'show'])->name('data_admin.show');
+    Route::get('/pengguna/search', [AdminController::class, 'search']);
+    // Data Pengelola
+    Route::get('data_pengelola', [PengelolaController::class, 'index'])->name('data_pengelola');
+    Route::get('data_pengelola/create', [PengelolaController::class, 'create'])->name('data_pengelola.create');
+    Route::post('data_pengelola/store', [PengelolaController::class, 'store'])->name('data_pengelola.store');
+    Route::get('data_pengelola/tampil_pengelola/{id}', [PengelolaController::class, 'tampilpengelola'])->name('data_pengelola.tampil_pengelola');
+    Route::post('updatepengelola/{id}', [PengelolaController::class, 'updatepengelola'])->name('updatepengelola');
+    Route::get('data_pengelola/destroy/{id}', [PengelolaController::class, 'destroy'])->name('data_pengelola.destroy');
+    Route::get('data_pengelola/show_pengelola/{id}', [PengelolaController::class, 'show'])->name('data_pengelola.show_pengelola');
+    // Data Pengunjung
+    Route::get('data_pengunjung', [PengunjungController::class, 'index'])->name('data_pengunjung');
+    Route::get('data_pengunjung/create', [PengunjungController::class, 'create'])->name('data_pengunjung.create');
+    Route::post('data_pengunjung/store', [PengunjungController::class, 'store'])->name('data_pengunjung.store');
+    Route::get('data_pengunjung/tampil_pengunjung/{id}', [PengunjungController::class, 'tampilpengunjung'])->name('data_pengunjung.tampil_pengunjung');
+    Route::post('updatepengunjung/{id}', [PengunjungController::class, 'updatepengunjung'])->name('updatepengunjung');
+    Route::get('data_pengunjung/destroy/{id}', [PengunjungController::class, 'destroy'])->name('data_pengunjung.destroy');
+    Route::get('data_pengunjung/show_pengunjung/{id}', [PengunjungController::class, 'show'])->name('data_pengunjung.show_pengunjung');
     // Data Rumah
     Route::get('data_rumah', [RumahController::class, 'index'])->name('data_rumah');
     Route::post('data_rumah/store', [RumahController::class, 'store'])->name('data_rumah.store');
@@ -148,11 +167,7 @@ use App\Http\Controllers\StatusController;
 // Middleware Group Pengelola
     Route::group(['middleware' => ['auth','ceklevel:pengelola']], function () {
     // Dashboard Pengelola
-    Route::get('dashboard_pengelola', function () {
-        return view('dashboard.pengelola.dashboard_pengelola', [
-            "title" => "Dashboard"
-        ]);
-    });
+    Route::get('dashboard_pengelola', [DashboardPengelolaController::class, 'index'])->name('dashboard_pengelola');
     // Data Rumah
     Route::get('data_rumah_pengelola', [RumahPengelolaController::class, 'index'])->name('data_rumah_pengelola');
     Route::post('data_rumah_pengelola/store', [RumahPengelolaController::class, 'store'])->name('data_rumah_pengelola.store');
@@ -178,8 +193,8 @@ use App\Http\Controllers\StatusController;
     Route::get('fasilitas/showfasilitas/{id}', [FasilitasController::class, 'show'])->name('fasilitas.showfasilitas');
     Route::get('/fasilitas/search', [FasilitasController::class, 'search']);
     // Profile
-    Route::get('profile_pengelola', [ProfilePengelolaController::class, 'index'])->name('profile_pengelola');
-    Route::post('profile_pengelola/store', [ProfilePengelolaController::class, 'store'])->name('profile_pengelola.store');
+    Route::get('/profile_pengelola', [ProfilePengelolaController::class, 'index'])->name('profile_pengelola');
+    Route::post('/profile_pengelola/store', [ProfilePengelolaController::class, 'store'])->name('profile_pengelola.store');
     Route::post('/update_profile_pengelola/{id}', [ProfilePengelolaController::class, 'update_profile_pengelola'])->name('update_profile_pengelola');
     Route::post('/ubah_password_pengelola/{id}', [ProfilePengelolaController::class, 'ubah_password_pengelola'])->name('ubah_password_pengelola');
 });
@@ -196,11 +211,14 @@ use App\Http\Controllers\StatusController;
     Route::post('rekomendasi/store', [RekomendasiController::class, 'store'])->name('rekomendasi.store');
     Route::get('rekomendasi/create', [RekomendasiController::class, 'create'])->name('rekomendasi.create');
     // Hasil Rekomendasi
-
-    // Route::get('hasil', [HasilController::class, 'index'])->name('hasil');
+    Route::get('hasil', function () {
+        return view('sirekomendasi.rekomendasi.hasil', [
+            "title" => "Rekomendasi"
+        ]);
+    });
     // Booking Rumah
     Route::post('booking/store', [BookingController::class, 'store'])->name('booking.store');
-    Route::get('booking/create', [BookingController::class, 'create'])->name('booking.create');
+    Route::get('booking/create/{rumah_id}', [BookingController::class, 'create'])->name('booking.create');
     // Status Booking
     Route::get('status', [StatusController::class, 'index'])->name('status');
     // Informasi User
@@ -213,9 +231,5 @@ use App\Http\Controllers\StatusController;
     Route::post('/ubah_password_user/{id}', [ProfileUserController::class, 'ubah_password_user'])->name('ubah_password_user');
 });
 
-Route::get('hasil', function () {
-    return view('sirekomendasi.rekomendasi.hasil', [
-        "title" => "Rekomendasi"
-    ]);
-});
+
 

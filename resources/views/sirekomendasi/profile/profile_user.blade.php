@@ -40,7 +40,7 @@
                                 <div class="row mb-3">
                                     <label for="level" class="col-md-4 col-lg-3 col-form-label text-primary">Level</label>
                                     <div class="col-md-8 col-lg-9">
-                                        <input name="level" type="level" class="form-control" id="level" value="{{ auth()->user()->level }}">
+                                        <input name="level" type="level" class="form-control" id="level" value="{{ auth()->user()->level }}" readonly>
                                     </div>
                                 </div>
 

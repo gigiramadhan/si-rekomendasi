@@ -2,19 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
-class RankingController extends Controller
+class PengunjungController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){
+
+        // $pengunjung = User::latest()->paginate(2);
+        $pengunjung = DB::table('users')->where('level', 'user')->get();
+
+        return view('dashboard.admin.data_pengguna.data_pengunjung.data_pengunjung', compact('pengunjung'), [
+            "title" => "Data Pengguna"
+        ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -25,6 +34,7 @@ class RankingController extends Controller
     {
         //
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -45,7 +55,11 @@ class RankingController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = User::find($id);
+
+        return view('dashboard.admin.data_pengguna.data_pengunjung.show_pengunjung', compact('data'), [
+            "title" => "Detail Pengguna"
+        ]);
     }
 
     /**
@@ -66,7 +80,7 @@ class RankingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updatepengunjung(Request $request, $id)
     {
         //
     }
@@ -79,6 +93,10 @@ class RankingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pengguna = User::find($id);
+
+        $pengguna->delete();
+
+        return redirect('data_pengunjung')->with('toast_success', 'Data berhasil dihapus');
     }
 }

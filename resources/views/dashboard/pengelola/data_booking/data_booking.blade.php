@@ -1,7 +1,7 @@
 @extends('dashboard.pengelola.layouts.main')
 
     @section('breadcrumb')
-    <div class="pagetitle ms-2">
+    <div class="pagetitle ms-3">
         <h1>Data Booking</h1>
             <nav>
                 <ol class="breadcrumb">
@@ -24,29 +24,29 @@
     <div class="row">
         <div class="col-md-6 mt-4"></div>
 
-        <div class="d-md-flex justify-content-md-end mb-2 mt-4">
+        {{-- <div class="d-md-flex justify-content-md-end mb-2 mt-4">
             <form action="/booking/search" method="GET">
                 <div class="input-group">
-                    {{-- <form action="/search" class="form-inline" method="GET"></form> --}}
+                    <form action="/search" class="form-inline" method="GET"></form>
                     <input type="search" name="search" class="form-control" placeholder="search here.....">
                     <span class="input-group-prepend me-2">
                         <button type="submit" class="btn btn-primary">Search</button>
                     </span>
                 </div>
             </form>
-        </div>
+        </div> --}}
 
         <div class="card-body">
-            <table class="table table-striped mt-3">
+            <table class="table datatable table-striped mt-2 ms-2">
                 <thead class="thead-light">
                     <tr>
-                        <th style="text-align: center">No</th>
+                        <th style="text-align: center" width='12%'>No</th>
                         <th style="text-align: center">Nama</th>
-                        <th style="text-align: center">No Handphone</th>
+                        <th style="text-align: center" width='22%'>No Handphone</th>
                         <th style="text-align: center">Type Rumah</th>
                         {{-- <th style="text-align: center">Tanggal Booking</th> --}}
                         {{-- <th style="text-align: center">Bukti Booking</th> --}}
-                        <th style="text-align: center">Status</th>
+                        <th style="text-align: center" width='13%'>Status</th>
                         <th style="text-align: center">Aksi</th>
                         </tr>
                 </thead>
@@ -99,7 +99,7 @@
                 </tbody>
             </table>
 
-            <div class="form-group d-flex justify-content-between mt-3">
+            {{-- <div class="form-group d-flex justify-content-between mt-3">
                 <div>
                     Showing
                     {{ $booking->firstItem() }}
@@ -113,7 +113,7 @@
                 <div class="pull-right">
                     {{ $booking->links() }}
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     {{-- @include('sweetalert::alert') --}}

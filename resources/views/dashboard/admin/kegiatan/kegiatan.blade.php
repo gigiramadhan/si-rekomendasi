@@ -1,7 +1,7 @@
 @extends('dashboard.admin.layouts.main')
 
     @section('breadcrumb')
-    <div class="pagetitle ms-2">
+    <div class="pagetitle ms-3">
         <h1>Kegiatan</h1>
             <nav>
                 <ol class="breadcrumb">
@@ -25,43 +25,43 @@
     <div class="row">
         <div class="col-md-6 mt-4"></div>
 
-        <div class="form-group d-flex justify-content-between mt-4 ms-2">
+        <div class="form-group d-flex justify-content-between mt-3 ms-3">
             <a href="{{ route('kegiatan.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg me-2"></i>Tambah Data</a>
 
-            <form action="/kegiatan/search" class="form-inline" method="GET">
+            {{-- <form action="/kegiatan/search" class="form-inline" method="GET">
                 <div class="input-group">
-                    {{-- <form action="/search" class="form-inline" method="GET"></form> --}}
+                    <form action="/search" class="form-inline" method="GET"></form>
                     <input type="search" name="search" class="form-control" placeholder="search here.....">
                     <span class="input-group-prepend me-3">
                         <button type="submit" class="btn btn-primary">Search</button>
                     </span>
                 </div>
-            </form>
+            </form> --}}
         </div>
 
             <div class="card-body">
-                <table class="table table-striped mt-3">
+                <table class="table datatable table-striped mt-2 ms-2">
                     <thead class="thead-light">
                     {{-- <table class="table table-striped table-hover">
                     <thead> --}}
                         <tr>
-                            <th style="text-align: center">No</th>
-                            <th style="text-align: center">Judul</th>
-                            <th style="text-align: center">Deskripsi</th>
+                            <th style="text-align: center" width='15%'>No</th>
+                            <th style="text-align: center" width='15%'>Judul</th>
+                            <th style="text-align: center" width='18%'>Deskripsi</th>
                             <th style="text-align: center">Gambar</th>
-                            <th style="text-align: center">Tanggal Pembuatan</th>
-                            <th style="text-align: center">Tanggal Perubahan</th>
+                            <th style="text-align: center" width='20%'>Tanggal Pembuatan</th>
+                            <th style="text-align: center" width='20%'>Tanggal Perubahan</th>
                             <th style="text-align: center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @php
+                        {{-- @php
                             $increment = 1;
-                        @endphp
+                        @endphp --}}
                             @if ($kegiatan != null)
                                 @foreach ($kegiatan as $index => $item)
                                 <tr>
-                                    <td style="text-align: center">{{ $index + $kegiatan->firstItem() }}</td>
+                                    <td style="text-align: center">{{ $loop->iteration }}</td>
                                     <td style="text-align: left">{{ $item->judul }}</td>
                                     <td style="text-align: left">{!! $item->deskripsi !!}</td>
                                     <td><img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" width="130px"></td>
@@ -84,7 +84,7 @@
                     </tbody>
                 </table>
 
-                    <div class="form-group d-flex justify-content-between mt-3">
+                    {{-- <div class="form-group d-flex justify-content-between mt-3">
                         <div>
                             Showing
                             {{ $kegiatan->firstItem() }}
@@ -98,7 +98,7 @@
                         <div class="pull-right">
                             {{ $kegiatan->links() }}
                         </div>
-                    </div>
+                    </div> --}}
             </div>
     </div>
     @include('sweetalert::alert')

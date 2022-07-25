@@ -5,11 +5,11 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h4 class="page-title">Edit Pengguna</h4>
+                <h4 class="page-title">Edit Data Pengunjung</h4>
             </div>
 
             <div class="card-body">
-                <form action="/updateuser/{{ $data->id }}" method="POST" enctype="multipart/form-data">
+                <form action="/updatepengunjung/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                     <div class="form-group mb-3 mt-3 fw-bold">
@@ -24,12 +24,13 @@
 
                     <div class="form-group mb-3 mt-3 fw-bold">
                         <label class="form-label mb-3">Level</label>
-                        <select name="level" class="form-select" aria-label="Default select example">
+                        <input type="text" name="level" class="form-control mt-3" value="{{ $data->level }}">
+                        {{-- <select name="level" class="form-select" aria-label="Default select example">
                             <option selected>{{ $data->level }}</option><br>
                             <option value="admin">Admin</option>
                             <option value="pengelola">Pengelola</option>
                             <option value="user">User</option>
-                          </select>
+                        </select> --}}
                     </div>
 
                     <div class="form-group mb-3 mt-3 fw-bold">
@@ -39,12 +40,12 @@
 
                     <div class="form-group mb-3 mt-3 fw-bold">
                         <label for="password">Password</label>
-                        <input type="text" name="password" class="form-control mt-3" value="{{ $data->password }}">
+                        <input type="password" name="password" class="form-control mt-3" value="{{ $data->password }}">
                     </div>
 
                     <div class="form-group d-flex justify-content-between">
                         <button type="submit" class="btn btn-success mt-5">Update<i class="bi bi-arrow-repeat ms-2"></i></button>
-                        <a href="/data_pengguna" class="btn btn-secondary mt-5">Close<i class="bi bi-x-lg ms-2"></i></a>
+                        <a href="/data_pengunjung" class="btn btn-secondary mt-5">Close<i class="bi bi-x-lg ms-2"></i></a>
                 </form>
             </div>
         </div>

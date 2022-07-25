@@ -1,7 +1,7 @@
 @extends('dashboard.admin.layouts.main')
 
     @section('breadcrumb')
-    <div class="pagetitle ms-2">
+    <div class="pagetitle ms-3">
         <h1>Kriteria</h1>
             <nav>
                 <ol class="breadcrumb">
@@ -25,27 +25,27 @@
     <div class="row">
         <div class="col-md-6 mt-4"></div>
 
-        <div class="form-group d-flex justify-content-between mt-4 ms-2">
+        <div class="form-group d-flex justify-content-between mt-3 ms-3">
             <a href="{{ route('bobot.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg me-2"></i>Tambah Kriteria</a>
 
-            <form action="/bobot/search" class="form-inline" method="GET">
+            {{-- <form action="/bobot/search" class="form-inline" method="GET">
                 <div class="input-group">
-                    {{-- <form action="/search" class="form-inline" method="GET"></form> --}}
+                    <form action="/search" class="form-inline" method="GET"></form>
                     <input type="search" name="search" class="form-control" placeholder="search here.....">
                     <span class="input-group-prepend me-3">
                         <button type="submit" class="btn btn-primary">Search</button>
                     </span>
                 </div>
-            </form>
+            </form> --}}
         </div>
 
             <div class="card-body">
-                <table class="table table-striped mt-3">
+                <table class="table datatable table-striped mt-2 ms-2">
                     <thead class="thead-light">
                     {{-- <table class="table table-striped table-hover">
                     <thead> --}}
                         <tr>
-                            <th style="text-align: center">No</th>
+                            <th style="text-align: center" width='10%'>No</th>
                             <th style="text-align: center">Nama Kriteria</th>
                             <th style="text-align: center">Attribut</th>
                             <th style="text-align: center">Bobot</th>
@@ -53,12 +53,12 @@
                         </tr>
                     </thead>
                     <tbody style="text-align: center">
-                        @php
+                        {{-- @php
                             $increment = 1;
-                        @endphp
+                        @endphp --}}
                         @foreach ($bobot as $index => $item)
                         <tr>
-                            <td>{{ $index + $bobot->firstItem() }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->name_kriteria }}</td>
                             <td>{{ $item->attribut }}</td>
                             <td>{{ $item->bobot }}</td>
@@ -78,7 +78,7 @@
                     </tbody>
                 </table>
 
-                <div class="form-group d-flex justify-content-between mt-3">
+                {{-- <div class="form-group d-flex justify-content-between mt-3">
                     <div>
                         Showing
                         {{ $bobot->firstItem() }}
@@ -92,7 +92,7 @@
                     <div class="pull-right">
                         {{ $bobot->links() }}
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     @include('sweetalert::alert')

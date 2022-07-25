@@ -35,7 +35,6 @@
 
     <main>
         <div class="container">
-
             <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -52,7 +51,7 @@
                                 <div class="card-body">
 
                                     @if (session()->has('success'))
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <div class="alert mt-3 alert-danger alert-dismissible fade show" role="alert">
                                         {{ session('success') }}
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>

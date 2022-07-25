@@ -12,7 +12,7 @@
 
                     <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-                        <div class="row g-0">
+                        <div class="row g-0 justify-content-center">
                             @foreach ($berita as $item)
                             <div class="card me-4" style="width: 18rem;">
                                 <img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" class="card-img-top" alt="...">
