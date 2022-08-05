@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
-class PengunjungController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,9 @@ class PengunjungController extends Controller
     public function index(){
 
         // $pengunjung = User::latest()->paginate(2);
-        $pengunjung = DB::table('users')->where('level', 'user')->get();
+        $user = DB::table('users')->where('level', 'user')->get();
 
-        return view('dashboard.admin.data_pengguna.data_pengunjung.data_pengunjung', compact('pengunjung'), [
+        return view('dashboard.admin.data_pengguna.data_user.data_user', compact('user'), [
             "title" => "Data Pengguna"
         ]);
     }
@@ -57,7 +57,7 @@ class PengunjungController extends Controller
     {
         $data = User::find($id);
 
-        return view('dashboard.admin.data_pengguna.data_pengunjung.show_pengunjung', compact('data'), [
+        return view('dashboard.admin.data_pengguna.data_user.show_user', compact('data'), [
             "title" => "Detail Pengguna"
         ]);
     }
@@ -80,7 +80,7 @@ class PengunjungController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updatepengunjung(Request $request, $id)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -97,6 +97,6 @@ class PengunjungController extends Controller
 
         $pengguna->delete();
 
-        return redirect('data_pengunjung')->with('toast_success', 'Data berhasil dihapus');
+        return redirect('data_user')->with('toast_success', 'Data berhasil dihapus');
     }
 }

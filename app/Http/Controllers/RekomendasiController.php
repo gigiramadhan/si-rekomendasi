@@ -38,143 +38,105 @@ class RekomendasiController extends Controller
      */
     public function store(Request $request)
     {
-        $request_harga = $request->harga;
-        $request_luas_tanah = $request->luas_tanah;
-        $request_luas_bangunan = $request->luas_bangunan;
-        $request_fasilitas =array_sum($request->fasilitas);
-        $request_jenis = $request->nama_perumahan;
+        // Membuat id parameter
+        $id_c1 = 4; // Fasilitas
+        $id_c2 = 3; // LB
+        $id_c3 = 2; // LT
+        $id_c4 = 1; // Harga
 
-        $rumah = Rumah::get()->all();
-        $fasilitasinput = $request->input('fasilitas');
+        // Membuat collection semua data rumah yang ada
+        $rumahs = Rumah::get();
 
-        // for ($i=0; $i < count($fasilitasinput) ; $i++) {
-        //     $cari_bobot = Crips::where("nama_crips", $fasilitasinput[$i])->pluck('bobot');
-        //     array_push($arr,$cari_bobot[0] );
-        // }
+        // Membuat collection Kriteria
+        $c1 = Crips::where('id_kriteria', $id_c1)->get();
+        $c2 = Crips::where('id_kriteria', $id_c2)->get();
+        $c3 = Crips::where('id_kriteria', $id_c3)->get();
+        $c4 = Crips::where('id_kriteria', $id_c4)->get();
 
-        foreach ($rumah as $key => $value) {
-            $cari_bobot_harga = Crips::where('nama_crips', $value->rentang_harga)->pluck('bobot');
-            $cari_bobot_luas_tanah = Crips::where('nama_crips', $value->rentang_luas_tanah)->pluck('bobot');
-            $cari_bobot_luas_bangunan = Crips::where('nama_crips', $value->rentang_luas_bangunan)->pluck('bobot');
+		// Menjumlahkan bobot fasilitas inputan user
+        $request->fasilitas = array_sum($request->fasilitas);
 
-            $rumah[$key]['bobot_harga'] =  $cari_bobot_harga[0];
-            $rumah[$key]['bobot_luastanah'] =  $cari_bobot_luas_tanah[0];
-            $rumah[$key]['bobot_luasbangunan'] =  $cari_bobot_luas_bangunan[0];
+        foreach ($rumahs as $i => $rumah) {
+            $fasilitasRumahs = explode(',', $rumah->fasilitas);
+            $data['c1'][$rumah->type] = 0;
+            $data['c2'][$rumah->type] = 0;
+            $data['c3'][$rumah->type] = 0;
+            $data['c4'][$rumah->type] = 0;
 
+            // Start Matrixs
+            foreach ($fasilitasRumahs as $fasilitas){
+                $data['c1'][$rumah->type] += $c1->where('nama_crips', ltrim($fasilitas))->first()->bobot;
+            }
+            $data['c2'][$rumah->type] = $c2->where('nama_crips', $rumah->rentang_luas_bangunan)->first()->bobot;
+            $data['c3'][$rumah->type] = $c3->where('nama_crips', $rumah->rentang_luas_tanah)->first()->bobot;
+            $data['c4'][$rumah->type] = $c4->where('nama_crips', $rumah->rentang_harga)->first()->bobot;
         }
 
-        // return $rumah;
-        $harga = array();
-        $luas_tanah = array();
-        $luas_bangunan = array();
-        $fasilitas = array();
+        // Membuat collection Bobot
+        $bobots = Bobot::get();
+        $bobotC1 = $bobots->where('id', $id_c1)->first();
+        $bobotC2 = $bobots->where('id', $id_c2)->first();
+        $bobotC3 = $bobots->where('id', $id_c3)->first();
+        $bobotC4 = $bobots->where('id', $id_c4)->first();
 
-        foreach($rumah as $key => $value){
-            array_push($harga, $value->bobot_harga);
-            array_push($luas_tanah, $value->bobot_luastanah);
-            array_push($luas_bangunan, $value->bobot_luasbangunan);
-            array_push($fasilitas, $value->bobot_fasilitas);
-        }
-        array_push($harga, $request_harga);
-        array_push($luas_tanah, $request_luas_tanah);
-        array_push($luas_bangunan, $request_luas_bangunan);
-        array_push($fasilitas, $request_fasilitas);
-
-        $min_value_harga = min($harga);
-        $max_value_luastanah = max($luas_tanah);
-        $max_value_luasbangunan = max($luas_bangunan);
-        $max_value_fasilitas = max($fasilitas);
-        // dd($luas_bangunan);
-
-        foreach ($rumah as $key => $value) {
-            // $normalisasi_harga = $min_value_harga/$value->bobot_harga;
-            // $normalisasi_luastanah = $value->bobot_luastanah/$max_value_luastanah;
-            // $normalisasi_luasbangunan = $value->bobot_luasbangunan/$max_value_luasbangunan;
-            // $normalisasi_fasilitas = $value->bobot_fasilitas/$max_value_fasilitas;
-
-            // $normalisasi_harga = $min_value_harga/$value->bobot_harga;
-            // $normalisasi_luastanah = $value->bobot_luastanah/$max_value_luastanah;
-            // $normalisasi_luasbangunan = $value->bobot_luasbangunan/$max_value_luasbangunan;
-            // $normalisasi_fasilitas = array_sum($fasilitasinput)/$max_value_fasilitas;
-
-            $normalisasi_harga = $min_value_harga/$request_harga;
-            $normalisasi_luastanah = $request_luas_tanah/$max_value_luastanah;
-            $normalisasi_luasbangunan = $request_luas_bangunan/$max_value_luasbangunan;
-            $normalisasi_fasilitas = $request_fasilitas/$max_value_fasilitas;
-
-            $rumah[$key]['normalisasi_harga'] = $normalisasi_harga;
-            $rumah[$key]['normalisasi_luastanah'] = $normalisasi_luastanah;
-            $rumah[$key]['normalisasi_luasbangunan'] = $normalisasi_luasbangunan;
-            $rumah[$key]['normalisasi_fasilitas'] = $normalisasi_fasilitas;
+        // Menghitung Normalisasi Matrix
+        // Menghitung nilai normalisasi C1
+        foreach ($data['c1'] as $typeRumah => $valueCriteria) {
+            if ($bobotC1->attribut == 'Benefit') $normalisasi['c1'][$typeRumah] = $valueCriteria / max($data['c1']);
+            else $normalisasi['c1'][$typeRumah] = min($data['c1']) / $valueCriteria;
         }
 
-        $bobot_kriteria_harga = Bobot::where('name_kriteria', "Harga")->pluck('bobot');
-        $bobot_kriteria_luastanah = Bobot::where('name_kriteria', "Luas Tanah")->pluck('bobot');
-        $bobot_kriteria_luasbangunan = Bobot::where('name_kriteria', "Luas Bangunan")->pluck('bobot');
-        $bobot_kriteria_fasilitas = Bobot::where('name_kriteria', "Fasilitas")->pluck('bobot');
-
-        foreach ($rumah as $key => $value) {
-            $jumlah = ($value->normalisasi_harga*$bobot_kriteria_harga[0]) + ($value->normalisasi_luastanah*$bobot_kriteria_luastanah[0]) + ($value->normalisasi_luasbangunan*$bobot_kriteria_luasbangunan[0]) + ($value->normalisasi_fasilitas*$bobot_kriteria_fasilitas[0]);
-            $rumah[$key]['total_bobot'] = $jumlah;
+        // Menghitung nilai normalisasi C2
+        foreach ($data['c2'] as $typeRumah => $valueCriteria) {
+            if ($bobotC2->attribut == 'Benefit') $normalisasi['c2'][$typeRumah] = $valueCriteria / max($data['c2']);
+            else $normalisasi['c2'][$typeRumah] = min($data['c2']) / $valueCriteria;
         }
 
-        $selected_key = 0;
-        foreach($rumah as $key => $value){
-            if ($rumah[$key]['total_bobot'] >= 0.3 && $rumah[$key]['total_bobot'] <= 0.8 && $request_jenis == 'Cluster Sultan Regency'){
-                // $hasil = $rumah[$key]->where('nama_perumahan');
-                $hasil = $rumah[$key]['total_bobot'];
+        // Menghitung nilai normalisasi C3
+        foreach ($data['c3'] as $typeRumah => $valueCriteria) {
+            if ($bobotC3->attribut == 'Benefit') $normalisasi['c3'][$typeRumah] = $valueCriteria / max($data['c3']);
+            else $normalisasi['c3'][$typeRumah] = min($data['c3']) / $valueCriteria;
+        }
 
-                dd($hasil);
-                // return view('sirekomendasi.rekomendasi.hasil', [
-                //     'hasil' => $hasil,
-                //     "title" => "Hasil Rekomendasi"
-                // ]);
+        // Menghitung nilai normalisasi C4
+        foreach ($data['c4'] as $typeRumah => $valueCriteria) {
+            if ($bobotC4->attribut == 'Benefit') $normalisasi['c4'][$typeRumah] = $valueCriteria / max($data['c4']);
+            else $normalisasi['c4'][$typeRumah] = min($data['c4']) / $valueCriteria;
+        }
 
-            }elseif($rumah[$key]['total_bobot'] >= 0.8 && $request_jenis == 'Cluster Sultan Regency'){
-                $hasil = $rumah[$key]['total_bobot'];
+        // Menghitung nilai preferensi
+        foreach ($normalisasi as $key => $criterias){
+            foreach ($criterias as $typeRumah => $valueCriteria){
+                if ($key == 'c1') $requestVal = $bobotC1->bobot;
+                if ($key == 'c2') $requestVal = $bobotC2->bobot;
+                if ($key == 'c3') $requestVal = $bobotC3->bobot;
+                if ($key == 'c4') $requestVal = $bobotC4->bobot;
+                $preferensi[$key][$typeRumah] = $valueCriteria * $requestVal;
 
-                dd($hasil);
-            }elseif($rumah[$key]['total_bobot'] >= 0.3 && $rumah[$key]['total_bobot'] <= 0.6 && $request_jenis == 'Sultan Estate'){
-
-                $hasil = $rumah[$key];
-
-                return view('sirekomendasi.rekomendasi.hasil', [
-                    'hasil' => $hasil,
-                    "title" => "Hasil Rekomendasi"
-                ]);
-
-            } elseif($rumah[$key]['total_bobot'] >= 0.3 && $rumah[$key]['total_bobot'] <= 0.6 && $request_jenis == 'Sultan Estate'){
-
-                $hasil = $rumah[$key];
-
-                return view('sirekomendasi.rekomendasi.hasil', [
-                    'hasil' => $hasil,
-                    "title" => "Hasil Rekomendasi"
-                ]);
-
-            } elseif($rumah[$key]['total_bobot'] >= 0.3 &&  $rumah[$key]['total_bobot'] <= 0.8 && $request_jenis == 'Pesona Citra Residence'){
-
-                $hasil = $rumah[$key];
-
-                return view('sirekomendasi.rekomendasi.hasil', [
-                    'hasil' => $hasil,
-                    "title" => "Hasil Rekomendasi"
-                ]);
-
-            } elseif($rumah[$key]['total_bobot'] >= 0.3 && $rumah[$key]['total_bobot'] <= 0.6 && $request_jenis == 'Pesona Citra Residence'){
-
-                $hasil = $rumah[$key];
-
-                return view('sirekomendasi.rekomendasi.hasil', [
-                    'hasil' => $hasil,
-                    "title" => "Hasil Rekomendasi"
-                ]);
-
-            } else {
-                $selected_key = $key;
+                $preferensi['hasil'][$typeRumah] = 0;
             }
         }
-        $hasil =  $rumah[$selected_key];
+
+        foreach ($preferensi as $key => $criterias){
+            foreach ($criterias as $typeRumah => $valueCriteria){
+                $preferensi['hasil'][$typeRumah] += $valueCriteria;
+            }
+        }
+
+        arsort($preferensi['hasil']);
+
+        // dd($preferensi['hasil']);
+
+        $ranking = collect($preferensi['hasil']);
+        foreach ($ranking as $namaTypeRumah => $valuePreferensi) {
+            // Mengambil data berdasarkan nama tipe rumah
+            $dataRumah[] = Rumah::where('type', $namaTypeRumah)->first();
+        }
+
+        return view('sirekomendasi.rekomendasi.hasil', [
+            'hasil' => $dataRumah,
+            "title" => "Hasil Rekomendasi"
+        ]);
     }
 
     /**

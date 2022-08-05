@@ -23,6 +23,8 @@ use App\Http\Controllers\RekomendasiController;
 use App\Http\Controllers\RumahController;
 use App\Http\Controllers\RumahPengelolaController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\UserController;
+use App\Models\RumahPengelola;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,9 +73,14 @@ use App\Http\Controllers\StatusController;
 
 // Information
     Route::get('detail_berita/{id}', [BeritaController::class, 'detail'])->name('detail_berita');
+    Route::get('detail_kegiatan/{id}', [KegiatanController::class, 'detail'])->name('detail_kegiatan');
     Route::get('home_kegiatan', [KegiatanController::class, 'home_kegiatan'])->name('home_kegiatan');
     Route::get('home_berita', [BeritaController::class, 'home_berita'])->name('home_berita');
+    Route::get('berita_user', [BeritaController::class, 'berita'])->name('berita_user');
+    Route::get('kegiatan_user', [KegiatanController::class, 'kegiatan'])->name('kegiatan_user');
+    // Route::get('data_rumah_user', [RumahPengelolaController::class, 'data_rumah'])->name('data_rumah_user');
     Route::get('data_rumah_user', [RumahController::class, 'data_rumah'])->name('data_rumah_user');
+
 
 
 // Login
@@ -107,14 +114,10 @@ use App\Http\Controllers\StatusController;
     Route::post('updatepengelola/{id}', [PengelolaController::class, 'updatepengelola'])->name('updatepengelola');
     Route::get('data_pengelola/destroy/{id}', [PengelolaController::class, 'destroy'])->name('data_pengelola.destroy');
     Route::get('data_pengelola/show_pengelola/{id}', [PengelolaController::class, 'show'])->name('data_pengelola.show_pengelola');
-    // Data Pengunjung
-    Route::get('data_pengunjung', [PengunjungController::class, 'index'])->name('data_pengunjung');
-    Route::get('data_pengunjung/create', [PengunjungController::class, 'create'])->name('data_pengunjung.create');
-    Route::post('data_pengunjung/store', [PengunjungController::class, 'store'])->name('data_pengunjung.store');
-    Route::get('data_pengunjung/tampil_pengunjung/{id}', [PengunjungController::class, 'tampilpengunjung'])->name('data_pengunjung.tampil_pengunjung');
-    Route::post('updatepengunjung/{id}', [PengunjungController::class, 'updatepengunjung'])->name('updatepengunjung');
-    Route::get('data_pengunjung/destroy/{id}', [PengunjungController::class, 'destroy'])->name('data_pengunjung.destroy');
-    Route::get('data_pengunjung/show_pengunjung/{id}', [PengunjungController::class, 'show'])->name('data_pengunjung.show_pengunjung');
+    // Data User
+    Route::get('data_user', [UserController::class, 'index'])->name('data_user');
+    Route::get('data_user/destroy/{id}', [UserController::class, 'destroy'])->name('data_user.destroy');
+    Route::get('data_user/show_user/{id}', [UserController::class, 'show'])->name('data_user.show_user');
     // Data Rumah
     Route::get('data_rumah', [RumahController::class, 'index'])->name('data_rumah');
     Route::post('data_rumah/store', [RumahController::class, 'store'])->name('data_rumah.store');
@@ -136,7 +139,7 @@ use App\Http\Controllers\StatusController;
     // Crips
     Route::get('crips/{id}', [CripsController::class, 'index'])->name('crips');
     Route::post('crips/store', [CripsController::class, 'store'])->name('crips.store');
-    Route::get('/create/crips/{id}', [CripsController::class, 'create'])->name('crips.create');
+    Route::get('crips/create/{id}', [CripsController::class, 'create'])->name('crips.create');
     Route::get('/tampil_crips/{id}', [CripsController::class, 'tampil_crips'])->name('tampil_crips');
     Route::post('/updatecrips/{id}', [CripsController::class, 'updatecrips'])->name('updatecrips');
     Route::get('/crips/destroy/{id}', [CripsController::class, 'destroy'])->name('crips.destroy');

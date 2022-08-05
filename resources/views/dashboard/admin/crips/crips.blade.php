@@ -33,38 +33,40 @@
         </div>
 
             <div class="card-body">
-                <table class="table datatable table-striped mt-2 ms-2">
-                    <thead class="thead-light">
-                        <tr>
-                            <th style="text-align: center">No</th>
-                            <th style="text-align: center">Nama Crips</th>
-                            <th style="text-align: center">Bobot</th>
-                            <th style="text-align: center">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody style="text-align: center">
-                        {{-- @php
-                            $increment = 1;
-                        @endphp --}}
-                        @foreach ($crips as $index => $item)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->nama_crips }}</td>
-                            <td>{{ $item->bobot }}</td>
+                <div class="table-responsive">
+                    <table class="table datatable table-striped mt-2 ms-2">
+                        <thead class="thead-light">
+                            <tr>
+                                <th style="text-align: center">No</th>
+                                <th style="text-align: center">Nama Crips</th>
+                                <th style="text-align: center">Bobot</th>
+                                <th style="text-align: center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody style="text-align: center">
+                            {{-- @php
+                                $increment = 1;
+                            @endphp --}}
+                            @foreach ($crips as $index => $item)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->nama_crips }}</td>
+                                <td>{{ $item->bobot }}</td>
 
-                            <td>
-                                <form class="d-flex justify-content-center gap-2" action="{{ route('crips.destroy', $item->id) }}" method="get">
-                                    {{-- <a href="/showbobot/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a> --}}
-                                    <a href="/tampil_crips/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
-                                    @csrf
-                                    @method('get')
-                                    <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                                <td>
+                                    <form class="d-flex justify-content-center gap-2" action="{{ route('crips.destroy', $item->id) }}" method="get">
+                                        {{-- <a href="/showbobot/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a> --}}
+                                        <a href="/tampil_crips/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                        @csrf
+                                        @method('get')
+                                        <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
 
                 {{-- <div class="form-group d-flex justify-content-between mt-3">
                     <div>

@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="form-group mb-3 mt-3 fw-bold">
-                        <label class="form-label mb-3">Level</label>
+                        <label for="level">Level</label>
                         <input type="text" name="level" class="form-control mt-3" value="{{ $data->level }}">
                         {{-- <select name="level" class="form-select" aria-label="Default select example">
                             <option selected>{{ $data->level }}</option><br>

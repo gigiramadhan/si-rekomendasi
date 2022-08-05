@@ -6,6 +6,7 @@ use App\Models\Crips;
 use App\Models\Rumah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class RumahController extends Controller
 {
@@ -51,6 +52,23 @@ class RumahController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),[
+            'type' => 'required',
+            'nama_perumahan' => 'required',
+            'alamat' => 'required',
+            'harga' => 'required',
+            'fasilitas' => 'required',
+            'stok' => 'required',
+            'gambar' => 'mimes:png,jpg,jpeg',
+        ]);
+
+        if ($validator->fails()) {
+            // dd($validator);
+            return redirect('/data_rumah/create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $fasilitasinput = $request->input('fasilitas');
         $request_harga = $request->harga;
         $request_luas_bangunan = $request->luas_bangunan;

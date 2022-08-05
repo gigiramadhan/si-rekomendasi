@@ -12,14 +12,20 @@
                 <form action="{{ route('data_admin.store') }}" method="post">
                 @csrf
 
-                    <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="nama">Nama</label>
-                        <input type="text" name="name" class="form-control mt-3" value="{{ old('name') }}" required>
+                    <div class="form-group mb-3 mt-3">
+                        <label for="name"><b>Nama</b></label>
+                        <input type="text" name="name" class="form-control mt-3 @error('name') is-invalid @enderror" value="{{ old('name') }}" autofocus>
+                        @error('name')
+                            <div class="invalid-feedback">Silahkan masukkan Nama</div>
+                        @enderror
                     </div>
 
-                    <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="username">Username</label>
-                        <input type="text" name="username" class="form-control mt-3" value="{{ old('username') }}" required>
+                    <div class="form-group mb-3 mt-3">
+                        <label for="username"><b>Username</b></label>
+                        <input type="text" name="username" class="form-control mt-3 @error('username') is-invalid @enderror" value="{{ old('username') }}" autofocus>
+                        @error('username')
+                            <div class="invalid-feedback">Silahkan masukkan Username</div>
+                        @enderror
                     </div>
 
                     <div class="form-group mb-3 mt-3 fw-bold">
@@ -33,14 +39,20 @@
                           </select> --}}
                     </div>
 
-                    <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="email">Email</label>
-                        <input type="text" name="email" class="form-control mt-3" value="{{ old('email') }}" required>
+                    <div class="form-group mb-3 mt-3">
+                        <label for="email"><b>Email</b></label>
+                        <input type="text" name="email" class="form-control mt-3 @error('email') is-invalid @enderror" value="{{ old('email') }}" autofocus>
+                        @error('email')
+                            <div class="invalid-feedback">Silahkan masukkan Email</div>
+                        @enderror
                     </div>
 
-                    <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" class="form-control mt-3" value="{{ old('password') }}" required>
+                    <div class="form-group mb-3 mt-3">
+                        <label for="password"><b>Password</b></label>
+                        <input type="password" name="password" class="form-control mt-3 @error('password') is-invalid @enderror" value="{{ old('password') }}" autofocus>
+                        @error('password')
+                            <div class="invalid-feedback">Silahkan masukkan Password</div>
+                        @enderror
                     </div>
 
                     <div class="form-group d-flex justify-content-between">

@@ -12,9 +12,12 @@
                 <form action="{{ route('kegiatan.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
-                    <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="judul">Judul</label>
-                        <input type="text" name="judul" class="form-control mt-3" value="{{ old('judul') }}" required>
+                    <div class="form-group mb-3 mt-3">
+                        <label for="judul"><b>Judul</b></label>
+                        <input type="text" name="judul" class="form-control mt-3 @error('judul') is-invalid @enderror" value="{{ old('judul') }}" autofocus>
+                        @error('judul')
+                            <div class="invalid-feedback">Silahkan masukkan Judul Kegiatan</div>
+                        @enderror
                     </div>
 
                     <div class="form-group mb-3 mt-3">
@@ -23,9 +26,12 @@
                         <trix-editor input="deskripsi" value="{{ old('deskripsi') }}"></trix-editor>
                     </div>
 
-                    <div class="form-group mb-3 mt-4 fw-bold">
-                        <label for="gambar">Gambar</label><br>
-                        <input type="file" class="form-control-file mt-3" name="gambar" value="{{ old('gambar') }}" required>
+                    <div class="form-group mb-3 mt-4">
+                        <label for="gambar"><b>Gambar</b></label><br>
+                        <input type="file" class="form-control-file mt-3 @error('gambar') is-invalid @enderror" name="gambar" value="{{ old('gambar') }}" autofocus>
+                        @error('gambar')
+                            <div class="invalid-feedback">Silahkan masukkan Gambar</div>
+                        @enderror
                     </div>
 
                     <div class="form-group d-flex justify-content-between">

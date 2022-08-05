@@ -20,6 +20,7 @@ class CreateTbRumahTable extends Migration
             $table->string('alamat');
             $table->integer('harga');
             $table->string('fasilitas');
+            $table->string('stok');
             $table->string('gambar');
             $table->string('rentang_harga');
             $table->string('rentang_luas_bangunan');

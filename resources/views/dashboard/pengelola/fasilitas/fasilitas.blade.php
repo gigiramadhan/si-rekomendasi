@@ -39,45 +39,47 @@
         </div>
 
         <div class="card-body">
-            <table class="table datatable table-striped mt-2 ms-2">
-                <thead class="thead-light">
-                    <tr>
-                        <th style="text-align: center" width='8%'>No</th>
-                        <th style="text-align: center" width='18%'>Nama Fasilitas</th>
-                        <th style="text-align: center" width='15%'>Keterangan</th>
-                        <th style="text-align: center" width='15%'>Tanggal Pembuatan</th>
-                        <th style="text-align: center" width='15%'>Tanggal Perubahan</th>
-                        <th style="text-align: center" width='10%'>Aksi</th>
-                        </tr>
-                </thead>
-                <tbody>
-                    {{-- @php
-                        $increment = 1;
-                    @endphp --}}
-                    @if ($fasilitas != null)
-                        @foreach ($fasilitas  as $index => $item)
-                            <tr>
-                                <td style="text-align: center">{{ $loop->iteration }}</td>
-                                <td>{{ $item->name_fasility }}</td>
-                                <td>{{ $item->keterangan }}</td>
-                                <td>{{ $item->created_at }}</td>
-                                <td>{{ $item->updated_at }}</td>
-
-                                <td>
-                                    <form class="d-flex justify-content-center gap-2" action="{{ route('fasilitas.destroy', $item->id) }}" method="get">
-                                        <a href="/fasilitas/showfasilitas/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
-                                        <a href="/fasilitas/tampilfasilitas/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
-                                        @csrf
-                                        @method('get')
-                                        <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                    </form>
-                                </td>
+            <div class="table-responsive">
+                <table class="table datatable table-striped mt-2 ms-2">
+                    <thead class="thead-light">
+                        <tr>
+                            <th style="text-align: center" width='8%'>No</th>
+                            <th style="text-align: center" width='18%'>Nama Fasilitas</th>
+                            <th style="text-align: center" width='15%'>Keterangan</th>
+                            <th style="text-align: center" width='15%'>Tanggal Pembuatan</th>
+                            <th style="text-align: center" width='15%'>Tanggal Perubahan</th>
+                            <th style="text-align: center" width='10%'>Aksi</th>
                             </tr>
-                            @endforeach
-                        @else
-                    @endif
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {{-- @php
+                            $increment = 1;
+                        @endphp --}}
+                        @if ($fasilitas != null)
+                            @foreach ($fasilitas  as $index => $item)
+                                <tr>
+                                    <td style="text-align: center">{{ $loop->iteration }}</td>
+                                    <td>{{ $item->name_fasility }}</td>
+                                    <td>{{ $item->keterangan }}</td>
+                                    <td>{{ $item->created_at }}</td>
+                                    <td>{{ $item->updated_at }}</td>
+
+                                    <td>
+                                        <form class="d-flex justify-content-center gap-2" action="{{ route('fasilitas.destroy', $item->id) }}" method="get">
+                                            <a href="/fasilitas/showfasilitas/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
+                                            <a href="/fasilitas/tampilfasilitas/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                            @csrf
+                                            @method('get')
+                                            <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            @else
+                        @endif
+                    </tbody>
+                </table>
+            </div>
 
             {{-- <div class="form-group d-flex justify-content-between mt-3">
                 <div>

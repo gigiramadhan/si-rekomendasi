@@ -10,10 +10,10 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link {{ (Request::is('data_admin*') || Request::is('data_pengelola*') || Request::is('data_pengunjung*') ) ? '' : 'collapsed'}}" href="{{url('data_admin')}}">
+            <a class="nav-link {{ (Request::is('data_admin*') || Request::is('data_pengelola*') || Request::is('data_user*') ) ? '' : 'collapsed'}}" href="{{url('data_admin')}}">
                 <i class="bi bi-people-fill"></i><span>Data Pengguna</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="tables-nav" class="nav-content collapse {{ (Request::is('data_admin*') || Request::is('data_pengelola*') || Request::is('data_pengunjung*') ) ? 'show' : ''}}">
+            <ul id="tables-nav" class="nav-content collapse {{ (Request::is('data_admin*') || Request::is('data_pengelola*') || Request::is('data_user*') ) ? 'show' : ''}}">
                 <li>
                     <a class="nav-link {{ Request::is('data_admin*') ? 'active' : '' }}" href="{{url('data_admin')}}" style="background: none;">
                         <i class="bi bi-people-fill"></i><span>Data Administrator</span>
@@ -25,8 +25,8 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link {{ Request::is('data_pengunjung*') ? 'active' : '' }}" href="{{url('data_pengunjung')}}" style="background: none;">
-                        <i class="bi bi-people-fill"></i><span>Data Pengunjung</span>
+                    <a class="nav-link {{ Request::is('data_user*') ? 'active' : '' }}" href="{{url('data_user')}}" style="background: none;">
+                        <i class="bi bi-people-fill"></i><span>Data User</span>
                     </a>
                 </li>
             </ul>

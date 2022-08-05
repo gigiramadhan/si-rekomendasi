@@ -5,7 +5,7 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h4 class="page-title">Edit Data Rumah</h4>
+                <h4 class="page-title">Edit Data Kegiatan</h4>
             </div>
 
             <div class="card-body">

@@ -47,48 +47,50 @@
         </div>
 
         <div class="card-body">
-            <table class="table datatable table-striped mt-2 ms-2">
-                <thead class="thead-light">
-                {{-- <table class="table table-striped table-hover">
-                <thead> --}}
-                    <tr>
-                        <th style="text-align: center" width='10%'>No</th>
-                        <th style="text-align: center">Nama</th>
-                        <th style="text-align: center" width='18%'>Username</th>
-                        <th style="text-align: center" width='12%'>Level</th>
-                        <th style="text-align: center">Email</th>
-                        {{-- <th>Password</th> --}}
-                        <th style="text-align: center">Aksi</th>
-                        </tr>
-                </thead>
-                <tbody>
-                    @if ($pengelola != null)
-                        @foreach ($pengelola as $index => $item)
+            <div class="table-responsive">
+                <table class="table datatable table-striped mt-2 ms-2">
+                    <thead class="thead-light">
+                    {{-- <table class="table table-striped table-hover">
+                    <thead> --}}
                         <tr>
-                            <td style="text-align: center">{{ $loop->iteration }}</td>
-                            <td style="text-align: left">{{ $item->name }}</td>
-                            <td style="text-align: left">{{ $item->username }}</td>
-                            <td style="text-align: left">{{ $item->level }}</td>
-                            <td style="text-align: left">{{ $item->email }}</td>
-                            {{-- <td style="text-align: left">{{ $item->password }}</td> --}}
+                            <th style="text-align: center" width='10%'>No</th>
+                            <th style="text-align: center">Nama</th>
+                            <th style="text-align: center" width='18%'>Username</th>
+                            <th style="text-align: center" width='12%'>Level</th>
+                            <th style="text-align: center">Email</th>
+                            {{-- <th>Password</th> --}}
+                            <th style="text-align: center">Aksi</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        @if ($pengelola != null)
+                            @foreach ($pengelola as $index => $item)
+                            <tr>
+                                <td style="text-align: center">{{ $loop->iteration }}</td>
+                                <td style="text-align: left">{{ $item->name }}</td>
+                                <td style="text-align: left">{{ $item->username }}</td>
+                                <td style="text-align: left">{{ $item->level }}</td>
+                                <td style="text-align: left">{{ $item->email }}</td>
+                                {{-- <td style="text-align: left">{{ $item->password }}</td> --}}
 
-                            <td>
-                                <form class="d-flex justify-content-center gap-2" action="{{ route('data_pengelola.destroy', $item->id) }}" method="get">
-                                    {{-- @if($item->level == 'admin'|| $item->level == 'pengelola') --}}
-                                        <a href="/data_pengelola/show_pengelola/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
-                                        <a href="/data_pengelola/tampil_pengelola/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
-                                    {{-- @endif --}}
-                                    @csrf
-                                    @method('get')
-                                    <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    @else
-                    @endif
-                </tbody>
-            </table>
+                                <td>
+                                    <form class="d-flex justify-content-center gap-2" action="{{ route('data_pengelola.destroy', $item->id) }}" method="get">
+                                        {{-- @if($item->level == 'admin'|| $item->level == 'pengelola') --}}
+                                            <a href="/data_pengelola/show_pengelola/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
+                                            <a href="/data_pengelola/tampil_pengelola/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                        {{-- @endif --}}
+                                        @csrf
+                                        @method('get')
+                                        <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        @else
+                        @endif
+                    </tbody>
+                </table>
+            <div>
 
             {{-- <div class="form-group d-flex justify-content-between mt-3">
                 <div>

@@ -40,43 +40,45 @@
         </div>
 
             <div class="card-body">
-                <table class="table datatable table-striped mt-2 ms-2">
-                    <thead class="thead-light">
-                    {{-- <table class="table table-striped table-hover">
-                    <thead> --}}
-                        <tr>
-                            <th style="text-align: center" width='10%'>No</th>
-                            <th style="text-align: center">Nama Kriteria</th>
-                            <th style="text-align: center">Attribut</th>
-                            <th style="text-align: center">Bobot</th>
-                            <th style="text-align: center">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody style="text-align: center">
-                        {{-- @php
-                            $increment = 1;
-                        @endphp --}}
-                        @foreach ($bobot as $index => $item)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->name_kriteria }}</td>
-                            <td>{{ $item->attribut }}</td>
-                            <td>{{ $item->bobot }}</td>
+                <div class="table-responsive">
+                    <table class="table datatable table-striped mt-2 ms-2">
+                        <thead class="thead-light">
+                        {{-- <table class="table table-striped table-hover">
+                        <thead> --}}
+                            <tr>
+                                <th style="text-align: center" width='10%'>No</th>
+                                <th style="text-align: center">Nama Kriteria</th>
+                                <th style="text-align: center">Attribut</th>
+                                <th style="text-align: center">Bobot</th>
+                                <th style="text-align: center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody style="text-align: center">
+                            {{-- @php
+                                $increment = 1;
+                            @endphp --}}
+                            @foreach ($bobot as $index => $item)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->name_kriteria }}</td>
+                                <td>{{ $item->attribut }}</td>
+                                <td>{{ $item->bobot }}</td>
 
-                            <td>
-                                {{-- <a href="#" class="btn btn-danger delete mt-3" data-id="{{ $item->id }}"><i class="bi bi-trash"></i></a> --}}
-                                <form class="d-flex justify-content-center gap-2" action="{{ route('bobot.destroy', $item->id) }}" method="get">
-                                    <a href="/showbobot/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
-                                    <a href="/bobot/tampilbobot/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
-                                    @csrf
-                                    @method('get')
-                                    <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                                <td>
+                                    {{-- <a href="#" class="btn btn-danger delete mt-3" data-id="{{ $item->id }}"><i class="bi bi-trash"></i></a> --}}
+                                    <form class="d-flex justify-content-center gap-2" action="{{ route('bobot.destroy', $item->id) }}" method="get">
+                                        <a href="/showbobot/{{ $item->id }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
+                                        <a href="/bobot/tampilbobot/{{ $item->id }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                        @csrf
+                                        @method('get')
+                                        <button type="submit" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                <div>
 
                 {{-- <div class="form-group d-flex justify-content-between mt-3">
                     <div>
@@ -97,57 +99,4 @@
         </div>
     @include('sweetalert::alert')
 @endsection
-
-    {{-- <script
-        src="https://code.jquery.com/jquery-3.6.0.slim.js"
-        integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
-        crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-    </body>
-    <script>
-        $('.delete').on('click','button[data-id=delete]',function(){
-				var id = $(this).data('id');
-				swal({
-					title: "Hapus Data Berita ?",
-					text: "Data akan terhapus dari database.",
-					icon: "warning",
-					buttons: true,
-					dangerMode: true,
-				})
-				.then((willDelete) => {
-            if (willDelete) {
-                window.location = "/destroy/{id}"
-                swal("Data berhasil dihapus", {
-                icon: "success",
-                });
-            } else {
-                swal("Data tidak jadi dihapus");
-            }
-		});
-	});
-        // $('.delete').click( function(){
-        //     var beritaid = $(this).attr('data-id');
-        //         swal({
-        //     title: "Yakin ?",
-        //     text: "Kamu akan menghapus data berita!",
-        //     icon: "warning",
-        //     buttons: true,
-        //     dangerMode: true,
-        //     })
-        //     .then((willDelete) => {
-        //     if (willDelete) {
-        //         window.location = "/destroy/{id}"
-        //         swal("Data berhasil dihapus", {
-        //         icon: "success",
-        //         });
-        //     } else {
-        //         swal("Data tidak jadi dihapus");
-        //     }
-        //     });
-        // });
-
-    </script>
-</html> --}}
-
 

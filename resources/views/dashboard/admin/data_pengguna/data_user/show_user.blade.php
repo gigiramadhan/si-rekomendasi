@@ -15,13 +15,13 @@
         <div class="container mt-4">
             <div class="card">
                 <div class="card-header mb-4 ms-2">
-                    <h1 class="page-title text-secondary">Data Pengunjung</h1>
+                    <h1 class="page-title text-secondary">Data User</h1>
                 </div>
 
                 <div class="container">
                     <div class="card">
                         <div class="bg-info p-4 text-primary bg-opacity-25">
-                            <h6 class="fw-bold">Informasi Lengkap Data Pengunjung</h6>
+                            <h6 class="fw-bold">Informasi Lengkap Data User</h6>
                         </div>
 
                         <div class="col">
@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="form-group">
-                    <a href="/data_pengunjung" class="btn btn-secondary mt-5 mb-4 ms-4"><i class="bi bi-arrow-left me-2"></i>Kembali</a>
+                    <a href="/data_user" class="btn btn-secondary mt-5 mb-4 ms-4"><i class="bi bi-arrow-left me-2"></i>Kembali</a>
                 </div>
             </div>
         </div>

@@ -18,7 +18,7 @@ class DashboardController extends Controller
     public $rumah;
     public $admin;
     public $pengelola;
-    public $pengunjung;
+    public $user;
 
 
     public function index()
@@ -30,10 +30,10 @@ class DashboardController extends Controller
         // $pengguna = DB::table('users')->count();
         $admin = DB::table('users')->where('level', '=', 'admin')->count();
         $pengelola = DB::table('users')->where('level', '=', 'pengelola')->count();
-        $pengunjung = DB::table('users')->where('level', '=', 'user')->count();
+        $user = DB::table('users')->where('level', '=', 'user')->count();
 
         // return view('dashboard', compact('pengguna','rumah'));
-        return view('dashboard.admin.dashboard', ['rumah'=>$rumah, 'admin'=>$admin, 'pengelola'=>$pengelola, 'pengunjung'=>$pengunjung, "title" => "Dashboard"]);
+        return view('dashboard.admin.dashboard', ['rumah'=>$rumah, 'admin'=>$admin, 'pengelola'=>$pengelola, 'user'=>$user, "title" => "Dashboard"]);
 
     }
 

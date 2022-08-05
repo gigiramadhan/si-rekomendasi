@@ -13,12 +13,19 @@
                         <form action="{{ route('booking.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
-                            <div class="row">
+                            <div class="row mb-4 mt-4">
                                 <label for="name_booking" class="col-sm-2 col-form-label">Nama Lengkap</label>
                                 <div class="col-sm-10">
                                     <input type="hidden" name="rumah_id" value="{{ $rumah->id }}" class="form-control" placeholder="Masukkan nama lengkap anda"  required>
                                     <input type="hidden" name="stok_lama" value="{{ $rumah->stok }}" class="form-control" placeholder="Masukkan nama lengkap anda"  required>
-                                    <input type="text" name="name_booking" class="form-control" placeholder="Masukkan nama lengkap anda" value="{{ old('name_booking') }}" required>
+                                    <input type="text" name="name_booking" class="form-control" placeholder="Masukkan nama lengkap anda" value="{{ auth()->user()->name }}" readonly>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4 mt-4">
+                                <label for="nik" class="col-sm-2 col-form-label">NIK</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="nik" class="form-control" placeholder="Masukkan NIK anda" value="{{ auth()->user()->nik }}" readonly>
                                 </div>
                             </div>
 

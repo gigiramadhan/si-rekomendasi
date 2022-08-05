@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Fasilitas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class FasilitasController extends Controller
 {
@@ -41,6 +42,18 @@ class FasilitasController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),[
+            'name_fasility' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            // dd($validator);
+            return redirect('/fasilitas/create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $data = array(
             'name_fasility' => $request->name_fasility,
             'keterangan' => $request->keterangan,

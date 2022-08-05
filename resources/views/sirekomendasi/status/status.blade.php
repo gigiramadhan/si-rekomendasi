@@ -14,6 +14,7 @@
                             <tr>
                                 <th style="text-align: center">No</th>
                                 <th style="text-align: center">Nama Lengkap</th>
+                                <th style="text-align: center">NIK</th>
                                 <th style="text-align: center">No Handphone</th>
                                 <th style="text-align: center">Type Rumah</th>
                                 {{-- <th style="text-align: center">Tanggal Booking</th> --}}
@@ -30,6 +31,7 @@
                                     <tr>
                                         <td style="text-align: center">{{ $loop->iteration }}</td>
                                         <td style="text-align: center">{{ $item->name_booking }}</td>
+                                        <td style="text-align: center">{{ auth()->user()->nik }}</td>
                                         <td style="text-align: center">{{ $item->no_telp }}</td>
                                         <td style="text-align: center">{{ $item->type_rumah }}</td>
                                         {{-- <td style="text-align: center">{{ $item->date_booking }}</td> --}}

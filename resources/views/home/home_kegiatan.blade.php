@@ -19,7 +19,7 @@
                     <p class="card-text" style="text-align: justify">{!! $item->kutipan !!}</p>
                 </div>
                 <div class="text-start ms-3">
-                    <a href="{{ url('detail_berita', $item->id) }}" class="btn btn-primary rounded-pill mt-2 mb-2">Read More<i class="bi bi-arrow-right-circle ms-2"></i></a>
+                    <a href="{{ url('detail_kegiatan', $item->id) }}" class="btn btn-primary rounded-pill mt-2 mb-2">Read More<i class="bi bi-arrow-right-circle ms-2"></i></a>
                 </div>
             </div>
             @endforeach

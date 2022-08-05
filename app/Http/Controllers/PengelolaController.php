@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class PengelolaController extends Controller
 {
@@ -46,6 +47,20 @@ class PengelolaController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),[
+            'name' => 'required',
+            'username' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            // dd($validator);
+            return redirect('/data_pengelola/create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $data = array(
             'name' => $request->name,
             'username' => $request->username,

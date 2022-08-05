@@ -13,9 +13,9 @@
                     @csrf
                     @method('POST')
 
-                    <div class="form-group mb-3 mt-3 fw-bold">
-                        <label class="form-label mb-3">Nama Fasilitas</label>
-                        <select name="name_fasility" class="form-select" aria-label="Default select example" required>
+                    <div class="form-group mb-3 mt-3">
+                        <label class="form-label mb-3"><b>Nama Fasilitas</b></label>
+                        <select name="name_fasility" class="form-select @error('name_fasility') is-invalid @enderror" name="name_fasility" value="{{ old('name_fasility') }}" autofocus>
                             <option value="">--- pilih jenis fasilitas ---</option><br>
                             <option value="1 Gate System">1 Gate System</option>
                             <option value="CCTV">CCTV</option>
@@ -25,15 +25,21 @@
                             <option value="Taman">Taman</option>
                             <option value="RTH">RTH</option>
                           </select>
+                        @error('name_fasility')
+                            <div class="invalid-feedback">Silahkan masukkan Fasilitas</div>
+                        @enderror
                     </div>
 
-                    <div class="form-group mb-3 mt-3 fw-bold">
-                        <label class="form-label mb-3">Keterangan</label>
-                        <select name="keterangan" class="form-select" aria-label="Default select example" required>
+                    <div class="form-group mb-3 mt-3">
+                        <label class="form-label mb-3"><b>Keterangan</b></label>
+                        <select name="keterangan" class="form-select @error('keterangan') is-invalid @enderror" name="keterangan" value="{{ old('keterangan') }}" autofocus>
                             <option value="">--- pilih jenis keterangan ---</option><br>
                             <option value="Umum">Umum</option>
                             <option value="Khusus">Khusus</option>
                           </select>
+                        @error('keterangan')
+                          <div class="invalid-feedback">Silahkan masukkan Keterangan</div>
+                        @enderror
                     </div>
 
                     <div class="form-group d-flex justify-content-between">

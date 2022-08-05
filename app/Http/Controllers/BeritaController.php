@@ -6,6 +6,7 @@ use App\Models\Berita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 // use DataTables;
 
@@ -93,6 +94,19 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),[
+            'judul' => 'required',
+            'deskripsi' => 'required',
+            'gambar' => 'mimes:png,jpg,jpeg',
+        ]);
+
+        if ($validator->fails()) {
+            // dd($validator);
+            return redirect('/berita/create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $image = $request->file('gambar');
         $new_image = rand().'.'.$image->getClientOriginalExtension();
 

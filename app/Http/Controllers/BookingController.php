@@ -7,6 +7,7 @@ use App\Models\Rumah;
 use App\Models\RumahPengelola;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class BookingController extends Controller
@@ -18,8 +19,16 @@ class BookingController extends Controller
      */
     public function index(){
 
-        $booking = Booking::latest()->paginate(3);
-
+        $booking = DB::table('tb_booking')
+        ->leftJoin('users','tb_booking.user_id','=','users.id')
+        ->select(
+            'tb_booking.*',
+            'users.*',
+            'tb_booking.id as id_booking'
+        )
+        ->orderBy('tb_booking.updated_at','DESC')
+        ->get();
+        // dd($booking);
         return view('dashboard.pengelola.data_booking.data_booking', compact('booking'), [
             "title" => "Data Booking"
         ]);
@@ -34,6 +43,7 @@ class BookingController extends Controller
     {
         $rumah = Rumah::findOrFail($rumah_id);
         $booking = Booking::get();
+
 
         return view('sirekomendasi.booking.create', [
             "title" => "Booking",
@@ -64,7 +74,8 @@ class BookingController extends Controller
         // );
 
         // $image->move(public_path('gambar'), $new_image);
-// dd($request->all());
+        // dd($request->all());
+
         $data = new Booking;
         $data->user_id = Auth::user()->id;
         $data->name_booking = $request->name_booking;

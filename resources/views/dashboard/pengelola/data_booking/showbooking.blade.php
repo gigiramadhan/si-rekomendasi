@@ -28,8 +28,12 @@
                             <div class="card-body">
                                 <table class="table table-striped mt-4">
                                     <tbody>
-                                        <tr>
-                                            <th style="width: 40%">Nama Lengkap</th>
+                                        {{-- <tr>
+                                            <th style="width: 40%">NIK</th>
+                                            <td>{{ $data->nik }}</td>
+                                        </tr> --}}
+                                        <tr style="width: 40%">
+                                            <th>Nama Lengkap</th>
                                             <td>{{ $data->name_booking }}</td>
                                         </tr>
                                         <tr>
@@ -44,10 +48,6 @@
                                             <th>Status Booking</th>
                                             <td><button disabled = "disabled" class="btn btn-secondary">Selesai</button></td>
                                         </tr>
-                                        {{-- <tr>
-                                            <th>Bukti Booking</th>
-                                            <td><img src="{{ URL::to('/') }}/gambar/{{ $data->upload_booking }}" width="200px"/></td>
-                                        </tr> --}}
                                     </tbody>
                                 </table>
                             </div>

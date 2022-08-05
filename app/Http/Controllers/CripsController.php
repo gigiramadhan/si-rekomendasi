@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bobot;
 use App\Models\Crips;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CripsController extends Controller
 {
@@ -42,6 +43,18 @@ class CripsController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),[
+            'nama_crips' => 'required',
+            'bobot' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            // dd($validator);
+            return redirect('/crips/create/'.$request->id_kriteria)
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         // return $request->all();
         $data = [
             'id_kriteria' => $request->id_kriteria,

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\RumahPengelola;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class RumahPengelolaController extends Controller
 {
@@ -15,12 +16,20 @@ class RumahPengelolaController extends Controller
      */
     public function index(){
 
-        $rumah = RumahPengelola::latest()->paginate(3);
+        $rumah = RumahPengelola::latest()->get();
 
         return view('dashboard.pengelola.data_rumah.data_rumah_pengelola', compact('rumah'), [
             "title" => "Data Rumah"
         ]);
     }
+
+    // public function data_rumah(){
+
+    //     $rumah = RumahPengelola::all();
+    //     return view('sirekomendasi.data_rumah.data_rumah_user', compact('rumah'), [
+    //         "title" => "Data Rumah"
+    //     ]);
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -42,6 +51,22 @@ class RumahPengelolaController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),[
+            'type' => 'required',
+            'nama_perumahan' => 'required',
+            'alamat' => 'required',
+            'harga' => 'required',
+            'fasilitas' => 'required',
+            'gambar' => 'mimes:png,jpg,jpeg',
+        ]);
+
+        if ($validator->fails()) {
+            // dd($validator);
+            return redirect('/data_rumah_pengelola/create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $fasilitasinput = $request->input('fasilitas');
         $fasilitas = implode(', ', $fasilitasinput);
 

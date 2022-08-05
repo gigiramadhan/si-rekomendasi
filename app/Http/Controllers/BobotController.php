@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bobot;
 use App\Models\Crips;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class BobotController extends Controller
 {
@@ -42,6 +43,19 @@ class BobotController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),[
+            'name_kriteria' => 'required',
+            'attribut' => 'required',
+            'bobot' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            // dd($validator);
+            return redirect('/bobot/create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $data = [
             'name_kriteria' => $request->name_kriteria,
             'attribut' => $request->attribut,

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Kegiatan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class KegiatanController extends Controller
 {
@@ -62,6 +64,19 @@ class KegiatanController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),[
+            'judul' => 'required',
+            'deskripsi' => 'required',
+            'gambar' => 'mimes:png,jpg,jpeg',
+        ]);
+
+        if ($validator->fails()) {
+            // dd($validator);
+            return redirect('/kegiatan/create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $image = $request->file('gambar');
         $new_image = rand().'.'.$image->getClientOriginalExtension();
 
@@ -72,6 +87,8 @@ class KegiatanController extends Controller
         );
 
         $image->move(public_path('gambar'), $new_image);
+
+        $data['kutipan'] = Str::limit(strip_tags($request->deskripsi), 100);
 
         Kegiatan::create($data);
 
@@ -171,5 +188,16 @@ class KegiatanController extends Controller
         ]);
     }
 
+    public function detail($id){
+
+        $data = Kegiatan::findOrFail($id);
+        // dd($data);
+
+        return view('landing.detail_kegiatan', compact('data'), [
+            "title" => "Detail Kegiatan"
+        ])->with([
+            'data' => $data
+        ]);
+    }
 
 }

@@ -23,7 +23,9 @@
                             <option value="Type Hook (48/126)">Type Hook (48/126)</option>
                             <option value="Type Sultan Essence (48/98)">Type Sultan Essence (48/98)</option>
                             <option value="Type Sultan Essence Hook (48/140)">Type Sultan Essence Hook (48/140)</option>
-                            {{-- <option value="Type Hook (36/88)">Type Hook (36/88)</option> --}}
+                            <option value="Type Hook (36/88)">Type Hook (36/88)</option>
+                            <option value="Type 36 (36/66)">Type 36 (36/66)</option>
+                            <option value="Type Ruko 2 LT (98/72)">Type Ruko 2 LT (98/72)</option>
                           </select>
                     </div>
 
@@ -39,27 +41,42 @@
 
                     <div class="form-group mb-3 mt-3 fw-bold">
                         <label for="luas_bangunan">Luas Bangunan</label>
-                        <input type="text" name="luas_bangunan" class="form-control mt-3" placeholder="Masukkan Luas Bangunan" value="{{ old('luas_bangunan') }}" required>
+                        <input type="text" name="luas_bangunan" class="form-control mt-3 @error('luas_bangunan') is-invalid @enderror" name="luas_bangunan" placeholder="Masukkan Luas Bangunan" value="{{ old('luas_bangunan') }}" autofocus>
+                        @error('luas_bangunan')
+                            <div class="invalid-feedback">Silahkan masukkan Luas Bangunan</div>
+                        @enderror
                     </div>
 
                     <div class="form-group mb-3 mt-3 fw-bold">
                         <label for="luas_tanah">Luas Tanah</label>
-                        <input type="text" name="luas_tanah" class="form-control mt-3" placeholder="Masukkan Luas Tanah" value="{{ old('luas_tanah') }}" required>
+                        <input type="text" name="luas_tanah" class="form-control mt-3 @error('luas_tanah') is-invalid @enderror" name="luas_tanah" placeholder="Masukkan Luas Tanah" value="{{ old('luas_tanah') }}" autofocus>
+                        @error('luas_tanah')
+                            <div class="invalid-feedback">Silahkan masukkan Luas Tanah</div>
+                        @enderror
                     </div>
 
-                    <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="alamat">Alamat</label>
-                        <textarea name="alamat" class="form-control mt-3" value="{{ old('alamat') }}" required></textarea>
+                    <div class="form-group mb-3 mt-3">
+                        <label for="alamat"><b>Alamat</b></label>
+                        <textarea name="alamat" class="form-control mt-3 @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') }}" autofocus></textarea>
+                        @error('alamat')
+                            <div class="invalid-feedback">Silahkan masukkan Alamat Perumahan</div>
+                        @enderror
                     </div>
 
-                    <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="harga">Harga</label>
-                        <input type="text" name="harga" class="form-control mt-3" placeholder="RP. xxx" value="{{ old('harga') }}" required>
+                    <div class="form-group mb-3 mt-3">
+                        <label for="harga"><b>Harga</b></label>
+                        <input type="text" name="harga" class="form-control mt-3 @error('harga') is-invalid @enderror" name="harga" placeholder="RP. xxx" value="{{ old('harga') }}" autofocus>
+                        @error('harga')
+                            <div class="invalid-feedback">Silahkan masukkan Harga Rumah</div>
+                        @enderror
                     </div>
 
-                    <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="stok">Stok</label>
-                        <input type="text" name="stok" class="form-control mt-3" value="{{ old('stok') }}" required>
+                    <div class="form-group mb-3 mt-3">
+                        <label for="stok"><b>Stok</b></label>
+                        <input type="text" name="stok" class="form-control mt-3 @error('stok') is-invalid @enderror" name="stok" value="{{ old('stok') }}" autofocus>
+                        @error('stok')
+                            <div class="invalid-feedback">Silahkan masukkan Stok Rumah</div>
+                        @enderror
                     </div>
 
                     <div class="row mb-3 mt-3">
@@ -103,7 +120,10 @@
 
                     <div class="form-group mb-3 mt-4 fw-bold">
                         <label for="gambar">Gambar</label><br>
-                        <input type="file" class="form-control-file mt-3" name="gambar" value="{{ old('gambar') }}" required>
+                        <input type="file" class="form-control-file mt-3 @error('gambar') is-invalid @enderror" name="gambar" placeholder="RP. xxx" value="{{ old('gambar') }}" autofocus>
+                        @error('gambar')
+                            <div class="invalid-feedback">Silahkan masukkan Gambar</div>
+                        @enderror
                     </div>
 
                     <div class="form-group d-flex justify-content-between">
