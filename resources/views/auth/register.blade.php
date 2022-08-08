@@ -99,7 +99,7 @@
                                             <strong>Pilih Sebagai</strong>
                                                 <select name="level" id="level" class="form-select mt-3" aria-label="Default select example">
                                                     <option value="">--- pilih sebagai ---</option><br>
-                                                    <option value="user">user</option>
+                                                    <option value="pengunjung">pengunjung</option>
                                                     <option value="pengelola">pengelola</option>
                                                 </select>
                                         </div>
