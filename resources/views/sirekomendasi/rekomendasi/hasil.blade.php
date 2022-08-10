@@ -5,6 +5,7 @@
         <div class="row g-0 mt-4">
             <div class="card mb-4 mt-4">
                 <div class="card-body">
+                    <div class="table-responsive">
                     <div class="section-title text-center">
                         <p>Hasil Rekomendasi Perumahan <br> Land Group</p>
                     </div>
@@ -47,6 +48,7 @@
                     <div class="form-group d-flex justify-content-md-start mt-4">
                         <a href="/rekomendasi" class="btn btn-secondary rounded-pill mt-2"><i class="bi bi-arrow-left me-2"></i>Kembali</a>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

@@ -113,7 +113,7 @@ class RekomendasiController extends Controller
 
         arsort($preferensi['hasil']);
 
-        dd($preferensi['hasil']);
+        // dd($preferensi['hasil']);
 
         $ranking = collect($preferensi['hasil']);
         foreach ($ranking as $namaTypeRumah => $valuePreferensi) {

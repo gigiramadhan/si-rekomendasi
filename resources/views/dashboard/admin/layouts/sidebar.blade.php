@@ -26,7 +26,7 @@
                 </li>
                 <li>
                     <a class="nav-link {{ Request::is('data_user*') ? 'active' : '' }}" href="{{url('data_user')}}" style="background: none;">
-                        <i class="bi bi-people-fill"></i><span>Data User</span>
+                        <i class="bi bi-people-fill"></i><span>Data Pengunjung</span>
                     </a>
                 </li>
             </ul>

@@ -204,7 +204,7 @@ use App\Models\RumahPengelola;
 
 
 // Middleware Group User
-    Route::group(['middleware' => ['auth','ceklevel:user']], function () {
+    Route::group(['middleware' => ['auth','ceklevel:pengunjung']], function () {
     // Rekomendasi
     Route::get('rekomendasi', function () {
         return view('sirekomendasi.rekomendasi.rekomendasi', [

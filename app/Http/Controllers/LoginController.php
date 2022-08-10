@@ -34,7 +34,7 @@ class LoginController extends Controller
                 return redirect('/dashboard')->withSuccess('Hai Admin, Selamat Datang di Sistem Rekomendasi Pemilihan Perumahan!');
             } else if(Auth::user()->level == 'pengelola'){
                 return redirect('/dashboard_pengelola')->withSuccess('Hai Pengelola, Selamat Datang di Sistem Rekomendasi Pemilihan Perumahan!');
-            } else if(Auth::user()->level == 'user'){
+            } else if(Auth::user()->level == 'pengunjung'){
                 return redirect('/rekomendasi')->withSuccess('Hai User, Selamat Datang di Sistem Rekomendasi Pemilihan Perumahan!');
             } else {
                 return redirect('/');
@@ -58,6 +58,7 @@ class LoginController extends Controller
             // 'nik' => 'required|unique:users,nik|numeric',
             'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:5|max:255',
+            'level' => 'required',
         ]
         // [
         //     'nik.numeric' => 'Silahkan Masukkan NIK anda'

@@ -87,14 +87,14 @@
         <div class="col-xxl-4 col-md-3 mt-4">
             <div class="card info-card sales-card me-2">
                 <div class="card-body">
-                    <h5 class="card-title">User</h5>
+                    <h5 class="card-title">Pengunjung</h5>
 
                     <div class="d-flex align-items-center">
                         <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <i class="bi bi-person-plus-fill"></i>
                         </div>
                         <div class="ps-1">
-                            <h6 class="ms-4">{{ $user }}</h6>
+                            <h6 class="ms-4">{{ $pengunjung }}</h6>
                             <span class="text-success small pt-1"><a href="{{url('data_user')}}"><u>View Details</u><i class="bi bi-chevron-right"></i></span></a>
                         </div>
                     </div>

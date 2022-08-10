@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Pages | Registration</title>
+    <title>Pages | Registrasi</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -183,19 +183,8 @@
     <script src="{{ asset('adashboard') }}/assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="{{ asset('adashboard') }}/assets/js/main.js"></script>
-    <script>
-        $('#level').change(function(){
-            // alert(this.value);
-            if(this.value == 'pengelola')
-            {
-                $('#nik_b').addClass('d-none');
-            }else{
-                $('#nik_b').removeClass('d-none');
-            }
-        })
-    </script>
+    <script src="assets/js/main.js"></script>
+
 </body>
 
 </html>

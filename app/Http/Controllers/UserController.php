@@ -17,7 +17,7 @@ class UserController extends Controller
     public function index(){
 
         // $pengunjung = User::latest()->paginate(2);
-        $user = DB::table('users')->where('level', 'user')->get();
+        $user = DB::table('users')->where('level', 'pengunjung')->get();
 
         return view('dashboard.admin.data_pengguna.data_user.data_user', compact('user'), [
             "title" => "Data Pengguna"
