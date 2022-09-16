@@ -14,22 +14,14 @@ class RumahPengelolaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-
+    public function index()
+    {
         $rumah = RumahPengelola::latest()->get();
 
         return view('dashboard.pengelola.data_rumah.data_rumah_pengelola', compact('rumah'), [
             "title" => "Data Rumah"
         ]);
     }
-
-    // public function data_rumah(){
-
-    //     $rumah = RumahPengelola::all();
-    //     return view('sirekomendasi.data_rumah.data_rumah_user', compact('rumah'), [
-    //         "title" => "Data Rumah"
-    //     ]);
-    // }
 
     /**
      * Show the form for creating a new resource.
@@ -61,7 +53,6 @@ class RumahPengelolaController extends Controller
         ]);
 
         if ($validator->fails()) {
-            // dd($validator);
             return redirect('/data_rumah_pengelola/create')
                 ->withErrors($validator)
                 ->withInput();
@@ -111,10 +102,10 @@ class RumahPengelolaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function tampilrumahpengelola($id){
-
+    public function tampilrumahpengelola($id)
+    {
         $data = RumahPengelola::find($id);
-        // dd($data);
+
         $fasilitas = explode(', ', $data->fasilitas);
 
         return view('dashboard.pengelola.data_rumah.tampilrumahpengelola', compact('data'), [
@@ -131,8 +122,8 @@ class RumahPengelolaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updaterumahpengelola(Request $request, $id){
-
+    public function updaterumahpengelola(Request $request, $id)
+    {
         $image_lama = $request->old_image;
         $image_baru = $request->file('gambar');
 
@@ -149,7 +140,6 @@ class RumahPengelolaController extends Controller
         $hasil = implode(', ', $facility);
 
         $data = RumahPengelola::find($id);
-        // $data->update($request->all());
 
         $data->update(array(
             'type' => $request->type,
@@ -178,19 +168,5 @@ class RumahPengelolaController extends Controller
         $rumah->delete();
 
         return redirect('data_rumah_pengelola')->with('toast_success', 'Data berhasil dihapus');
-    }
-
-    public function search(Request $request){
-
-        if($request->has('search')){
-            $rumah = RumahPengelola::where('nama_perumahan', 'LIKE', '%'.$request->search.'%')->paginate();
-        }
-        else{
-            $rumah = RumahPengelola::all();
-        }
-
-        return view('dashboard.pengelola.data_rumah.data_rumah_pengelola', compact('rumah'), [
-            "title" => "Data Rumah"
-        ]);
     }
 }

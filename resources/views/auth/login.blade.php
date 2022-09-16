@@ -76,8 +76,6 @@
 
                                     <form class="row g-2 needs-validation" action="{{ route('login.login') }}"
                                         method="post" novalidate>
-
-                                        {{-- <form action="{{url('login')}}" method="post"> --}}
                                         @method('POST')
                                         @csrf
 

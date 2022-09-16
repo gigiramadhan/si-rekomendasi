@@ -31,12 +31,6 @@
                     <div class="form-group mb-3 mt-3 fw-bold">
                         <label class="form-label mb-3">Level</label>
                         <input type="text" name="level" class="form-control" value="admin" readonly>
-                        {{-- <select name="level" class="form-select" aria-label="Default select example">
-                            <option selected>--- pilih jenis level ---</option><br>
-                            <option value="admin">Admin</option>
-                            <option value="pengelola">Pengelola</option>
-                            <option value="user">User</option>
-                          </select> --}}
                     </div>
 
                     <div class="form-group mb-3 mt-3">

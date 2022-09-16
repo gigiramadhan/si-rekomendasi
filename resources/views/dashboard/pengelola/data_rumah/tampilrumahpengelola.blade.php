@@ -117,17 +117,11 @@
                     </div>
                 </div>
 
-                {{-- <div class="form-group mb-3 mt-3 fw-bold">
-                    <label for="fasilitas">Fasilitas</label>
-                    <input type="text" name="fasilitas" class="form-control mt-3" value="{{ $data->fasilitas }}">
-                </div> --}}
-
                 <div class="form-group mb-3 mt-4 fw-bold">
                     <label for="gambar">Gambar</label><br>
                     <input type="file" class="form-control-file mt-3" name="gambar"><br>
                     <img src="{{ URL::to('/') }}/gambar/{{ $data->gambar }}" class="img-thumbnail" width="200px"/>
                     <input type="hidden" class="form-control-file mt-3" name="old_image" value="{{ $data->gambar }}">
-                    {{-- <label class="custom-file-label" for="gambar"></label> --}}
                 </div>
 
                 <div class="form-group d-flex justify-content-between">

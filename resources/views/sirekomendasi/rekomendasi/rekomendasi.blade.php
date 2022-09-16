@@ -17,7 +17,6 @@
                             Sultan Estate, and Pesona Citra Residence).</h2>
                     </div>
                     <div class="text-center text-lg-start">
-                        {{-- <a href="{{ url('/') }}" class="btn-get-started scrollto"><i class="bi bi-arrow-left me-2"></i>Kembali</a> --}}
                         <a href="{{ route('status') }}" class="btn-get-started scrollto">Cek Status Booking</a>
                     </div>
                 </div>

@@ -30,8 +30,7 @@
 
 </head>
 
-    <body>
-    {{-- Header --}}
+<body>
     <header id="header" class="fixed-top d-flex align-items-center">
         <div class="container d-flex align-items-center justify-content-between">
 
@@ -39,8 +38,7 @@
                 <h1><a href="{{url('beranda')}}"><span>SIREKPERUM</span></a></h1>
             </div>
 
-    @include('home.layouts.navbar')
-
+            @include('home.layouts.navbar')
         </div>
     </header>
     @yield('content')
@@ -58,13 +56,4 @@
 
     </body>
 </html>
-
-    {{-- <script>
-        let nav = document.getElementById('header')
-        window.addEventListener('scroll', function(){
-            if(document.documentElement.scrollTop === 0){
-                nav.classList.add('header-scrolled')
-            }
-        })
-    </script> --}}
 

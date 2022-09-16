@@ -42,7 +42,6 @@
                                         </tr>
                                         <tr>
                                             <th>Harga</th>
-                                            {{-- <td>{{ currency_IDR ($data->harga) }}</td> --}}
                                             <td>Rp. {{ number_format($data->harga) }}</td>
                                         </tr>
                                         <tr>

@@ -10,16 +10,6 @@
                 </ol>
             </nav>
         </div>
-
-        {{-- <div class="row">
-            <div class="container mt-2">
-                <div class="card ms-2 me-2">
-                    <div class="bg-white p-3 text-secondary bg-opacity-25">
-                        <h5 class="fw-bold">Hai Admin, Selamat Datang di Sistem Rekomendasi Pemilihan Perumahan!!!</h5>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
     @endsection
 
     @section('content')

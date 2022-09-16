@@ -17,8 +17,8 @@ class BeritaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-
+    public function index()
+    {
         $berita = Berita::latest()->get();
 
         return view('dashboard.admin.berita.berita', compact('berita'), [
@@ -26,36 +26,8 @@ class BeritaController extends Controller
         ]);
     }
 
-    // public function fetchAll(Request $request)
-    // {
-    //     if ($request->ajax()) {
-    //         $data = Berita::latest()->get();
-    //         return Datatables::of($data)
-    //                 ->addIndexColumn()
-    //                 ->addColumn('deskripsi', function($row){
-    //                     $deskripsi = '{!! $row->deskripsi !!}';
-    //                     return $deskripsi;
-    //                 })
-    //                 ->addColumn('gambar', function($row){
-    //                     return '<img src="gambar/'.$row->gambar.' " width="130px">';
-    //                 })
-    //                 ->addColumn('action', function($row){
-    //                     // dd($row->id);
-    //                        $btn = '<td>
-    //                        <form class="d-flex justify-content-center gap-2" action="berita/destroy/'.$row->id.'" method="get">';
-    //                            $btn .= '<a href="/berita/tampildata/'.$row->id.'" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>';
-    //                         //    $btn .='{!! @csrf !!}';
-    //                            $btn .= '<button type="submit" onclick="" class="btn deleteIcon btn-danger"><i class="bi bi-trash"></i></button>
-    //                        </form></td>';
-
-    //                         return $btn;
-    //                 })
-    //                 ->rawColumns(['deskripsi','gambar','action'])
-    //                 ->make(true);
-    //     }
-    // }
-    public function berita(){
-
+    public function berita()
+    {
         $berita = Berita::take(3)->get()->sortByDesc('created_at');
 
         return view('sirekomendasi.home.berita_user', [
@@ -64,8 +36,8 @@ class BeritaController extends Controller
         ]);
     }
 
-    public function home_berita(){
-
+    public function home_berita()
+    {
         $berita = Berita::take(3)->get()->sortByDesc('created_at');
 
         return view('home.home_berita', [
@@ -101,7 +73,6 @@ class BeritaController extends Controller
         ]);
 
         if ($validator->fails()) {
-            // dd($validator);
             return redirect('/berita/create')
                 ->withErrors($validator)
                 ->withInput();
@@ -142,10 +113,9 @@ class BeritaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function tampildata($id){
-
+    public function tampildata($id)
+    {
         $data = Berita::find($id);
-        // dd($data);
 
         return view('dashboard.admin.berita.tampildata', compact('data'), [
             "title" => "Edit Berita"
@@ -201,24 +171,9 @@ class BeritaController extends Controller
         return redirect('berita')->with('toast_success', 'Data berhasil dihapus');
     }
 
-    public function search(Request $request)
+    public function detail($id)
     {
-        if($request->has('search')){
-            $berita = Berita::where('judul', 'LIKE', '%'.$request->search.'%')->paginate();
-        }
-        else{
-            $berita = Berita::all();
-        }
-
-        return view('dashboard.admin.berita.berita', compact('berita'), [
-            "title" => "Berita"
-        ]);
-    }
-
-    public function detail($id){
-
         $data = Berita::findOrFail($id);
-        // dd($data);
 
         return view('landing.detail_berita', compact('data'), [
             "title" => "Detail Berita"

@@ -61,99 +61,89 @@
 
                                     <form class="row g-2 needs-validation" action="{{ route('simpanregistrasi') }}"
                                         method="post">
-
-                                        {{-- <form action="{{url('register')}}" method="post"> --}}
                                         @method('POST')
                                         @csrf
 
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <strong>Name</strong>
-                                            <div class="form-floating">
-                                                <input type="text" name="name"
-                                                    class="form-control mt-3 @error('name') is-invalid @enderror"
-                                                    placeholder="Name" value="{{ old('name') }}">
-                                                <label for="name">Name</label>
-                                                @error('name')
-                                                    <div class="invalid-feedback">Silahkan masukkan Name anda</div>
-                                                @enderror
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <strong>Name</strong>
+                                                <div class="form-floating">
+                                                    <input type="text" name="name"
+                                                        class="form-control mt-3 @error('name') is-invalid @enderror"
+                                                        placeholder="Name" value="{{ old('name') }}">
+                                                    <label for="name">Name</label>
+                                                    @error('name')
+                                                        <div class="invalid-feedback">Silahkan masukkan Name anda</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <strong>Username</strong>
+                                                <div class="form-floating">
+                                                    <input type="text" name="username"
+                                                        class="form-control mt-3 @error('username') is-invalid @enderror"
+                                                        placeholder="Username" value="{{ old('username') }}">
+                                                    <label for="username">Username</label>
+                                                    @error('username')
+                                                        <div class="invalid-feedback">Silahkan masukkan Username anda</div>
+                                                    @enderror
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6">
-                                            <strong>Username</strong>
-                                            <div class="form-floating">
-                                                <input type="text" name="username"
-                                                    class="form-control mt-3 @error('username') is-invalid @enderror"
-                                                    placeholder="Username" value="{{ old('username') }}">
-                                                <label for="username">Username</label>
-                                                @error('username')
-                                                    <div class="invalid-feedback">Silahkan masukkan Username anda</div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6"><br>
-                                            <strong>Pilih Sebagai</strong>
-                                                <select name="level" id="level" class="form-select mt-3" aria-label="Default select example">
+                                        <div class="row">
+                                            <div class="col-md-6"><br>
+                                                <strong>Pilih Sebagai</strong>
+                                                <select name="level" id="level" class="form-select mt-3"
+                                                    aria-label="Default select example">
                                                     <option value="">--- pilih sebagai ---</option><br>
                                                     <option value="pengunjung">pengunjung</option>
                                                     <option value="pengelola">pengelola</option>
                                                 </select>
-                                        </div>
-
-                                        <div class="col-md-6" id="nik_b"><br>
-                                            <strong>NIK</strong>
-                                            <div class="form-floating">
-                                                <input type="text" name="nik"
-                                                    class="form-control mt-3 @error('nik') is-invalid @enderror"
-                                                    placeholder="nik" value="{{ old('nik') }}">
-                                                <label for="nik">NIK</label>
-                                                @error('nik')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                    {{-- <div class="invalid-feedback">Silahkan masukkan NIK anda</div> --}}
-                                                @enderror
                                             </div>
-                                        </div>
-                                    </div>
 
-                                        {{-- <div class="col-12">
-                                            <div class="form-floating">
-                                                <input type="text" name="level" class="form-control" id="level" value="Pengguna" class="form-control"readonly>
-                                                <label for="level">Level</label>
-                                            </div>
-                                        </div> --}}
-
-
-                                    <div class="row">
-                                        <div class="col-md-6"><br>
-                                            <strong>Email</strong>
-                                            <div class="form-floating">
-                                                <input type="email" name="email"
-                                                    class="form-control mt-3 @error('email') is-invalid @enderror"
-                                                    placeholder="Email" value="{{ old('email') }}">
-                                                <label for="email">nama@gmail.com</label>
-                                                @error('email')
-                                                    <div class="invalid-feedback">Silahkan masukkan Email anda</div>
-                                                @enderror
+                                            <div class="col-md-6" id="nik_b"><br>
+                                                <strong>NIK</strong>
+                                                <div class="form-floating">
+                                                    <input type="text" name="nik"
+                                                        class="form-control mt-3 @error('nik') is-invalid @enderror"
+                                                        placeholder="nik" value="{{ old('nik') }}">
+                                                    <label for="nik">NIK</label>
+                                                    @error('nik')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6"><br>
-                                            <strong>Password</strong>
-                                            <div class="form-floating">
-                                                <input type="password" name="password"
-                                                    class="form-control mt-3 mb-3 @error('password') is-invalid @enderror"
-                                                    placeholder="Password" value="{{ old('password') }}">
-                                                <label for="password">Password</label>
-                                                @error('password')
-                                                    <div class="invalid-feedback">Silahkan masukkan Password anda</div>
-                                                @enderror
+                                        <div class="row">
+                                            <div class="col-md-6"><br>
+                                                <strong>Email</strong>
+                                                <div class="form-floating">
+                                                    <input type="email" name="email"
+                                                        class="form-control mt-3 @error('email') is-invalid @enderror"
+                                                        placeholder="Email" value="{{ old('email') }}">
+                                                    <label for="email">nama@gmail.com</label>
+                                                    @error('email')
+                                                        <div class="invalid-feedback">Silahkan masukkan Email anda</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6"><br>
+                                                <strong>Password</strong>
+                                                <div class="form-floating">
+                                                    <input type="password" name="password"
+                                                        class="form-control mt-3 mb-3 @error('password') is-invalid @enderror"
+                                                        placeholder="Password" value="{{ old('password') }}">
+                                                    <label for="password">Password</label>
+                                                    @error('password')
+                                                        <div class="invalid-feedback">Silahkan masukkan Password anda</div>
+                                                    @enderror
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
                                         <div class="col-12 mt-4">
                                             <button class="btn btn-primary w-100" type="submit">Register</button>
@@ -183,6 +173,21 @@
     <script src="{{ asset('adashboard') }}/assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{ asset('adashboard') }}/assets/js/main.js"></script>
+    <script>
+        $('#level').change(function() {
+            // alert(this.value);
+            if (this.value == 'pengelola') {
+                $('#nik_b').addClass('d-none');
+            } else {
+                $('#nik_b').removeClass('d-none');
+            }
+        })
+    </script>
+
     <script src="assets/js/main.js"></script>
 
 </body>

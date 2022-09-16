@@ -26,10 +26,10 @@
                             </div>
                         </div>
 
-                            <div class="row mt-4">
-                                <h3 class="text-center">Our Address</h3>
-                                <p class="text-center">Jl. Tambak Raya (Pertigaan antara Jl. Pahlawan dengan Jl. Samsu)</p>
-                            </div>
+                        <div class="row mt-4">
+                            <h3 class="text-center">Our Address</h3>
+                            <p class="text-center">Jl. Tambak Raya (Pertigaan antara Jl. Pahlawan dengan Jl. Samsu)</p>
+                        </div>
                     </div>
                 </div>
 
@@ -41,10 +41,10 @@
                             </div>
                         </div>
 
-                            <div class="row mt-4">
-                                <h3 class="text-center">Email Us</h3>
-                                <p class="text-center">pt.patriotsaymaland@gmail.com</p>
-                            </div>
+                        <div class="row mt-4">
+                            <h3 class="text-center">Email Us</h3>
+                            <p class="text-center">pt.patriotsaymaland@gmail.com</p>
+                        </div>
                     </div>
                 </div>
 
@@ -56,10 +56,10 @@
                             </div>
                         </div>
 
-                            <div class="row mt-4">
-                                <h3 class="text-center">Call Us</h3>
-                                <p class="text-center">0813 1635 0016</p>
-                            </div>
+                        <div class="row mt-4">
+                            <h3 class="text-center">Call Us</h3>
+                            <p class="text-center">0813 1635 0016</p>
+                        </div>
                     </div>
                 </div>
             </div>

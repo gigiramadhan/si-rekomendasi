@@ -23,35 +23,6 @@
                         <div class="bg-info p-4 text-primary bg-opacity-25">
                             <h6 class="fw-bold">Informasi Lengkap Data Crips</h6>
                         </div>
-
-                        {{-- <div class="col">
-                            <div class="card-body">
-                                <table class="table table-striped mt-4">
-                                    <tbody>
-                                        <tr>
-                                            <th style="width: 30%">Nama</th>
-                                            <td>{{ $data->name }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Username</th>
-                                            <td>{{ $data->username }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Level</th>
-                                            <td>{{ $data->level }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Email</th>
-                                            <td>{{ $data->email }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Password</th>
-                                            <td>{{ $data->password }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div> --}}
                     </div>
                 </div>
 

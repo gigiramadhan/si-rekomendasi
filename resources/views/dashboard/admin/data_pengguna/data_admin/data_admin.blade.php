@@ -23,42 +23,23 @@
     @yield('content')
 </section>
 
-        {{-- @if (\Session::has('berhasil'))
-            <div class="alert alert-success">
-                <p>{{ \Session::get('berhasil') }}</p>
-            </div>
-        @endif --}}
-
     <div class="row">
         <div class="col-md-6 mt-4"></div>
 
         <div class="form-group d-flex justify-content-between mt-3 ms-3">
             <a href="{{ route('data_admin.create') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-plus-lg me-2"></i>Tambah Data</a>
-
-            {{-- <form action="/pengguna/search" class="form-inline" method="GET">
-                <div class="input-group">
-                    <form action="/search" class="form-inline" method="GET"></form>
-                    <input type="search" name="search" class="form-control" placeholder="search here.....">
-                    <span class="input-group-prepend me-3">
-                        <button type="submit" class="btn btn-primary">Search</button>
-                    </span>
-                </div>
-            </form> --}}
         </div>
 
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table datatable table-striped mt-2 ms-2">
                     <thead class="thead-light">
-                    {{-- <table class="table table-striped table-hover">
-                    <thead> --}}
                         <tr>
                             <th style="text-align: center" width='10%'>No</th>
                             <th style="text-align: center">Nama</th>
                             <th style="text-align: center" width='18%'>Username</th>
                             <th style="text-align: center" width='13%'>Level</th>
                             <th style="text-align: center">Email</th>
-                            {{-- <th>Password</th> --}}
                             <th style="text-align: center">Aksi</th>
                             </tr>
                     </thead>
@@ -71,7 +52,6 @@
                                 <td style="text-align: left">{{ $item->username }}</td>
                                 <td style="text-align: left">{{ $item->level }}</td>
                                 <td style="text-align: left">{{ $item->email }}</td>
-                                {{-- <td style="text-align: left">{{ $item->password }}</td> --}}
 
                                 <td>
                                     <form class="d-flex justify-content-center gap-2" action="{{ route('data_admin.destroy', $item->id) }}" method="get">
@@ -91,22 +71,6 @@
                     </tbody>
                 </table>
             <div>
-
-            {{-- <div class="form-group d-flex justify-content-between mt-3">
-                <div>
-                    Showing
-                    {{ $admin->firstItem() }}
-                    to
-                    {{ $admin->lastItem() }}
-                    of
-                    {{ $admin->total() }}
-                    entries
-                </div>
-
-                <div class="pull-right">
-                    {{ $admin->links() }}
-                </div>
-            </div> --}}
         </div>
     </div>
     @include('sweetalert::alert')

@@ -7,7 +7,6 @@
                 <div class="card mt-4">
                     <div class="card-body">
                         <h5 class="text-secondary fw-bold">Profile Details</h5>
-                        {{-- <h5 class="card-title mt-2">Profile Details</h5> --}}
                         <form action="{{ route('update_profile_user', $user->id) }}" method="POST" enctype="multipart/form-data">
                             @method('POST')
                             @csrf
@@ -103,7 +102,6 @@
                     </div>
                 </div>
             </div>
-        {{-- </div> --}}
     </div>
 </section>
 @include('sweetalert::alert')

@@ -48,7 +48,6 @@
         </div>
     </header>
 
-    {{-- Home --}}
     <section id="hero">
     <div class="container">
         <div class="row justify-content-between">
@@ -68,7 +67,6 @@
     </div>
     </section>
 
-    {{-- About --}}
     <main id="main">
     <section id="about" class="about">
         <div class="container" data-aos="fade-up">
@@ -109,48 +107,6 @@
         </div>
     </section>
 
-    {{-- Informasi --}}
-    {{-- <section id="info" class="info">
-
-        <div class="container" data-aos="fade-up">
-            <div class="section-title">
-                <h2>Information</h2>
-                <p>Information in our Land Group</p>
-            </div>
-
-            <div class="row g-0">
-                @foreach ($berita as $item)
-                <div class="card me-4" style="width: 18rem;">
-                    <img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <div class="text-end">{{ $item->created_at }}</div><br>
-                        <h5 class="card-title">{{ $item->judul }}</h5>
-                        <p class="card-text" style="text-align: justify">{!! $item->kutipan !!}</p>
-                    </div>
-                    <div class="text-start ms-3">
-                        <a href="{{ url('detail_berita', $item->id) }}" class="btn btn-primary rounded-pill mt-2 mb-2">Read More<i class="bi bi-arrow-right-circle ms-2"></i></a>
-                    </div>
-                </div>
-                @endforeach
-
-                @foreach ($kegiatan as $item)
-                <div class="card me-4 mt-4" style="width: 18rem;">
-                    <img src="{{ URL::to('/') }}/gambar/{{ $item->gambar }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <div class="text-end">{{ $item->created_at }}</div><br>
-                        <h5 class="card-title">{{ $item->judul }}</h5>
-                        <p class="card-text" style="text-align: justify">{!! $item->deskripsi !!}</p>
-                    </div>
-                    <div class="text-start ms-3">
-                        <a href="" class="btn btn-primary rounded-pill mt-2 mb-2">Read More<i class="bi bi-arrow-right-circle ms-2"></i></a>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </section> --}}
-
-    {{-- Gallery --}}
     <section id="gallery" class="gallery">
 
         <div class="container" data-aos="fade-up">
@@ -254,7 +210,6 @@
         </div>
     </section>
 
-    {{-- Contact --}}
     <section id="contact" class="contact">
         <div class="container">
 
@@ -275,60 +230,10 @@
                     <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.5187305544027!2d108.3444366137863!3d-6.32675776366585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6ebde22bebcd3b%3A0x715793ff54ccabf!2sCluster%20Sultan%20Regency%20Indramayu!5e0!3m2!1sid!2sid!4v1647328945521!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
-
-            {{-- <div class="container">
-                <div class="row mt-5">
-                    <div class="col-lg-6">
-                        <div class="info-box mb-4 section-bg">
-                            <div class="d-flex justify-content-center">
-                                <div class="row mt-3">
-                                    <i class="bi bi-geo-alt-fill bi-2x"></i>
-                                </div>
-                            </div>
-
-                            <div class="row mt-4">
-                                <h3 class="text-center">Our Address</h3>
-                                <p class="text-center">Jl. Tambak Raya (Pertigaan antara Jl. Pahlawan dengan Jl. Samsu)</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="info-box mb-4 section-bg">
-                            <div class="d-flex justify-content-center">
-                                <div class="row mt-3">
-                                    <i class="bi bi-envelope-fill "></i>
-                                </div>
-                            </div>
-
-                            <div class="row mt-4">
-                                <h3 class="text-center">Email Us</h3>
-                                <p class="text-center">pt.patriotsaymaland@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="info-box mb-4 section-bg">
-                            <div class="d-flex justify-content-center">
-                                <div class="row mt-3">
-                                    <i class="bi bi-telephone-fill"></i>
-                                </div>
-                            </div>
-
-                            <div class="row mt-4">
-                                <h3 class="text-center">Call Us</h3>
-                                <p class="text-center">0813 1635 0016</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
         </div>
     </section>
     </main>
 
-    {{-- Footer --}}
     <footer id="footer">
     <div class="container">
 
@@ -352,9 +257,6 @@
         </div>
     </div>
     </footer>
-
-    {{-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-    <div id="preloader"></div> --}}
 
     <!-- Vendor JS Files -->
     <script src="{{asset('landing')}}/assets/vendor/purecounter/purecounter.js"></script>

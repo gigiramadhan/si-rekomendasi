@@ -17,8 +17,8 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-
+    public function index()
+    {
         $booking = DB::table('tb_booking')
         ->leftJoin('users','tb_booking.user_id','=','users.id')
         ->select(
@@ -28,7 +28,7 @@ class BookingController extends Controller
         )
         ->orderBy('tb_booking.updated_at','DESC')
         ->get();
-        // dd($booking);
+
         return view('dashboard.pengelola.data_booking.data_booking', compact('booking'), [
             "title" => "Data Booking"
         ]);
@@ -60,22 +60,6 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        // $image = $request->file('upload_booking');
-        // $new_image = rand().'.'.$image->getClientOriginalExtension();
-
-        // $data = array(
-        //     'user_id' => $request->Auth::user()->id,
-        //     'name_booking' => $request->name_booking,
-        //     'no_telp' => $request->no_telp,
-        //     'type_rumah' => $request->type_rumah,
-        //     // 'date_booking' => $request->date_booking,
-        //     // 'upload_booking' => $new_image,
-        //     // 'status_booking' => $request->status_booking
-        // );
-
-        // $image->move(public_path('gambar'), $new_image);
-        // dd($request->all());
-
         $data = new Booking;
         $data->user_id = Auth::user()->id;
         $data->name_booking = $request->name_booking;
@@ -86,7 +70,6 @@ class BookingController extends Controller
 
         $rumah->stok = $request->stok_lama - 1;
         $rumah->save();
-
         $data->save();
 
         return redirect('rekomendasi')->with('toast_success', 'Data berhasil disimpan');
@@ -101,7 +84,7 @@ class BookingController extends Controller
     public function show($id)
     {
         $data = Booking::find($id);
-        // dd($data);
+
         return view('dashboard.pengelola.data_booking.showbooking', compact('data'), [
             "title" => "Detail Booking"
         ]);
@@ -128,7 +111,6 @@ class BookingController extends Controller
     public function updatebooking(Request $request, $id)
     {
         $data = Booking::find($id);
-        // $data->update($request->all());
 
         $data->update(['status_booking' => $request->status_booking]);
 
@@ -144,25 +126,9 @@ class BookingController extends Controller
     public function destroy($id)
     {
         $booking = Booking::find($id);
-        // $image_path = public_path("gambar/{$booking->gambar}");
-        // File::delete($image_path);
 
         $booking->delete();
 
         return redirect('data_booking')->with('toast_success', 'Data berhasil dihapus');
-    }
-
-    public function search(Request $request)
-    {
-        if($request->has('search')){
-            $booking = Booking::where('name_booking', 'LIKE', '%'.$request->search.'%')->paginate();
-        }
-        else{
-            $booking = Booking::all();
-        }
-
-        return view('dashboard.pengelola.data_booking.data_booking', compact('booking'), [
-            "title" => "Data Booking"
-        ]);
     }
 }

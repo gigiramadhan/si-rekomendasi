@@ -15,7 +15,6 @@
                     <div class="form-group mb-3 mt-3 fw-bold">
                         <label class="form-label mb-3">Nama Crips</label>
                         <input type="text" value="{{ $data->id_kriteria }}" name="id_kriteria" hidden>
-                        {{-- <select name="id_kriteria" class="form-select" aria-label="Default select example" value="{{ $id }}" hidden></select> --}}
                         <input type="text" name="nama_crips" class="form-control" value="{{ $data->nama_crips }}">
                     </div>
 

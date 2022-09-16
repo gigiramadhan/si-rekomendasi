@@ -15,9 +15,8 @@ class PengelolaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-
-        // $pengelola = User::latest()->paginate(2);
+    public function index()
+    {
         $pengelola = DB::table('users')->where('level', 'pengelola')->get();
 
         return view('dashboard.admin.data_pengguna.data_pengelola.data_pengelola', compact('pengelola'), [
@@ -55,7 +54,6 @@ class PengelolaController extends Controller
         ]);
 
         if ($validator->fails()) {
-            // dd($validator);
             return redirect('/data_pengelola/create')
                 ->withErrors($validator)
                 ->withInput();
@@ -98,7 +96,6 @@ class PengelolaController extends Controller
     public function tampilpengelola($id)
     {
         $data = User::find($id);
-        // dd($data);
 
         return view('dashboard.admin.data_pengguna.data_pengelola.tampil_pengelola', compact('data'), [
             "title" => "Edit Pengguna"
@@ -115,7 +112,6 @@ class PengelolaController extends Controller
     public function updatepengelola(Request $request, $id)
     {
         $data = User::find($id);
-        // $data->update($request->all());
         $data->update(array(
             'name' => $request->name,
             'username' => $request->username,
@@ -140,19 +136,5 @@ class PengelolaController extends Controller
         $pengguna->delete();
 
         return redirect('data_pengelola')->with('toast_success', 'Data berhasil dihapus');
-    }
-
-    public function search(Request $request){
-
-        if($request->has('search')){
-            $pengguna = User::where('level', 'LIKE', '%'.$request->search.'%')->paginate();
-        }
-        else{
-            $pengguna = User::all();
-        }
-
-        return view('dashboard.admin.data_pengguna.data_pengelola.data_pengelola', compact('pengguna'), [
-            "title" => "Data Pengguna"
-        ]);
     }
 }

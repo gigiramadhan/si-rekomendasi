@@ -49,13 +49,11 @@ class CripsController extends Controller
         ]);
 
         if ($validator->fails()) {
-            // dd($validator);
             return redirect('/crips/create/'.$request->id_kriteria)
                 ->withErrors($validator)
                 ->withInput();
         }
 
-        // return $request->all();
         $data = [
             'id_kriteria' => $request->id_kriteria,
             'nama_crips' => $request->nama_crips,
@@ -87,7 +85,6 @@ class CripsController extends Controller
     public function tampil_crips($id)
     {
         $data = Crips::find($id);
-        // dd($data);
 
         return view('dashboard.admin.crips.tampil_crips', compact('data'), [
             "title" => "Edit Crips"
@@ -118,7 +115,7 @@ class CripsController extends Controller
     public function destroy($id)
     {
         $crips = Crips::find($id);
-        // return $crips->id_kriteria;
+
         $crips->delete();
 
         return redirect()->route('showbobot',  $crips->id_kriteria )->with('toast_success', 'Data berhasil dihapus');

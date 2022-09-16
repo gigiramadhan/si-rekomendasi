@@ -23,13 +23,6 @@
             </a>
         </li>
 
-        {{-- <li class="nav-item">
-            <a class="nav-link {{ Request::is('data_transaksi') ? 'active' : 'collapsed' }}" href="{{url('data_transaksi')}}">
-                <i class="bi bi-credit-card-fill"></i>
-                <span>Transaksi</span>
-            </a>
-        </li> --}}
-
         <li class="nav-item">
             <a class="nav-link {{ Request::is('fasilitas*') ? 'active' : 'collapsed' }}" href="{{url('fasilitas')}}">
                 <i class="bi bi-grid-fill"></i>
@@ -44,4 +37,4 @@
             </a>
         </li>
     </ul>
-  </aside>
+</aside>

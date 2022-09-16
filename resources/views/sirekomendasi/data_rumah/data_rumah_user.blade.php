@@ -25,13 +25,8 @@
                                         <i class="bi bi-check-circle me-2"></i>{{ $item->fasilitas }}
                                     <p>
                                     <p class="card-text">Rp. {{ number_format($item->harga) }}</p>
-                                    {{-- <p class="card-text"></p> --}}
                                     <span class="badge bg-secondary"><i class="bi bi-folder me-1"></i>Stok : {{ ($item->stok) }}</span>
                                 </div>
-                                {{-- <p class="card-text ms-3"><small class="text-muted">{{ $item->created_at }}</small></p> --}}
-                                {{-- <div class="text-start ms-3">
-                                    <a href="{{ url('detail_data_rumah', $item->id) }}" class="btn btn-primary rounded-pill mt-2 mb-2">Read More<i class="bi bi-arrow-right-circle ms-2"></i></a>
-                                </div> --}}
                             </div>
                             @endforeach
                         </div>

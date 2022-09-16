@@ -15,8 +15,8 @@ class KegiatanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-
+    public function index()
+    {
         $kegiatan = Kegiatan::latest()->get();
 
         return view('dashboard.admin.kegiatan.kegiatan', compact('kegiatan'), [
@@ -24,8 +24,8 @@ class KegiatanController extends Controller
         ]);
     }
 
-    public function kegiatan(){
-
+    public function kegiatan()
+    {
         $kegiatan = Kegiatan::take(3)->get()->sortByDesc('created_at');
 
         return view('sirekomendasi.home.kegiatan_user', [
@@ -34,8 +34,8 @@ class KegiatanController extends Controller
         ]);
     }
 
-    public function home_kegiatan(){
-
+    public function home_kegiatan()
+    {
         $kegiatan = Kegiatan::take(3)->get()->sortByDesc('created_at');
 
         return view('home.home_kegiatan', [
@@ -71,7 +71,6 @@ class KegiatanController extends Controller
         ]);
 
         if ($validator->fails()) {
-            // dd($validator);
             return redirect('/kegiatan/create')
                 ->withErrors($validator)
                 ->withInput();
@@ -112,10 +111,9 @@ class KegiatanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function tampilkegiatan($id){
-
+    public function tampilkegiatan($id)
+    {
         $data = Kegiatan::find($id);
-        // dd($data);
 
         return view('dashboard.admin.kegiatan.tampilkegiatan', compact('data'), [
             "title" => "Edit Kegiatan"
@@ -129,12 +127,10 @@ class KegiatanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updatekegiatan(Request $request, $id){
-
+    public function updatekegiatan(Request $request, $id)
+    {
         $image_lama = $request->old_image;
         $image_baru = $request->file('gambar');
-
-        // return $image_baru;
 
         if($image_baru == ''){
             $gambar = $image_lama;
@@ -146,7 +142,6 @@ class KegiatanController extends Controller
         }
 
         $data = Kegiatan::find($id);
-        // $data->update($request->all());
 
         $data->update(array(
             'judul' => $request->judul,
@@ -174,24 +169,9 @@ class KegiatanController extends Controller
         return redirect('kegiatan')->with('toast_success', 'Data berhasil dihapus');
     }
 
-    public function search(Request $request){
-
-        if($request->has('search')){
-            $kegiatan = Kegiatan::where('judul', 'LIKE', '%'.$request->search.'%')->paginate();
-        }
-        else{
-            $kegiatan = Kegiatan::all();
-        }
-
-        return view('dashboard.admin.kegiatan.kegiatan', compact('kegiatan'), [
-            "title" => "Kegiatan"
-        ]);
-    }
-
     public function detail($id){
 
         $data = Kegiatan::findOrFail($id);
-        // dd($data);
 
         return view('landing.detail_kegiatan', compact('data'), [
             "title" => "Detail Kegiatan"

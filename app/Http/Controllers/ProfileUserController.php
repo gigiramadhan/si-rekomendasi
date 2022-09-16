@@ -99,18 +99,6 @@ class ProfileUserController extends Controller
             $image_baru->move(public_path('gambar'), $new_image);
         }
 
-        // $user = $request->all();
-
-        // $name = $request->input('name');
-        // $username = $request->input('username');
-        // $photo = $request->input('photo');
-        // // $user['password'] = bcrypt($request->password);
-        // $ubah_profil = User::findOrFail($id);
-        // $ubah_profil->name = $name;
-        // $ubah_profil->username = $username;
-        // $ubah_profil->photo = $photo;
-        // $ubah_profil->save();
-
         $user = User::find($id);
 
         $user->update(array(

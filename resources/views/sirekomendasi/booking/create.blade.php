@@ -40,38 +40,8 @@
                                 <label for="type_rumah" class="col-sm-2 col-form-label">Type Rumah</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="type_rumah" class="form-control" value="{{ $rumah->type }}" readonly>
-                                    {{-- <input name="type_rumah" class="form-select" aria-label="readonly input example" value="{{ $data->type_rumah }}" readonly> --}}
-                                    {{-- <select name="type_rumah" class="form-select" aria-label="Default select example"> --}}
-                                        {{-- <option value="readonly" hidden selected>--- pilih type rumah ---</option><br>
-                                        @foreach ($booking as $booking)
-                                        <option value="{{ $booking->type_rumah }}">{{ $booking->type_rumah }}</option>
-                                        @endforeach --}}
-                                        {{-- <option value="Type Aster (40/72)">Type Aster (40/72)</option>
-                                        <option value="Type Alamanda (48/88)">Type Alamanda (48/88)</option>
-                                        <option value="Type Azalela (48/98)">Type Azalela (48/98)</option>
-                                        <option value="Type Estate(48/98)">Type (48/98)</option>
-                                        <option value="Type Hook (48/126)">Type Hook (48/126)</option>
-                                        <option value="Type Sultan Essence (48/98)">Type Sultan Essence (48/98)</option>
-                                        <option value="Type Sultan Essence Hook (48/140)">Type Sultan Essence Hook (48/140)</option>
-                                        <option value="Type Hook (36/88)">Type Hook (36/88)</option>
-                                    </select> --}}
                                 </div>
                             </div>
-
-                            {{-- <div class="row mb-4 mt-4">
-                                <label for="date_booking" class="col-sm-2 col-form-label">Type Rumah</label>
-                                <div class="col-sm-10"> --}}
-                                    {{-- <input type="datetime-local" name="date_booking" class="form-control" value="{{ old('date_booking') }}" required> --}}
-                                    {{-- <input type="date" name="date_booking" class="form-control" value="{{ old('date_booking') }}" required>
-                                </div>
-                            </div> --}}
-
-                            {{-- <div class="row mb-4 mt-4">
-                                <label for="upload_booking" class="col-sm-2 col-form-label">Upload Bukti</label>
-                                <div class="col-sm-10">
-                                    <input type="file" class="form-control" name="upload_booking" value="{{ old('upload_booking') }}" required>
-                                </div>
-                            </div> --}}
 
                             <div class="form-group d-flex justify-content-md-end mt-4">
                                 <a href="/rekomendasi" class="btn btn-outline-secondary rounded-pill fw-bold mt-2">Close<i class="bi bi-x-lg ms-2"></i></a>

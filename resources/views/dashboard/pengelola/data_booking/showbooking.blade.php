@@ -28,10 +28,6 @@
                             <div class="card-body">
                                 <table class="table table-striped mt-4">
                                     <tbody>
-                                        {{-- <tr>
-                                            <th style="width: 40%">NIK</th>
-                                            <td>{{ $data->nik }}</td>
-                                        </tr> --}}
                                         <tr style="width: 40%">
                                             <th>Nama Lengkap</th>
                                             <td>{{ $data->name_booking }}</td>

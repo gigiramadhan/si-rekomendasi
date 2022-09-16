@@ -13,10 +13,8 @@ class StatusController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-
-        // $name = Auth::user()->name;
-
+    public function index()
+    {
         $status = Booking::where('user_id', '=', Auth::user()->id)->get();
 
         return view('sirekomendasi.status.status', compact('status'), [

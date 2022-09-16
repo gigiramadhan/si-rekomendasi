@@ -96,11 +96,6 @@
                         </div>
                     </div>
 
-                    {{-- <div class="form-group mb-3 mt-3 fw-bold">
-                        <label for="fasilitas">Fasilitas</label>
-                        <input type="text" name="fasilitas" class="form-control mt-3" value="{{ old('fasilitas') }}"></textarea>
-                    </div> --}}
-
                     <div class="form-group mb-3 mt-4">
                         <label for="gambar"><b>Gambar</b></label><br>
                         <input type="file" class="form-control-file mt-3 @error('gambar') is-invalid @enderror" name="gambar" value="{{ old('gambar') }}" autofocus>

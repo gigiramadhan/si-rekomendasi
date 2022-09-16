@@ -38,18 +38,11 @@ use App\Models\RumahPengelola;
 */
 
 // Beranda
-    // Route::get('/', [BerandaController::class, 'index'])->name('landing.beranda');
     Route::get('/', function () {
         return view('landing.beranda', [
             "title" => "SIREKPERUM"
         ]);
     });
-
-    // Route::get('welcome', function () {
-    //     return view('welcome', [
-    //         "title" => "SIREKPERUM"
-    //     ]);
-    // });
 
     Route::get('about', function () {
         return view('home.about', [
@@ -69,7 +62,6 @@ use App\Models\RumahPengelola;
         ]);
     });
 
-    // Route::get('berita/fetch-all', [BeritaController::class, 'fetchAll'])->name('berita.fetch');
 
 // Information
     Route::get('detail_berita/{id}', [BeritaController::class, 'detail'])->name('detail_berita');
@@ -78,9 +70,7 @@ use App\Models\RumahPengelola;
     Route::get('home_berita', [BeritaController::class, 'home_berita'])->name('home_berita');
     Route::get('berita_user', [BeritaController::class, 'berita'])->name('berita_user');
     Route::get('kegiatan_user', [KegiatanController::class, 'kegiatan'])->name('kegiatan_user');
-    // Route::get('data_rumah_user', [RumahPengelolaController::class, 'data_rumah'])->name('data_rumah_user');
     Route::get('data_rumah_user', [RumahController::class, 'data_rumah'])->name('data_rumah_user');
-
 
 
 // Login
@@ -203,7 +193,7 @@ use App\Models\RumahPengelola;
 });
 
 
-// Middleware Group User
+// Middleware Group Pengunjung
     Route::group(['middleware' => ['auth','ceklevel:pengunjung']], function () {
     // Rekomendasi
     Route::get('rekomendasi', function () {

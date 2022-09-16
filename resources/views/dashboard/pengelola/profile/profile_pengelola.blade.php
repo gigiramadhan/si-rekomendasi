@@ -12,9 +12,6 @@
             </nav>
     </div>
 
-        {{-- <div class="form-group d-flex justify-content-between mt-3">
-            <a href="{{ url('dashboard') }}" class="btn btn-primary" style="margin-bottom: 20px"><i class="bi bi-arrow-left"></i>Kembali</a>
-        </div> --}}
         <div class="row">
             <div class="container mt-4">
                 <div class="card ms-2">

@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Gilang Ramadhan',
             'username' => 'giiramadhan',
-            'level' => 'user',
+            'level' => 'pengunjung',
             'email' => 'gr072885@gmail.com',
             'password' => bcrypt('giiramadhan07'),
             'remember_token' => Str::random(60),

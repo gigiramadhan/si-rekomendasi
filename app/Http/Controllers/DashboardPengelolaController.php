@@ -17,13 +17,9 @@ class DashboardPengelolaController extends Controller
 
     public function index()
     {
-        // $pengguna = User::count();
-        // $rumah = Rumah::count();
-
         $rumah = DB::table('tb_rumah_pengelola')->count();
         $booking = DB::table('tb_booking')->count();
 
-        // return view('dashboard', compact('pengguna','rumah'));
         return view('dashboard.pengelola.dashboard_pengelola', ['rumah'=>$rumah, 'booking'=>$booking, "title" => "Dashboard"]);
     }
 

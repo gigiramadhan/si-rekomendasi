@@ -44,10 +44,6 @@
                                             <th>Email</th>
                                             <td>{{ $data->email }}</td>
                                         </tr>
-                                        {{-- <tr>
-                                            <th>Password</th>
-                                            <td>{{ $data->password }}</td>
-                                        </tr> --}}
                                     </tbody>
                                 </table>
                             </div>

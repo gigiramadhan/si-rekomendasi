@@ -15,9 +15,8 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-
-        // $pengguna = User::latest()->paginate(2);
+    public function index()
+    {
         $admin = DB::table('users')->where('level', 'admin')->get();
 
         return view('dashboard.admin.data_pengguna.data_admin.data_admin', compact('admin'), [
@@ -55,7 +54,6 @@ class AdminController extends Controller
         ]);
 
         if ($validator->fails()) {
-            // dd($validator);
             return redirect('/data_admin/create')
                 ->withErrors($validator)
                 ->withInput();
@@ -98,7 +96,6 @@ class AdminController extends Controller
     public function tampiladmin($id)
     {
         $data = User::find($id);
-        // dd($data);
 
         return view('dashboard.admin.data_pengguna.data_admin.tampiladmin', compact('data'), [
             "title" => "Edit Pengguna"
@@ -115,7 +112,6 @@ class AdminController extends Controller
     public function updateadmin(Request $request, $id)
     {
         $data = User::find($id);
-        // $data->update($request->all());
         $data->update(array(
             'name' => $request->name,
             'username' => $request->username,
@@ -140,19 +136,5 @@ class AdminController extends Controller
         $pengguna->delete();
 
         return redirect('data_admin')->with('toast_success', 'Data berhasil dihapus');
-    }
-
-    public function search(Request $request){
-
-        if($request->has('search')){
-            $pengguna = User::where('level', 'LIKE', '%'.$request->search.'%')->paginate();
-        }
-        else{
-            $pengguna = User::all();
-        }
-
-        return view('dashboard.admin.data_pengguna.data_admin.data_admin', compact('pengguna'), [
-            "title" => "Data Pengguna"
-        ]);
     }
 }

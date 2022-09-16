@@ -95,11 +95,11 @@ class RekomendasiController extends Controller
 
         foreach ($normalisasi as $key => $criterias){
             foreach ($criterias as $typeRumah => $valueCriteria){
-                if ($key == 'c1') $requestVal = $bobotC1->bobot;
-                if ($key == 'c2') $requestVal = $bobotC2->bobot;
-                if ($key == 'c3') $requestVal = $bobotC3->bobot;
-                if ($key == 'c4') $requestVal = $bobotC4->bobot;
-                $preferensi[$key][$typeRumah] = $valueCriteria * $requestVal;
+                if ($key == 'c1') { $requestVal = $bobotC1->bobot; $req = $request->fasilitas; }
+                if ($key == 'c2') { $requestVal = $bobotC2->bobot;  $req = $request->luas_bangunan; }
+                if ($key == 'c3') { $requestVal = $bobotC3->bobot;  $req = $request->luas_tanah; }
+                if ($key == 'c4') { $requestVal = $bobotC4->bobot; $req = $request->harga; }
+                $preferensi[$key][$typeRumah] = $valueCriteria * $requestVal * $req;
 
                 $preferensi['hasil'][$typeRumah] = 0;
             }

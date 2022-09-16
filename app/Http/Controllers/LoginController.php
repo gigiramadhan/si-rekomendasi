@@ -10,19 +10,19 @@ use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('auth.login');
     }
 
-    public function login (Request $request){
-
+    public function login (Request $request)
+    {
         $validator = Validator::make($request->all(),[
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
         if ($validator->fails()) {
-            // dd($validator);
             return redirect('/login')
                 ->withErrors($validator)
                 ->withInput();
@@ -41,38 +41,30 @@ class LoginController extends Controller
             }
         }
 
-        // session()->setFlashdata('message', 'Hai Admin, Selamat Datang di Sistem Rekomendasi Pemilihan Perumahan!!!');
-
         return redirect('/login')->withSuccess('Email atau Password yang anda masukkan salah!');
     }
 
-    public function registrasi(){
+    public function registrasi()
+    {
         return view('auth.register');
     }
 
-    public function simpanregistrasi(Request $request){
-
+    public function simpanregistrasi(Request $request)
+    {
         $validator = Validator::make($request->all(),[
             'name' => 'required|max:255|unique:users',
             'username' => 'required|min:3|max:255|unique:users',
-            // 'nik' => 'required|unique:users,nik|numeric',
             'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:5|max:255',
             'level' => 'required',
         ]
-        // [
-        //     'nik.numeric' => 'Silahkan Masukkan NIK anda'
-        // ]
     );
 
         if ($validator->fails()) {
-            // dd($validator);
             return redirect('/registrasi')
                 ->withErrors($validator)
                 ->withInput();
         }
-
-        // $validator['password'] = Hash::make($request->password);
 
         $data = [
             'name' => $request->name,
@@ -85,26 +77,11 @@ class LoginController extends Controller
 
         User::create($data);
 
-        // $request->session()->flash('success', 'Registration successfull please login');
-
         return redirect('/login')->with('successregis', 'Registration successfull please login');
-
-        // User::create([
-        //     'name' => $request->name,
-        //     'username' => $request->username,
-        //     'email' => $request->email,
-        //     'password' => bcrypt($request->password),
-        //     'level' => 'user',
-        // ]);
-
-        // return view('auth.login');
     }
 
-    // dd($request->all());
-    // {
-    //     return view('auth.login');
-
-    public function logout (){
+    public function logout ()
+    {
         Auth::logout();
         return redirect('/');
     }

@@ -16,11 +16,8 @@
                                 <th style="text-align: center">No</th>
                                 <th style="text-align: center">Gambar</th>
                                 <th style="text-align: center">Type Rumah</th>
-                                {{-- <th style="text-align: center">Detail Fasilitas</th> --}}
                                 <th style="text-align: center">Perumahan</th>
                                 <th style="text-align: center">Harga</th>
-                                {{-- <th style="text-align: center">Luas Tanah</th> --}}
-                                {{-- <th style="text-align: center">Luas Bangunan</th> --}}
                                 <th style="text-align: center">Fasilitas</th>
                                 <th style="text-align: center">Aksi</th>
                             </tr>
@@ -33,8 +30,6 @@
                                 <td style="text-align: center">{{ $item->type }}</td>
                                 <td style="text-align: center">{{ $item->nama_perumahan }}</td>
                                 <td style="text-align: justify">Rp. {{ number_format($item->harga) }}</td>
-                                {{-- <td style="text-align: center">{{ $item->rentang_luas_tanah }}</td> --}}
-                                {{-- <td style="text-align: center">{{ $item->rentang_luas_bangunan }}</td> --}}
                                 <td style="text-align: center">{{ $item->fasilitas }}</td>
                                 <td>
                                     <form class="d-flex justify-content-center gap-2 mt-2">

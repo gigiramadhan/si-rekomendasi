@@ -1,7 +1,6 @@
 <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
-
         <li class="nav-item">
             <a class="nav-link {{ Request::is('dashboard') ? 'active' : 'collapsed' }}" href="{{url('dashboard')}}">
                 <i class="bi bi-grid"></i>
@@ -31,13 +30,6 @@
                 </li>
             </ul>
         </li>
-
-        {{-- <li class="nav-item">
-            <a class="nav-link {{ Request::is('data_pengguna*') ? 'active' : 'collapsed' }}" href="{{url('data_pengguna')}}">
-                <i class="bi bi-people-fill"></i>
-                <span>Data Pengguna</span>
-            </a>
-        </li> --}}
 
         <li class="nav-item">
             <a class="nav-link {{ Request::is('data_rumah*') ? 'active' : 'collapsed' }}" href="{{url('data_rumah')}}">

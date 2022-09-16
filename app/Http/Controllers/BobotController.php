@@ -14,8 +14,8 @@ class BobotController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-
+    public function index()
+    {
         $bobot = Bobot::latest()->get();
 
         return view('dashboard.admin.bobot.bobot', compact('bobot'), [
@@ -50,7 +50,6 @@ class BobotController extends Controller
         ]);
 
         if ($validator->fails()) {
-            // dd($validator);
             return redirect('/bobot/create')
                 ->withErrors($validator)
                 ->withInput();
@@ -76,10 +75,9 @@ class BobotController extends Controller
     public function show($id)
     {
         $data = Bobot::find($id);
-        // dd($data);
+
         $crips = Crips::where('id_kriteria', $id)->latest()->paginate(7);
-        // $crips = Crips::latest()->get();
-        // dd($crips);
+
         return view('dashboard.admin.crips.crips', compact('data', 'crips'), [
             "title" => "Detail Crips"
         ]);
@@ -94,7 +92,6 @@ class BobotController extends Controller
     public function tampilbobot($id)
     {
         $data = Bobot::find($id);
-        // dd($data);
 
         return view('dashboard.admin.bobot.tampilbobot', compact('data'), [
             "title" => "Edit Kriteria"
@@ -130,19 +127,5 @@ class BobotController extends Controller
         $bobot->delete();
 
         return redirect('bobot')->with('toast_success', 'Data berhasil dihapus');
-    }
-
-    public function search(Request $request){
-
-        if($request->has('search')){
-            $bobot = Bobot::where('name_kriteria', 'LIKE', '%'.$request->search.'%')->paginate();
-        }
-        else{
-            $bobot = Bobot::all();
-        }
-
-        return view('dashboard.admin.bobot.bobot', compact('bobot'), [
-            "title" => "Kriteria"
-        ]);
     }
 }

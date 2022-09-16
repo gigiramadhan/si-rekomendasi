@@ -23,18 +23,12 @@ class DashboardController extends Controller
 
     public function index()
     {
-        // $pengguna = User::count();
-        // $rumah = Rumah::count();
-
         $rumah = DB::table('tb_rumah')->count();
-        // $pengguna = DB::table('users')->count();
         $admin = DB::table('users')->where('level', '=', 'admin')->count();
         $pengelola = DB::table('users')->where('level', '=', 'pengelola')->count();
-        $pengunjung = DB::table('users')->where('level', '=', 'user')->count();
+        $pengunjung = DB::table('users')->where('level', '=', 'pengunjung')->count();
 
-        // return view('dashboard', compact('pengguna','rumah'));
         return view('dashboard.admin.dashboard', ['rumah'=>$rumah, 'admin'=>$admin, 'pengelola'=>$pengelola, 'pengunjung'=>$pengunjung, "title" => "Dashboard"]);
-
     }
 
     /**

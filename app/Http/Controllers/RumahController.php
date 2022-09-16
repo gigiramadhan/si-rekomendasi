@@ -15,17 +15,16 @@ class RumahController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-
-        // $rumah = Rumah::latest()->paginate(4);
+    public function index()
+    {
         $rumah = Rumah::latest()->get();
         return view('dashboard.admin.data_rumah.data_rumah', compact('rumah'), [
             "title" => "Data Rumah"
         ]);
     }
 
-    public function data_rumah(){
-
+    public function data_rumah()
+    {
         $rumah = Rumah::all();
         return view('sirekomendasi.data_rumah.data_rumah_user', compact('rumah'), [
             "title" => "Data Rumah"
@@ -63,7 +62,6 @@ class RumahController extends Controller
         ]);
 
         if ($validator->fails()) {
-            // dd($validator);
             return redirect('/data_rumah/create')
                 ->withErrors($validator)
                 ->withInput();
@@ -121,8 +119,6 @@ class RumahController extends Controller
             $rentang_luas_tanah = "> 140";
         }
 
-        // return $rentang_luas_tanah;
-
         $data = array(
             'type' => $request->type,
             'nama_perumahan' => $request->nama_perumahan,
@@ -141,41 +137,6 @@ class RumahController extends Controller
 
         Rumah::create($data);
 
-
-        // $ex = explode(",", $fasilitasinput);
-
-        // if ($fasilitasinput == "") {
-        //     $image = $request->file('gambar');
-        //     $new_image = rand().'.'.$image->getClientOriginalExtension();
-        //     $data = array(
-        //         'type' => $request->type,
-        //         'nama_perumahan' => $request->nama_perumahan,
-        //         'alamat' => $request->alamat,
-        //         'harga' => $request->harga,
-        //         'fasilitas' => $fasilitasinput,
-        //         'gambar' => $new_image,
-        //     );
-        // }else {
-        //     $fasilitas = implode(',', $fasilitasinput);
-
-        //     $image = $request->file('gambar');
-        //     $new_image = rand().'.'.$image->getClientOriginalExtension();
-
-        //     $data = array(
-        //         'type' => $request->type,
-        //         'nama_perumahan' => $request->nama_perumahan,
-        //         'alamat' => $request->alamat,
-        //         'harga' => $request->harga,
-        //         'fasilitas' => $fasilitas,
-        //         'gambar' => $new_image,
-        //     );
-        // }
-
-
-        // $image->move(public_path('gambar'), $new_image);
-
-        // Rumah::create($data);
-
         return redirect('data_rumah')->with('toast_success', 'Data berhasil ditambahkan');
     }
 
@@ -188,7 +149,7 @@ class RumahController extends Controller
     public function show($id)
     {
         $data = Rumah::find($id);
-        // dd($data);
+
         return view('dashboard.admin.data_rumah.showrumah', compact('data'), [
             "title" => "Detail Rumah"
         ]);
@@ -200,8 +161,8 @@ class RumahController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function tampilrumah($id){
-
+    public function tampilrumah($id)
+    {
         $data = Rumah::find($id);
 
         $fasilitas = explode(', ', $data->fasilitas);
@@ -220,8 +181,8 @@ class RumahController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updaterumah(Request $request, $id){
-
+    public function updaterumah(Request $request, $id)
+    {
         $image_lama = $request->old_image;
         $image_baru = $request->file('gambar');
 
@@ -238,7 +199,6 @@ class RumahController extends Controller
         $hasil = implode(', ', $facility);
 
         $data = Rumah::find($id);
-        // $data->update($request->all());
 
         $data->update(array(
             'type' => $request->type,
@@ -268,19 +228,5 @@ class RumahController extends Controller
         $rumah->delete();
 
         return redirect('data_rumah')->with('toast_success', 'Data berhasil dihapus');
-    }
-
-    public function search(Request $request){
-
-        if($request->has('search')){
-            $rumah = Rumah::where('nama_perumahan', 'LIKE', '%'.$request->search.'%')->paginate();
-        }
-        else{
-            $rumah = Rumah::all();
-        }
-
-        return view('dashboard.admin.data_rumah.data_rumah', compact('rumah'), [
-            "title" => "Data Rumah"
-        ]);
     }
 }

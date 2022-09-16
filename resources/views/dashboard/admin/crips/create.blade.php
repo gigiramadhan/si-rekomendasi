@@ -15,7 +15,6 @@
                         <div class="form-group mb-3 mt-3">
                             <label class="form-label mb-3"><b>Nama Crips</b></label>
                             <input type="text" value="{{ $id }}" name="id_kriteria" hidden>
-                            {{-- <select name="id_kriteria" class="form-select" aria-label="Default select example" value="{{ $id }}" hidden></select> --}}
                             <input type="text" name="nama_crips" class="form-control @error('nama_crips') is-invalid @enderror" name="nama_crips" placeholder="Masukkan nama Crips" value="{{ old('nama_crips') }}" autofocus>
                             @error('nama_crips')
                                 <div class="invalid-feedback">Silahkan masukkan Nama Crips</div>

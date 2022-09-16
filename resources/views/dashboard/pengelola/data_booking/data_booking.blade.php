@@ -44,7 +44,6 @@
                                     <td style="text-align: center">
                                         @if ($item->status_booking != '0')
                                             <button disabled = "disabled" class="btn btn-secondary">Selesai</button>
-                                            {{-- <button disabled = "disabled" class="btn btn-danger"><i class="bi bi-x-square"></i></button> --}}
                                         @else
                                             <form style="margin-bottom: 20px" action="/updatebooking/{{ $item->id_booking  }}" method="POST" enctype="multipart/form-data">
                                                 @csrf

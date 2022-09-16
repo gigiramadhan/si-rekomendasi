@@ -17,15 +17,10 @@
                                 <th style="text-align: center">NIK</th>
                                 <th style="text-align: center">No Handphone</th>
                                 <th style="text-align: center">Type Rumah</th>
-                                {{-- <th style="text-align: center">Tanggal Booking</th> --}}
-                                {{-- <th style="text-align: center">Bukti Booking</th> --}}
                                 <th style="text-align: center">Status</th>
                                 </tr>
                         </thead>
                         <tbody>
-                            {{-- @php
-                                $increment = 1;
-                            @endphp --}}
                             @if ($status != null)
                                 @foreach ($status as $index => $item)
                                     <tr>
@@ -34,8 +29,6 @@
                                         <td style="text-align: center">{{ auth()->user()->nik }}</td>
                                         <td style="text-align: center">{{ $item->no_telp }}</td>
                                         <td style="text-align: center">{{ $item->type_rumah }}</td>
-                                        {{-- <td style="text-align: center">{{ $item->date_booking }}</td> --}}
-                                        {{-- <td style="text-align: center"><img src="{{ URL::to('/') }}/gambar/{{ $item->upload_booking }}" width="130px"></td> --}}
                                         <td style="text-align: center">
                                             @if ($item->status_booking == '0')
                                                 <button class="btn btn-secondary rounded-pill btn-sm" value="0" name="status_booking" data-bs-toggle="modal" data-bs-target="#exampleModal">Menunggu</button>
@@ -53,22 +46,6 @@
                         </tbody>
                     </table>
 
-                    {{-- <div class="form-group d-flex justify-content-between">
-                        <div>
-                            Showing
-                            {{ $status->firstItem() }}
-                            to
-                            {{ $status->lastItem() }}
-                            of
-                            {{ $status->total() }}
-                            entries
-                        </div>
-
-                        <div class="pull-right">
-                            {{ $status->links() }}
-                        </div>
-                    </div> --}}
-
                     <div class="form-group d-flex justify-content-md-start mt-2">
                         <a href="/rekomendasi" class="btn btn-secondary rounded-pill mt-2"><i class="bi bi-arrow-left me-2"></i>Kembali</a>
                     </div>
@@ -76,7 +53,6 @@
             </div>
         </div>
 
-        <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

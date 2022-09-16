@@ -48,7 +48,6 @@ class FasilitasController extends Controller
         ]);
 
         if ($validator->fails()) {
-            // dd($validator);
             return redirect('/fasilitas/create')
                 ->withErrors($validator)
                 ->withInput();
@@ -88,7 +87,6 @@ class FasilitasController extends Controller
     public function tampilfasilitas($id){
 
         $data = Fasilitas::find($id);
-        // dd($data);
 
         return view('dashboard.pengelola.fasilitas.tampilfasilitas', compact('data'), [
             "title" => "Edit Data"
@@ -105,7 +103,6 @@ class FasilitasController extends Controller
     public function updatefasilitas(Request $request, $id){
 
         $data = Fasilitas::find($id);
-        // $data->update($request->all());
 
         $data->update(array(
             'name_fasility' => $request->name_fasility,
@@ -128,19 +125,5 @@ class FasilitasController extends Controller
         $fasilitas->delete();
 
         return redirect('fasilitas')->with('toast_success', 'Data berhasil dihapus');
-    }
-
-    public function search(Request $request)
-    {
-        if($request->has('search')){
-            $fasilitas = Fasilitas::where('name_fasility', 'LIKE', '%'.$request->search.'%')->paginate();
-        }
-        else{
-            $fasilitas = Fasilitas::all();
-        }
-
-        return view('dashboard.pengelola.fasilitas.fasilitas', compact('fasilitas'), [
-            "title" => "Fasilitas"
-        ]);
     }
 }
